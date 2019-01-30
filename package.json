@@ -12,6 +12,5 @@
     "bootstrap": "^4.2.1",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
-    "startbootstrap-bare": "^4.1.3"
   }
 }
