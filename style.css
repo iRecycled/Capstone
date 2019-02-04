@@ -1,0 +1,44 @@
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 150px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+#sidebar ul.components {
+    padding: 20px;
+}
+
+#sidebar ul li {
+    padding-top: 20px;
+}
+
+ul ul a {
+    font-size: .8em !important;
+    color: #ddd;
+}
+
+a {
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar-header{
+    color:white;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#dropdown-toggle {
+    text-align: right;
+}
