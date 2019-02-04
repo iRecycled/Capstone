@@ -38,21 +38,3 @@ a:hover{
 #sidebar.active {
     margin-left: -250px;
 }
-
-.row{
-    padding-left: 100px;
-    padding-top: 100px;
-}
-
-#even {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #aaa;
-}
-
-#textChat {
-    padding-top: 10px;
-}
-
-.btn btn-primary {
-    padding: 10px;
-}
