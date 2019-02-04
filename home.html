@@ -75,6 +75,21 @@
                 </ul>
             </li>
             <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
+                <ul class="collapse show list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Chat 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Chat 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Chat 3</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
                 <a href="#">About</a>
             </li>
             <li>
@@ -85,9 +100,8 @@
     </nav>
     <!-- Page Content -->
     <div id="content">
-            <div class="container-fluid">
-                    <input type="text">
-            </div>
+            
+        </div>
     </div>
 </div>
 
@@ -101,22 +115,28 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="form-group mx-3">
-                    <div class="md-form">
-                        <label for="form1">Username</label>
-                        <input type="text" id="form1" class="form-control">
+                 
+
+                <!-- Icons => https://fontawesome.com/v4.7.0/icons/ -->
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="defaultForm-username">Username</label>
+                        <input type="text" id="defaultForm-username" class="form-control validate">
                     </div>
 
-                    <div class="md-form mb-3">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email:</label>
+
+                    <div class="md-form mb-5">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
                         <input type="email" id="defaultForm-email" class="form-control validate">
                     </div>
 
                     <div class="md-form mb-4">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password:</label>
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
                         <input type="password" id="defaultForm-pass" class="form-control validate">
                     </div>
-
                 </div>
 
                 <div class="modal-footer d-flex justify-content-center">
@@ -137,6 +157,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <i class="fas fa-envelope prefix grey-text"></i>
@@ -150,6 +171,7 @@
                         <input type="password" id="defaultForm-pass" class="form-control validate">
                     </div>
                 </div>
+
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-success">Login</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
