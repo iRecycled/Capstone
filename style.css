@@ -42,3 +42,39 @@ a:hover{
 #dropdown-toggle {
     text-align: right;
 }
+
+#content{
+    width: 100vw;
+    text-align: center;
+}
+
+#chatBox{
+    width: 80vw;
+    height: 70vh;
+    padding: 10px;
+    border: 3px solid grey;
+    margin: 20px;
+    background-color: whitesmoke;
+    display:inline-block
+}
+
+#chatBoxInput{
+    width: 80vw;
+    height: 12vh;
+    text-align: left;
+    margin: 0vh 1vw 0vh;
+    display: inline-block;
+}
+#chatTextArea{
+    width: 87%;
+    height: 100%;
+    resize: none;
+    vertical-align: middle
+}
+#chatTextSubmit{
+    width: 11%;
+    height: 100%;
+    vertical-align: middle;
+    margin: 0px 0px 0px 0.5vw;
+    padding: 0px;
+}
