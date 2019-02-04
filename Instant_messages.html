@@ -17,7 +17,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
 </head>
 
 <body>
@@ -42,56 +42,33 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><u>Chatrooms</u></h4>
+            <h4>Instant Messages</h4>
         </div>
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
-                <ul class="collapse show list-unstyled" id="homeSubmenu">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Friends</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Chat 1</a>
+                        <a href="#">User1</a>
                     </li>
                     <li>
-                        <a href="#">Chat 2</a>
+                        <a href="#">User2</a>
                     </li>
                     <li>
-                        <a href="#">Chat 3</a>
+                        <a href="#">User3</a>
                     </li>
                 </ul>
             </li>
+           
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
-                <ul class="collapse show list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Chat 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 3</a>
-                    </li>
-                </ul>
+                <a href="#">Chats</a>
             </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
-                <ul class="collapse show list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Chat 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 3</a>
-                    </li>
-                </ul>
-            </li>
-            
+
             <li>
                 <a href="#">About</a>
             </li>
+            
             <li>
                 <a href="#">Server</a>
             </li>
@@ -100,7 +77,17 @@
     </nav>
     <!-- Page Content -->
     <div id="content">
-            
+        <form>
+            <div class="container-fluid">
+                <div class="form-group">
+                    <label for="comment">Chat with User1:</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+            </div>
+        </form>
+        <div id="chat-input" class="input-group">
+            <input id="msg" type="text" class="form-control" name="msg" placeholder="Chat">
+            <button type="button" class="btn btn-outline-dark">Send</button>
         </div>
     </div>
 </div>
@@ -115,33 +102,28 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    
-                    <!-- Icons => https://fontawesome.com/v4.7.0/icons/ -->
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <label data-error="wrong" data-success="right" for="defaultForm-username">Username</label>
-                            <input type="text" id="defaultForm-username" class="form-control validate">
-                        </div>
-
-
-                        <div class="md-form mb-5">
-                            <i class="fas fa-envelope prefix grey-text"></i>
-                            <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-                            <input type="email" id="defaultForm-email" class="form-control validate">
-                        </div>
-
-                        <div class="md-form mb-4">
-                            <i class="fas fa-lock prefix grey-text"></i>
-                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                            <input type="password" id="defaultForm-pass" class="form-control validate">
-                        </div>
+                <div class="form-group mx-3">
+                    <div class="md-form">
+                        <label for="form1">Username</label>
+                        <input type="text" id="form1" class="form-control">
                     </div>
 
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-success">Login</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                    <div class="md-form mb-3">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email:</label>
+                        <input type="email" id="defaultForm-email" class="form-control validate">
                     </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password:</label>
+                        <input type="password" id="defaultForm-pass" class="form-control validate">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                </div>
             </div>
         </div>
     </div>
@@ -156,7 +138,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <i class="fas fa-envelope prefix grey-text"></i>
@@ -170,7 +151,6 @@
                         <input type="password" id="defaultForm-pass" class="form-control validate">
                     </div>
                 </div>
-
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-success">Login</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
@@ -189,7 +169,6 @@
     crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
 
 </body>
 </html>
