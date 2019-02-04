@@ -33,8 +33,14 @@ a:hover{
 
 .sidebar-header{
     color:white;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 #sidebar.active {
     margin-left: -250px;
+}
+
+#dropdown-toggle {
+    text-align: right;
 }
