@@ -6,12 +6,6 @@ function loginClick(){
     $('#loginModal').modal('show')
 }
 
-$('.collapse').show();
-
-$("#collapse").click(function(e) {
-    $(".collapse").collapse("hide");
- });
-
 $(document).ready(function () {
 
     $("#sidebar").mCustomScrollbar({
