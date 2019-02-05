@@ -99,3 +99,14 @@ tr:nth-child(odd) {
     background: #FFF;
     border-top: 2px solid gray;
 }
+.message{
+    text-align: left;
+    margin: 1%;
+}
+.msgDate{
+    float:right;
+    color: gray;
+}
+.msgUname{
+    text-align: left;
+}
