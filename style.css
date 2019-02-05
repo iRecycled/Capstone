@@ -50,14 +50,16 @@ a:hover{
     text-align: center;
 }
 
-#chatBox{
+#chatOutput{
     width: 80vw;
     height: 70vh;
-    padding: 10px;
+    padding: 0px;
     border: 3px solid grey;
     margin: 20px;
     background-color: whitesmoke;
-    display:inline-block
+    display:inline-block;
+    word-wrap: break-word;
+    overflow-y: scroll;
 }
 
 #chatBoxInput{
@@ -68,15 +70,32 @@ a:hover{
     display: inline-block;
 }
 #chatTextArea{
-    width: 87%;
+    width: 90%;
     height: 100%;
     resize: none;
-    vertical-align: middle
+    vertical-align: middle;
 }
 #chatTextSubmit{
-    width: 11%;
+    width: 8%;
     height: 100%;
     vertical-align: middle;
     margin: 0px 0px 0px 0.5vw;
     padding: 0px;
+}
+#chatBox{
+    width: 100%;
+    border-spacing: 0px;
+    padding:0;
+    table-layout: fixed;
+}
+
+tr:nth-child(even){
+    height: 160px;
+    background: #CCC;
+    border-top: 2px solid gray;
+}
+tr:nth-child(odd) {
+    height: 160px;
+    background: #FFF;
+    border-top: 2px solid gray;
 }
