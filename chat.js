@@ -14,7 +14,7 @@ function parseText(text){
 
 function generateMsg(text, sender, time)
 {
-    var username = "Cool Guy"
+    var username = "Username"
     var today = new Date();
     msg = "\
     <tr>\

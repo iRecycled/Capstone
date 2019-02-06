@@ -50,12 +50,14 @@ a:hover{
     text-align: center;
 }
 
-#chatOutput{
-    width: 80vw;
+#chatOutput
+{
+    width: 90%;
     height: 70vh;
     padding: 0px;
-    border: 3px solid grey;
-    margin: 20px;
+    border: 6px solid grey;
+    border-right: 0px;
+    margin: 17px;
     background-color: whitesmoke;
     display:inline-block;
     word-wrap: break-word;
@@ -63,24 +65,25 @@ a:hover{
 }
 
 #chatBoxInput{
-    width: 80vw;
+    width: 90%;
     height: 12vh;
     text-align: left;
-    margin: 0vh 1vw 0vh;
+    margin: 0vh 23px 0vh;
     display: inline-block;
 }
 #chatTextArea{
-    width: 90%;
-    height: 100%;
+    width: calc(100% - 100px);
+    height: 80px;
     resize: none;
+    margin: 1px;
     vertical-align: middle;
+    overflow: hidden;
 }
 #chatTextSubmit{
-    width: 8%;
-    height: 100%;
+    width: 80px;
+    height: 80px;
     vertical-align: middle;
-    margin: 0px 0px 0px 0.5vw;
-    padding: 0px;
+    border-color: none;
 }
 #chatBox{
     width: 100%;
@@ -90,14 +93,14 @@ a:hover{
 }
 
 tr:nth-child(even){
-    height: 160px;
+    height: 162px;
     background: #CCC;
-    border-top: 2px solid gray;
+    border-top: 2px solid #464e5b;
 }
 tr:nth-child(odd) {
-    height: 160px;
+    height: 162px;
     background: #FFF;
-    border-top: 2px solid gray;
+    border-top: 2px solid #464e5b;
 }
 .message{
     text-align: left;
@@ -109,4 +112,18 @@ tr:nth-child(odd) {
 }
 .msgUname{
     text-align: left;
+}
+
+#chatOutput::-webkit-scrollbar {
+    width: 10px;
+    max-height: 2px;
+}
+
+#chatOutput::-webkit-scrollbar-track {
+    background-color: gray;
+    height: 10px;
+}
+
+#chatOutput::-webkit-scrollbar-thumb {
+    background-color: whitesmoke;
 }
