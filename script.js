@@ -23,3 +23,7 @@ $(document).ready(function () {
     });
 
 });
+
+$.get("navbar_template.html", function(data){
+    $("#nav-template").replaceWith(data);
+});

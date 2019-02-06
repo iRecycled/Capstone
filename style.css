@@ -113,7 +113,6 @@ tr:nth-child(odd) {
 .msgUname{
     text-align: left;
 }
-
 #chatOutput::-webkit-scrollbar {
     width: 10px;
     max-height: 2px;
@@ -126,4 +125,8 @@ tr:nth-child(odd) {
 
 #chatOutput::-webkit-scrollbar-thumb {
     background-color: whitesmoke;
+}
+
+.noHover {
+    position: relative;
 }
