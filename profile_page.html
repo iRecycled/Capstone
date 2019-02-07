@@ -18,12 +18,11 @@
         <link rel="stylesheet" href="profilePageStyle.css">
     </head>
     <body>
-        <!--home.js(navbar) needs to be altered for this page yet-->
         <!-- Nav Bar-->
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
                 <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="home_template.html">About <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="introPage.html">About <span class="sr-only">(current)</span></a>
             </ul>
     
             <ul class="navbar-nav mr-auto ">
@@ -32,6 +31,7 @@
     
             <ul class="navbar-nav right">
                 <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="home.html">Logout <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="profile_page.html" ><i class="fas fa-user-circle" aria-hidden="true"></i>Username <span class="sr-only">(current)</span></a>
             </ul>
         </nav>
@@ -39,12 +39,12 @@
             <!-- Sidebar -->
             <nav id="sidebar" class="bg-dark navbar-text text-center">
                 <div class="sidebar-header">
-                    <h4><u>Chatrooms</u></h4>
+                    <h4><a href="chat.html"><u>My Chatrooms</u></a></h4>
                 </div>
         
                 <ul class="list-unstyled components">
                     <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Public Chatrooms</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
                                 <a href="#">Chat 1</a>
@@ -58,7 +58,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Private Chatrooms</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li>
                                 <a href="#">Chat 1</a>
@@ -71,6 +71,25 @@
                             </li>
                         </ul>
                     </li>
+                </ul>
+                <div class="sidebar-header">
+                        <h4><a href="Instant_messages.html"><u>Instant Messages</u></a></h4>
+                </div>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Friends</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a href="#">User1</a>
+                                </li>
+                                <li>
+                                    <a href="#">User2</a>
+                                </li>
+                                <li>
+                                    <a href="#">User3</a>
+                                </li>
+                            </ul>
+                    </li>      
                     <li>
                         <a href="#">About</a>
                     </li>
@@ -90,9 +109,38 @@
 
                     <div class="col-lg-8">
                         <p class="bio">I am not sure what infromation to include here.</p>
+                        <p>I know the table looks awful. I will fix it later.</p>
+                        <p>I am using it to make sure I pull the right infoormation from the database.</p>
                     </div>
                 </div>
-            </div>
+            
+                
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="4" id="tableTitle">Account Information</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row" class="tableLabel">Username</td>
+                                    <td class="tableInfo">username from database</td>
+                                    <td scope="row" class="tableLabel">Private Servers Owned</td>
+                                    <td class="tableInfo">0</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row" class="tableLabel">Email</td>
+                                    <td class="tableInfo">email from database</td>
+                                    <td scope="row" class="tableLabel">Chats participated in</td>
+                                    <td class="tableInfo">0</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row" class="tableLabel" colspan="2">Anything else</td>
+                                    <td class="tableInfo" colspan="2">could add more rows here</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  
         </div>
            <!-- Modal changePassword-->
         <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -163,7 +211,6 @@
             </div>    
                
         <!--TODO create containers to display information(needs to be decided)-->
-            <!--unread DM's with a dropdown list? side bar-->
             <!--bio?-->
             <!--create new private server?-->
             <!--change profile pic-->
