@@ -25,3 +25,7 @@
 .sidebar-bottom{
   vertical-align: bottom;
 }
+
+#change_server_title{
+  align-content: space-between;
+}
