@@ -12,8 +12,8 @@ if ( isset( $_POST['submit'] ) ) {
   $password = $_POST['password'];
   
         // 2. Run the Query
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu'";
-        //$query = "INSERT INTO logins (username, password) VALUES ('$username', '$password')";
+        //$query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu'";
+        $query = "INSERT INTO WebUser (UserID, UserName, Password, email) VALUES (3, 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
            include 'home.html';
