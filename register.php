@@ -12,8 +12,8 @@ if ( isset( $_POST['submit'] ) ) {
   $password = $_POST['password'];
   
         // 2. Run the Query
-        $query = "INSERT INTO logins (username, password) VALUES ('$username', '$password')";
-     
+        $query = "INSERT INTO WebUser VALUES ((COALESCE(MAX(UserId+1,0) FROM WebUser), 'Kevin', 'notmyactualpassword'";
+        //$query = "INSERT INTO logins (username, password) VALUES ('$username', '$password')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
            
