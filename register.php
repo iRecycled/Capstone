@@ -16,11 +16,10 @@ if ( isset( $_POST['submit'] ) ) {
         //$query = "INSERT INTO logins (username, password) VALUES ('$username', '$password')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
-           
+           include 'home.html';
         }
       	else{
-          
-          
+            include 'profile_page.html';
         }
 }
 ?>
