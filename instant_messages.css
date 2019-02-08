@@ -1,0 +1,5 @@
+#friendlist {
+  width: 150px;
+  overflow-y: scroll;
+  height: 200px;
+}
