@@ -1,6 +1,10 @@
 #defaultProfilePic {
-    width: 100px;
-    height: 150px;
+    width: 200px;
+    height: 250px;
+}
+#firstRow{
+    padding-left: 50px;
+    text-align: center;
 }
 .row {
     padding-top: 30px;
@@ -26,4 +30,14 @@
 thead, tr{
     height: 40px;
     overflow: auto;
+}
+#errorMsg{
+    color: red;
+}
+#sidebar{
+    position: fixed;
+    padding-top: 100px;
+}
+.container{
+    padding-top: 100px;
 }

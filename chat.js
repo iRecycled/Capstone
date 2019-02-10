@@ -1,15 +1,44 @@
 function submitText(){
-    text = chatInputArea.value
 
+    text = chatInputArea.value
+    chatInputArea.value = ''
     text = parseText(text)
     text = generateMsg(text, "", "")
     chatOutputArea.innerHTML += text
     resetScroll();
 }
 
-function parseText(text){
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
+}
 
-    return text;
+function parseText(text){
+    var safe = text.replace(/</g, '&lt;')
+    var safe = safe.replace(/>/g, '&gt;')
+    var words = safe.split(" ")
+    var parse = ""
+    for(var i = 0; i < words.length; i+=1){
+        if(words[i].charAt(0) == ':')
+        {
+            var imgExists = UrlExists("emotes/" + words[i].substring(1) +  ".png")
+            if(imgExists){
+                parse += ("<img class='emote' src=emotes/" + words[i].substring(1) +  ".png alt='" + words[i].substring(1) + "' /> ")
+            }
+            else{
+                parse += (words[i] + " ")
+            }
+        }
+        
+        else
+        {
+            parse += (words[i] + " ")
+        }
+    }
+    return parse;
 }
 
 function generateMsg(text, sender, time)

@@ -19,7 +19,7 @@
     crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="instant_messages.css">
+    <link rel="stylesheet" href="server_settings.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
 
@@ -96,7 +96,7 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4>Instant Messages</h4>
+            <h4></h4>
         </div>
 
         <ul class="list-unstyled components">
@@ -133,7 +133,7 @@
                 </ul>
             </li>
 
-           <div class="sidebar-bottom">
+           <div id="sidebar-bottom">
                 <li>
                     <a href="#">Chats</a>
                 </li>
@@ -151,21 +151,69 @@
     </nav>
     <!-- Page Content -->
     <div id="content">
-        <div class="container-fluid">
-            <h2>Chat with *User*</h2>
-            <div id = "chatOutput" class="form-group">
-                <table id = "chatBox">
-                    <tbody id ="chatBody">
-
-                    </tbody>
-                </table>
-            </div>
-            <div id = "chatBoxInput">
-                <textarea id ='chatTextArea' class="form-control" placeholder="Chat"></textarea>
-                <button id ='chatTextSubmit' class="btn btn-outline-dark">Submit</button>
-            </div>
+        <ul>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#server_info">
+              Server info
+            </button>
             
-        </div>
+            <!-- Modal  https://fontawesome.com/v4.7.0/examples/-->
+            <div class="modal fade" id="server_info" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">*Server Name*</h5>
+                            <button class="fas fa-edit fa-sm"></button>
+                            <div id="change_server_title">
+                                <a class="btn btn-basic btn-sm">Change Server Name</a>
+                            </div>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                *Server Info Here*
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </ul>
+            
+        <ul>
+            <button type="button" class="btn btn-success">Invite User</button>
+            <button type="button" class="btn btn-danger">Remove User</button>
+        </ul>
+               
+        <a href="#server_settings" aria-expanded="true" data-toggle="collapse" class="dropdown-toggle">Friends</a>
+        <ul class="collapse list-unstyled" id="server_settings">
+                <ul>
+                    <a href="#">User</a>
+                </ul>
+                <ul>
+                    <a href="#">User</a>
+                </ul>
+                <ul>
+                    <a href="#">User</a>
+                </ul>
+                <ul>
+                    <a href="#">User</a>
+                </ul>
+                <ul>
+                    <a href="#">User</a>
+                </ul>
+            </ul>
+        </ul>
+        
     </div>
 </div>
 

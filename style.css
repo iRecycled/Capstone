@@ -130,3 +130,8 @@ tr:nth-child(odd) {
 .noHover {
     position: relative;
 }
+
+.emote{
+    width: 30px;
+    height: 30px;
+}
