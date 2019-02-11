@@ -16,7 +16,4 @@ if ( isset( $_POST['submit'] ) ) {
            include 'login.html';
         }
 }
-else {
-include 'login.html';
-}
 ?>
