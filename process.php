@@ -8,7 +8,7 @@
     
     	 case('getState'):
         	 if(file_exists('chat.txt')){
-               $lines = file('chat.txt');
+               $lines = file('http://144.13.22.61/CS458SP19/Team1/Capstone/chat.txt');
         	 }
              $log['state'] = count($lines); 
         	 break;	
@@ -16,7 +16,7 @@
     	 case('update'):
         	$state = $_POST['state'];
         	if(file_exists('chat.txt')){
-        	   $lines = file('chat.txt');
+        	   $lines = file('http://144.13.22.61/CS458SP19/Team1/Capstone/chat.txt');
         	 }
         	 $count =  count($lines);
         	 if($state == $count){
@@ -50,7 +50,7 @@
 				} 
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen('http://144.13.22.61/CS458SP19/Team1/Capstone/chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 }
         	 break;
     	
