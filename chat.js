@@ -1,44 +1,33 @@
 function submitText(){
-
-    text = chatInputArea.value
-    chatInputArea.value = ''
-    text = parseText(text)
-    text = generateMsg(text, "", "")
-    chatOutputArea.innerHTML += text
-    resetScroll();
-}
-
-function UrlExists(url)
-{
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    return http.status!=404;
-}
-
-function parseText(text){
-    var safe = text.replace(/</g, '&lt;')
-    var safe = safe.replace(/>/g, '&gt;')
-    var words = safe.split(" ")
-    var parse = ""
-    for(var i = 0; i < words.length; i+=1){
-        if(words[i].charAt(0) == ':')
-        {
-            var imgExists = UrlExists("emotes/" + words[i].substring(1) +  ".png")
-            if(imgExists){
-                parse += ("<img class='emote' src=emotes/" + words[i].substring(1) +  ".png alt='" + words[i].substring(1) + "' /> ")
-            }
-            else{
-                parse += (words[i] + " ")
-            }
-        }
-        
-        else
-        {
-            parse += (words[i] + " ")
-        }
+    if (!chatInputArea.value.replace(/\s/g, '').length) {
+        return false;
     }
-    return parse;
+    else{
+        
+        var parse = new msgParse();
+        text = chatInputArea.value
+        chatInputArea.value = ''
+        text = parse.parse(text)
+        text = generateMsg(text, "", "")
+        chatOutputArea.innerHTML += text
+        resetScroll();
+    }
+}
+
+function addEmote(e)
+{
+    var n = e.innerHTML.lastIndexOf('>');
+    var result = e.innerHTML.substring(n + 1);
+    chatInputArea.value += result
+}
+
+function generateEmoteList(e)
+{
+    for(i = 0; i < emoteWL.length; i++ )
+    {
+        e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + emoteWL[i] + ".png'/> :" +  emoteWL[i] + "</a>"
+        console.log("fart")
+    }
 }
 
 function generateMsg(text, sender, time)
@@ -52,7 +41,7 @@ function generateMsg(text, sender, time)
             <p class ='msgUname'>"
                 + username
                 + "<span class='msgDate'>"
-                    + today.getMonth() + '-' +  today.getDay() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2) + '</span>'
+                    + today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2) + '</span>'
             + "</p>"  
             + text + "\
             </div>\
@@ -74,5 +63,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     
     submitButton.addEventListener("click", submitText)
-
+    generateEmoteList(document.getElementById("emoteDropdown"))
 });
