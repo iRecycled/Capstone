@@ -13,7 +13,10 @@ if ( isset( $_POST['submit'] ) ) {
            include 'test.html';
         }
       	else{
-            include 'login.html';
+           include 'login.html';
         }
+}
+else {
+include 'login.html';
 }
 ?>
