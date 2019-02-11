@@ -31,6 +31,6 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
          }
   }
   else {
-    include "regFail.html";
+    include "login.html";
   }
 ?>
