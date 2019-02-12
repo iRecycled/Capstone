@@ -29,9 +29,8 @@
     <h1>Login For Terry Chat</h1>
 
     <script>
-        document.getElementById("user").innerHTML = localStorage.getItem("username");
         function myFunction() {
-         var myusername = document.getElementById("username").value;
+         var myusername = document.getElementById("username").innerHTML;
           localStorage.setItem("username", myusername);
           }
     </script>
