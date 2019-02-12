@@ -23,6 +23,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    
     <script>
+      if((localStorage.getItem("sessionID")==null)||(localStorage.getItem("username")==null))
+        {
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/login.html';
+        }
             $.ajax({
                method:'post',
                dataType: "json",
