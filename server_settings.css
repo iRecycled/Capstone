@@ -1,8 +1,14 @@
 #friendlist {
   width: 150px;
   overflow-y: scroll;
-  height: 200px;
+  height: 300px;
 }
+
+#row2 {
+  height: 200px;
+  overflow-y: scroll;
+}
+
 
     /* Scrollbar */
 /* width */

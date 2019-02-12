@@ -25,7 +25,23 @@
 </head>
 
 <body>
+        <script>
+                $.ajax({
+                   method:'post',
+                   dataType: "json",
+                   url: 'checkID.php',
+                  data: {username: localStorage.getItem('username')},
+                  success: function(data) {
+                  if(data==localStorage.getItem("sessionID")){
+                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
+                  }
+                  else{
+                    
+                  }
+                }
+                 });
     
+        </script>
 <!-- Page Content -->
 <div id="content">
     <!-- Nav Bar-->
@@ -47,6 +63,7 @@
             </ul>
         </nav>
 
+        <section class="text-left"> <!-- Set modal text to left -->
         <!-- Modal Register-->
         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -58,31 +75,41 @@
                             </button>
                         </div>
 
+                      <!--  <input type="text" name="usernameL" id="username"> -->
+
+
                         <form action="register.php" method="post">
                         <!-- Icons => https://fontawesome.com/v4.7.0/icons/ -->
                         <div class="modal-body mx-3">
                                 <div class="md-form mb-5">
                                     <i class="fa fa-user prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="defaultForm-username">Username</label>
-                                    <input type="text" id="defaultForm-username" class="form-control validate">
+                                    <label>Username</label>
+                                    <input type="text" name="username" id="username" class="form-control validate"> <!-- Register USERNAME textBox-->
                                 </div>
-        
         
                                 <div class="md-form mb-5">
                                     <i class="fas fa-envelope prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-                                    <input type="email" id="defaultForm-email" class="form-control validate">
+                                    <label>Email</label>
+                                    <input type="text" id="email" class="form-control validate"> <!-- Register EMAIL textbox-->
                                 </div>
         
                                 <div class="md-form mb-4">
                                     <i class="fas fa-lock prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                                    <label>Password</label>
+                                    <input type="password" name="password" id="password" class="form-control validate"> <!-- Register PASSWORD textbox-->
                                 </div>
                             </div>
-        
+                            
+                            <!-- Function to input 'username' into register database (I think) -->
+                            <script>
+                                function myFunction() {
+                               var myusername = document.getElementById("username").value;
+                                localStorage.setItem("username", myusername);
+                                }
+                              </script>
+
                             <div class="modal-footer d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" value="Register" name="submit" onclick="myFunction()" class="btn btn-success">Submit</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
                             </div>
                             </form>
@@ -104,29 +131,37 @@
                             <div class="md-form mb-5">
                                 <i class="fas fa-envelope prefix grey-text"></i>
                                 <label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-                                <input type="email" id="defaultForm-email" class="form-control validate">
+                                <input type="email" id="email" class="form-control validate"> <!-- Login EMAIL textbox -->
                             </div>
 
                             <div class="md-form mb-4">
                                 <i class="fas fa-lock prefix grey-text"></i>
                                 <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                                <input type="password" id="defaultForm-pass" class="form-control validate">
+                                <input type="password" id="password" class="form-control validate"> <!-- Login PASSWORD textbox -->
                             </div>
                         </div>
+                        <!-- Login Submit button script-->
+                            <script>
+                                function myFunction() {
+                                  var input = document.getElementById("username");
+                                    localStorage.setItem("username", input.value);
+                                  }
+                            </script>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success">Login</button>
+                            <button type="submit" value="Log In" name="submit" onclick="myFunction()" class="btn btn-success">Login</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 </div>
         <!-- Page Contents-->
 <section class="text-center my-5">
 
         <h2 class="h1-responsive font-weight bold my-5">Welcome to TerryChat</h2><!-- Page Heading-->
-        <p class="lead grey-text w-repsonsive mx-auto mb-5"> TerryChat is a responsive Webpage chat system that takes the users wants and need into consideration</p>
+        <p class="lead grey-text w-repsonsive mx-auto mb-5"> TerryChat is a responsive Webpage chat system that takes the users wants and needs into consideration</p>
 
         <div class="row">
             <div class="col-md-4">
@@ -159,5 +194,4 @@
 </div>
 
 </body>
-
 </html>
