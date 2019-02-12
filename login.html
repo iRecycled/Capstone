@@ -30,8 +30,8 @@
 
     <script>
         function myFunction() {
-         var myusername = document.getElementById("username").innerHTML;
-          localStorage.setItem("username", myusername);
+          var input = document.getElementById("username");
+            localStorage.setItem("username", input.value);
           }
     </script>
     
@@ -48,10 +48,7 @@
             <tr>
               <td>User Name:
                   <input type="text" name="usernameL" id="username">
-                  <script>
-                    
-                       document.getElementById("username").innerHTML=localStorage.getItem("username");
-                  </script>
+                 
               </td>
             </tr>
             <tr>
