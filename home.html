@@ -16,18 +16,37 @@
     crossorigin="anonymous">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <script src='home.js'></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src='home.js'></script>
     <script src="script.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   
+    <script>
+            $.ajax({
+               method:'post',
+               dataType: "json",
+               url: 'checkID.php',
+              data: {username: localStorage.getItem('username')},
+              success: function(data) {
+              if(data==localStorage.getItem("sessionID")){
+
+              }
+              else{
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/login.html';
+              }
+            }
+             });
+
+            </script>
+
+
 
 </head>
 
 <body>
     <!-- Include this along with script.js to have navbar_template on the page-->
-    <div id="nav-template">
-
-    </div>
+    <div id="nav-template"></div>
 
 <div class="wrapper">
     <!-- Sidebar -->
@@ -103,7 +122,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                    
+
+
+                <form action="register.php" method="post">
                     <!-- Icons => https://fontawesome.com/v4.7.0/icons/ -->
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
@@ -127,9 +148,10 @@
                     </div>
 
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-success">Login</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
                     </div>
+                    </form>
             </div>
         </div>
     </div>
@@ -178,6 +200,8 @@
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-
+<script>
+        document.getElementById("username").innerHTML = localStorage.getItem("username");
+</script>
 </body>
 </html>

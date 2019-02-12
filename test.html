@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+<body>
+    <p>o hey</p>
+
+        <form action="register.php" method="post">
+      <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="col-md-6">Register Here</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>User Name:
+              <input type="text" name="username" id="username">
+           </td>
+        </tr>
+        <tr>
+            <td>Email:
+                <input type="text" name="email" id="email">
+             </td>
+          </tr>
+        <tr>
+          <td>Password:
+              <input type="password" name="password" id="password">
+           </td>
+        </tr>
+        
+        <tr class="button-press">
+          <script>
+            function myFunction() {
+           var myusername = document.getElementById("username").value;
+            localStorage.setItem("username", myusername);
+            }
+          </script>
+          <td><input type="submit" value="Register" name="submit" onclick="myFunction()" class="log-in"></td>
+        </tr>
+      </tbody>
+    </table>
+    </form>
+
+
+</body>
+</html>
