@@ -29,7 +29,11 @@
     <h1>Login For Terry Chat</h1>
 
     <script>
-        document.getElementById("name").innerHTML = localStorage.getItem("username");
+        document.getElementById("user").innerHTML = localStorage.getItem("username");
+        function myFunction() {
+         var myusername = document.getElementById("username").value;
+          localStorage.setItem("username", myusername);
+          }
     </script>
     
     <div class="container">
@@ -44,7 +48,7 @@
           <tbody>
             <tr>
               <td>User Name:
-                  <input type="text" name="usernameL">
+                  <input type="text" name="usernameL" id="username">
               </td>
             </tr>
             <tr>
@@ -53,7 +57,7 @@
               </td>
             </tr>
             <tr>
-              <td><input type="submit" value="Log In" name="submit"></td>
+              <td><input type="submit" value="Log In" name="submit" onclick="myFunction()"></td>
             </tr>
           </tbody>
         </table>
