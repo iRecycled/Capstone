@@ -25,7 +25,23 @@
 </head>
 
 <body>
+        <script>
+                $.ajax({
+                   method:'post',
+                   dataType: "json",
+                   url: 'checkID.php',
+                  data: {username: localStorage.getItem('username')},
+                  success: function(data) {
+                  if(data==localStorage.getItem("sessionID")){
+                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
+                  }
+                  else{
+                    
+                  }
+                }
+                 });
     
+        </script>
 <!-- Page Content -->
 <div id="content">
     <!-- Nav Bar-->
@@ -145,7 +161,7 @@
 <section class="text-center my-5">
 
         <h2 class="h1-responsive font-weight bold my-5">Welcome to TerryChat</h2><!-- Page Heading-->
-        <p class="lead grey-text w-repsonsive mx-auto mb-5"> TerryChat is a responsive Webpage chat system that takes the users wants and need into consideration</p>
+        <p class="lead grey-text w-repsonsive mx-auto mb-5"> TerryChat is a responsive Webpage chat system that takes the users wants and needs into consideration</p>
 
         <div class="row">
             <div class="col-md-4">
@@ -178,5 +194,4 @@
 </div>
 
 </body>
-
 </html>
