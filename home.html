@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="style.css">
     <script src='home.js'></script>
     <script src="script.js"></script>
-
+    <script>
+    document.getElementById('username').innerHTML = localStorage.getItem('username');
+    </script>
 </head>
 
 <body>
@@ -40,7 +42,7 @@
                     <a href="#chatSubmenu1" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
                     <ul class="collapse show list-unstyled" id="chatSubmenu1">
                         <li>
-                            <a href="#">This is a Test</a>
+                            <a href="#" id="username"></a>
                         </li>
                         <li>
                             <a href="#">Chat 2</a>
