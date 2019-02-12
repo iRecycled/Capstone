@@ -13,17 +13,17 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
   
         // 2. Run the Query
   //SELECT username, password, money FROM logins WHERE username = '$username';
-        $query = "SELECT UserName, Password, email FROM WebUser WHERE UserName = '$name';";
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
         if($stmt == NULL) {
             include "regFail.html";
         				  }
  		 else{
-      		$stmt->bind_result($username, $password, $email);
-    		$stmt->fetch();
+      		$stmt->bind_result($userID, $username, $password, $email);
+        $stmt->fetch();
   			if(strcmp($pass,$password)==0){
-
+          echo '<script> localStorage.setItem("sessionID", $userID); </script>';
   		    include "home.html";
    			 }
            else{
