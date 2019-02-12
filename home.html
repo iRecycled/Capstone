@@ -21,8 +21,13 @@
     <script src='home.js'></script>
     <script src="script.js"></script>
     <script>
-    window.localStorage.setItem('username', "o hey");
-    document.getElementById('username').innerHTML = window.localStorage.getItem('username');
+        if (typeof(Storage) !== "undefined") {
+    localStorage.setItem("username", "hey this is a test");
+    document.getElementById("username").innerHTML = localStorage.getItem("username");
+        }
+        else{
+            document.getElementById("username").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
     </script>
 </head>
 
@@ -43,7 +48,7 @@
                     <a href="#chatSubmenu1" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
                     <ul class="collapse show list-unstyled" id="chatSubmenu1">
                         <li>
-                            <a href="#" id="username"></a>
+                            <a href="#"><div id="username"></div></a>
                         </li>
                         <li>
                             <a href="#">Chat 2</a>
