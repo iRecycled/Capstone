@@ -44,10 +44,13 @@
             <ul class="navbar-nav right">
                 <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="introPage.html">Logout <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="profile_page.html" ><i class="fas fa-user-circle" aria-hidden="true"></i><div id="username"></div><span class="sr-only">(current)</span></a>
-                <script>
+                <i class="fas fa-user-circle" aria-hidden="true" id="circle" ></i> <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="profile_page.html" id="username">
+                    <script>
                         document.getElementById("username").innerHTML = localStorage.getItem("username");
-                </script>
+                    </script>
+                <i class="fas fa-user-circle" aria-hidden="true" ></i><span class="sr-only">(current)</span></a>
+                
             </ul>
         </nav>
     </div>
