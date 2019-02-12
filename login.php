@@ -23,6 +23,14 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
       		$stmt->bind_result($username, $password, $email);
     		$stmt->fetch();
   			if(strcmp($pass,$password)==0){
+?>
+<script>
+localStorage.setItem("correct", yes);
+console.log("wow this worked");
+</script>
+<?php
+
+
   		    include "home.html";
    			 }
            else{
@@ -32,5 +40,11 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
   }
   else {
     include "login.html";
+    ?>
+<script>
+localStorage.setItem("correct", no);
+console.log("wow that worked");
+</script>
+<?php
   }
 ?>
