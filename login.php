@@ -23,7 +23,9 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
       		$stmt->bind_result($userID, $username, $password, $email);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
-          echo '<script> localStorage.setItem("sessionID", $userID); </script>';
+         ?>
+         <script> localStorage.setItem("sessionID", "<?php echo $userID; ?>"); </script>
+         <?php
   		    include "home.html";
    			 }
            else{
@@ -35,3 +37,4 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
     include "login.html";
   }
 ?>
+
