@@ -1,8 +1,4 @@
 <?php
-    header("index.php");
-    include "database.php";
-    
-    
         // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
