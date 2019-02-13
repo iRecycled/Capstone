@@ -17,6 +17,28 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="profilePageStyle.css">
         <script src="profilePage.js"></script>
+
+        <script>
+
+function changePassword() {
+          
+                $.ajax({
+                   method:'post',
+                   dataType: "json",
+                   url: 'changePassword.php',
+                  data: {username: localStorage.getItem('username'),passwordOld: document.getElementById("oldPass"),passwordNew: document.getElementById("newPass"), passwordConfirmNew: document.getElementById("confirmNewPass")},
+                  success: function(data) {
+                  if(data==localStorage.getItem("sessionID")){
+                    
+                  }
+                  else{
+                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                  }
+                }
+                 });
+                }
+                </script>
+
     </head>
     <body>
         <!-- Nav Bar-->
@@ -193,7 +215,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success" id="changePasswordBtn">Change password</button>
+                            <button type="button" class="btn btn-success" id="changePasswordBtn" onclick="changePassword()">Change password</button>
                             <button type="button" class= "btn btn-primary" id="forgotPasswordBtn">Forgot Password</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
                         </div>
