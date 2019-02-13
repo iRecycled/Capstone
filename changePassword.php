@@ -25,7 +25,7 @@
   	        if(strcmp($newPass,$confirmPass)==0){
                 //insert new password into database with an update
                 //Query not set up yet
-                $query = "UPDATE WebUser SET password='$newPass' WHERE UserName = '$name';";
+                $query = "UPDATE WebUser SET Password='$newPass' WHERE UserName = '$name';";
                 $stmt = simpleQuery($db, $query);
                 if($stmt != NULL){
                     //send alert that the change password was accepted
