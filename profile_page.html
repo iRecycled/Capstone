@@ -28,7 +28,7 @@ function changePassword() {
                    url: 'changePassword.php',
                   data: {username: localStorage.getItem('username'),passwordOld: document.getElementById("oldPass"),passwordNew: document.getElementById("newPass"), passwordConfirmNew: document.getElementById("confirmNewPass")},
                   success: function(data) {
-                
+                    console.log(data)
                 }
                  });
                 }
