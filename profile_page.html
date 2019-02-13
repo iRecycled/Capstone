@@ -202,7 +202,6 @@
             </div>
             <!--Add a new private Server Modal-->
             <div class="modal fade" id="newPrivateServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
-            <form id="create-server-form" method="post" action="server.php" role="form">
                 <div class="modal fade" id="newPrivateServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -216,7 +215,7 @@
                             <div class="modal-body mx-3">
                                 <div class="md-form mb-4">
                                     <label data-error="wrong" data-success="right" for="defaultForm-email">New server name</label>
-                                    <input type="text" id="newServerName" class="form-control validate">
+                                    <input type="text" name="newServerName" id="newServerName" class="form-control validate">
                                 </div>
                             </div>
                             <div class="md-form mb-4">
