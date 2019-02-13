@@ -18,7 +18,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="home.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loginStyle.css">
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    
@@ -52,47 +52,32 @@
             }
              });
                 </script>
-    <title>Bootstrap Template</title>
+    <title>Terrychat Login</title>
 
   </head>
   <body>
-
-    <h1>Login For Terry Chat</h1>
-
     <script>
         function myFunction() {
           var input = document.getElementById("username");
             localStorage.setItem("username", input.value);
           }
     </script>
-    
-    <div class="container">
-          <form action="login.php" method="post">
-          <table class="table table-bordered">
-          <thead>
-            <tr>
-            
-              <th>Sign In</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>User Name:
-                  <input type="text" name="usernameL" id=username>
-                 
-              </td>
-            </tr>
-            <tr>
-              <td>Password:
-                  <input type="password" name="passwordL">
-              </td>
-            </tr>
-            <!-- Submit button-->
-            <tr>
-              <td><input type="submit" value="Log In" name="submit" onclick="myFunction()"></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="text-center" id="loginBox">
+        <form class="form-signin">
+            <form action="login.php" method="post">
+               <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+               <label for="inputUser" class="sr-only">Username</label>
+               <input type="username" name="usernameL" class="form-control" placeholder="Username" required>
+               <label for="inputPassword" class="sr-only">Password</label>
+               <input type="password" name="passwordL" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember Me
+                        </label>
+                    </div>
+               <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log in" onclick="myFunction()">Sign in</button>
+               <p class="mt-5 bm-3 text-muted">Terrychat</p>
+            </form>
         </form>
     </div>
   </body>
