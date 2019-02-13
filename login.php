@@ -29,7 +29,7 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
   		    include "home.html";
    			 }
            else{
-             include "test.html";
+             include "register.html";
            }
          }
   }

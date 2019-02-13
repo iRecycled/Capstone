@@ -10,7 +10,7 @@ if ( isset( $_POST['submit'] ) ) {
         $query = "INSERT INTO Server VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId)+1,0) FROM Server) as tmptable), '$servername')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
-           include 'test.html';
+           include 'register.html';
         }
       	else{
            include 'login.html';
