@@ -34,10 +34,10 @@
                     url: "server.php",
                     data: {servername: document.getElementById("newServerName").value},
                     success: function(result) {
-                        alert('ok');
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
                     },
                     error: function(result) {
-                        alert('error');
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
                     }
                 })
                 })
