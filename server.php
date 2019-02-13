@@ -5,7 +5,7 @@
                 http_response_code(500);
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
-  $servername = $_POST['newServerName']; 
+  $servername = $_POST['servername']; 
   if($servername == NULL){
         include 'register.html';
   }
