@@ -2,7 +2,7 @@
     header("index.php");
     include "database.php";
     
-    if ( isset( $_POST['submit']) && (strlen( $_POST['oldPasswordInput'])!=0) && (strlen( $_POST['newPasswordInput'])!=0) && (strlen($_POST['confirmNewPasswordInput'])!=0) ) {
+    
         // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
@@ -40,9 +40,5 @@
             //display an error message in the modal
             $error = "Your old password is incorrect"
         }
-    }
-    else{
-        //display message in modal
-        $error="Ypu must enter something in every cell";
-    }   
+    echo json_encode($error);
 ?>

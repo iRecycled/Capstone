@@ -28,12 +28,7 @@ function changePassword() {
                    url: 'changePassword.php',
                   data: {username: localStorage.getItem('username'),passwordOld: document.getElementById("oldPass"),passwordNew: document.getElementById("newPass"), passwordConfirmNew: document.getElementById("confirmNewPass")},
                   success: function(data) {
-                  if(data==localStorage.getItem("sessionID")){
-                    
-                  }
-                  else{
-                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-                  }
+                
                 }
                  });
                 }
