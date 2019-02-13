@@ -17,6 +17,18 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="profilePageStyle.css">
         <script src="profilePage.js"></script>
+        <script>
+            function addNewServer() {
+                $.ajax({
+               method:'post',
+               dataType: "json",
+               url: 'server.php',
+              data: {servername: document.getElementById("newServerName").value},
+              success: function(data) {
+            }
+             });
+            }
+        </script>
     </head>
     <body>
         <!-- Nav Bar-->
@@ -223,7 +235,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-success" id="createServerBtn">Creat Server</button>
+                            <button type="button" class="btn btn-success" id="createServerBtn" onClick="addNewServer()">Create Server</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
                         </div>
                     </div>
