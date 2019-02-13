@@ -42,6 +42,22 @@
                 })
                 })
             })
+            $(document).ready(function(){
+                $("#changePasswordBtn").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                    type: "post",
+                    url: "changepassword.php",
+                    data: {password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
+                    success: function(result) {
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
+                    },
+                    error: function(result) {
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
+                    }
+                })
+                })
+            })
         </script>
     </head>
     <body>
@@ -200,19 +216,19 @@
                             <div class="md-form mb-4">
                                 <i class="fas fa-lock prefix grey-text"></i>
                                 <label data-error="wrong" data-success="right" for="defaultForm-email">Old Password</label>
-                                <input type="password" id="oldPass" class="form-control validate">
+                                <input type="password" name="oldPass" id="oldPass" class="form-control validate">
                             </div>
 
                             <div class="md-form mb-4">
                                 <i class="fas fa-lock prefix grey-text"></i>
                                 <label data-error="wrong" data-success="right" for="defaultForm-pass">New Password</label>
-                                <input type="password" id="newPass" class="form-control validate">
+                                <input type="password" name="newPass" id="newPass" class="form-control validate">
                             </div>
 
                             <div class="md-form mb-4">
                                     <i class="fas fa-lock prefix grey-text"></i>
                                     <label data-error="wrong" data-success="right" for="defaultForm-pass">Confirm New Password</label>
-                                    <input type="password" id="confirmNewPass" class="form-control validate">
+                                    <input type="password" name="confirmNewPass" id="confirmNewPass" class="form-control validate">
                             </div>
                             <div class="md-form mb-4">
                                 <div class="errorMsg"></div>
