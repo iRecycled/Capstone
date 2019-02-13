@@ -1,8 +1,6 @@
 <?php
 	
 header("index.php");
-if ( isset( $_POST['submit'] ) ) {
-        // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         
@@ -20,5 +18,4 @@ if ( isset( $_POST['submit'] ) ) {
             include 'profile_page.html';
         }
   }
-}
 ?>
