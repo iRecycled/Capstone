@@ -1,9 +1,10 @@
 <?php
-	
-header("index.php");
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
-        
+        if ($db->connect_error) {
+                http_response_code(500);
+                die('{ "errMessage": "Failed to Connect to DB." }');
+            }
   $servername = $_POST['newServerName']; 
   if($servername == NULL){
         include 'register.html';
