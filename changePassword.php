@@ -2,11 +2,8 @@
         // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
-        if ($db->connect_error) {
-            http_response_code(500);
-            die('{ "errMessage": "Failed to Connect to DB." }');
-        }
-        $name = $_POST['username'];//need that value
+        
+        $name = $_POST['username'];
         $oldPass = $_POST['oldPass']; 
         $newPass = $_POST['newPass'];
         $confirmPass = $_POST['confirmNewPass';]
