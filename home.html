@@ -29,10 +29,7 @@
                url: 'checkID.php',
               data: {username: localStorage.getItem('username')},
               success: function(data) {
-              if(data==localStorage.getItem("sessionID")){
-                
-              }
-              else{
+              if(data!=localStorage.getItem("sessionID")){
                 window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/login.html';
               }
             }
