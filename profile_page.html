@@ -25,7 +25,7 @@ function changePassword() {
                    method:'post',
                    dataType: "json",
                    url: 'changePassword.php',
-                  data: {username: localStorage.getItem('username'),passwordOld: document.getElementById("oldPass"),passwordNew: document.getElementById("newPass"), passwordConfirmNew: document.getElementById("confirmNewPass")},
+                  data: {username: localStorage.getItem('username'),oldPass: document.getElementById("oldPass").value,newPass: document.getElementById("newPass").value, confirmNewPass: document.getElementById("confirmNewPass").value},
                   success: function(data) {
                     console.log(data)
                 }
