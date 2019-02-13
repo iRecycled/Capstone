@@ -5,7 +5,16 @@ var emoteWL = [
     "pogchamp",
     "beaker",
     "kappa",
-    "squiddab"
+    "squiddab",
+    "terry",
+    "bob",
+    "hoops",
+    "rip",
+    "zoboomafoo",
+    "manningface",
+    "codered",
+    "tiger",
+    "triforce"
 ]
 
 function msgParse(){

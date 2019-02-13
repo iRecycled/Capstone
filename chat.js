@@ -23,9 +23,10 @@ function addEmote(e)
 
 function generateEmoteList(e)
 {
-    for(i = 0; i < emoteWL.length; i++ )
+    eList = emoteWL.sort()
+    for(i = 0; i < eList.length; i++ )
     {
-        e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + emoteWL[i] + ".png'/> :" +  emoteWL[i] + "</a>"
+        e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
         console.log("fart")
     }
 }

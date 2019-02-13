@@ -138,13 +138,24 @@ tr:nth-child(odd) {
 
 #chatEmoteButton{
     position: absolute;
-    height: 30px;
-    width: 30px;
-    right: 5px;
-    bottom: 5px;
+    height: 24px;
+    width: 24px;
+    right: 10px;
+    bottom: 10px;
     border: 0px;
     background-color: transparent;
     background-image: url("emotes/button.png");
+    background-size: cover;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    /* ...and now for the proper property */
+    transition:.2s;
+}
+
+#chatEmoteButton:hover {
+    background-image: url("emotes/button_select.png"); 
 }
 
 .dropdown-toggle::after {
