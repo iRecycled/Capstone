@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap test</title>
+    <title>Instant Message</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +12,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     
+    <script src = 'msgParse.js'></script>
     <script src = 'chat.js'></script>
 
     <!-- Bootstrap CSS -->
@@ -153,16 +154,32 @@
     <div id="content">
         <div class="container-fluid">
             <h2>Chat with *User*</h2>
-            <div id = "chatOutput" class="form-group">
+            <!--Chat Output Area-->
+            <div id = "chatOutput">
+                <!--Table to Display Messages-->
                 <table id = "chatBox">
                     <tbody id ="chatBody">
 
                     </tbody>
                 </table>
             </div>
+            <!--Chat Input Area-->
             <div id = "chatBoxInput">
-                <textarea id ='chatTextArea' class="form-control" placeholder="Chat"></textarea>
-                <button id ='chatTextSubmit' class="btn btn-outline-dark">Submit</button>
+                <div id = "inputContainer" class = 'input-group'>
+                    <!--Chat Text Input-->
+                    <textarea id ='chatTextArea' class='form-control'></textarea>
+                    <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                              
+                            </div>
+                          </div>
+                    <!--Chat Submit Button-->
+                    <div class="input-group-append">
+                        <button id ='chatTextSubmit' class='btn btn-dark'>SEND</button>
+                    </div>
+                </div>
             </div>
             
         </div>

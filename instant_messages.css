@@ -4,6 +4,11 @@
   height: 300px;
 }
 
+#chatBoxInput {
+  display: inline-block;
+  vertical-align: middle;
+}
+
     /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
