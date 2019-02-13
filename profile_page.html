@@ -19,16 +19,20 @@
         <script src="profilePage.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>
-            function addNewServer() {
+            $("createServerBtn").click(function(e) {
+                e.preventDefault();
                 $.ajax({
-               method:'post',
-               dataType: "json",
-               url: 'server.php',
-              data: {servername: document.getElementById("newServerName").value},
-              success: function(data) {
-            }
-             });
-            }
+                    type: "post",
+                    url: "server.php",
+                    data: {servername: document.getElementById("newServerName").value},
+                    success: function(result) {
+                        alert('ok');
+                    },
+                    error: function(result) {
+                        alert('error');
+                    }
+                })
+            })
         </script>
     </head>
     <body>
