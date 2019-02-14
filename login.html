@@ -19,6 +19,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="home.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loginStyle.css">
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    
@@ -38,6 +39,7 @@
                 }
                 else{
                 window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+                  window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/login.html';
                 }
               }
               else{
@@ -46,19 +48,19 @@
                   localStorage.setItem("username","oheystopmesingaround")
                   localStorage.setItem("sessionID","-1")
                   window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                  window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/login.html';
                 }
 
               }
             }
              });
                 </script>
-    <title>Bootstrap Template</title>
+  </head>
+  <body>
+    <title>Terrychat Login</title>
 
   </head>
   <body>
-
-    <h1>Login For Terry Chat</h1>
-
     <script>
         function myFunction() {
           var input = document.getElementById("username");
@@ -66,33 +68,20 @@
           }
     </script>
     
-    <div class="container">
-          <form action="login.php" method="post">
-          <table class="table table-bordered">
-          <thead>
-            <tr>
-            
-              <th>Sign In</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>User Name:
-                  <input type="text" name="usernameL" id=username>
-                 
-              </td>
-            </tr>
-            <tr>
-              <td>Password:
-                  <input type="password" name="passwordL">
-              </td>
-            </tr>
-            <!-- Submit button-->
-            <tr>
-              <td><input type="submit" value="Log In" name="submit" onclick="myFunction()"></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="text-center" id="loginBox">
+        <form class="form-signin" action="login.php" method="post">
+               <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+               <label for="inputUser" class="sr-only">Username</label>
+               <input id="username" type="username" name="usernameL" class="form-control" placeholder="Username" required>
+               <label for="inputPassword" class="sr-only">Password</label>
+               <input type="password" name="passwordL" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember Me
+                        </label>
+                    </div>
+               <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Log in" onclick="myFunction()">Sign in</button>
+               <p class="mt-5 bm-3 text-muted">Terrychat</p>
         </form>
     </div>
   </body>
