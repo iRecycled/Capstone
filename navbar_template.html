@@ -42,57 +42,16 @@
             </ul>
     
             <ul class="navbar-nav right">
-                <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="introPage.html">Logout <span class="sr-only">(current)</span></a>
-                <i class="fas fa-user-circle" aria-hidden="true" id="circle" ></i> <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="profile_page.html" id="username">
+                <a class="nav-item nav-link active" href="profile_page.html" id="username">       
                     <script>
-                        document.getElementById("username").innerHTML = localStorage.getItem("username");
+                        document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
                     </script>
-                <i class="fas fa-user-circle" aria-hidden="true" ></i><span class="sr-only">(current)</span></a>
+                <span class="sr-only">(current)</span></a>
                 
             </ul>
         </nav>
     </div>
 </body>
-<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold" id="changePasswordModal">Change Password</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            
-            <div class="modal-body mx-3">
-                <div class="md-form mb-4">
-                    <i class="fas fa-lock prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="defaultForm-email">Old Password</label>
-                    <input type="password" id="oldPass" class="form-control validate">
-                </div>
 
-                <div class="md-form mb-4">
-                    <i class="fas fa-lock prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="defaultForm-pass">New Password</label>
-                    <input type="password" id="newPass" class="form-control validate">
-                </div>
-
-                <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Confirm New Password</label>
-                        <input type="password" id="confirmNewPass" class="form-control validate">
-                </div>
-                <div class="md-form mb-4">
-                    <div class="errorMsg"></div>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-success" id="changePasswordBtn">Change password</button>
-                <button type="button" class= "btn btn-primary" id="forgotPasswordBtn">Forgot Password</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
 </html>
