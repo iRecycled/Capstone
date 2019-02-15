@@ -1,49 +1,45 @@
 <?php
+header("index.php");
         // 1. Connect to the database
         include "database.php";
-        die('test');
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $username = $_POST['username']; 
-  $password = $_POST['password'];
-  $newPassword = $_POST['newPassword'];
-  $confirmPassword = $_POST['confirmPassword'];
-
-        $query = "SELECT Password FROM logins WHERE username = '$username';"
+  $name = $_POST['username']; 
+  $oldpass = $_POST['oldPass'];
+  $newpass = $_POST['newPass'];
+  $checkpass = $_POST['confirmNewPass'];
+        // 2. Run the Query
+  //SELECT username, password, money FROM logins WHERE username = '$username';
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
+  
+        if($stmt == NULL) {
 
-            if($stmt == NULL) {
-                  
-                  $error = "this other error"
-            }
- 	      else{
-      		$stmt->bind_result($currentPassword);
-                  $stmt->fetch();
-  			if(strcmp($currentPassword, $password)==0){
-                        if(strcmp($newPassword,$confirmPassword)==0){
-                              $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
-                              $stmt2 = simpleQuery($db, $query2);
-                              if($stmt2 == NULL) {
-                                    $error = "this error"
-                              }
-                              else{
-
-                                    $error = "that error"
-                              }
-                        }
-   			}
+        				  }
+ 		 else{
+      		$stmt->bind_result($userID, $username, $password, $email);
+        $stmt->fetch();
+  			if(strcmp($oldpass,$password)==0){
+              if(strcmp($newpass,$checkpass)==0){
+                $query2 = "UPDATE WebUser SET Password='$newpass' WHERE UserName = '$username';";
+                $stmt2 = simpleQuery($db, $query2);
+                if($stmt2 == NULL) {
+                    
+                                  }
                   else{
-                        
-                        $error = "other error"
-                        include "register.html";
+                      
                   }
-            }
+              }
+   			 }
+           else{
+             include "register.html";
+           }
+         }
   }
   else {
     include "login.html";
   }
-  echo json_encode($error);
 ?>
