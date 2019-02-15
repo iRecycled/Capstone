@@ -50,10 +50,10 @@
                     url: "changepassword.php",
                     data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
                     success: function(result) {
-                        console.log(result)
+                        console.log("success")
                     },
                     error: function(result) {
-                        console.log(result)
+                        console.log("fail")
                     }
                 })
                 })
