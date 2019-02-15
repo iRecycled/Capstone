@@ -19,7 +19,7 @@
       	else{
                   include 'profile_page.html';
             }
-            $query = "INSERT INTO ServerMember VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId),0) FROM Server) as tmptable), (SELECT UserId FROM WebUser WHERE UserName = '$username')";
+            $query = "INSERT INTO ServerMember VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId),0) FROM Server) as tmptable), (SELECT * FROM (SELECT UserId FROM WebUser) as tmptable2)";
 	      $stmt = simpleQuery($db, $query);
             if($stmt == NULL) {
                   include 'register.html';
