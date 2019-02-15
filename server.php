@@ -16,10 +16,10 @@
             $stmt->bind_result($serverId);
             $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
 	      $stmt = simpleQuery($db, $query);
-            $query = "SELECT * FROM (SELECT COALESCE(MAX(UserID)+1,0) FROM Server) as tmptable";
-            $stmt = simpleQuery($db, $query);
-            $stmt->bind_result($userId);
-            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId'";
-	      $stmt = simpleQuery($db, $query);
+            //$query = "SELECT * FROM (SELECT COALESCE(MAX(UserID)+1,0) FROM Server) as tmptable";
+            //$stmt = simpleQuery($db, $query);
+            //$stmt->bind_result($userId);
+            //$query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId'";
+	      //$stmt = simpleQuery($db, $query);
         }
 ?>
