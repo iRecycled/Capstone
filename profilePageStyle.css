@@ -27,16 +27,16 @@
 .tableInfo{
     background-color: darkgrey;
 }
-thead, tr{
-    height: 40px;
-    overflow: auto;
-}
-#errorMsg{
+#msg{
+    text-align: center;
     color: red;
 }
 #sidebar{
     position: fixed;
     padding-top: 100px;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
 }
 .container{
     padding-top: 100px;
