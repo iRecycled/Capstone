@@ -11,6 +11,14 @@ if ( isset( $_POST['submit'] ) ) {
   $username = $_POST['username']; 
   $email = $_POST['email'];
   $password = $_POST['password'];
+<<<<<<< HEAD
+=======
+
+  if(($username==NULL)||($email==NULL)||($password==NULL)){
+        include 'register.html';
+  }
+  else{
+>>>>>>> 690314d2bccdeb57a2a4872f52cf75a653056be2
         //INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu')
         // 2. Run the Query
         //$query = "INSERT INTO WebUser (UserName, Password, email) VALUES ('$username', '$password', '$email')";
@@ -24,4 +32,8 @@ if ( isset( $_POST['submit'] ) ) {
             include 'login.html';
         }
 }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 690314d2bccdeb57a2a4872f52cf75a653056be2
 ?>
