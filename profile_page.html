@@ -297,10 +297,7 @@
                method:'post',
                dataType: "json",
                url: 'changePassword.php',
-              data: {username: localStorage.getItem('username').value,oldPass: document.getElementById("oldPass").value,newPass: document.getElementById("newPass").value, confirmNewPass: document.getElementById("confirmNewPass").value},
-              success: function(data) {
-                console.log(data)
-            }
+              data: {username: localStorage.getItem('username').value,oldPass: document.getElementById("oldPass").value,newPass: document.getElementById("newPass").value, confirmNewPass: document.getElementById("confirmNewPass").value}
              });
             }
 </script>
