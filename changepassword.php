@@ -1,24 +1,45 @@
 <?php
+header("index.php");
+        // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
-                http_response_code(500);
-                die('{ "errMessage": "Failed to Connect to DB." }');
-            }
-            $password = $_POST['password']; 
-            $oldpassword = $_POST['oldPassword']; 
-            $confirmoldpassword = $_POST['confirmoldPassword']; 
-  if($servername == NULL){
-        include 'register.html';
+            http_response_code(500);
+            die('{ "errMessage": "Failed to Connect to DB." }');
+        }
+  $name = $_POST['username']; 
+  $oldpass = $_POST['oldPass'];
+  $newpass = $_POST['newPass'];
+  $checkpass = $_POST['confirmNewPass'];
+        // 2. Run the Query
+  //SELECT username, password, money FROM logins WHERE username = '$username';
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
+        $stmt = simpleQuery($db, $query);
+  
+        if($stmt == NULL) {
+
+        				  }
+ 		 else{
+      		$stmt->bind_result($userID, $username, $password, $email);
+        $stmt->fetch();
+  			if(strcmp($oldpass,$password)==0){
+              if(strcmp($newpass,$checkpass)==0){
+                $query2 = "UPDATE WebUser SET Password='$newpass' WHERE UserName = '$username';";
+                $stmt2 = simpleQuery($db, $query2);
+                if($stmt2 == NULL) {
+                    
+                                  }
+                  else{
+                      
+                  }
+              }
+   			 }
+           else{
+             include "register.html";
+           }
+         }
   }
   else {
-        $query = "INSERT INTO Server VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId)+1,0) FROM Server) as tmptable), '$servername')";
-	$stmt = simpleQuery($db, $query);
-        if($stmt == NULL) {
-           include 'register.html';
-        }
-      	else{
-            include 'profile_page.html';
-        }
+    include "login.html";
   }
 ?>
