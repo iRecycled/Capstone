@@ -11,7 +11,7 @@
             include 'register.html';
         }
         else {
-            $query = "SELECT COALESCE(MAX(ServerId),0) FROM Server";
+            $query = "SELECT ((SELECT * FROM (SELECT COALESCE(MAX(ServerId+1,0) FROM Server) as tmptable) FROM Server";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($serverId);
             $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
