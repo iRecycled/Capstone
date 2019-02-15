@@ -23,7 +23,6 @@
         <!--Custom CSS-->
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="profilePageStyle.css">
-<<<<<<< HEAD
         <script src="profilePage.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -41,28 +40,6 @@ function changePassword() {
                 }
 </script>
 
-=======
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="jquery-3.3.1.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $("#createServerBtn").click(function(e){
-                    e.preventDefault();
-                    $.ajax({
-                    type: "post",
-                    url: "server.php",
-                    data: {servername: document.getElementById("newServerName").value},
-                    success: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
-                    },
-                    error: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
-                    }
-                })
-                })
-            })
-        </script>
->>>>>>> 690314d2bccdeb57a2a4872f52cf75a653056be2
     </head>
     <body>
         <!-- Nav Bar-->
