@@ -16,6 +16,8 @@ header("index.php");
         $stmt = simpleQuery($db, $query);
 
             if($stmt == NULL) {
+                  
+                  $error = "this other error"
             }
  	      else{
       		$stmt->bind_result($currentPassword);
@@ -25,14 +27,17 @@ header("index.php");
                               $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                               $stmt2 = simpleQuery($db, $query2);
                               if($stmt2 == NULL) {
-
+                                    $error = "this error"
                               }
                               else{
 
+                                    $error = "that error"
                               }
                         }
    			}
                   else{
+                        
+                        $error = "other error"
                         include "register.html";
                   }
             }
@@ -40,4 +45,5 @@ header("index.php");
   else {
     include "login.html";
   }
+  echo json_encode($error);
 ?>
