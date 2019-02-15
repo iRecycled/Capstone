@@ -50,10 +50,10 @@
                     url: "changepassword.php",
                     data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
                     success: function(result) {
-                        console.log("success")
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
                     },
                     error: function(result) {
-                        console.log("fail")
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
                     }
                 })
                 })
