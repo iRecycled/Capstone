@@ -13,8 +13,8 @@
         else {
             $query = "SELECT COALESCE(MAX(ServerId),0) FROM Server";
             $serverId = simpleQuery($db, $query);
-            //$query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
-	      //$stmt = simpleQuery($db, $query);
+            $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
+	      $stmt = simpleQuery($db, $query);
             //$query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
             //$userId = simpleQuery($db, $query);
             //$query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId'";
