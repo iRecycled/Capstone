@@ -11,15 +11,13 @@
             include 'register.html';
         }
         else {
-            $query = "INSERT INTO Server VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId)+1,0) FROM Server) as tmptable), '$servername')";
+            $query = "SELECT COALESCE(MAX(ServerId),0) FROM Server";
+            $serverId = simpleQuery($db, $query);
+            $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
 	      $stmt = simpleQuery($db, $query);
-            if($stmt == NULL) {
-                  include 'register.html';
-            }
-      	else{
-                  include 'profile_page.html';
-            }
-            $query = "INSERT INTO ServerMember VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId),0) FROM Server) as tmptable), (SELECT * FROM (SELECT UserId FROM WebUser) as tmptable2)";
+            $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
+            $userId = simpleQuery($db, $query);
+            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId'";
 	      $stmt = simpleQuery($db, $query);
             if($stmt == NULL) {
                   include 'register.html';
