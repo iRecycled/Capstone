@@ -4,7 +4,7 @@ header("index.php");
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
-            http_response_code(500);
+            http_response_code(600);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
   $username = $_POST['username']; 
