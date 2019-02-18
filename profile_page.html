@@ -68,12 +68,12 @@
                         console.log(obj);
                         console.log(obj.serverName);
                         for( let i =0; i < obj.serverName.length; i++) {
-                            console.log(obj.serverName[i]);
+                            console.log(obj.serverName[i].serverName);
                             let privateServerList = document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj.serverName[i]);
-                            link.id = obj.serverName[i];// need actual server name
+                            link.id = obj.serverName[i];
                             link.href = "chat/private/" + obj.serverName[i] + ".txt";
                             link.appendChild(text);
                             listItem.appendChild(link);
