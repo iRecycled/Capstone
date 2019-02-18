@@ -99,7 +99,11 @@
             <ul class="navbar-nav right">
                 <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="home.html">Logout <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="profile_page.html" ><i class="fas fa-user-circle" aria-hidden="true"></i>Username <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="profile_page.html" id="username">       
+                    <script>
+                        document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                    </script>
+                <span class="sr-only">(current)</span></a>
             </ul>
         </nav>
         <div class="wrapper">
