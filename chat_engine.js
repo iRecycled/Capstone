@@ -1,8 +1,26 @@
 
+
 var instanse = false;
 var state;
 var mes;
 var file;
+
+function addEmote(e)
+{
+    var n = e.innerHTML.lastIndexOf('>')
+    var result = e.innerHTML.substring(n + 1)
+    chatInputArea.value += result
+}
+
+function generateEmoteList(e)
+{
+    eList = emoteWL.sort()
+    for(i = 0; i < eList.length; i++ )
+    {
+        e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
+    }
+}
+
 
 function Chat () {
     this.update = updateChat;
@@ -33,8 +51,11 @@ function getStateOfChat(){
 
 //Updates the chat
 function updateChat(){
+	console.log("Update called");
+	console.log(instanse);
 	 if(!instanse){
 		 instanse = true;
+		 console.log("start update");
 	     $.ajax({
 			   type: "POST",
 			   url: "process.php",
@@ -47,10 +68,18 @@ function updateChat(){
 			   success: function(data){
 				   if(data.text){
 						for (var i = 0; i < data.text.length; i++) {
-                            $('#chat-area').append($("<p>"+ data.text[i] +"</p>"));
-                        }								  
+						console.log("starting message shit");
+						//data.text[i] = msgParse(data.text[i]);
+						var parse = new msgParse();
+						data.text[i] = parse.parse(data.text[i]);
+						console.log(data.text[i]);
+						//console.log(generateMsg(data.text[i],"",""));
+						data.text[i] = generateMsg(data.text[i], "", "");
+						console.log(data.text[i]);
+                                                $('#chatBox').append($(data.text[i]));
+                                                }								  
 				   }
-				   document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+				   document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
 				   instanse = false;
 				   state = data.state;
 			   },
@@ -60,11 +89,96 @@ function updateChat(){
 		 setTimeout(updateChat, 1500);
 	 }
 }
+function generateMsg(text, sender, time)
+{
+    var username = "Username"
+    var today = new Date();
+    msg = "\
+    <tr>\
+        <td style='vertical-align: top;'>\
+            <div class='message'>\
+             <p class ='msgUname'>"
+                 + username
+                 + "<span class='msgDate'>"
+                     + today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2) + '</span>'
+             + "</p>"  
+            + text + "\
+            </div>\
+        </td>\
+    </tr>"
+    return msg
+}
+var emoteWL = [
+    "jordan",
+    "howdy",
+    "pogchamp",
+    "beaker",
+    "kappa",
+    "squiddab",
+    "terry",
+    "bob",
+    "hoops",
+    "rip",
+    "zoboomafoo",
+    "manningface",
+    "codered",
+    "tiger",
+    "triforce"
+]
 
+
+function msgParse(){
+    this.parse = function(text){
+        console.log("calls")
+        var safe = text.replace(/</g, '&lt;')
+        var safe = safe.replace(/>/g, '&gt;')
+        var words = safe.split(" ")
+        var parse = ""
+        for(var i = 0; i < words.length; i+=1){
+            if(words[i].charAt(0) == ':')
+            {
+		console.log('I found a colon:');
+                phrase = words[i].substring(1).toLowerCase()
+                var imgExists = this.imgExists(phrase)
+                if(imgExists){
+                    parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
+                }
+                else{
+                    parse += (words[i] + " ")
+                }
+            }
+            
+            else
+            {
+                parse += (words[i] + " ")
+            }
+        }
+        return parse;
+	
+    }
+	
+    this.imgExists = function(img)
+    {
+	imgTrim = img.toString().trim()
+        if((emoteWL.indexOf(imgTrim.toString()) > -1)){
+            var http = new XMLHttpRequest();
+            http.open('HEAD', "emotes/" + imgTrim +  ".png", false);
+            http.send();
+            console.log('true');
+            return http.status!=404;
+	    
+        }
+        else{
+	    console.log('false');
+            return false;
+        }
+    }
+}
 //send the message
 function sendChat(message, nickname)
 {       
     updateChat();
+    console.log("sent successfully");
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
