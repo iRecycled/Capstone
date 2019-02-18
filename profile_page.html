@@ -66,8 +66,9 @@
                     success: function(data) {
                         obj = JSON.parse(data);
                         console.log(obj);
-                        for( let i =0; i < obj.serverName.length; i++) {
-                            let privateServerList = document.getElementsByName("privateServers");
+                        for( var x in obj) {
+                            console.log(x);
+                            /*let privateServerList = document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj.serverName[i]);
@@ -75,7 +76,7 @@
                             link.href = "chat/private/" + obj.serverName[i] + ".txt";
                             link.appendChild(text);
                             listItem.appendChild(link);
-                            privateServerList.appendChild(listItem);
+                            privateServerList.appendChild(listItem);*/
                         }
                     },
                     error: function(data) {
