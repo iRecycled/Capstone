@@ -10,7 +10,7 @@
         $result = $db->query($query);
         $response = array();
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $response['serverName'][] = $row;
+            $response[] = $row;
         }
         echo json_encode($response);
         
