@@ -58,6 +58,27 @@
                 })
                 })
             })
+            $(document).ready(function(){
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "userInfo.php",
+                    data: {username: localStorage.getItem('username')},
+                    success: function(data) {
+                        for( let i =0; i < data.serverName.length(); i++) {
+                            let privateServerList =document.getElementsByName("privateServers");
+                            let listItem = document.createElement("li");
+                            let link = document.createElement("a");
+                            let text = document.createTextNode(data.serverName[i]);
+                            link.id = data.serverName[i];// need actual server name
+                            link.href = "chat/private/" + data.serverName[i] + ".txt";
+                            link.appendChild(text);
+                            listItem.appendChild(link);
+                            privateServerList.appendChild(listItem);
+                        }
+                    }
+                })
+            })
         </script>
     </head>
     <body>
@@ -102,16 +123,8 @@
                     </li>
                     <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Private Chatrooms</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Server Name1</a>
-                            </li>
-                            <li>
-                                <a href="#">Server Name2</a>
-                            </li>
-                            <li>
-                                <a href="#">Server Name3</a>
-                            </li>
+                        <ul class="collapse list-unstyled" id="pageSubmenu" name="privateServers">
+                            
                         </ul>
                     </li>
                 </ul>
@@ -183,19 +196,19 @@
                             <tbody>
                                 <tr>
                                     <td scope="row" class="tableLabel">Username</td>
-                                    <td class="tableInfo">username from database</td>
+                                    <td class="tableInfo" id="userName">username from database</td>
                                     <td scope="row" class="tableLabel">Private Servers Owned</td>
-                                    <td class="tableInfo">0</td>
+                                    <td class="tableInfo" id="privateCount">0</td>
                                 </tr>
                                 <tr>
                                     <td scope="row" class="tableLabel">Email</td>
-                                    <td class="tableInfo">email from database</td>
+                                    <td class="tableInfo" id="email">email from database</td>
                                     <td scope="row" class="tableLabel">Chats participated in</td>
-                                    <td class="tableInfo">0</td>
+                                    <td class="tableInfo" id="chatCount">0</td>
                                 </tr>
                                 <tr>
                                     <td scope="row" class="tableLabel" colspan="2">Anything else</td>
-                                    <td class="tableInfo" colspan="2">could add more rows here</td>
+                                    <td class="tableInfo" colspan="2" id="otherData">could add more rows here</td>
                                 </tr>
                             </tbody>
                         </table>
