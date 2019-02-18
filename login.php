@@ -26,10 +26,10 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
          ?>
          <script> localStorage.setItem("sessionID", "<?php echo $userID; ?>"); </script>
          <?php
-  		    include "home.html";
+  		    include "home.html"; //success, loads chat
    			 }
            else{
-             include "register.html";
+             include "register.html"; // fail re-loads register
            }
          }
   }
