@@ -64,7 +64,7 @@
                     url: "getServerList.php",
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
-                        console.log(data.serverName.length());
+                        console.log(data.length());
                         for( let i =0; i < data.serverName.length(); i++) {
                             console.log(i);
                             let privateServerList =document.getElementsByName("privateServers");
