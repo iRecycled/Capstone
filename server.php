@@ -17,7 +17,7 @@
             $stmt->fetch();
             $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
             $stmt = simpleQuery($db, $query);
-            $query = "SELECT UserId FROM user WHERE userName = '$username'";
+            $query = "SELECT UserId FROM webUser WHERE userName = '$username'";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId);
             $stmt->fetch();
