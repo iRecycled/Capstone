@@ -65,8 +65,9 @@
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
                         obj = JSON.parse(data);
+                        console.log(obj);
                         console.log(obj.serverName);
-                        for( let i =0; i < obj.serverName.length(); i++) {
+                        for( let i =0; i < obj.serverName.length; i++) {
                             console.log(obj.serverName[i]);
                             let privateServerList = document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
