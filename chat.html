@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    
     <script src = 'chat_engine.js'></script>
     <script type="text/javascript">
     
@@ -91,7 +90,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 </head>
 
-<body>
+<body onload="setInterval('chat.update()', 1000)">
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
     <ul class="navbar-nav mr-auto">
@@ -173,7 +172,7 @@
             <div id = "chatBoxInput">
                 <div id = "inputContainer" class = 'input-group'>
                     <!--Chat Text Input-->
-                    <textarea id ='chatTextArea' class='form-control'></textarea>
+                    <textarea id ='sendie' maxlength='100' class='form-control'></textarea>
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
@@ -260,9 +259,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 <script src="script.js"></script>
