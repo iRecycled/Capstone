@@ -11,6 +11,6 @@
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($serverList);
             $stmt->fetch();
-            echo json_encode($serverList);
+            //echo json_encode($serverList);
         }
 ?>
