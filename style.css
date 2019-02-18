@@ -71,7 +71,7 @@ a:hover{
     margin: 0vh 23px 0vh;
     display: inline-block;
 }
-#chatTextArea{
+#sendie{
     width: calc(100% - 100px);
     height: 80px;
     resize: none;

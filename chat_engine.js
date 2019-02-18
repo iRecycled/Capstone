@@ -5,6 +5,8 @@ var state;
 var mes;
 var file;
 
+
+
 function addEmote(e)
 {
     var n = e.innerHTML.lastIndexOf('>')
@@ -21,6 +23,17 @@ function generateEmoteList(e)
     }
 }
 
+document.addEventListener("DOMContentLoaded", function(event) { 
+    
+    submitButton = document.getElementById("chatTextSubmit")
+    chatInputArea = document.getElementById("sendie")
+    chatOutputArea = document.getElementById("chatBody")
+    chatOutputBox = document.getElementById("chatOutput")
+
+    
+    //submitButton.addEventListener("click", submitText)
+    generateEmoteList(document.getElementById("emoteDropdown"))
+});
 
 function Chat () {
     this.update = updateChat;
@@ -51,8 +64,6 @@ function getStateOfChat(){
 
 //Updates the chat
 function updateChat(){
-	console.log("Update called");
-	console.log(instanse);
 	 if(!instanse){
 		 instanse = true;
 		 console.log("start update");
