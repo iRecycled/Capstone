@@ -1,6 +1,6 @@
 function submitText(){
     if (!chatInputArea.value.replace(/\s/g, '').length) {
-        return false;
+        return false
     }
     else{
         
@@ -16,8 +16,8 @@ function submitText(){
 
 function addEmote(e)
 {
-    var n = e.innerHTML.lastIndexOf('>');
-    var result = e.innerHTML.substring(n + 1);
+    var n = e.innerHTML.lastIndexOf('>')
+    var result = e.innerHTML.substring(n + 1)
     chatInputArea.value += result
 }
 
@@ -27,14 +27,13 @@ function generateEmoteList(e)
     for(i = 0; i < eList.length; i++ )
     {
         e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
-        console.log("fart")
     }
 }
 
 function generateMsg(text, sender, time)
 {
     var username = "Username"
-    var today = new Date();
+    var today = new Date()
     msg = "\
     <tr>\
         <td style='vertical-align: top;'>\
@@ -52,7 +51,7 @@ function generateMsg(text, sender, time)
 }
 
 function resetScroll(){
-    chatOutputBox.scrollTop =  chatOutputBox.scrollHeight - chatOutputBox.clientHeight;
+    chatOutputBox.scrollTop =  chatOutputBox.scrollHeight - chatOutputBox.clientHeight
 } 
 
 document.addEventListener("DOMContentLoaded", function(event) { 
