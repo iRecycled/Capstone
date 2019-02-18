@@ -6,13 +6,9 @@
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
         $username = $_POST['username']; 
-        $query = "SELECT ServerName FROM Server";
-        $response = array();
+        $query = "SELECT ServerName FROM Server s INNER JOIN ServerMember sm ON s.ServerId = sm.ServerId INNER JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username'";
+        $result = $db->query($query);
 
-        while($row = mysqli_fetch_assoc($query)) {
-            $response["ServerName"][] = $row;
-        }
-        echo json_encode($response);
-
-        // s INNER JOIN ServerMember sm ON s.ServerId = sm.ServerId INNER JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username'
+        //$row = $result->fetch_array(MYSQLI_ASSOC);
+        echo json_encode($result);
 ?>
