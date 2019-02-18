@@ -62,10 +62,10 @@
                 e.preventDefault();
                 $.ajax({
                     type: "post",
-                    url: "userInfo.php",
+                    url: "getServerList.php",
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
-                        for( let i =0; i < data.serverName.length(); i++) {
+                        /*for( let i =0; i < data.serverName.length(); i++) {
                             let privateServerList =document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
@@ -75,7 +75,8 @@
                             link.appendChild(text);
                             listItem.appendChild(link);
                             privateServerList.appendChild(listItem);
-                        }
+                        }*/
+                        alert(data);
                     }
                 })
             })
