@@ -7,10 +7,12 @@
             }
         $username = $_POST['username']; 
         $query = "SELECT ServerName FROM Server";
-        $stmt = simpleQuery($db, $query);
-        $stmt->bind_result($serverList);
-        $stmt->fetch();
-        echo json_encode($serverList);
+        $response = array();
+
+        while($row = mysqli_fetch_assoc($query)) {
+            $response["ServerName"][] = $row;
+        }
+        echo json_encode($response);
 
         // s INNER JOIN ServerMember sm ON s.ServerId = sm.ServerId INNER JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username'
 ?>
