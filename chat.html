@@ -55,8 +55,22 @@
                          console.log("too long?");
                          event.preventDefault();  
                      }  
-                  }  
-    		 																																																});
+                }  
+            });
+
+            // watch textarea for key presses
+            $("#chatTextSubmit").mousedown(function(event) {  
+                console.log("key down");
+                var maxLength = $(this).attr("maxlength");  
+                var length = this.value.length;  
+                
+                // don't allow new content if length is maxed out
+                if (length >= maxLength) {  
+                    console.log("too long?");
+                    event.preventDefault();  
+                }   
+            });
+
     		 // watch textarea for release of key press
     		 $('#sendie').keyup(function(e) {	
     		 		console.log("key up");		
@@ -83,6 +97,30 @@
     				
     			  }
              });
+
+             // watch textarea for release of key press
+    		 $('#chatTextSubmit').mouseup(function(e) {	
+    		 		console.log("key up");		
+    			    console.log("enter key");
+                    var text = $(this).val();
+    				var maxLength = $(this).attr("maxlength");  
+                    var length = text.length; 
+                    console.log(length);
+                    console.log(maxLength);
+                    // send 
+                    if (length <= maxLength + 1) { 
+                        console.log("right size");
+                        chat.send(text, name);	
+                        $(this).val("");
+                        
+                    } else {
+                    
+                        $(this).val(text.substring(0, maxLength));
+                        
+                    }	
+                
+             });
+             
             
     	});
     </script>
@@ -191,7 +229,7 @@
                           </div>
                     <!--Chat Submit Button-->
                     <div class="input-group-append">
-                        <button id ='chatTextSubmit' class='btn btn-dark'>SEND</button>
+                        <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
                     </div>
                 </div>
                 </div>
