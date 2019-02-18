@@ -9,7 +9,7 @@
         $query = "SELECT ServerName FROM Server";
         $result = $db->query($query);
 
-        //$row = $result->fetch_array(MYSQLI_ASSOC);
-        echo json_encode($result);
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        echo json_encode($row);
         // s INNER JOIN ServerMember sm ON s.ServerId = sm.ServerId INNER JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username'
 ?>
