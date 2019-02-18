@@ -67,16 +67,15 @@
                         obj = JSON.parse(data);
                         console.log(obj);
                         for( var x in obj) {
-                            console.log(obj[x].ServerName);
-                            /*let privateServerList = document.getElementsByName("privateServers");
+                            let privateServerList = document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
-                            let text = document.createTextNode(obj.serverName[i]);
-                            link.id = obj.serverName[i];
-                            link.href = "chat/private/" + obj.serverName[i] + ".txt";
+                            let text = document.createTextNode(obj[x].ServerName);
+                            link.id = obj[x].ServerName;
+                            link.href = "chat/private/" + obj[x].ServerName + ".txt";
                             link.appendChild(text);
                             listItem.appendChild(link);
-                            privateServerList.appendChild(listItem);*/
+                            privateServerList.appendChild(listItem);
                         }
                     },
                     error: function(data) {
