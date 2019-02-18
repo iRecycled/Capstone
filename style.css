@@ -164,6 +164,7 @@ tr:nth-child(odd) {
 .dropdown-menu{
     height: 150px;
     overflow-y: scroll;
+    cursor: pointer;
 }
 
 #emoteDropdown::-webkit-scrollbar {
