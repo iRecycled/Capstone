@@ -29,6 +29,9 @@
   
         </script>
     <script>
+        //returns session ID of current user name in local storage
+        //also checks the username to be compatible with sessionID
+        //if username != sessionID then it is sent to loginPage
             $.ajax({
                method:'post',
                dataType: "json",
