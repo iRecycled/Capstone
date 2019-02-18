@@ -64,19 +64,18 @@
                     url: "getServerList.php",
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
-                        console.log(JSON.parse(data));
-                        for( let i =0; i < data.serverName.length(); i++) {
+                        obj = JSON.parse(data);
+                        for( let i =0; i < obj.serverName.length(); i++) {
                             let privateServerList =document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
-                            let text = document.createTextNode(data.serverName[i]);
-                            link.id = data.serverName[i];// need actual server name
-                            link.href = "chat/private/" + data.serverName[i] + ".txt";
+                            let text = document.createTextNode(obj.serverName[i]);
+                            link.id = obj.serverName[i];// need actual server name
+                            link.href = "chat/private/" + obj.serverName[i] + ".txt";
                             link.appendChild(text);
                             listItem.appendChild(link);
                             privateServerList.appendChild(listItem);
                         }
-                        console.log(data);
                     },
                     error: function(data) {
                         console.log("fail");
