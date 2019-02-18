@@ -66,6 +66,8 @@
                     success: function(data) {
                         obj = JSON.parse(data);
                         console.log(obj);
+                        console.log(obj.serverName);
+
                         for( let i =0; i < obj.serverName.length; i++) {
                             let privateServerList = document.getElementsByName("privateServers");
                             let listItem = document.createElement("li");
