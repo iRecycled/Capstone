@@ -5,18 +5,23 @@
                 http_response_code(500);
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
-  $servername = $_POST['servername']; 
-  if($servername == NULL){
-        include 'register.html';
-  }
-  else {
-        $query = "INSERT INTO Server VALUES ((SELECT * FROM (SELECT COALESCE(MAX(ServerId)+1,0) FROM Server) as tmptable), '$servername')";
-	$stmt = simpleQuery($db, $query);
-        if($stmt == NULL) {
-           include 'register.html';
+        $username = $_POST['username'];
+        $servername = $_POST['servername']; 
+        if($servername == NULL){
+            include 'register.html';
         }
-      	else{
-            include 'profile_page.html';
+        else {
+            $query = "SELECT * FROM (SELECT COALESCE(MAX(ServerID)+1,0) FROM Server) as tmptable";
+            $stmt = simpleQuery($db, $query);
+            $stmt->bind_result($serverId);
+            $stmt->fetch();
+            $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
+            $stmt = simpleQuery($db, $query);
+            $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
+            $stmt = simpleQuery($db, $query);
+            $stmt->bind_result($userId);
+            $stmt->fetch();
+            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId')";
+            $stmt = simpleQuery($db, $query);
         }
-  }
 ?>

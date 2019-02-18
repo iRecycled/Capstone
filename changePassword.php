@@ -1,37 +1,32 @@
 <?php
-        // 1. Connect to the database
-        include "database.php";
-        $db = connectToDatabase(DBDeets::DB_NAME);
-        
-        $name = $_POST['username'];
-        $oldPass = $_POST['oldPass']; 
-        $newPass = $_POST['newPass'];
-        $confirmPass = $_POST['confirmNewPass';]
-  
-        // 2. Run the Query
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
-        $stmt = simpleQuery($db, $query);
+      include "database.php";
+      $db = connectToDatabase(DBDeets::DB_NAME);
+      if ($db->connect_error) {
+            http_response_code(500);
+            die('{ "errMessage": "Failed to Connect to DB." }');
+      }
+      $username = $_POST['username']; 
+      $password = $_POST['password'];
+      $newPassword = $_POST['newPassword'];
+      $confirmNewPassword = $_POST['confirmNewPassword'];
 
-    	$stmt->bind_result($userID, $username, $password, $email);
-		$stmt->fetch();
-  		if(strcmp($oldPass,$password)==0){
-  	        if(strcmp($newPass,$confirmPass)==0){
-                //insert new password into database with an update
-                //Query not set up yet
-                $query = "UPDATE WebUser SET Password='$newPass' WHERE UserName = '$name';";
-                $stmt = simpleQuery($db, $query);
-                if($stmt != NULL){
-                    //send alert that the change password was accepted
-                }               
-            }
+      $query = "SELECT Password FROM WebUser WHERE UserName = '$username';";
+      $stmt = simpleQuery($db, $query);
+  
+      if($stmt != NULL) {
+      	$stmt->bind_result($currentPassword);
+            $stmt->fetch();
+  		if(strcmp($password,$currentPassword)==0){
+                  if(strcmp($newPassword,$confirmNewPassword)==0){
+                        $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
+                        $stmt2 = simpleQuery($db, $query2);
+                  }
+   		}
             else{
-                //display an error message in the modal
-                $error = "Your new passord must match";
+                  include "register.html";
             }
-		}
-        else{
-            //display an error message in the modal
-            $error = "Your old password is incorrect"
-        }
-    echo json_encode($error);
+      }
+      else {
+            include "login.html";
+      }
 ?>
