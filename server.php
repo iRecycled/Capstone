@@ -14,7 +14,14 @@
             $query = "SELECT * FROM (SELECT COALESCE(MAX(ServerID)+1,0) FROM Server) as tmptable";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($serverId);
+            $stmt->fetch();
             $query = "INSERT INTO Server VALUES ('$serverId', '$servername')";
-	      $stmt = simpleQuery($db, $query);
+            $stmt = simpleQuery($db, $query);
+            $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
+            $stmt = simpleQuery($db, $query);
+            $stmt->bind_result($userId);
+            $stmt->fetch();
+            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId')";
+            $stmt = simpleQuery($db, $query);
         }
 ?>
