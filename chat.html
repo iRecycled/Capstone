@@ -26,21 +26,25 @@
 <body>
 <!-- Nav Bar -->
 <div id="nav-template"></div>
-<nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
-    <ul class="navbar-nav mr-auto">
-        <a class="nav-item nav-link active" href="home.html">Home</a>
-        <a class="nav-item nav-link active" href="home_template.html">About</a>
-    </ul>
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <ul class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
+        </ul>
 
-    <ul class="navbar-nav mr-auto ">
-        <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
-    </ul>
+        <ul class="navbar-nav mr-auto ">
+            <a class="navbar-brand mb-0 h1" href="#">TerryChat <span class="sr-only">(current)</span></a>
+        </ul>
 
-    <ul class="navbar-nav right">
-        <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#registerModal">Register</a>
-        <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
-    </ul>
-</nav>
+        <ul class="navbar-nav right">
+            <a class="nav-item nav-link active" href="login.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="profile_page.html" id="username">       
+                <script>
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+                </script>
+            <span class="sr-only">(current)</span></a>
+            
+        </ul>
+    </nav>
 
 <div class="wrapper">
     <!-- Sidebar -->
