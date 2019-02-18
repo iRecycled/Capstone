@@ -193,18 +193,19 @@
             <div class="container">
                 <div class="row" >
                     <div class="col-lg-4" id="firstRow">
-                        <i class="fa fa-user-circle" aria-hidden="true" id="defaultProfilePic"></i> <!--replace with img tage when pic is added-->
-                        <h5>Profile's Username</h5>
+                        <i class="fa fa-user-circle" aria-hidden="true" id="defaultProfilePic"></i> 
+                        <h5><script>localStorage.getItem("username");</script></h5>
                     </div>
 
                     <div class="col-lg-8">
-                        <p class="bio">I am not sure what infromation to include here.</p>
-                        <p class="bio">I know the table looks awful. I will fix it later.</p>
-                        <p class="bio">I am using it to make sure I pull the right infoormation from the database.</p>
+                        <p class="bio">Welcome to your profile page! Here you can see information about your profile and make some changes.
+                            You can also use the sidebar to travel throughout TerryChat into private and public chatrooms as well as instant messaging 
+                            specific users. The sidebar also includes features for adding and deleting private servers.
+                        </p>
                     </div>
                 </div>
             
-                
+
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -332,14 +333,6 @@
                     </div>
                 </div>
             </form>
-               
-        <!--TODO create containers to display information(needs to be decided)-->
-            <!--create new private server?-->
-            <!--send invites to my private chatrooms?-->
-            <!--delete an existing private server?-->
-
-        <!--TODO link (create) script file that pulls information from database and displays it here-->
-
         <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

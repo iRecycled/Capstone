@@ -7,10 +7,20 @@
     }
 
     $name = $_POST['username']; 
-    $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
+    $query = "SELECT UserName, email FROM WebUser WHERE UserName = '$name';";
     $stmt = simpleQuery($db, $query);
-    $stmt->bind_result($userID, $username, $password, $email);
+    $stmt->bind_result($username, $email);
+    $stmt->fetch();
+    //SELECT ServerName FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username';";
+    $query = "SELECT COUNT(*) FROM ServerMember sm JOIN WebUser wu ON wu.UserId = sm.UserId WHERE UserName = '$name';";
+    $stmt = simpleQuery($db, $query);
+    $stmt->bind_result($chatCount);
     $stmt->fetch();
 
-    echo json_encode ($stmt);
+    $query = "SELECT COUNT(*) FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$name';";
+    $stmt = simpleQuery($db, $query);
+    $stmt->bind_result($privateCount);
+    $stmt->fetch();
+
+    echo json_encode ();
 ?>
