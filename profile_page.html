@@ -34,10 +34,10 @@
                     url: "server.php",
                     data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
                     success: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
                     },
                     error: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
                     }
                 })
                 })
@@ -50,10 +50,10 @@
                     url: "changePassword.php",
                     data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
                     success: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/home.html';
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
                     },
                     error: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/test/Capstone/profile_page.html';
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
                     }
                 })
                 })
@@ -77,6 +77,9 @@
                             privateServerList.appendChild(listItem);
                         }*/
                         alert(data);
+                    },
+                    error: function(data) {
+                        alert('fail');
                     }
                 })
             })
