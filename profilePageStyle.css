@@ -27,10 +27,6 @@
 .tableInfo{
     background-color: darkgrey;
 }
-#msg{
-    text-align: center;
-    color: red;
-}
 #sidebar{
     position: fixed;
     padding-top: 100px;
@@ -40,4 +36,9 @@
 }
 .container{
     padding-top: 100px;
+}
+#intro{
+    vertical-align: bottom;
+    text-align: left;
+    font-size: 16pt;
 }
