@@ -89,10 +89,11 @@
                         console.log(data);
                         obj = JSON.parse(data);
                         console.log(obj);
-                        /*document.getElementById("userName").innerHTML = obj.username;
+                        document.getElementById("userName").innerHTML = obj.name;
                         document.getElementById("email").innerHTML = obj.email;
                         document.getElementById("chatCount").innerHTML = obj.chatCount;
-                        document.getElementById("privateCount").innerHTML = obj.privateCount;*/
+                        document.getElementById("privateCount").innerHTML = obj.privateCount;
+                        document.getElementById("otherData").innerHTML = "nothing right now";
                     },
                     error: function(data) {
                         console.log("fail");
