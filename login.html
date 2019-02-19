@@ -22,16 +22,6 @@
     <link rel="stylesheet" href="loginStyle.css">
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   
-    <script>
-          function logout() {
-          
-            localStorage.setItem("username", "logout");
-          }
-
-      </script>
-
-
     <script>
       
             $.ajax({
@@ -48,7 +38,6 @@
                 }
                 else{
                 window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-                  window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                 }
               }
               else{
@@ -57,6 +46,10 @@
                   localStorage.setItem("username","oheystopmesingaround")
                   localStorage.setItem("sessionID","-1")
                   window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                }
+                else{
+                  localStorage.setItem("username","oheystopmesingaround")
+                  localStorage.setItem("sessionID","-1")
                   window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                 }
 
