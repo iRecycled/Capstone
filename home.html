@@ -46,7 +46,9 @@
             </script>
 
 <script>
-      
+      //runs on start of page
+      //checks to see if the username is null upon startup
+      //if null then change local storage values to failed login values and send back to login screen
         $.ajax({
            method:'post',
            dataType: "json",
@@ -76,57 +78,55 @@
          });
             </script>
 
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   
-    <script>
-            $.ajax({
-               method:'post',
-               dataType: "json",
-               url: 'checkID.php',
-              data: {username: localStorage.getItem('username')},
-              success: function(data) {
-              if(data==localStorage.getItem("sessionID")){
-                
-              }
-              else{
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-              }
-            }
-             });
-            </script>
 
 <script>
-      
-        $.ajax({
-           method:'post',
-           dataType: "json",
-           url: 'checkID.php',
-          data: {username: localStorage.getItem('username')},
-          success: function(data) {
-          if(data==localStorage.getItem("sessionID")){
-            if(localStorage.getItem('username').length==0){
-              localStorage.setItem("username","oheystopmesingaround")
-              localStorage.setItem("sessionID","-1")
-              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-            }
-            else{
-                
-               }
-          }
-          else{
-            
-            if(localStorage.getItem('username').length==0){
-              localStorage.setItem("username","oheystopmesingaround")
-              localStorage.setItem("sessionID","-1")
-              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-            }
+    $.ajax({
+       method:'post',
+       dataType: "json",
+       url: 'checkID.php',
+      data: {username: localStorage.getItem('username')},
+      success: function(data) {
+      if(data==localStorage.getItem("sessionID")){
+        
+      }
+      else{
+        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+      }
+    }
+     });
+    </script>
 
-          }
-        }
-         });
-            </script>
+<script>
+
+$.ajax({
+   method:'post',
+   dataType: "json",
+   url: 'checkID.php',
+  data: {username: localStorage.getItem('username')},
+  success: function(data) {
+  if(data==localStorage.getItem("sessionID")){
+    if(localStorage.getItem('username').length==0){
+      localStorage.setItem("username","oheystopmesingaround")
+      localStorage.setItem("sessionID","-1")
+      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+    }
+    else{
+        
+       }
+  }
+  else{
+    
+    if(localStorage.getItem('username').length==0){
+      localStorage.setItem("username","oheystopmesingaround")
+      localStorage.setItem("sessionID","-1")
+      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+    }
+  }
+}
+ });
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 

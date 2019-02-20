@@ -23,7 +23,7 @@
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
-      
+      //code to check if the local storage information is correct
             $.ajax({
                method:'post',
                dataType: "json",
@@ -37,7 +37,8 @@
                  
                 }
                 else{
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+                  //login is correct upon loading of this webpage and automatically goes to the home page
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
                 }
               }
               else{
@@ -65,6 +66,7 @@
   <body>
     <script>
         function myFunction() {
+          //code to add the username info to local storage
           var input = document.getElementById("username");
             localStorage.setItem("username", input.value);
           }
