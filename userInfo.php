@@ -22,5 +22,12 @@
     $stmt->bind_result($privateCount);
     $stmt->fetch();
 
-    echo json_encode ();
+    echo "{";
+    ?>
+        "name": <?=json_encode($username)?>,
+        "email": <?=json_encode($email)?>,
+        "chatCount": <?=json_encode($chatCount)?>,
+        "privateCount": <?=json_encode($privateCount)?>
+    <?php
+    echo "}";
 ?>

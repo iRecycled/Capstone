@@ -65,9 +65,8 @@
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
                         obj = JSON.parse(data);
-                        console.log(obj);
                         for( var x in obj) {
-                            let privateServerList = document.getElementsByName("privateServers");
+                            let privateServerList = document.getElementById("pageSubmenu");
                             let listItem = document.createElement("li");
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj[x].ServerName);
@@ -82,17 +81,24 @@
                         console.log("fail");
                     }
                 })
-                /*$.ajax({
+                $.ajax({
                     type: "post",
                     url: "userInfo.php",
                     data: {username: localStorage.getItem('username')},
                     success: function(data) {
                         console.log(data);
+                        obj = JSON.parse(data);
+                        console.log(obj);
+                        document.getElementById("userName").innerHTML = obj.name;
+                        document.getElementById("email").innerHTML = obj.email;
+                        document.getElementById("chatCount").innerHTML = obj.chatCount;
+                        document.getElementById("privateCount").innerHTML = obj.privateCount;
+                        document.getElementById("otherData").innerHTML = "nothing right now";
                     },
                     error: function(data) {
                         console.log("fail");
                     }
-                })*/
+                })
             })
         </script>
     </head>
@@ -198,7 +204,7 @@
                     </div>
 
                     <div class="col-lg-8">
-                        <p class="bio">Welcome to your profile page! Here you can see information about your profile and make some changes.
+                        <p id="intro">Welcome to your profile page! Here you can see information about your profile and make some changes.
                             You can also use the sidebar to travel throughout TerryChat into private and public chatrooms as well as instant messaging 
                             specific users. The sidebar also includes features for adding and deleting private servers.
                         </p>
