@@ -126,6 +126,8 @@
     	});
     </script>
 
+
+
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -135,7 +137,106 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Scrollbar Custom CSS -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script>
+        //returns session ID of current user name in local storage
+        //also checks the username to be compatible with sessionID
+        //if username != sessionID then it is sent to loginPage
+            $.ajax({
+               method:'post',
+               dataType: "json",
+               url: 'checkID.php',
+              data: {username: localStorage.getItem('username')},
+              success: function(data) {
+              if(data!=localStorage.getItem("sessionID")){
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+              }
+            }
+             });
+            </script>
+
+<script>
+      //runs on start of page
+      //checks to see if the username is null upon startup
+      //if null then change local storage values to failed login values and send back to login screen
+        $.ajax({
+           method:'post',
+           dataType: "json",
+           url: 'checkID.php',
+          data: {username: localStorage.getItem('username')},
+          success: function(data) {
+          if(data==localStorage.getItem("sessionID")){
+            if(localStorage.getItem('username').length==0){
+              localStorage.setItem("username","oheystopmesingaround")
+              localStorage.setItem("sessionID","-1")
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+            }
+            else{
+                
+               }
+          }
+          else{
+            
+            if(localStorage.getItem('username').length==0){
+              localStorage.setItem("username","oheystopmesingaround")
+              localStorage.setItem("sessionID","-1")
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+            }
+
+          }
+        }
+         });
+            </script>
+
+
+<script>
+    $.ajax({
+       method:'post',
+       dataType: "json",
+       url: 'checkID.php',
+      data: {username: localStorage.getItem('username')},
+      success: function(data) {
+      if(data==localStorage.getItem("sessionID")){
+        
+      }
+      else{
+        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+      }
+    }
+     });
+    </script>
+
+<script>
+
+$.ajax({
+   method:'post',
+   dataType: "json",
+   url: 'checkID.php',
+  data: {username: localStorage.getItem('username')},
+  success: function(data) {
+  if(data==localStorage.getItem("sessionID")){
+    if(localStorage.getItem('username').length==0){
+      localStorage.setItem("username","oheystopmesingaround")
+      localStorage.setItem("sessionID","-1")
+      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+    }
+    else{
+        
+       }
+  }
+  else{
+    
+    if(localStorage.getItem('username').length==0){
+      localStorage.setItem("username","oheystopmesingaround")
+      localStorage.setItem("sessionID","-1")
+      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+    }
+  }
+}
+ });
+    </script>
+
 </head>
 
 <body onload="setInterval('chat.update()', 1000)">
