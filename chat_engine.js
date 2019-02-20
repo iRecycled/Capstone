@@ -85,12 +85,13 @@ function updateChat(){
 						data.text[i] = parse.parse(data.text[i]);
 						console.log(data.text[i]);
 						//console.log(generateMsg(data.text[i],"",""));
-						data.text[i] = generateMsg(data.text[i], "", "");
+                        data.text[i] = generateMsg(data.text[i], "", "");
+                        document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
 						console.log(data.text[i]);
                                                 $('#chatBox').append($(data.text[i]));
                                                 }								  
 				   }
-				   document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
+				   
 				   instanse = false;
 				   state = data.state;
 			   },
