@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap test</title>
+    <title>Chat</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -102,8 +102,8 @@
     		 $('#chatTextSubmit').mouseup(function(e) {	
     		 		console.log("key up");		
     			    console.log("enter key");
-                    var text = $(this).val();
-    				var maxLength = $(this).attr("maxlength");  
+                    var text = $("#sendie").val();
+    				var maxLength = $("#sendie").attr("maxlength");  
                     var length = text.length; 
                     console.log(length);
                     console.log(maxLength);
