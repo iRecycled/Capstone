@@ -62,8 +62,8 @@
             // watch textarea for key presses
             $("#chatTextSubmit").mousedown(function(event) {  
                 console.log("key down");
-                var maxLength = $(this).attr("maxlength");  
-                var length = this.value.length;  
+                var maxLength = $('#sendie').attr("maxlength");  
+                var length = document.getElementById('sendie').value.length;  
                 
                 // don't allow new content if length is maxed out
                 if (length >= maxLength) {  
@@ -116,7 +116,7 @@
                         
                     } else {
                     
-                        $(this).val(text.substring(0, maxLength));
+                        $('#sendie').val(text.substring(0, maxLength));
                         
                     }	
                 
