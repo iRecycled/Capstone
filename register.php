@@ -8,22 +8,18 @@ if ( isset( $_POST['submit'] ) ) {
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-        
-//$query = "INSERT INTO logins (id, username, password) 
- //       VALUES ('0','$_POST['username']', '$_POST['password']')";
   $username = $_POST['username']; 
   $email = $_POST['email'];
   $password = $_POST['password'];
-        //INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu')
         // 2. Run the Query
-        //$query = "INSERT INTO WebUser (UserName, Password, email) VALUES ('$username', '$password', '$email')";
-        //$query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu'";
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
+           //if statment fails reload page
            include 'register.html';
         }
       	else{
+            //if statment succeeds go to login page
             include 'login.html';
         }
 }
