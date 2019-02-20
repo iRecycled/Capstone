@@ -79,17 +79,17 @@ function updateChat(){
 			   success: function(data){
 				   if(data.text){
 						for (var i = 0; i < data.text.length; i++) {
-						console.log("starting message shit");
-						//data.text[i] = msgParse(data.text[i]);
-						var parse = new msgParse();
-						data.text[i] = parse.parse(data.text[i]);
-						console.log(data.text[i]);
-						//console.log(generateMsg(data.text[i],"",""));
-                        data.text[i] = generateMsg(data.text[i], "", "");
-                        document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
-						console.log(data.text[i]);
-                                                $('#chatBox').append($(data.text[i]));
-                                                }								  
+                            console.log("starting message shit");
+                            //data.text[i] = msgParse(data.text[i]);
+                            var parse = new msgParse();
+                            data.text[i] = parse.parse(data.text[i]);
+                            console.log(data.text[i]);
+                            //console.log(generateMsg(data.text[i],"",""));
+                            data.text[i] = generateMsg(data.text[i], "", "");
+                            console.log(data.text[i]);
+                            $('#chatBox').append($(data.text[i]));
+                            document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
+                        }								  
 				   }
 				   
 				   instanse = false;
