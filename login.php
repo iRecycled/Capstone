@@ -32,7 +32,7 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
              ?><script>     
                 document.getElementById("username").style.borderColor = "red";
            </script> <?php
-          include "register.html"; // fail re-loads register
+          include "login.html"; // fail re-loads login
            }
          }
   }
