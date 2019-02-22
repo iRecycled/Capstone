@@ -17,6 +17,7 @@ function addEmote(e)
 function generateEmoteList(e)
 {
     eList = emoteWL.sort()
+    //for each emote in whitelist
     for(i = 0; i < eList.length; i++ )
     {
         e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatOutputBox = document.getElementById("chatOutput")
 
     
-    //submitButton.addEventListener("click", submitText)
+    //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
 
@@ -106,6 +107,7 @@ function generateMsg(text, sender, time)
 {
     var username = "Username"
     var today = new Date();
+    //creates html code
     msg = "\
     <tr>\
         <td style='vertical-align: top;'>\
@@ -144,20 +146,25 @@ var emoteWL = [
 function msgParse(){
     this.parse = function(text){
         console.log("calls")
+        //strip html tags
         var safe = text.replace(/</g, '&lt;')
         var safe = safe.replace(/>/g, '&gt;')
         var words = safe.split(" ")
         var parse = ""
         for(var i = 0; i < words.length; i+=1){
+            //if word has emote tag
             if(words[i].charAt(0) == ':')
             {
-		console.log('I found a colon:');
+                //get phrase from tag
                 phrase = words[i].substring(1).toLowerCase()
+                //check if phrase is valid
                 var imgExists = this.imgExists(phrase)
                 if(imgExists){
+                    //inject code
                     parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
                 }
                 else{
+                    //else keep phrase but do not inject code
                     parse += (words[i] + " ")
                 }
             }
@@ -173,8 +180,11 @@ function msgParse(){
 	
     this.imgExists = function(img)
     {
-	    imgTrim = img.toString().trim()
+        //ensure whitespace/newlines arent present
+        imgTrim = img.toString().trim()
+        //check if phrase is in whitelist
         if((emoteWL.indexOf(imgTrim.toString()) > -1)){
+            //check if file is in directory
             var http = new XMLHttpRequest();
             http.open('HEAD', "emotes/" + imgTrim +  ".png", false);
             http.send();
