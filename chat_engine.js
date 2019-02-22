@@ -6,14 +6,14 @@ var mes;
 var file;
 
 
-
+//injects the emote code into the text area
 function addEmote(e)
 {
     var n = e.innerHTML.lastIndexOf('>')
     var result = e.innerHTML.substring(n + 1)
     chatInputArea.value += result
 }
-
+//generates the list for the emote widget 
 function generateEmoteList(e)
 {
     eList = emoteWL.sort()
@@ -22,7 +22,7 @@ function generateEmoteList(e)
         e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
     }
 }
-
+//sets functions when the document loads
 document.addEventListener("DOMContentLoaded", function(event) { 
     
     submitButton = document.getElementById("chatTextSubmit")
@@ -99,8 +99,9 @@ function updateChat(){
 	 }
 	 else {
 		 setTimeout(updateChat, 1500);
-	 }
+     }
 }
+//takes message data and generates the table rows in the document
 function generateMsg(text, sender, time)
 {
     var username = "Username"
@@ -120,6 +121,7 @@ function generateMsg(text, sender, time)
     </tr>"
     return msg
 }
+//white list for all emote tags
 var emoteWL = [
     "jordan",
     "howdy",
@@ -138,7 +140,7 @@ var emoteWL = [
     "triforce"
 ]
 
-
+//parses messages for emotes/html tags
 function msgParse(){
     this.parse = function(text){
         console.log("calls")
@@ -171,7 +173,7 @@ function msgParse(){
 	
     this.imgExists = function(img)
     {
-	imgTrim = img.toString().trim()
+	    imgTrim = img.toString().trim()
         if((emoteWL.indexOf(imgTrim.toString()) > -1)){
             var http = new XMLHttpRequest();
             http.open('HEAD', "emotes/" + imgTrim +  ".png", false);
