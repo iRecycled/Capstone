@@ -46,6 +46,22 @@
                     }
                 })
                 })
+                $("#forgotPasswordBtn").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                    type: "post",
+                    url: "forgotPassword.php",
+                    data: {username: localStorage.getItem('username')},
+                    success: function(result) {
+                        //logs out the user
+                        localStorage.setItem("username", "logout"); 
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+                    },
+                    error: function(result) {
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+                    }
+                })
+                })  
             })
             $(document).ready(function(){
                 $("#changePasswordBtn").click(function(e){
@@ -63,6 +79,8 @@
                 })
                 })
             })
+            //gets a list of servers that the user belongs to
+            //redirects the user to chat.html with localstorage Key serverID set to the server ID
             $(document).ready(function(){
                 $.ajax({
                     type: "post",
