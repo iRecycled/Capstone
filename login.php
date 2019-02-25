@@ -29,10 +29,17 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
   		    include "chat.html"; //success, loads chat
    			 }
            else{
-             ?><script>     
-                document.getElementById("username").style.borderColor = "red";
-           </script> <?php
-          include "login.html"; // fail re-loads login
+             //edit html element to show error
+              echo "<script>
+               function mySubmit(){
+                  document.getElementById("username").style.borderColor = "red";
+                  document.getElementById("password").style.borderColor = "red";
+               }
+               mySubmit();
+               </script>"
+               ?>
+               
+             //include "login.html"; // re-loads login
            }
          }
   }
