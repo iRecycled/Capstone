@@ -77,7 +77,7 @@
                             let text = document.createTextNode(obj[x].ServerName);
                             link.id = obj[x].ServerID;
                             link.onclick = function() {
-                                alert(this.id);
+                                localStorage.setItem("serverID", this.id);
                             };
                             link.href = "chat.html";
                             link.appendChild(text);
