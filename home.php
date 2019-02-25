@@ -126,10 +126,16 @@
     </nav>
     <!-- Page Content -->
     <div id="content">
-        <table id = "userServers">
-            <tbody id = "userServersBody">
-            </tbody>
-        </table>
+        <div id="servers">
+            <table id = "userServers">
+                <tbody id = "userServersBody">
+                </tbody>
+            </table>
+            <table id = "allServers">
+                <tbody id = "allServersBody">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
