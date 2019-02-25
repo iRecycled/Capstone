@@ -7,8 +7,7 @@
             }
             //connects to database
         $username = $_POST['username']; 
-        $query = "SELECT ServerName FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId 
-                    JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.ServerName = '$servername';";
+        $query = "SELECT ServerName FROM Server s WHERE ServerName = '$servername';";
         //runs the query
         $result = $db->query($query);
         $response = array();
