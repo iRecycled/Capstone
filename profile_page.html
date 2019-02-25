@@ -76,7 +76,9 @@
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj[x].ServerName);
                             link.id = obj[x].ServerName;
-                            link.onclick = loadServer(obj[x].ServerName);
+                            link.onclick = function() {
+                                alert('hello');
+                            };
                             link.appendChild(text);
                             listItem.appendChild(link);
                             privateServerList.appendChild(listItem);
