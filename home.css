@@ -4,7 +4,7 @@
     width: 40%;
     overflow-y: scroll;
     border: 5px solid black;
-    margin: 6%;
+    margin: 3%;
 }
 
 .serverTableDiv::-webkit-scrollbar {
@@ -13,12 +13,12 @@
 }
 
 .serverTableDiv::-webkit-scrollbar-track {
-    background-color: gray;
+    background-color: whitesmoke;
     height: 10px;
 }
 
 .serverTableDiv::-webkit-scrollbar-thumb {
-    background-color: whitesmoke;
+    background-color: gray;
 }
 
 .serverTable{
