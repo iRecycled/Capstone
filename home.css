@@ -1,4 +1,9 @@
 .serverTableDiv{
     display: inline-block;
-
+    height: 70vh;
+    width: 40%;
+    overflow-y: scroll;
+}
+.serverTable{
+    width:100%;
 }
