@@ -127,13 +127,13 @@
     <!-- Page Content -->
     <div id="content">
         <div id="servers">
-            <div id = "userServersContainer">
-                <table id = "userServers">
+            <div id = "userServersContainer" class = "serverTableDiv">
+                <table id = "userServers" >
                     <tbody id = "userServersBody">
                     </tbody>
                 </table>
             </div>  
-            <div id = "allServersContainer">
+            <div id = "allServersContainer" class = "serverTableDiv">
                 <table id = "allServers">
                     <tbody id = "allServersBody">
                     </tbody>
