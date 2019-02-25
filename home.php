@@ -127,7 +127,7 @@
     <!-- Page Content -->
     <div id="content">
         <table id = "userServers">
-            <tbody>
+            <tbody id = "userServersBody">
             </tbody>
         </table>
     </div>
