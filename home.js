@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 function createServerTable(d, targetID){
     text = "";
-    for(i = 0; i < d.length(); i++)
+    for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
                     <td>\
