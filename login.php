@@ -15,12 +15,10 @@ header("index.php");
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
-        
-      		$stmt->bind_result($userID, $username, $password, $email);
+      	$stmt->bind_result($userID, $username, $password, $email);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
           $data=$userID;
-          
   		    //success, loads chat
    			 }
            else{

@@ -34,7 +34,6 @@
                         url: "login.php",
                         data: {user: document.getElementById('username').value, pass: document.getElementById("inputPassword").value},
                         success: function(data) {
-                          //success -> edit input field
                           console.log(data);
                           if(data == -10){
                               document.getElementById("username").style.borderColor = "red";

@@ -26,25 +26,59 @@
    
 <head>
 
+        <script>
+                $(document).ready(function(){
+                            $("#registerBtn").click(function(e){
+                                e.preventDefault();
+                                $.ajax({
+                                type: "post",
+                                dataType: "json",
+                                url: "register.php",
+                                data: {email: document.getElementById("email").value, username: document.getElementById('username').value, password: document.getElementById("password").value},
+                                success: function(data) {
+                                  console.log(data);
+                                  if(data == -5){
+                                      document.getElementById("invalidEmail").innerHTML = "Username already in use";
+                                      document.getElementById("email").style.borderColor = "red";
+                                      console.log(data);
+                                
+                                  }
+                                  if(data == -6){
+                                    document.getElementById("invalidUsername").innerHTML = "Email already registered";
+                                    document.getElementById("username").style.borderColor = "red";
+                                    console.log(data);
+                                  }
+                                  else{
+                                    localStorage.setItem("sessionID", data);
+                                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                                  }
+                                }
+                            })
+                            })
+                        })
+                </script>
+
 </head>
 <body>
     <div class="text-center" id="loginBox">
-        <form class="form-signin" action="register.php" method="post">
+        <form class="form-signin">
                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
                <label for="inputEmail" class="sr-only">Email</label>
+               <p id="invalidEmail"></p>
                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
 
                <label for="inputUser" class="sr-only">Username</label>
+               <p id="invalidUsername"></p>
                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
 
                <label for="inputPassword" class="sr-only">Password</label>
+               <p id="invalidPassword"></p>
                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 
-               <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Register">Sign in</button>
+               <button class="btn btn-lg btn-primary btn-block" id="registerBtn" name="submit" type="submit" value="Register">Sign in</button>
 
                <p class="mt-5 bm-3 text-muted">Terrychat</p>
-        
     </form>
     </div>
 </body>
