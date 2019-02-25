@@ -23,8 +23,18 @@
 
 .serverTable{
     width:100%;
+    border-spacing: 0px;
+    padding:0;
+    table-layout: fixed;
 }
 
-.serverEntry{
-    height:200px;
+tr:nth-child(even){
+    height: 162px;
+    background: #CCC;
+    border-top: 2px solid #464e5b;
+}
+tr:nth-child(odd) {
+    height: 162px;
+    background: #FFF;
+    border-top: 2px solid #464e5b;
 }
