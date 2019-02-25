@@ -37,7 +37,10 @@
                           //success -> edit input field
                           console.log(data);
                           if(data == -10){
-                              document.getElementById("username");
+                              document.getElementById("username").style.border = "solid";
+                              document.getElementById("inputPassword").style.border = "solid";
+                              document.getElementById("username").style.borderColor = "red";
+                              document.getElementById("inputPassword").style.borderColor = "red";
                               console.log(data);
                           }else{
                             localStorage.setItem("sessionID", data);
@@ -58,7 +61,7 @@
         function myFunction() {
           //code to add the username info to local storage
             var loginUsername = document.getElementById("username");
-            localStorage.setItem("username", input.value);
+            localStorage.setItem("username", loginUsername.value);
           }
     </script>
     
