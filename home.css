@@ -6,6 +6,21 @@
     border: 5px solid black;
     margin: 6%;
 }
+
+.serverTableDiv::-webkit-scrollbar {
+    width: 10px;
+    max-height: 2px;
+}
+
+.serverTableDiv::-webkit-scrollbar-track {
+    background-color: gray;
+    height: 10px;
+}
+
+.serverTableDiv::-webkit-scrollbar-thumb {
+    background-color: whitesmoke;
+}
+
 .serverTable{
     width:100%;
 }
