@@ -30,14 +30,17 @@
                         e.preventDefault();
                         $.ajax({
                         type: "post",
+                        dataType: "json",
                         url: "login.php",
                         data: {user: document.getElementById('username').value, pass: document.getElementById("inputPassword").value},
                         success: function(data) {
                           //success -> edit input field
                           console.log(data);
-                          if(data == "invalidPassword"){
+                          if(data == -10){
                               document.getElementById("username");
+                              console.log(data);
                           }else{
+                            localStorage.setItem("sessionID", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
                           }
                         }
