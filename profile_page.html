@@ -45,22 +45,6 @@
                         window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
                     }
                 })
-                })
-                $("#forgotPasswordBtn").click(function(e){
-                    e.preventDefault();
-                    $.ajax({
-                    type: "post",
-                    url: "forgotPassword.php",
-                    data: {username: localStorage.getItem('username')},
-                    success: function(result) {
-                        //logs out the user
-                        localStorage.setItem("username", "logout"); 
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-                    },
-                    error: function(result) {
-                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
-                    }
-                })
                 })  
             })
             $(document).ready(function(){
@@ -72,6 +56,22 @@
                     data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
                     success: function(result) {
                         window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+                    },
+                    error: function(result) {
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+                    }
+                })
+                })
+                $("#forgotPasswordBtn").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                    type: "post",
+                    url: "forgotPassword.php",
+                    data: {username: localStorage.getItem('username')},
+                    success: function(result) {
+                        //logs out the user
+                        localStorage.setItem("username", "logout"); 
+                        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
                     },
                     error: function(result) {
                         window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
