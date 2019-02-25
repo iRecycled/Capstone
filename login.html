@@ -37,10 +37,11 @@
                           //success -> edit input field
                           console.log(data);
                           if(data == -10){
-                              document.getElementById("username").style.border = "solid";
-                              document.getElementById("inputPassword").style.border = "solid";
                               document.getElementById("username").style.borderColor = "red";
                               document.getElementById("inputPassword").style.borderColor = "red";
+                              document.getElementById("errorText").innerHTML = "Username or Password is incorrect";
+                              document.getElementById("errorText").style.color = "red";
+
                               console.log(data);
                           }else{
                             localStorage.setItem("sessionID", data);
@@ -68,6 +69,7 @@
     <div class="text-center" id="loginBox">
       <form class="form-signin">
                <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+               <p id="errorText"></p>
                <label for="inputUser" class="sr-only">Username</label>
                <input id="username" type="username" name="usernameL" class="form-control" placeholder="Username" required>
                <label for="inputPassword" class="sr-only">Password</label>
