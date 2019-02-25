@@ -73,7 +73,7 @@
                         for( var x in obj) {
                             let privateServerList = document.getElementById("pageSubmenu");
                             let listItem = document.createElement("li");
-                            let link = document.createElement("a");
+                            let link = document.createElement("btn");
                             let text = document.createTextNode(obj[x].ServerName);
                             link.id = obj[x].ServerName;
                             link.onclick = loadServer(obj[x].ServerName);
