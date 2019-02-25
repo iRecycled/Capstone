@@ -30,14 +30,14 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
    			 }
            else{
              //edit html element to show error
-              echo "<script>
+              /*echo "<script>
                function mySubmit(){
                   document.getElementById("username").style.borderColor = "red";
                   document.getElementById("password").style.borderColor = "red";
                }
                mySubmit();
                </script>"
-               
+               */
                include "login.html"
            }
          }
