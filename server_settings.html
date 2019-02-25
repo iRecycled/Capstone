@@ -26,6 +26,33 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
 
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "post",
+                url: "getServerInfo.php",
+                data: {servername: localStorage.getItem('servername')},
+                success: function(data) {
+                    obj = JSON.parse(data);
+                    for( var x in obj) {
+                        let privateServerList = document.getElementById("pageSubmenu");
+                        let listItem = document.createElement("li");
+                        let link = document.createElement("a");
+                        let text = document.createTextNode(obj[x].ServerName);
+                        link.id = obj[x].ServerName;
+                        link.href = "chat/private/" + obj[x].ServerName + ".txt";
+                        link.appendChild(text);
+                        listItem.appendChild(link);
+                        privateServerList.appendChild(listItem);
+                    }
+                },
+                error: function(data) {
+                    console.log("fail");
+                }
+            })
+        })
+    
+    </script>
 </head>
 
 <body>
@@ -122,7 +149,7 @@
     <!-- Page Content -->
     <div id="content">
         <div id="change_server_title">
-            <label for="ChangeServerTitle"><h2>*Server Name*</h2></label>
+            <label for="ChangeServerTitle"><h2><script>localStorage.getItem("servername");</script></h2></label>
             <!-- Edit Button Trigger modal -->
             <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#ChangeServerTitle">
             Edit
