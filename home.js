@@ -5,7 +5,20 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
+            console.log(obj)
             createServerTable(obj, "userServersBody")
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
+    $.ajax({
+        type: "post",
+        url: "getAllServerList.php",
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            createServerTable(obj, "allServersBody")
         },
         error: function(data) {
             console.log("fail");
