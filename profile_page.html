@@ -76,7 +76,7 @@
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj[x].ServerName);
                             link.id = obj[x].ServerName;
-                            link.href = loadServer(obj[x].ServerName);
+                            link.onclick = loadServer(obj[x].ServerName);
                             link.appendChild(text);
                             listItem.appendChild(link);
                             privateServerList.appendChild(listItem);
