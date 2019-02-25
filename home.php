@@ -128,13 +128,13 @@
     <div id="content">
         <div id="servers">
             <div id = "userServersContainer" class = "serverTableDiv">
-                <table id = "userServers" >
+                <table id = "userServers" class = "serverTable" >
                     <tbody id = "userServersBody">
                     </tbody>
                 </table>
             </div>  
             <div id = "allServersContainer" class = "serverTableDiv">
-                <table id = "allServers">
+                <table id = "allServers" class = "serverTable">
                     <tbody id = "allServersBody">
                     </tbody>
                 </table>
