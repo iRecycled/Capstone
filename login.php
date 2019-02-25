@@ -19,12 +19,12 @@ header("index.php");
       		$stmt->bind_result($userID, $username, $password, $email);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
-          $data="correctPassword";
-          include "chat.html";
+          $data=$userID;
+          
   		    //success, loads chat
    			 }
            else{
-            $data="invalidPassword";
+            $data=-10;
              //edit html element to show error
    
            }
