@@ -1,7 +1,7 @@
 .serverTableDiv{
     display: inline-block;
     height: 70vh;
-    width: 40%;
+    width: 30%;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
@@ -23,4 +23,8 @@
 
 .serverTable{
     width:100%;
+}
+
+.serverEntry{
+    height:200px;
 }

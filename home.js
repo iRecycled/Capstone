@@ -32,7 +32,7 @@ function createServerTable(d, targetID){
     for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
-                    <td>\
+                    <td class = 'serverEntry'>\
                         " + d[i].ServerName + "\
                     </td>\
                 <tr>";
