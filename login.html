@@ -24,6 +24,27 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src=autoLogin.js></script>
     
+    <script>
+        $(document).ready(function(){
+                    $("#loginBtn").click(function(e){
+                        e.preventDefault();
+                        $.ajax({
+                        type: "post",
+                        url: "login.php",
+                        data: {user: localStorage.getItem('usernameL').value, pass: document.getElementById("passwordL").value},
+                        success: function(data) {
+                          //success -> edit input field
+                          console.log(data);
+                          if(userID == "invalidPassword"){
+                              document.getElementById("username");
+                          }else{
+                            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+                          }
+                        }
+                    })
+                    })
+                })
+        </script>
   </head>
   <body>
     <title>Terrychat Login</title>
@@ -31,8 +52,6 @@
   </head>
   <body>
     <script>
-        
-
         function myFunction() {
           //code to add the username info to local storage
             var loginUsername = document.getElementById("username");
@@ -41,7 +60,7 @@
     </script>
     
     <div class="text-center" id="loginBox">
-        <form class="form-signin" action="login.php" method="post">
+      <form class="form-signin">
                <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
                <label for="inputUser" class="sr-only">Username</label>
                <input id="username" type="username" name="usernameL" class="form-control" placeholder="Username" required>
@@ -52,7 +71,7 @@
                             <input type="checkbox" value="remember-me"> Remember Me
                         </label>
                     </div>
-               <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Log in" onclick="myFunction()">Sign in</button>
+               <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Log in" id="loginBtn" onclick="myFunction()">Sign in</button>
                <p class="mt-5 bm-3 text-muted">Terrychat</p>
         </form>
     </div>
