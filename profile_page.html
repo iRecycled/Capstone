@@ -26,6 +26,10 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script>
+            function loadServer(serverID) {
+                localStorage.setItem("serverID", serverID);
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+            }
             $(document).ready(function(){
                 $("#createServerBtn").click(function(e){
                     e.preventDefault();
@@ -71,7 +75,7 @@
                             let link = document.createElement("a");
                             let text = document.createTextNode(obj[x].ServerName);
                             link.id = obj[x].ServerName;
-                            link.href = "chat/private/" + obj[x].ServerName + ".txt";
+                            link.href = loadServer(obj[x].ServerName);
                             link.appendChild(text);
                             listItem.appendChild(link);
                             privateServerList.appendChild(listItem);
