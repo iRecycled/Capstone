@@ -38,8 +38,6 @@ if ( isset( $_POST['submit']) && (strlen( $_POST['usernameL'])!=0) && (strlen( $
                mySubmit();
                </script>"
                ?>
-               
-             //include "login.html"; // re-loads login
            }
          }
   }
