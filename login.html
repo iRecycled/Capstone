@@ -37,7 +37,8 @@
                           //success -> edit input field
                           console.log(data);
                           if(data == -10){
-                              document.getElementById("username");
+                              document.getElementById("username").style.borderColor = "red";
+                              document.getElementById("password").style.borderColor = "red";
                               console.log(data);
                           }else{
                             localStorage.setItem("sessionID", data);
