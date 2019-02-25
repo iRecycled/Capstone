@@ -127,14 +127,18 @@
     <!-- Page Content -->
     <div id="content">
         <div id="servers">
-            <table id = "userServers">
-                <tbody id = "userServersBody">
-                </tbody>
-            </table>
-            <table id = "allServers">
-                <tbody id = "allServersBody">
-                </tbody>
-            </table>
+            <div id = "userServersContainer">
+                <table id = "userServers">
+                    <tbody id = "userServersBody">
+                    </tbody>
+                </table>
+            </div>  
+            <div id = "allServersContainer">
+                <table id = "allServers">
+                    <tbody id = "allServersBody">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
