@@ -31,7 +31,7 @@
                         $.ajax({
                         type: "post",
                         url: "login.php",
-                        data: {user: localStorage.getItem('usernameL').value, pass: document.getElementById("passwordL").value},
+                        data: {user: document.getElementById('username').value, pass: document.getElementById("inputPassword").value},
                         success: function(data) {
                           //success -> edit input field
                           console.log(data);
