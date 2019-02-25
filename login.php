@@ -19,14 +19,15 @@ header("index.php");
       		$stmt->bind_result($userID, $username, $password, $email);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
-          $userID="correctPassword";
+          $data="correctPassword";
+          include "chat.html";
   		    //success, loads chat
    			 }
            else{
-            $userID="invalidPassword";
+            $data="invalidPassword";
              //edit html element to show error
    
            }
-  echo json_encode($userID);
+  echo json_encode($data);
 ?>
 
