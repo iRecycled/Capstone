@@ -23,12 +23,6 @@ header("index.php");
                 //they emails are the same (fail)
                 $data = -5;
         }
-
-        if(stcmp($email,$emailCheck) != 0){
-                $data = -69;
-        }
-        
-
   
 //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
