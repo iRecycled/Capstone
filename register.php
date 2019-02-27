@@ -8,9 +8,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $username = $_POST['username']; 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  $RegUsername = $_POST['username']; 
+  $RegEmail = $_POST['email'];
+  $RegPassword = $_POST['password'];
 
         //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$email';";
