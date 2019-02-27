@@ -1,11 +1,12 @@
 .landingItem{
     display:inline-block;
     width: 30%;
+    margin: 12px;
 }
 
 .serverTableDiv{
     display: inline-block;
-    height: 70vh;
+    height: 55vh;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
@@ -25,6 +26,11 @@
     background-color: gray;
 }
 
+
+#welcome{
+    text-align: left;
+    margin: 50px;
+}
 .serverTable{
     width:100%;
     border-spacing: 0px;
