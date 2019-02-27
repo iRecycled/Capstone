@@ -22,13 +22,12 @@ header("index.php");
         if(strcmp($email,$emailCheck)==0){
                 //they emails are the same (fail)
                 $data = -5;
+                console.log($data);
         }
-
-        if(stcmp($email,$emailCheck) != 0){
+        else {
                 $data = -69;
+                console.log($data);
         }
-        
-
   
 //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
@@ -38,6 +37,7 @@ header("index.php");
         if(strcmp($username,$usernameCheck)==0){
                 //they are the same (fail)
                 $data = -6; //username value
+                console.log($data);
         }
         
         // 2. Run the Query
@@ -47,9 +47,11 @@ header("index.php");
         if($stmt == NULL) {
            //if statment fails reload page
            $data = 0;
+           console.log($data);
         }
       	else{
-            //if statment succeeds go to login page 
+            //if statment succeeds go to login page
+            include "home.php";
         }
 echo json_encode($data);
 ?>
