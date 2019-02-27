@@ -20,7 +20,7 @@
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId);
             $stmt->fetch();
-            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId')";
+            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId', 0)";
             $stmt = simpleQuery($db, $query);
 
             //Create chatroom text file_exists\
