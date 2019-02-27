@@ -10,7 +10,7 @@
         $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
         //runs the query
         $stmt = simpleQuery($db, $query);
-        $stmt->bind_result)($userID);
+        $stmt->bind_result($userID);
         $stmt->fetch();
         
         $query = "SELECT UserName FROM Friend JOIN WebUser w2 ON Friend.Friend2ID = w2.UserID WHERE Friend1ID = '$userID';";
