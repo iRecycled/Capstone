@@ -7,13 +7,13 @@
             }
             //connects to database
         $username = $_POST['username']; 
-        
-        $query = "select UserID from WebUser where UserName = '$username'";
+        $query = "SELECT UserID FROM WebUser WHERE UserName = '$username'";
         //runs the query
+        /*
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result)($userID);
         $stmt->fetch()
-        /*
+        
         $query = "SELECT UserName FROM Friend JOIN WebUser w2 ON Friend.Friend2ID = w2.UserID WHERE Friend1ID = '$userID'";
         $result = $db->query($query);
         $response = array();
@@ -28,6 +28,7 @@
             $response[] = $row;
         }
         */
-        echo json_encode($userID);
+        $response[] = array()
+        echo json_encode($response);
         
 ?>
