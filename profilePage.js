@@ -33,6 +33,7 @@ $(document).ready(function(){
         error: function(result) {
             console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            alert("Failed to change password!")
         }
     })
     })
@@ -49,11 +50,13 @@ $(document).ready(function(){
             alert.class = "alert alert-info alert-dismissible";
             alert.class = "close";*/
             //logs out the user
+            alert("You received an email with your new password!");
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            alert("Failed to reset your password.");
         }
     })
     })
