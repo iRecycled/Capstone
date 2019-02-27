@@ -9,8 +9,14 @@
 
     $username = $_POST['username']; 
     //randomly set password for the user to change
-    $password = "random";
-
+    $length = 8;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, $charactersLength - 1)];
+    }
+    echo $password;
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
 
@@ -26,7 +32,7 @@
     $subject = "TerryChat Password Reset"
     //send email to the user with the new password
     //mail('eamil','subject','message')
-    mail("kaszubskij3381@my.uwstout.edu",$subject,$msg);
+    mail($email,$subject,$msg);
     
     //alert box to be created and displayed
     //<div class="alert alert-info alert-dismissible">
