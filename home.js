@@ -35,7 +35,7 @@ function createServerTable(d, targetID){
                     <td class = 'serverEntry'>\
                         " + d[i].ServerName + "\
                     </td>\
-                <tr>";
+                </tr>";
     }
     document.getElementById(targetID).innerHTML += text;
 }
