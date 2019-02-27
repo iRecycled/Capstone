@@ -13,18 +13,20 @@
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result)($userID);
         $stmt->fetch()
-        $query = "select UserName from Friend join WebUser w2 on Friend.Friend2ID = w2.UserID where Friend1ID = '$userID'";
+        $query = "SELECT UserName FROM Friend JOIN WebUser w2 ON Friend.Friend2ID = w2.UserID WHERE Friend1ID = '$userID'";
         $result = $db->query($query);
         $response = array();
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $response[] = $row;
         }
-        $query = "select UserName from Friend join WebUser w1 on Friend.Friend1ID = w1.UserID where Friend2ID = '$userID";
+        /*
+        $query = "SELECT UserName FROM Friend JOIN WebUser w1 ON Friend.Friend1ID = w1.UserID WHERE Friend2ID = '$userID";
         $result = $db->query($query);
         $response = array();
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $response[] = $row;
         }
+        */
         echo json_encode($response);
         
 ?>
