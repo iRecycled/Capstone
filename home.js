@@ -25,6 +25,7 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    console.log(localStorage.getItem('username'))
     $.ajax({
         type: "post",
         url: "getFriendsList.php",
@@ -32,13 +33,26 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj)
-
+            createFriendsList(obj, "friendsListBody")
         },
         error: function(data) {
             console.log("fail");
         }
     })
 });
+
+function createFriendsList(d, targetID){
+    text = "";
+    for(i = 0; i < d.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry'>\
+                        " + d[i].ServerName + "\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(targetID).innerHTML += text;
+}
 
 function createServerTable(d, targetID){
     text = "";
