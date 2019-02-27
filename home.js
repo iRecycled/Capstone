@@ -47,7 +47,7 @@ function createFriendsList(d, targetID){
     {
         text +="<tr>\
                     <td class = 'serverEntry'>\
-                        " + d[i].ServerName + "\
+                        " + d[i].UserName + "\
                     </td>\
                 </tr>";
     }
