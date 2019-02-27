@@ -199,7 +199,7 @@ function msgParse(){
 //send the message
 function sendChat(message, nickname, serverID)
 {
-    updateChat();
+    updateChat(serverID);
     console.log("sent successfully");
 
      $.ajax({
