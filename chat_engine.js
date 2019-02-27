@@ -4,8 +4,6 @@ var instanse = false;
 var state;
 var mes;
 var file;
-
-
 //injects the emote code into the text area
 function addEmote(e)
 {
@@ -13,7 +11,7 @@ function addEmote(e)
     var result = e.innerHTML.substring(n + 1)
     chatInputArea.value += result
 }
-//generates the list for the emote widget 
+//generates the list for the emote widget
 function generateEmoteList(e)
 {
     eList = emoteWL.sort()
@@ -24,14 +22,14 @@ function generateEmoteList(e)
     }
 }
 //sets functions when the document loads
-document.addEventListener("DOMContentLoaded", function(event) { 
-    
+document.addEventListener("DOMContentLoaded", function(event) {
+
     submitButton = document.getElementById("chatTextSubmit")
     chatInputArea = document.getElementById("sendie")
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
 
-    
+
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
@@ -43,38 +41,38 @@ function Chat () {
 }
 
 //gets the state of the chat
-function getStateOfChat(){
+function getStateOfChat(serverID){
 	if(!instanse){
 		 instanse = true;
 		 $.ajax({
 			   type: "POST",
 			   url: "process.php",
-			   data: {  
+			   data: {
 			   			'function': 'getState',
-						'file': file
+						  'file': serverID
 						},
 			   dataType: "json",
-			
+
 			   success: function(data){
 				   state = data.state;
 				   instanse = false;
 			   },
 			});
-	}	 
+	}
 }
 
 //Updates the chat
-function updateChat(){
+function updateChat(serverID){
 	 if(!instanse){
 		 instanse = true;
 		 console.log("start update");
 	     $.ajax({
 			   type: "POST",
 			   url: "process.php",
-			   data: {  
-			   			'function': 'update',
+			   data: {
+			   		'function': 'update',
 						'state': state,
-						'file': file
+						'file': serverID
 						},
 			   dataType: "json",
 			   success: function(data){
@@ -90,9 +88,9 @@ function updateChat(){
                             console.log(data.text[i]);
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
-                        }								  
+                        }
 				   }
-				   
+
 				   instanse = false;
 				   state = data.state;
 			   },
@@ -116,7 +114,7 @@ function generateMsg(text, sender, time)
                  + username
                  + "<span class='msgDate'>"
                      + today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2) + '</span>'
-             + "</p>"  
+             + "</p>"
             + text + "\
             </div>\
         </td>\
@@ -168,16 +166,16 @@ function msgParse(){
                     parse += (words[i] + " ")
                 }
             }
-            
+
             else
             {
                 parse += (words[i] + " ")
             }
         }
         return parse;
-	
+
     }
-	
+
     this.imgExists = function(img)
     {
         //ensure whitespace/newlines arent present
@@ -190,7 +188,7 @@ function msgParse(){
             http.send();
             console.log('true');
             return http.status!=404;
-	    
+
         }
         else{
 	    console.log('false');
@@ -199,18 +197,19 @@ function msgParse(){
     }
 }
 //send the message
-function sendChat(message, nickname)
-{       
+function sendChat(message, nickname, serverID)
+{
     updateChat();
     console.log("sent successfully");
+
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
-		   data: {  
-		   			'function': 'send',
+		   data: {
+		   		'function': 'send',
 					'message': message,
 					'nickname': nickname,
-					'file': file
+					'file': serverID
 				 },
 		   dataType: "json",
 		   success: function(data){

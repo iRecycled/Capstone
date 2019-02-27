@@ -19,17 +19,17 @@
     <script src = 'chat_engine.js'></script>
     <script type="text/javascript">
         /*
-        // ask user for name with popup prompt    
+        // ask user for name with popup prompt
         var name = prompt("Enter your chat name:", "Guest");
-        
+
         // default name is 'Guest'
     	if (!name || name === ' ') {
-    	   name = "Guest";	
+    	   name = "Guest";
     	}
-    	
+
     	// strip tags
     	name = name.replace(/(<([^>]+)>)/ig,"");
-    	
+
     	// display name on page
     	//$("#name-area").html("You are: <span>" + name + "</span>");
         */
@@ -37,92 +37,92 @@
     	// kick off chat
         var chat =  new Chat();
     	$(function() {
-    	
-    		 chat.getState(); 
-    		 
+
+    		 chat.getState(localStorage.getItem('serverID'));
+
     		 // watch textarea for key presses
-             $("#sendie").keydown(function(event) {  
+             $("#sendie").keydown(function(event) {
                 console.log("key down");
-                 var key = event.which;  
+                 var key = event.which;
                  console.log(key);
-                 //all keys including return.  
+                 //all keys including return.
                  if (key >= 33) {
                      console.log(key);
-                     var maxLength = $(this).attr("maxlength");  
-                     var length = this.value.length;  
-                     
+                     var maxLength = $(this).attr("maxlength");
+                     var length = this.value.length;
+
                      // don't allow new content if length is maxed out
-                     if (length >= maxLength) {  
+                     if (length >= maxLength) {
                          console.log("too long?");
-                         event.preventDefault();  
-                     }  
-                }  
+                         event.preventDefault();
+                     }
+                }
             });
 
             // watch textarea for key presses
-            $("#chatTextSubmit").mousedown(function(event) {  
+            $("#chatTextSubmit").mousedown(function(event) {
                 console.log("key down");
-                var maxLength = $('#sendie').attr("maxlength");  
-                var length = document.getElementById('sendie').value.length;  
-                
+                var maxLength = $('#sendie').attr("maxlength");
+                var length = document.getElementById('sendie').value.length;
+
                 // don't allow new content if length is maxed out
-                if (length >= maxLength) {  
+                if (length >= maxLength) {
                     console.log("too long?");
-                    event.preventDefault();  
-                }   
+                    event.preventDefault();
+                }
             });
 
     		 // watch textarea for release of key press
-    		 $('#sendie').keyup(function(e) {	
-    		 		console.log("key up");		
+    		 $('#sendie').keyup(function(e) {
+    		 		console.log("key up");
                     console.log(e.keyCode);
-    			  if (e.keyCode == 13) { 
+    			  if (e.keyCode == 13) {
     			    console.log("enter key");
                     var text = $(this).val();
-    				var maxLength = $(this).attr("maxlength");  
-                    var length = text.length; 
+    				var maxLength = $(this).attr("maxlength");
+                    var length = text.length;
                      console.log(length);
                       console.log(maxLength);
-                    // send 
-                    if (length <= maxLength + 1) { 
+                    // send
+                    if (length <= maxLength + 1) {
                         console.log("right size");
-    			        chat.send(text, name);	
+    			        chat.send(text, name, localStorage.getItem('serverID'));
     			        $(this).val("");
-    			        
+
                     } else {
-                    
+
     					$(this).val(text.substring(0, maxLength));
-    					
-    				}	
-    				
-    				
+
+    				}
+
+
     			  }
              });
 
              // watch textarea for release of key press
-    		 $('#chatTextSubmit').mouseup(function(e) {	
-    		 		console.log("key up");		
+    		 $('#chatTextSubmit').mouseup(function(e) {
+    		 		console.log("key up");
     			    console.log("enter key");
                     var text = $("#sendie").val();
-    				var maxLength = $("#sendie").attr("maxlength");  
-                    var length = text.length; 
+    				var maxLength = $("#sendie").attr("maxlength");
+                    var length = text.length;
                     console.log(length);
                     console.log(maxLength);
-                    // send 
-                    if (length <= maxLength + 1) { 
+                    // send
+                    if (length <= maxLength + 1) {
                         console.log("right size");
-                        chat.send(text, name);	
+                        chat.send(text, name, localStorage.getItem('serverID'));
                         $('#sendie').val("");
-                        
+
                     } else {
-                    
+
                         $('#sendie').val(text.substring(0, maxLength));
-                        
-                    }	
-                
+
+                    }
+
              });
-             
-            
+
+
     	});
     </script>
 
@@ -173,11 +173,11 @@
               window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
             }
             else{
-                
+
                }
           }
           else{
-            
+
             if(localStorage.getItem('username').length==0){
               localStorage.setItem("username","oheystopmesingaround")
               localStorage.setItem("sessionID","-1")
@@ -198,7 +198,7 @@
       data: {username: localStorage.getItem('username')},
       success: function(data) {
       if(data==localStorage.getItem("sessionID")){
-        
+
       }
       else{
         window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
@@ -222,11 +222,11 @@ $.ajax({
       window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
     }
     else{
-        
+
        }
   }
   else{
-    
+
     if(localStorage.getItem('username').length==0){
       localStorage.setItem("username","oheystopmesingaround")
       localStorage.setItem("sessionID","-1")
@@ -239,7 +239,7 @@ $.ajax({
 
 </head>
 
-<body onload="setInterval('chat.update()', 1000)">
+<body onload="setInterval('chat.update(localStorage.getItem('serverID'))', 1000)">
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
     <ul class="navbar-nav mr-auto">
@@ -252,7 +252,7 @@ $.ajax({
 
     <ul class="navbar-nav right">
         <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="profile_page.html" id="username">       
+        <a class="nav-item nav-link active" href="profile_page.html" id="username">
                 <script>
                     document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                 </script>
@@ -326,7 +326,7 @@ $.ajax({
                             <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
-                              
+
                             </div>
                           </div>
                     <!--Chat Submit Button-->
