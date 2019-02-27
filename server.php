@@ -25,7 +25,8 @@
             $stmt = simpleQuery($db, $query);
 
             //Create chatroom text file_exists\
-            $filename = "/chat/private/".$serverId.".txt";
+            $filename = "/chat/private/$serverId.txt";
+            fopen($filename,"w");
             fwrite($filename,"");
             fclose($filename);
         }
