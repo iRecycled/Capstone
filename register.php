@@ -20,8 +20,12 @@ header("index.php");
         $stmt->fetch();
 
         if(strcmp($email,$emailCheck)==0){
-                //they are the same (fail)
-                $data = -5; //email value
+                //they emails are the same (fail)
+                $data = -5;
+        }
+
+        if(stcmp($email,$emailCheck) != 0){
+                $data = -69;
         }
         
 
