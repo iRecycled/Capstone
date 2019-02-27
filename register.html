@@ -27,7 +27,7 @@
 
         <script>
                 $(document).ready(function(){
-                            $("#registerBtn").click(function(e){
+                            $("#registerBtn").click(function(e){console.log(data);
                                 e.preventDefault();
                                 $.ajax({
                                 type: "post",
@@ -35,23 +35,23 @@
                                 url: "register.php",
                                 data: {RegEmail: document.getElementById("email").value, RegUsername: document.getElementById('username').value, RegPassword: document.getElementById("password").value},
                                 success: function(data) {
-                                  console.log(data);
+                                /*
                                   if(data == -5){
                                       document.getElementById("invalidEmail").innerHTML = "Username already in use";
                                       document.getElementById("invalidEmail").style.color = "red";
                                       document.getElementById("email").style.borderColor = "red";
-                                      console.log(data);
-                                
+                                      console.log(data);                                
                                   }
-                                  if(data == -6){
+                                  else if(data == -6){
                                     document.getElementById("invalidUsername").innerHTML = "Email already registered";
                                     document.getElementById("username").style.borderColor = "red";
                                     console.log(data);
                                   }
+*/
                                   if(data == 0){
                                       console.log(data);
                                   }
-                                  else{
+                                  else if(data == 1){
                                     window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                                   }
                                 }
@@ -78,7 +78,7 @@
                <p id="invalidPassword"></p>
                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                <p> &nbsp </p> <!-- adds white space between password input and Sign in button -->
-               <button class="btn btn-lg btn-primary btn-block" id="registerBtn" name="submit" type="submit" value="Register">Sign in</button>
+               <button class="btn btn-lg btn-primary btn-block" id="registerBtn" value="Register">Sign in</button>
 
                <p class="mt-5 bm-3 text-muted">Terrychat</p>
             </div>

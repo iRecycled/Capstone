@@ -39,15 +39,21 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
 });
 
 function createFriendsList(d, targetID){
+    names = []
+    for(i = 0; i < d.length; i++){
+        names.push(d[i].UserName)
+    }
+    names.sort()
     text = "";
-    for(i = 0; i < d.length; i++)
+    for(i = 0; i < names.length; i++)
     {
         text +="<tr>\
                     <td class = 'serverEntry'>\
-                        " + d[i].UserName + "\
+                        " + names[i] + "\
                     </td>\
                 </tr>";
     }
