@@ -25,6 +25,19 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    $.ajax({
+        type: "post",
+        url: "getFriendsList.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
 });
 
 function createServerTable(d, targetID){
