@@ -20,11 +20,9 @@ header("index.php");
         $stmt->fetch();
 
         if(strcmp($email,$emailCheck)==0){
-                //they are the same (fail)
-                $data = -5; //email value
+                //they emails are the same (fail)
+                $data = -5;
         }
-        
-
   
 //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";

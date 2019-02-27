@@ -18,7 +18,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="registerStyle.css">
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="autoLogin.js"></script>
@@ -58,10 +58,10 @@
 
 </head>
 <body>
-    <div class="text-center" id="loginBox">
+    <div class="text-center" id="registerBox">
         <form class="form-signin">
                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-
+            <div class = Login>
                <label for="inputEmail" class="sr-only">Email</label>
                <p id="invalidEmail"></p>
                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
@@ -73,10 +73,11 @@
                <label for="inputPassword" class="sr-only">Password</label>
                <p id="invalidPassword"></p>
                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-
+               <p> &nbsp </p> <!-- adds white space between password input and Sign in button -->
                <button class="btn btn-lg btn-primary btn-block" id="registerBtn" name="submit" type="submit" value="Register">Sign in</button>
 
                <p class="mt-5 bm-3 text-muted">Terrychat</p>
+            </div>
     </form>
     </div>
 </body>
