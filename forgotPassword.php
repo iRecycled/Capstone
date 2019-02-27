@@ -16,7 +16,7 @@
     for ($i = 0; $i < $length; $i++) {
         $password .= $characters[rand(0, $charactersLength - 1)];
     }
-    echo $password;
+    
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
 
@@ -26,6 +26,15 @@
     $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$username';";
     //runs query on the database
     $stmt = simpleQuery($db, $query);
+
+
+    echo "{";
+    ?>
+        "name": <?=json_encode($username)?>,
+        "email": <?=json_encode($email)?>,
+        "newPassword": <?=json_encode($password)?>
+    <?php
+    echo "}";
 
     $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
         "\nPlease login and change your password to something you will remember immediately.";
