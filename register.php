@@ -8,9 +8,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $RegUsername = $_POST['username']; 
-  $RegEmail = $_POST['email'];
-  $RegPassword = $_POST['password'];
+  $RegUsername = $_POST['RegUsername']; 
+  $RegEmail = $_POST['RegEmail'];
+  $RegPassword = $_POST['RegPassword'];
 
         //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$RegEmail';";
@@ -39,7 +39,7 @@ header("index.php");
         }
         */
         // 2. Run the Query
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
+        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$RegUsername', '$RegPassword', '$RegEmail')";
         $stmt = simpleQuery($db, $query);
         
         if($stmt == NULL) {
