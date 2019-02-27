@@ -1,7 +1,11 @@
+.landingItem{
+    display:inline-block;
+    width: 30%;
+}
+
 .serverTableDiv{
     display: inline-block;
     height: 70vh;
-    width: 30%;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
@@ -29,15 +33,15 @@
 }
 
 tr:nth-child(even){
-    height: 162px;
+    height: 80px;
     background: #CCC;
     border-top: 2px solid #464e5b;
 }
 tr:nth-child(odd) {
-    height: 162px;
+    height: 80px;
     background: #FFF;
     border-top: 2px solid #464e5b;
 }
-td{
+.serverEntry{
     padding:0px;
 }
