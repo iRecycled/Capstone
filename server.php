@@ -9,8 +9,7 @@
         $servername = $_POST['servername'];
         if($servername == NULL){
             include 'register.html';
-        }
-        else {
+        } else {
             $query = "SELECT * FROM (SELECT COALESCE(MAX(ServerID)+1,0) FROM Server) as tmptable";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($serverId);
@@ -27,7 +26,8 @@
             //Create chatroom text file_exists\
             $filename = "/chat/private/$serverId.txt";
             error_log($filename);
-            fopen("chat.txt");
+            fopen("chat.txt","w");
+            fclose("chat.txt");
             //fopen($filename,"w") or die("can't open file");
             //fwrite($filename,"");
             //fclose($filename);
