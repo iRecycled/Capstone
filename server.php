@@ -25,9 +25,11 @@
             $stmt = simpleQuery($db, $query);
 
             //Create chatroom text file_exists\
-            $filename = './chat/private/'.$serverId.'.txt';
-            fopen("$filename","w") or die("can't open file");
-            fwrite("$filename","");
-            fclose("$filename");
+            $filename = "/chat/private/$serverId.txt";
+            error_log($filename);
+            fopen("chat.txt");
+            //fopen($filename,"w") or die("can't open file");
+            //fwrite($filename,"");
+            //fclose($filename);
         }
 ?>
