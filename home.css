@@ -38,3 +38,6 @@ tr:nth-child(odd) {
     background: #FFF;
     border-top: 2px solid #464e5b;
 }
+td{
+    padding:0px;
+}
