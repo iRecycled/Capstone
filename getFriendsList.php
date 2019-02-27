@@ -9,7 +9,8 @@
         $username = $_POST['username']; 
         $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
         //runs the query
-        $stmt = simpleQuery($db, $query);
+        $response = array();
+        /*$stmt = simpleQuery($db, $query);
         $stmt->bind_result)($userID);
         $stmt->fetch();
         
@@ -26,6 +27,7 @@
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $response[] = $row;
         }
+        */
         echo json_encode($response);
         
 ?>
