@@ -25,11 +25,11 @@
 
             //Create chatroom text file_exists\
             $filename = "/chat/private/$serverId.txt";
-            error_log($filename);
-            fopen("chat.txt","w");
-            fclose("chat.txt");
-            //fopen($filename,"w") or die("can't open file");
-            //fwrite($filename,"");
-            //fclose($filename);
+            //error_log($filename);
+            // fopen("chat.txt","w");
+            // fclose("chat.txt");
+            $openfile = fopen($filename,"w") or die("can't open file");
+            //fwrite($openfile,"");
+            fclose($openfile);
         }
 ?>
