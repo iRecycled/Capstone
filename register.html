@@ -27,7 +27,7 @@
 
         <script>
                 $(document).ready(function(){
-                            $("#registerBtn").click(function(e){
+                            $("#registerBtn").click(function(e){console.log(data);
                                 e.preventDefault();
                                 $.ajax({
                                 type: "post",
@@ -35,7 +35,7 @@
                                 url: "register.php",
                                 data: {RegEmail: document.getElementById("email").value, RegUsername: document.getElementById('username').value, RegPassword: document.getElementById("password").value},
                                 success: function(data) {
-                                console.log(data);
+                                
                                   if(data == -5){
                                       document.getElementById("invalidEmail").innerHTML = "Username already in use";
                                       document.getElementById("invalidEmail").style.color = "red";
