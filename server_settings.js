@@ -6,8 +6,8 @@ $(document).ready(function(){
         success: function(data) {
             console.log(data);
             obj = JSON.parse(data);
-            console.log(obj);
-            document.getElementById("servername").innerHTML = obj.serverName;
+            //console.log(obj);
+            document.getElementById("servername").innerHTML = data.serverName;
         },
         error: function(data) {
             console.log("fail");

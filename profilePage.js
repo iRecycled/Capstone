@@ -67,6 +67,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
+            console.log(obj);
             for( var x in obj) {
                 let privateServerList = document.getElementById("pageSubmenu");
                 let listItem = document.createElement("li");
