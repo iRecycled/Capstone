@@ -38,6 +38,7 @@
                                   console.log(data);
                                   if(data == -5){
                                       document.getElementById("invalidEmail").innerHTML = "Username already in use";
+                                      document.getElementById("invalidEmail").style.color = "red";
                                       document.getElementById("email").style.borderColor = "red";
                                       console.log(data);
                                 
@@ -46,6 +47,9 @@
                                     document.getElementById("invalidUsername").innerHTML = "Email already registered";
                                     document.getElementById("username").style.borderColor = "red";
                                     console.log(data);
+                                  }
+                                  if(data == 0){
+                                      console.log(data);
                                   }
                                   else{
                                     window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';

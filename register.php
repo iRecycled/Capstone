@@ -12,7 +12,7 @@ header("index.php");
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-//check if username is used
+        //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$email';";
         $stmt = simpleQuery($db, $query);
 
@@ -22,14 +22,13 @@ header("index.php");
         if(strcmp($email,$emailCheck)==0){
                 //they emails are the same (fail)
                 $data = -5;
-                console.log($data);
         }
         else {
                 $data = -69;
-                console.log($data);
         }
   
-//check if email is used
+        //check if username is used
+        /*
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
         $stmt->bind_result($userIDCheck, $usernameCheck, $passwordCheck, $emailCheck);
         $stmt->fetch();
@@ -37,9 +36,8 @@ header("index.php");
         if(strcmp($username,$usernameCheck)==0){
                 //they are the same (fail)
                 $data = -6; //username value
-                console.log($data);
         }
-        
+        */
         // 2. Run the Query
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
         $stmt = simpleQuery($db, $query);
@@ -47,7 +45,6 @@ header("index.php");
         if($stmt == NULL) {
            //if statment fails reload page
            $data = 0;
-           console.log($data);
         }
       	else{
             //if statment succeeds go to login page
