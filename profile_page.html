@@ -28,7 +28,7 @@
         <script>
             function loadServer(serverID) {
                 localStorage.setItem("serverID", serverID);
-                //window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
                 console.log("TEST");
             }
             $(document).ready(function(){
@@ -132,7 +132,7 @@
         <!-- Nav Bar-->
         <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
             <ul class="navbar-nav mr-auto">
-                <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="chat.html">Home <span class="sr-only">(current)</span></a>
             </ul>
     
             <ul class="navbar-nav mr-auto ">
@@ -141,7 +141,7 @@
     
             <ul class="navbar-nav right">
                 <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="home.html">Logout <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="profile_page.html" id="username">       
                     <script>
                         document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");

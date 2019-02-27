@@ -6,7 +6,7 @@
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
         $username = $_POST['username'];
-        $servername = $_POST['servername']; 
+        $servername = $_POST['servername'];
         if($servername == NULL){
             include 'register.html';
         }
@@ -23,5 +23,11 @@
             $stmt->fetch();
             $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId')";
             $stmt = simpleQuery($db, $query);
+
+            //Create chatroom text file_exists\
+            $filename = "/chat/private/$serverId.txt";
+            fopen($filename,"w");
+            fwrite($filename,"");
+            fclose($filename);
         }
 ?>
