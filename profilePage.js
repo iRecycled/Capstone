@@ -27,9 +27,11 @@ $(document).ready(function(){
         url: "changePassword.php",
         data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
         success: function(result) {
+            console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(result) {
+            console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
@@ -42,10 +44,10 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(result) {
             //create alert box
-            let alert = document.createElement("div");
+            /*let alert = document.createElement("div");
             let close = document.createElement("a");
             alert.class = "alert alert-info alert-dismissible";
-            alert.class = "close";
+            alert.class = "close";*/
             //logs out the user
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';

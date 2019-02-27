@@ -9,7 +9,7 @@
 
     $username = $_POST['username']; 
     //randomly set password for the user to change
-    $password = "random characters";
+    $password = "random";
 
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
@@ -27,6 +27,7 @@
     //send email to the user with the new password
     //mail('eamil','subject','message')
     mail($email,$subject,$msg);
+    echo json_encode($email);
     //alert box to be created and displayed
     //<div class="alert alert-info alert-dismissible">
         //<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
