@@ -39,7 +39,7 @@ header("index.php");
         }
         */
         // 2. Run the Query
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
+        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$RegUsername', '$RegPassword', '$RegEmail')";
         $stmt = simpleQuery($db, $query);
         
         if($stmt == NULL) {
