@@ -1,11 +1,3 @@
-function registerClick(){
-    $('#registerModal').modal('show')
-}
-
-function loginClick(){
-    $('#loginModal').modal('show')
-}
-
 $(document).ready(function () {
 
     $("#sidebar").mCustomScrollbar({
