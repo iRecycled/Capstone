@@ -8,7 +8,7 @@
             //connects to database
         $username = $_POST['username']; 
 
-        $query = "select UserId from WebUser where UserName = '$username'";
+        $query = "select UserID from WebUser where UserName = '$username'";
         //runs the query
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result)($userID);
