@@ -39,6 +39,7 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
 });
 
 function createFriendsList(d, targetID){
