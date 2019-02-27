@@ -37,7 +37,12 @@
     padding:0;
     table-layout: fixed;
 }
-
+tr{
+    height: 80px;
+    background: #CCC;
+    border-top: 2px solid #464e5b;
+}
+/*
 tr:nth-child(even){
     height: 80px;
     background: #CCC;
@@ -48,6 +53,7 @@ tr:nth-child(odd) {
     background: #FFF;
     border-top: 2px solid #464e5b;
 }
+*/
 .serverEntry{
     padding:0px;
 }
