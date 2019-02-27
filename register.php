@@ -13,9 +13,10 @@ header("index.php");
   $RegPassword = $_POST['RegPassword'];
 
         //check if email is used
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$RegEmail';";
+        $data = 100;
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE email = '$RegEmail';";
         $stmt = simpleQuery($db, $query);
-        $data = 0;
+        
         $stmt->bind_result($userIDCheck, $usernameCheck, $passwordCheck, $emailCheck);
         $stmt->fetch();
 
@@ -43,9 +44,6 @@ header("index.php");
            //if statment fails reload page
            //$data = 0;
         }
-      	else{
-            //if statment succeeds go to login page
-            include "home.php";
-        }
+      	
 echo json_encode($data);
 ?>

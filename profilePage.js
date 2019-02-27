@@ -49,12 +49,10 @@ $(document).ready(function(){
             alert.class = "alert alert-info alert-dismissible";
             alert.class = "close";*/
             //logs out the user
-            console.log(result);
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },
         error: function(result) {
-            console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
@@ -69,6 +67,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
+            console.log(obj);
             for( var x in obj) {
                 let privateServerList = document.getElementById("pageSubmenu");
                 let listItem = document.createElement("li");
