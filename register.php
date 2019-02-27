@@ -15,16 +15,13 @@ header("index.php");
         //check if email is used
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$RegEmail';";
         $stmt = simpleQuery($db, $query);
-
+        $data = 0;
         $stmt->bind_result($userIDCheck, $usernameCheck, $passwordCheck, $emailCheck);
         $stmt->fetch();
 
         if(strcmp($RegEmail,$emailCheck)==0){
                 //they emails are the same (fail)
                 $data = -5;
-        }
-        else {
-                $data = -69;
         }
   
         //check if username is used
@@ -44,7 +41,7 @@ header("index.php");
         
         if($stmt == NULL) {
            //if statment fails reload page
-           $data = 0;
+           //$data = 0;
         }
       	else{
             //if statment succeeds go to login page
