@@ -21,10 +21,8 @@
         }
         $query = "SELECT UserName FROM Friend JOIN WebUser w1 ON Friend.Friend1ID = w1.UserID WHERE Friend2ID = '$userID';";
         $result = $db->query($query);
-        $response = array();
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $response[] = $row;
         }
-        echo json_encode($response);
-        
+        echo json_encode($response); 
 ?>
