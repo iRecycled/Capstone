@@ -13,9 +13,9 @@ header("index.php");
   $RegPassword = $_POST['RegPassword'];
 
         //check if email is used
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$RegEmail';";
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE email = '$RegEmail';";
         $stmt = simpleQuery($db, $query);
-        $data = 0;
+        
         $stmt->bind_result($userIDCheck, $usernameCheck, $passwordCheck, $emailCheck);
         $stmt->fetch();
 
