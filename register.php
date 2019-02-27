@@ -8,18 +8,18 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $username = $_POST['username']; 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  $RegUsername = $_POST['username']; 
+  $RegEmail = $_POST['email'];
+  $RegPassword = $_POST['password'];
 
         //check if email is used
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$email';";
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$RegEmail';";
         $stmt = simpleQuery($db, $query);
 
         $stmt->bind_result($userIDCheck, $usernameCheck, $passwordCheck, $emailCheck);
         $stmt->fetch();
 
-        if(strcmp($email,$emailCheck)==0){
+        if(strcmp($RegEmail,$emailCheck)==0){
                 //they emails are the same (fail)
                 $data = -5;
         }
