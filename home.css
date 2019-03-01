@@ -48,6 +48,11 @@ tr:nth-child(odd) {
     background: #CCC;
     border-top: 2px solid #464e5b;
 }
+
+tr:hover{
+    background: rgb(100, 100, 100);
+}
+
 .serverEntry{
     padding:0px;
 }

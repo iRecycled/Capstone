@@ -1,4 +1,6 @@
+//on load of page
 $(document).ready(function(){
+    //get list of users servers
     $.ajax({
         type: "post",
         url: "getServerList.php",
@@ -12,6 +14,7 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    //get list of servers user does not belong to
     $.ajax({
         type: "post",
         url: "getAllServerList.php",
@@ -25,6 +28,7 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    //get list of user's friends
     console.log(localStorage.getItem('username'))
     $.ajax({
         type: "post",
@@ -39,16 +43,22 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
+    //adds welcome message to page
+    if(welcome.trim() == "")
+    {
+        document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
+    }
 });
-
+//takes friends list data and injects into HTML
 function createFriendsList(d, targetID){
+    //generates and sorts list of user names 
     names = []
     for(i = 0; i < d.length; i++){
         names.push(d[i].UserName)
     }
     names.sort()
     text = "";
+    //uses name list to inject table rows
     for(i = 0; i < names.length; i++)
     {
         text +="<tr>\
@@ -59,9 +69,10 @@ function createFriendsList(d, targetID){
     }
     document.getElementById(targetID).innerHTML += text;
 }
-
+//takes server list data and injects into HTML
 function createServerTable(d, targetID){
     text = "";
+    //generates table rows from list of server names
     for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
