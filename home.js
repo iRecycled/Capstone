@@ -1,5 +1,10 @@
 //on load of page
 $(document).ready(function(){
+    //adds welcome message to page
+    if(welcome.innerHTML.trim() == "")
+    {
+        document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
+    }
     //get list of users servers
     $.ajax({
         type: "post",
@@ -43,11 +48,6 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    //adds welcome message to page
-    if(welcome.trim() == "")
-    {
-        document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
-    }
 });
 //takes friends list data and injects into HTML
 function createFriendsList(d, targetID){
