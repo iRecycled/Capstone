@@ -46,6 +46,10 @@
                 <a class="nav-item nav-link active" href="profile_page.html" id="username">       
                     <script>
                         document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+                        function selfProfilePage(){
+                            localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                        }
+                        document.addEventListener('onclick',selfProfilePage());
                     </script>
                 <span class="sr-only">(current)</span></a>
             </ul>
