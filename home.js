@@ -63,7 +63,7 @@ function createFriendsList(d, targetID){
     {
         text +="<tr>\
                     <td class = 'serverEntry'>\
-                        <a href='profile_page.html' onclick = 'setViewInfo("+names[i]+")'>\
+                        <a  onclick = 'setViewInfo("+names[i]+")'>\
                         " + names[i] + "\
                         </a>\
                     </td>\
