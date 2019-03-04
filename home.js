@@ -62,12 +62,19 @@ function createFriendsList(d, targetID){
     for(i = 0; i < names.length; i++)
     {
         text +="<tr>\
-                    <td class = 'serverEntry' >\
+                    <td class = 'serverEntry'>\
+                        <a href='profile_page.html' onclick = 'setViewInfo("+names[i]+")'>\
                         " + names[i] + "\
+                        </a>\
                     </td>\
                 </tr>";
     }
     document.getElementById(targetID).innerHTML += text;
+}
+
+function setViewInfo(name)
+{
+    localStorage.setItem("viewInfo", name);
 }
 //takes server list data and injects into HTML
 function createServerTable(d, targetID){
@@ -76,8 +83,10 @@ function createServerTable(d, targetID){
     for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
-                    <td class = 'serverEntry' href = 'chat.html' onclick = setServerID(" + d[i].ServerID + ")>\
+                    <td class = 'serverEntry'>\
+                        <a href = 'chat.html' onclick = setServerID(" + d[i].ServerID + ")>\
                         " + d[i].ServerName + "\
+                        </a>\
                     </td>\
                 </tr>";
     }
