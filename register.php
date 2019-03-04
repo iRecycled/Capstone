@@ -19,5 +19,5 @@
       	else{
                 $data=1;
         }
-
+echo json_encode($data);
 ?>
