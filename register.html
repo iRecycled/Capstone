@@ -39,13 +39,10 @@
                           console.log(data);
                           if(data == -10){
                               document.getElementById("username").style.borderColor = "red";
-                              document.getElementById("inputPassword").style.borderColor = "red";
-                              document.getElementById("errorText").innerHTML = "Username or Password is incorrect";
-                              document.getElementById("errorText").style.color = "red";
-
+                              document.getElementById("password").style.borderColor = "red";
+                              document.getElementById("email").style.borderColor = "red";
                               console.log(data);
                           }else{
-                            
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                           }
                         }
