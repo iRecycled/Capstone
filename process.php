@@ -1,6 +1,6 @@
 <?php
     $function = $_POST['function'];
-
+	//comment
     $log = array();
     switch($function) {
 

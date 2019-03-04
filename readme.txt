@@ -103,3 +103,11 @@ style.css
 
 userInfo.php
 	Pulls user info from database
+
+Design:
+
+--Universal navbar design / or custom per page (profile page)
+--Add CheckIfUsername.js to every page
+--Folder System (html,JS,CSS,PHP) exluding index.html
+--Website usability (get around the website w/o using address bar)
+--
