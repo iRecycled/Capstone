@@ -25,10 +25,12 @@
     <script src=autoLogin.js></script>
     <script>
       function removeTags(name){
+          //removes any < tags
     name = name.replace(/(<([^>]+)>)/ig,"");
     return name}
     </script>
     <script>
+        //agax call for a login attempt
         $(document).ready(function(){
                     $("#loginBtn").click(function(e){
                         e.preventDefault();
@@ -40,6 +42,7 @@
                         success: function(data) {
                           console.log(data);
                           if(data == -10){
+                              //if login failure
                               document.getElementById("username").style.borderColor = "red";
                               document.getElementById("inputPassword").style.borderColor = "red";
                               document.getElementById("errorText").innerHTML = "Username or Password is incorrect";
@@ -47,6 +50,7 @@
 
                               console.log(data);
                           }else{
+                              //login succsess
                             localStorage.setItem("sessionID", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
                           }
