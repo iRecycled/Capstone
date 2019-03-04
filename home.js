@@ -62,7 +62,7 @@ function createFriendsList(d, targetID){
     for(i = 0; i < names.length; i++)
     {
         text +="<tr>\
-                    <td class = 'serverEntry'>\
+                    <td class = 'serverEntry' >\
                         " + names[i] + "\
                     </td>\
                 </tr>";
@@ -76,10 +76,14 @@ function createServerTable(d, targetID){
     for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
-                    <td class = 'serverEntry'>\
+                    <td class = 'serverEntry' href = 'chat.html' onclick = setServerID(" + d[i].ServerID + ")>\
                         " + d[i].ServerName + "\
                     </td>\
                 </tr>";
     }
     document.getElementById(targetID).innerHTML += text;
+}
+
+function setServerID(id){
+    localStorage.setItem("serverID", id);
 }
