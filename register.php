@@ -16,11 +16,11 @@ header("index.php");
         //$query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu'";
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
 	$stmt = simpleQuery($db, $query);
-        if($stmt == NULL) {
-                $data=-10;
+        if($stmt != NULL) {
+                $data=-1;
         }
       	else{
-                $data=-1;
+                data=-10;
         }
 echo json_encode($data);
 ?>
