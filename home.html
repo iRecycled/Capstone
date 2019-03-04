@@ -41,7 +41,12 @@
 
         <ul class="navbar-nav right">
             <a class="nav-item nav-link active" href="index.html">Logout <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username">       
+            <script>
+                function selfProfilePage(){
+                    localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                }
+            </script>
+            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
                 <script>
                     document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
                     function selfProfilePage(){
