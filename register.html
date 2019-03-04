@@ -26,39 +26,33 @@
 <head>
 
         <script>
-                $(document).ready(function(){
-                            $("#registerBtn").click(function(e){console.log(data);
-                                e.preventDefault();
-                                $.ajax({
-                                type: "post",
-                                dataType: "json",
-                                url: "register.php",
-                                data: {username: document.getElementById("username").value, password: document.getElementById('password').value, email: document.getElementById("email").value},
-                                success: function(data) {
-                                /*
-                                  if(data == -5){
-                                      document.getElementById("invalidEmail").innerHTML = "Username already in use";
-                                      document.getElementById("invalidEmail").style.color = "red";
-                                      document.getElementById("email").style.borderColor = "red";
-                                      console.log(data);                                
-                                  }
-                                  else if(data == -6){
-                                    document.getElementById("invalidUsername").innerHTML = "Email already registered";
-                                    document.getElementById("username").style.borderColor = "red";
-                                    console.log(data);
-                                  }
-*/
-                                  if(data == 1){
-                                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html'
-                                  }
-                                  else{
-                                      console.log(data)
-                                  }
-                                }
-                            })
-                            })
-                        })
-                </script>
+        //#registerBtn
+        $(document).ready(function(){
+                    $("#registerBtn").click(function(e){
+                        e.preventDefault();
+                        $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "register.php",
+                        data: {username: document.getElementById('username').value, password: document.getElementById("password").value, email: document.getElementById("email").value},
+                        success: function(data) {
+                          console.log(data);
+                          if(data == -10){
+                              document.getElementById("username").style.borderColor = "red";
+                              document.getElementById("inputPassword").style.borderColor = "red";
+                              document.getElementById("errorText").innerHTML = "Username or Password is incorrect";
+                              document.getElementById("errorText").style.color = "red";
+
+                              console.log(data);
+                          }else{
+                            
+                            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+                          }
+                        }
+                    })
+                    })
+                })
+        </script>
 
 </head>
 <body>

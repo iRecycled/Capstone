@@ -19,10 +19,10 @@
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
 	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
-                $data=0;
+                $data=-10;
         }
       	else{
-                $data=1;
+                $data=0;
         }
 echo json_encode($data);
 ?>
