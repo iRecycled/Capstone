@@ -1,3 +1,12 @@
+if(localStorage.getItem('viewInfo')=='')
+{
+    localStorage.setItem('viewInfo', localStorage.getItem('username'));
+}
+if(localStorage.getItem('username')==localStorage.getItem('viewInfo'))
+{
+    
+}
+
 function loadServer(serverID) {
     localStorage.setItem("serverID", serverID);
     //window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
@@ -102,7 +111,7 @@ $(document).ready(function(){
     $.ajax({
         type: "post",
         url: "userInfo.php",
-        data: {username: localStorage.getItem('username')},
+        data: {username: localStorage.getItem('viewInfo')},
         success: function(data) {
             console.log(data);
             obj = JSON.parse(data);

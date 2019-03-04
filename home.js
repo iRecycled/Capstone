@@ -62,12 +62,17 @@ function createFriendsList(d, targetID){
     for(i = 0; i < names.length; i++)
     {
         text +="<tr>\
-                    <td class = 'serverEntry' >\
+                    <td class = 'serverEntry' href='profile_page.html' onclick = 'setViewInfo("+names[i]+")>\
                         " + names[i] + "\
                     </td>\
                 </tr>";
     }
     document.getElementById(targetID).innerHTML += text;
+}
+
+function setViewInfo(name)
+{
+    localStorage.setItem("viewInfo", name);
 }
 //takes server list data and injects into HTML
 function createServerTable(d, targetID){
