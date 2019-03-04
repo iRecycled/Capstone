@@ -1,4 +1,4 @@
-if(localStorage.getItem('viewInfo')=='')
+if(localStorage.getItem('viewInfo')=='' || !localStorage.getItem('viewInfo'))
 {
     console.log("empty")
     localStorage.setItem('viewInfo', localStorage.getItem('username'));
