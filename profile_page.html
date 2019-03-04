@@ -50,7 +50,10 @@
                             console.log("clicked");
                             localStorage.setItem('viewInfo', localStorage.getItem("username"));
                         }
-                        document.addEventListener('onclick',selfProfilePage());
+                        document.addEventListener('onclick',
+                        function(){
+                            selfProfilePage();
+                        });
                     </script>
                 <span class="sr-only">(current)</span></a>
             </ul>
