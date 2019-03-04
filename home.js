@@ -71,7 +71,7 @@ function createFriendsList(d, targetID){
     }
     document.getElementById(targetID).innerHTML += text;
 }
-
+//sets value of view profile page
 function setViewInfo(name)
 {
     console.log("set");
