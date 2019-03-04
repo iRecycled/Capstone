@@ -43,6 +43,7 @@ $(document).ready(function(){
         success: function(result) {
             //If successful, go to the home page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            alert("Password changed successfully!")
         },
         error: function(result) {
             //If not successful, return to the profile page
@@ -59,11 +60,6 @@ $(document).ready(function(){
         url: "forgotPassword.php",
         data: {username: localStorage.getItem('username')},
         success: function(result) {
-            //create alert box
-            /*let alert = document.createElement("div");
-            let close = document.createElement("a");
-            alert.class = "alert alert-info alert-dismissible";
-            alert.class = "close";*/
             //logs out the user
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
