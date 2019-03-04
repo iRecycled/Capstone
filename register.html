@@ -33,7 +33,7 @@
                                 type: "post",
                                 dataType: "json",
                                 url: "register.php",
-                                data: {RegEmail: document.getElementById("email").value, RegUsername: document.getElementById('username').value, RegPassword: document.getElementById("password").value},
+                                data: {username: document.getElementById("username").value, password: document.getElementById('password').value, email: document.getElementById("email").value},
                                 success: function(data) {
                                 /*
                                   if(data == -5){
