@@ -7,9 +7,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $username = $_POST['username']; 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  $username = strip_tags($_POST['username']); 
+  $email = strip_tags($_POST['email']);
+  $password = strip_tags($_POST['password']);
         // 2. Run the Query
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
 	$stmt = simpleQuery($db, $query);
