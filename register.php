@@ -1,28 +1,31 @@
 <?php
 	
 header("index.php");
-
+if ( isset( $_POST['submit'] ) ) {
+        // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
-        if ($db->connect_error) {
-            http_response_code(500);
-            die('{ "errMessage": "Failed to Connect to DB." }');
-        }
-  $RegUsername = $_POST['RegUsername']; 
-  $RegEmail = $_POST['RegEmail'];
-  $RegPassword = $_POST['RegPassword'];
-
-
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$RegUsername', '$RegPassword', '$RegEmail')";
-        $stmt = simpleQuery($db, $query);
         
+//$query = "INSERT INTO logins (id, username, password) 
+ //       VALUES ('0','$_POST['username']', '$_POST['password']')";
+  $username = $_POST['username']; 
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+        //INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu')
+        // 2. Run the Query
+        //$query = "INSERT INTO WebUser (UserName, Password, email) VALUES ('$username', '$password', '$email')";
+        //$query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId+1,0) FROM WebUser) as tmptable), 'Kevin', 'notmyactualpassword', 'jensenk2136@my.uwstout.edu'";
+        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
+	$stmt = simpleQuery($db, $query);
         if($stmt == NULL) {
-           //if statment fails reload page
-           $data = 0;
+           include 'register.html';
         }
-        else {
-        $data = 1;
+      	else{
+            include 'login.html';
         }
-      	
-echo json_encode($data);
+}
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 690314d2bccdeb57a2a4872f52cf75a653056be2
 ?>

@@ -23,7 +23,11 @@
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src=autoLogin.js></script>
-    
+    <script>
+      function removeTags(name){
+    name = name.replace(/(<([^>]+)>)/ig,"");
+    return name}
+    </script>
     <script>
         $(document).ready(function(){
                     $("#loginBtn").click(function(e){
@@ -32,7 +36,7 @@
                         type: "post",
                         dataType: "json",
                         url: "login.php",
-                        data: {user: document.getElementById('username').value, pass: document.getElementById("inputPassword").value},
+                        data: {user: removeTags(document.getElementById('username').value), pass: removeTags(document.getElementById("inputPassword").value)},
                         success: function(data) {
                           console.log(data);
                           if(data == -10){
@@ -61,7 +65,7 @@
         function myFunction() {
           //code to add the username info to local storage
             var loginUsername = document.getElementById("username");
-            localStorage.setItem("username", loginUsername.value);
+            localStorage.setItem("username", removeTags(loginUsername.value));
           }
     </script>
     
