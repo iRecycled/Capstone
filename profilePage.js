@@ -1,10 +1,11 @@
 if(localStorage.getItem('viewInfo')=='')
 {
+    console.log("empty")
     localStorage.setItem('viewInfo', localStorage.getItem('username'));
 }
 if(localStorage.getItem('username')==localStorage.getItem('viewInfo'))
 {
-    
+
 }
 
 function loadServer(serverID) {

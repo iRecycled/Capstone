@@ -74,7 +74,8 @@ function createFriendsList(d, targetID){
 
 function setViewInfo(name)
 {
-    localStorage.setItem("viewInfo", name);
+    console.log("set");
+    localStorage.setItem('viewInfo', name);
 }
 //takes server list data and injects into HTML
 function createServerTable(d, targetID){
