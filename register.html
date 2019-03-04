@@ -48,6 +48,13 @@
                               localStorage.setItem("dataTest", data);
                               console.log(data);
                           }
+                        },
+                        error: function(data){
+                            document.getElementById("username").style.borderColor = "red";
+                              document.getElementById("password").style.borderColor = "red";
+                              document.getElementById("email").style.borderColor = "red";
+                              localStorage.setItem("dataTest", data);
+                              console.log(data);
                         }
                     })
                     })
