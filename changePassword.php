@@ -31,12 +31,10 @@
             else{
                   //if passwords do not match goes to register page
                   include "profile_page.html";
-                  echo alert("Your new passwords do not match.");
             }
       }
       else {
             //if passwords do not match goes to login page
             include "profile_page.html";
-            echo alert("Your old password does not match the database.");
       }
 ?>
