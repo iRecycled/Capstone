@@ -27,9 +27,11 @@
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
                   }
+                  else{
+                        include "profile_page.html";
+                  }
    		}
             else{
-                  //if passwords do not match goes to register page
                   include "profile_page.html";
             }
       }
