@@ -37,6 +37,7 @@
                         data: {username: document.getElementById('username').value, password: document.getElementById("password").value, email: document.getElementById("email").value},
                         success: function(data) {
                           console.log(data);
+                          document.getElementById("wordReg").innerHTML = data;
                           if(data == -10){
                               document.getElementById("username").style.borderColor = "red";
                               document.getElementById("password").style.borderColor = "red";
@@ -57,7 +58,7 @@
 <body>
     <div class="text-center" id="registerBox">
         <form class="form-signin">
-               <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+               <h1 class="h3 mb-3 font-weight-normal" id="wordReg">Register</h1>
             <div class = Login>
                <label for="inputEmail" class="sr-only">Email</label>
                <p id="invalidEmail"></p>
