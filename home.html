@@ -44,6 +44,7 @@
             <a class="nav-item nav-link active" href="profile_page.html" id="username">       
                 <script>
                     document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                    console.log("click called")
                     document.addEventListener('onclick',function(){
                         localStorage.setItem('viewInfo', localStorage.getItem("username"));
                     });
