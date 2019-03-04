@@ -7,8 +7,8 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $name = $_POST['user']; 
-  $pass = $_POST['pass'];
+  $name = strip_tags($_POST['user']); 
+  $pass = strip_tags($_POST['pass']);
   
         // 2. Run the Query
   //SELECT username, password, money FROM logins WHERE username = '$username';

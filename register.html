@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- jQuery first, then Popper.js, Bootstrap JS, Bootstrap CSS, sideBar JS -->
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -21,50 +22,50 @@
     <link rel="stylesheet" href="registerStyle.css">
     <script src="script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="autoLogin.js"></script>
    
 <head>
-
+    <script>
+        function removeTags(name){
+            //removes any < tags
+      name = name.replace(/(<([^>]+)>)/ig,"");
+      return name}
+      </script>
+      
         <script>
-                $(document).ready(function(){
-                            $("#registerBtn").click(function(e){console.log(data);
-                                e.preventDefault();
-                                $.ajax({
-                                type: "post",
-                                dataType: "json",
-                                url: "register.php",
-                                data: {RegEmail: document.getElementById("email").value, RegUsername: document.getElementById('username').value, RegPassword: document.getElementById("password").value},
-                                success: function(data) {
-                                /*
-                                  if(data == -5){
-                                      document.getElementById("invalidEmail").innerHTML = "Username already in use";
-                                      document.getElementById("invalidEmail").style.color = "red";
-                                      document.getElementById("email").style.borderColor = "red";
-                                      console.log(data);                                
-                                  }
-                                  else if(data == -6){
-                                    document.getElementById("invalidUsername").innerHTML = "Email already registered";
-                                    document.getElementById("username").style.borderColor = "red";
-                                    console.log(data);
-                                  }
-*/
-                                  if(data == 0){
-                                      console.log(data);
-                                  }
-                                  else if(data == 1){
-                                    window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-                                  }
-                                }
-                            })
-                            })
-                        })
-                </script>
+        //#registerBtn ajax call
+        $(document).ready(function(){
+                    $("#registerBtn").click(function(e){
+                        e.preventDefault();
+                        $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "register.php",
+                        data: {username: removeTags(document.getElementById('username').value), password: removeTags(document.getElementById("password").value), email: removeTags(document.getElementById("email").value)},
+                        success: function(data) {
+                            //on regestration sucsess
+                          console.log(data);
+                          if(data==-1){
+                            localStorage.setItem("dataTest", data);
+                            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                          }
+                        },
+                        error: function(data){
+                            //on registration failure
+                              document.getElementById("username").style.borderColor = "red";
+                              document.getElementById("password").style.borderColor = "red";
+                              document.getElementById("email").style.borderColor = "red";
+                        }
+                    })
+                    })
+                })
+
+        </script>
 
 </head>
 <body>
     <div class="text-center" id="registerBox">
         <form class="form-signin">
-               <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+               <h1 class="h3 mb-3 font-weight-normal" id="wordReg">Register</h1>
             <div class = Login>
                <label for="inputEmail" class="sr-only">Email</label>
                <p id="invalidEmail"></p>
@@ -78,7 +79,7 @@
                <p id="invalidPassword"></p>
                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                <p> &nbsp </p> <!-- adds white space between password input and Sign in button -->
-               <button class="btn btn-lg btn-primary btn-block" id="registerBtn" value="Register">Sign in</button>
+               <button class="btn btn-lg btn-primary btn-block" id="registerBtn">Sign in</button>
 
                <p class="mt-5 bm-3 text-muted">Terrychat</p>
             </div>
