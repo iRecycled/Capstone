@@ -98,11 +98,11 @@ function createAllServerTable(d, targetID){
     }
     document.getElementById(targetID).innerHTML += text;
 }
-
+//sets the server id to enter chat
 function setServerID(id){
     localStorage.setItem("serverID", id);
 }
-
+//sends a request to a new server
 function sendServerRequest(id){
     /*
     $.ajax({
