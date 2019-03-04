@@ -20,7 +20,7 @@ header("index.php");
                 $data=-1;
         }
       	else{
-                data=-10;
+                $data=-10;
         }
 echo json_encode($data);
 ?>
