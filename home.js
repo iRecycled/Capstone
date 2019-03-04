@@ -27,7 +27,7 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj)
-            createServerTable(obj, "allServersBody")
+            createAllServerTable(obj, "allServersBody")
         },
         error: function(data) {
             console.log("fail");
@@ -84,6 +84,43 @@ function createServerTable(d, targetID){
     document.getElementById(targetID).innerHTML += text;
 }
 
+//takes server list data and injects into HTML
+function createAllServerTable(d, targetID){
+    text = "";
+    //generates table rows from list of server names
+    for(i = 0; i < d.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry' onclick = sendServerRequest(" + d[i].ServerID + ")>\
+                        " + d[i].ServerName + "\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(targetID).innerHTML += text;
+}
+
 function setServerID(id){
     localStorage.setItem("serverID", id);
+}
+
+function sendServerRequest(id){
+    /*
+    $.ajax({
+        type: "post",
+        url: "sendServerRequest.php",
+        data: {requestID: id, username: localStorage.getItem('username')},
+        success: function(data) {
+            document.getElementById("servers").innerHTML += "\
+            <div class='alert alert-success'>\
+                <strong>Success!</strong> Indicates a successful or positive action.\
+            </div>";
+        },
+        error: function(data) {
+            document.getElementById("servers").innerHTML += "\
+            <div class='alert alert-info'>\
+                <strong>Info!</strong> Indicates a neutral informative change or action.\
+            </div>";
+        }
+    })
+    */
 }
