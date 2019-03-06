@@ -58,5 +58,7 @@ tr:hover{
 }
 
 #userSearch{
-    width: 50%
+    text-align:left;
+    width: 50%;
+    margin:20px;
 }
