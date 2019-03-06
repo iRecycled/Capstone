@@ -16,7 +16,8 @@
       //runs query on the database
       $stmt = simpleQuery($db, $query);
   
-      
+      //if statement success
+      if($stmt != NULL) {
             //bind query results to variables
       	$stmt->bind_result($currentPassword);
             $stmt->fetch();
@@ -25,12 +26,14 @@
                   if(strcmp($newPassword,$confirmNewPassword)==0){
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
+                        die('{"msg": "password changed successfully!')
                   }
                   else{
-                        die('{"error" : "failed to change password"}');
+                        die('{"msg": "failed to change password"}');
                   }
    		}
             else{
-                  die('{"error" : "failed to change password"}');
+                  die('{"msg": "failed to change password"}');
             }
+      }
 ?>
