@@ -124,3 +124,13 @@ $(document).ready(function(){
         }
     })
 })
+
+function AddFriendButton(){
+    if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
+    {
+        document.getElementById('friendZone').innerHTML += "\
+            <button id='friendRequestSend'>\
+                Add Friend\
+            </button>";
+    }
+}
