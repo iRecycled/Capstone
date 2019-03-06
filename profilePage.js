@@ -63,7 +63,12 @@ $(document).ready(function(){
             //logs out the user
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-            alert("You received an email with your new password!");
+            if(result.status === 'pass') {
+                alert("You received an email with your new password!");
+            }
+            else{
+                alert("Failed to reset your password.");
+            }
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
