@@ -10,7 +10,7 @@ header("index.php");
   $username = strip_tags($_POST['username']); 
   $email = strip_tags($_POST['email']);
   $password = strip_tags($_POST['password']);
-
+        var check;
         // 2. Run the Query
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE email = '$email';";
         $stmt = simpleQuery($db, $query);
@@ -20,7 +20,7 @@ header("index.php");
 
         if($emailTest == $email){
                 $data = -2; //email is already taken
-                
+                check = -2;
         }
         
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
@@ -31,7 +31,9 @@ header("index.php");
 
         if($usernameTest == $username){
                 $data = -3; //username is already taken
-                
+                if(check == -2){
+                        $data = -5;
+                }
         }
 
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
