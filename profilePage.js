@@ -130,7 +130,9 @@ $(document).ready(function(){
     })
 })
 function AddFriendButton(e){
-    if(localStorage.getItem('username') != localStorage.getItem('viewinfo') && CheckFriend(localStorage.getItem('viewinfo')))
+    friendName = localStorage.getItem('viewInfo')
+    console.log(friendName)
+    if(localStorage.getItem('username') != friendName && CheckFriend(friendName)
     {
         console.log("Calls")
         document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
