@@ -8,7 +8,7 @@
             //connects to database
         $username = $_POST['username']; 
         //sql query code where username belongs to server
-        $query = "SELECT UserName FROM WebUser where UserName = '$username';";
+        $query = "SELECT UserName FROM WebUser where UserName like'%$username%';";
         //runs the query
         $result = $db->query($query);
         //output query result to json array

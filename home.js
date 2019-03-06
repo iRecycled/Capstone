@@ -48,18 +48,20 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    SearchUser('test');
+    searchUser('test');
 });
 
 
-function SearchUser(name){
+function searchUser(name){
     $.ajax({
         type: "post",
         url: "searchForUser.php",
         data: {username: name},
         success: function(data) {
             obj = JSON.parse(data);
-            console.log(obj)
+            if(obj.length>0){
+               processSearchResults()
+            }
         },
         error: function(data) {
             console.log("fail");
