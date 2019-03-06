@@ -135,8 +135,7 @@ $(document).ready(function(){
 })
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
-    console.log(friendName)
-    if(localStorage.getItem('username') != friendName && CheckFriend(friendName))
+    if((localStorage.getItem('username') != friendName) && CheckFriend(friendName))
     {
         console.log("Calls")
         document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
@@ -146,7 +145,7 @@ function AddFriendButton(e){
 function CheckFriend(name){
     //get list of user's friends
     console.log(localStorage.getItem('username'))
-    $.ajax({
+    return $.ajax({
         type: "post",
         url: "getFriendsList.php",
         data: {username: localStorage.getItem('username')},
@@ -158,8 +157,6 @@ function CheckFriend(name){
                 names.push(obj[i].UserName)
             }
             names.sort()
-            console.log(names)
-            console.log(name)
             if(names.indexOf(name) > -1)
             {
                 console.log("already friends")
@@ -167,6 +164,7 @@ function CheckFriend(name){
             }
             else
             {
+                console.log("not friends")
                 return true;
             }
         },
