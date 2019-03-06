@@ -26,14 +26,14 @@
                   if(strcmp($newPassword,$confirmNewPassword)==0){
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
-                        echo '{"status": "pass"}';
+                        die('{"status": "pass"}');
                   }
                   else{
-                        echo '{"status": "fail"}';
+                        die('{"status": "fail"}');
                   }
    		}
             else{
-                  echo '{"status": "fail"}';
+                  die('{"status": "fail"}');
             }
       }
 ?>
