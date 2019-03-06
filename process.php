@@ -5,7 +5,7 @@
     switch($function) {
 
     	 case('getState'):
-          $privateserver = $privateserver = htmlentities(strip_tags($_POST['file']));
+          $privateserver = htmlentities(strip_tags($_POST['file']));
           $privateserver = "chat/private/".$privateserver.".txt";
         	 if(file_exists($privateserver)){
                $lines = file($privateserver);
@@ -15,7 +15,7 @@
 
     	 case('update'):
         	$state = $_POST['state'];
-          $privateserver = $privateserver = htmlentities(strip_tags($_POST['file']));
+          $privateserver = htmlentities(strip_tags($_POST['file']));
           $privateserver = "chat/private/".$privateserver.".txt";
           $myfile = fopen("chat/GrabbedChatServer.txt", "w") or die("Unable to open file!");
           fwrite($myfile, $privateserver);
