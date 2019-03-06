@@ -128,10 +128,7 @@ function AddFriendButton(e){
     if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
     {
         console.log("Calls")
-        document.getElementById(e).innerHTML += "\
-            <h4 id='friendRequestSend>\
-            Add Friend\
-            </h4>";
+        document.getElementById(e).innerHTML += "<h4><a id='friendRequestSend>Add Friend</a></h4>";
     }
 }
 
