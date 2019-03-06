@@ -133,14 +133,15 @@ function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
     if((localStorage.getItem('username') != friendName) && CheckFriend(friendName))
     {
-        console.log("Calls")
+        console.log("Calls");
         document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
-        document.getElementById(e).addEventListener('onclick', SendFriendRequest())
+        document.getElementById(e).onclick = function(){ SendFriendRequest()};
     }
 }
 
 function SendFriendRequest()
 {
+    console.log("FRIEND REQUEST SENT")
     user = localStorage.getItem('username');
     friend = localStorage.getItem('viewInfo');
     //SEND REQUEST
