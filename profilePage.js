@@ -48,7 +48,7 @@ $(document).ready(function(){
         error: function(result) {
             //If not successful, return to the profile page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
-            alert("Failed to change password!")
+            alert(result.error)
         }
     })
     })
@@ -124,3 +124,13 @@ $(document).ready(function(){
         }
     })
 })
+
+function AddFriendButton(){
+    if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
+    {
+        document.getElementById('friendZone').innerHTML += "\
+            <button id='friendRequestSend'>\
+                Add Friend\
+            </button>";
+    }
+}
