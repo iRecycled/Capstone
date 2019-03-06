@@ -56,3 +56,7 @@ tr:hover{
 .serverEntry{
     padding:0px;
 }
+
+#userSearch{
+    width: 50%
+}
