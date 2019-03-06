@@ -2,12 +2,10 @@ $(document).ready(function(){
     $.ajax({
         type: "post",
         url: "getServerList.php", //"userInfo.php", 
-        data: {serverName: localStorage.getItem('servername')},
+        data: {username: localStorage.getItem('username')},
         success: function(data) {
-            console.log(data);
             obj = JSON.parse(data);
-            console.log(obj);
-            document.getElementById("servername").innerHTML = obj.serverName;
+            document.getElementById("servername").innerHTML = obj[0].ServerName;
         },
         error: function() {
             console.log("fail");
