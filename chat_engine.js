@@ -81,10 +81,11 @@ function updateChat(serverID){
                             console.log("starting message shit");
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
-                            data.text[i] = parse.parse(data.text[i]);
+                            var str = data.text[i].split("<<");
+                            data.text[i] = parse.parse(str[2]);
                             console.log(data.text[i]);
                             //console.log(generateMsg(data.text[i],"",""));
-                            data.text[i] = generateMsg(data.text[i], "", "");
+                            data.text[i] = generateMsg(data.text[i], str[0], "");
                             console.log(data.text[i]);
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
