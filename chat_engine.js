@@ -1,5 +1,3 @@
-
-
 var instanse = false;
 var state;
 var mes;
@@ -81,10 +79,11 @@ function updateChat(serverID){
                             console.log("starting message shit");
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
-                            data.text[i] = parse.parse(data.text[i]);
+                            var str = data.text[i].split("<");
+                            data.text[i] = parse.parse(str[1]);
                             console.log(data.text[i]);
                             //console.log(generateMsg(data.text[i],"",""));
-                            data.text[i] = generateMsg(data.text[i], "", "");
+                            data.text[i] = generateMsg(data.text[i], str[0], "");
                             console.log(data.text[i]);
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
@@ -103,7 +102,7 @@ function updateChat(serverID){
 //takes message data and generates the table rows in the document
 function generateMsg(text, sender, time)
 {
-    var username = "Username"
+    var username = sender;
     var today = new Date();
     //creates html code
     msg = "\
@@ -213,7 +212,7 @@ function sendChat(message, nickname, serverID)
 				 },
 		   dataType: "json",
 		   success: function(data){
-			   updateChat();
+			   updateChat(serverID);
 		   },
 		});
 }

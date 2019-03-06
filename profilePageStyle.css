@@ -45,3 +45,6 @@
 #content{
     margin-left: 250px;
 }
+#friendZone:hover{
+    color: gray;
+}

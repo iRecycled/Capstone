@@ -43,12 +43,16 @@ $(document).ready(function(){
         success: function(result) {
             //If successful, go to the home page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-            alert(result.msg)
+            if(result.status === 'pass'){
+                alert("Password changed successfully!")
+            }
+            else{
+                alert("Password failed to change.")
+            }
         },
         error: function(result) {
             //If not successful, return to the profile page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
-            alert(result.msg)
         }
     })
     })
@@ -63,7 +67,12 @@ $(document).ready(function(){
             //logs out the user
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-            alert("You received an email with your new password!");
+            if(result.status === 'pass') {
+                alert("You received an email with your new password!");
+            }
+            else{
+                alert("Failed to reset your password.");
+            }
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
@@ -123,4 +132,58 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+})
+function AddFriendButton(e){
+    friendName = localStorage.getItem('viewInfo')
+    if((localStorage.getItem('username') != friendName) && CheckFriend(friendName))
+    {
+        console.log("Calls");
+        document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+        document.getElementById(e).onclick = function(){ SendFriendRequest()};
+    }
+}
+
+function SendFriendRequest()
+{
+    console.log("FRIEND REQUEST SENT")
+    user = localStorage.getItem('username');
+    friend = localStorage.getItem('viewInfo');
+    //SEND REQUEST
+}
+
+function CheckFriend(name){
+    //get list of user's friends
+    console.log(localStorage.getItem('username'))
+    return $.ajax({
+        type: "post",
+        url: "getFriendsList.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            names = []
+            for(i = 0; i < obj.length; i++){
+                names.push(obj[i].UserName)
+            }
+            names.sort()
+            if(names.indexOf(name) > -1)
+            {
+                console.log("already friends")
+                return false;
+            }
+            else
+            {
+                console.log("not friends")
+                return true;
+            }
+        },
+        error: function(data) {
+            console.log("fail");
+            return false;
+        }
+    })
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    AddFriendButton('friendZone')
 })
