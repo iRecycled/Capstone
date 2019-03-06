@@ -125,11 +125,43 @@ $(document).ready(function(){
     })
 })
 function AddFriendButton(e){
-    if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
+    if(localStorage.getItem('username') != localStorage.getItem('viewinfo') && CheckFriend(localStorage.getItem('viewinfo')))
     {
         console.log("Calls")
-        document.getElementById(e).innerHTML += "<h4><a>'Add Friend'</a></h4>";
+        document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
     }
+}
+
+function CheckFriend(name){
+    //get list of user's friends
+    console.log(localStorage.getItem('username'))
+    $.ajax({
+        type: "post",
+        url: "getFriendsList.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            names = []
+            for(i = 0; i < obj.length; i++){
+                names.push(obj[i].UserName)
+            }
+            names.sort()
+            if(names.include(name))
+            {
+                return true;
+            }
+            else
+            {
+                console.log("already friends")
+                return false;
+            }
+        },
+        error: function(data) {
+            console.log("fail");
+            return false;
+        }
+    })
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
