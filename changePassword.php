@@ -28,11 +28,11 @@
                         $stmt2 = simpleQuery($db, $query2);
                   }
                   else{
-                        include "profile_page.html";
+                        die('{"error" : "failed to change password"}');
                   }
    		}
             else{
-                  include "profile_page.html";
+                  die('{"error" : "failed to change password"}');
             }
       }
       else {
