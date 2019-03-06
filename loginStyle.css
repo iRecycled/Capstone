@@ -47,3 +47,48 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+#forgotPW {
+  color: blue;
+  float: right;
+  font-size: 12px;
+  padding-top: 15px;
+  padding-right: 5px;
+}
+
+#remember {
+  float:left;
+  padding-top: 10px;
+}
+
+#emailModalText {
+  text-align: left;
+}
+
+#continueBtn {
+  align-content: center;
+}
+
+.loginSeparator {
+  border-top: 1px solid #cbd2d6;
+  position: relative;
+  margin: 25px 0 10px;
+  text-align: center;
+}
+
+.signUpSeparator {
+  background-color: #fff;
+    padding: 0 .5em;
+    position: relative;
+    color: #6c7378;
+    top: -.7em;
+}
+
+#continueBtn {
+  padding: 10px 150px;
+  width: 100%;
+}
+
+#topText {
+  text-align: center;
+}
