@@ -141,7 +141,7 @@ function AddFriendButton(e){
 function CheckFriend(name){
     //get list of user's friends
     console.log(localStorage.getItem('username'))
-    $.ajax({
+    return $.ajax({
         type: "post",
         url: "getFriendsList.php",
         data: {username: localStorage.getItem('username')},
