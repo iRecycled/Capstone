@@ -48,7 +48,25 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    SearchUser('test');
 });
+
+
+function SearchUser(name){
+    $.ajax({
+        type: "post",
+        url: "searchForUser.php",
+        data: {username: name},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
+}
+
 //takes friends list data and injects into HTML
 function createFriendsList(d, targetID){
     //generates and sorts list of user names 
