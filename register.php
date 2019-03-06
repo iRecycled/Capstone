@@ -18,6 +18,7 @@ header("index.php");
                 $data=-1;
         }
       	else{
+                //Advanced rest client (ARC)
                 //failure in insertion
                 $data=-10;
         }

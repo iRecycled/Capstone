@@ -7,7 +7,7 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $name = strip_tags($_POST['user']); 
+  $name = strip_tags($_POST['user']);
   $pass = strip_tags($_POST['pass']);
   
         // 2. Run the Query

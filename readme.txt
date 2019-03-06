@@ -110,4 +110,6 @@ Design:
 --Add CheckIfUsername.js to every page
 --Folder System (html,JS,CSS,PHP) exluding index.html
 --Website usability (get around the website w/o using address bar)
+--Not using localhost username, using global variable
+--start lower Camel case
 --
