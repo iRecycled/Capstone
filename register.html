@@ -43,13 +43,13 @@
                         data: {username: removeTags(document.getElementById('username').value), password: removeTags(document.getElementById("password").value), email: removeTags(document.getElementById("email").value)},
                         success: function(data) {
                             //on regestration sucsess
-                          console.log(data);
+                          
                           if(data==-1){
                             localStorage.setItem("dataTest", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                           }
-                          else if(data == -2){
-                              console.log("-2");
+                          if(data == -2){
+                              console.log("Im in here");
                           }
                           
                         },
