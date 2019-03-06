@@ -124,16 +124,13 @@ $(document).ready(function(){
         }
     })
 })
-
-console.log("fart")
-
 function AddFriendButton(e){
-    console.log("calls")
     if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
     {
+        console.log("Calls")
         document.getElementById(e).innerHTML += "\
             <h4 id='friendRequestSend>\
-                <a>Add Friend</a>\
+            Add Friend\
             </h4>";
     }
 }
