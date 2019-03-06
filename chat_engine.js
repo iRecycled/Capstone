@@ -104,7 +104,7 @@ function updateChat(serverID){
 //takes message data and generates the table rows in the document
 function generateMsg(text, sender, time)
 {
-    var username = "Username"
+    var username = sender;
     var today = new Date();
     //creates html code
     msg = "\
