@@ -152,7 +152,7 @@ function CheckFriend(name){
                 names.push(obj[i].UserName)
             }
             names.sort()
-            if(names.include(name))
+            if(names.indexOf(name) > -1)
             {
                 return true;
             }
