@@ -12,11 +12,11 @@ header("index.php");
   $password = strip_tags($_POST['password']);
 
         // 2. Run the Query
-        $emailCheck = "SELECT * FROM WebUser WHERE username='$username'";
+        $emailCheck = "SELECT * FROM WebUser WHERE email='$email'";
         $mailResult = simpleQuery($db,$emailCheck);
 
-        $usernameCheck = "SELECT * FROM WebUser WHERE password='$password'";
-        $userResult = simpleQuery($db,$emailCheck);
+        $usernameCheck = "SELECT * FROM WebUser WHERE username='$username'";
+        $userResult = simpleQuery($db,$usernameCheck);
 
         if($mailResult == NULL){
                 $data = -2; //email already in use
