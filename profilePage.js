@@ -135,7 +135,15 @@ function AddFriendButton(e){
     {
         console.log("Calls")
         document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+        document.getElementById(e).addEventListener('onclick', SendFriendRequest())
     }
+}
+
+function SendFriendRequest()
+{
+    user = localStorage.getItem('username');
+    friend = localStorage.getItem('viewInfo');
+    //SEND REQUEST
 }
 
 function CheckFriend(name){
