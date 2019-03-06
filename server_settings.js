@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.ajax({
         type: "post",
-        url: "userInfo.php",
+        url: "getServerList.php", //"userInfo.php", // getserverlist.php?
         data: {serverName: localStorage.getItem('servername')},
         success: function(data) {
             console.log(data);
