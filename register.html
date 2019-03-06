@@ -52,7 +52,9 @@
                         },
                         error: function(data){
                             //on registration failure
+                            console.log(data);
                             if(data == -2){
+                            console.log(data);
                               document.getElementById("username").style.borderColor = "red";
                               document.getElementById("password").style.borderColor = "red";
                               document.getElementById("email").style.borderColor = "red";
