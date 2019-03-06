@@ -132,9 +132,9 @@ function AddFriendButton(e){
     if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
     {
         document.getElementById(e).innerHTML += "\
-            <button id='friendRequestSend' class='btn btn-dark' >\
-                Add Friend\
-            </button>";
+            <h4 id='friendRequestSend>\
+                <a>Add Friend</a>\
+            </h4>";
     }
 }
 
