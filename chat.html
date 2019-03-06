@@ -33,7 +33,7 @@
     	// display name on page
     	//$("#name-area").html("You are: <span>" + name + "</span>");
         */
-        name = ""
+        name = localStorage.getItem('username');
     	// kick off chat
         var chat =  new Chat();
         var targetfile;
