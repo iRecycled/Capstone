@@ -26,7 +26,7 @@ function simpleQuery($db, $query) {
   }
   // Execute query
   if(!$stmt->execute()) {
-    echo "<!-- Query Execute failed: (" . $stmt->errno . ") " . $stmt->error . "-->\n";
+    //echo "<!-- Query Execute failed: (" . $stmt->errno . ") " . $stmt->error . "-->\n";
     return null;
   }
   // Store the results and return the statement object
