@@ -55,7 +55,7 @@ function processSearchResults(names)
     console.log(names)
     dropdown = document.getElementById('searchDropdown');
     dropdown.innerHTML = ''
-    for(i = 0; i < name.length; i++){
+    for(i = 0; i < names.length; i++){
         dropdown.innerHTML+= "<a class='dropdown-item' href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i].UserName+"\")'/>" + names[i].UserName + "</a>";
     }
     
