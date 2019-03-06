@@ -11,11 +11,9 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-})
 
-//gets a list of servers that the user belongs to
-//redirects the user to chat.html with localstorage Key serverID set to the server ID
-$(document).ready(function(){
+    //gets a list of servers that the user belongs to
+    //redirects the user to chat.html with localstorage Key serverID set to the server ID
     $.ajax({
         type: "post",
         url: "getServerList.php",
@@ -23,13 +21,12 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj);
-            //for all the servers the user belongs to, create an html element and assign the onclick to redirect
-            //to chat.html
+            
             for( var x in obj) {
                 let memberList = document.getElementById("UserList");
                 let scrollbarDiv = document.createElement("div");
                 let list = document.createElement("ul");
-                let text = document.createTextNode(obj[x].username);
+                let text = document.createTextNode(obj[x].user);
                 
 
                 // <div id="ScrollbarRow">
