@@ -4,11 +4,8 @@ $(document).ready(function(){
         url: "getServerList.php", //"userInfo.php", 
         data: {username: localStorage.getItem('username')},
         success: function(data) {
-            console.log(data);
             obj = JSON.parse(data);
-            console.log(obj[0]);
-            console.log(obj[0].ServerName);
-            document.getElementById("servername").innerHTML = obj.ServerName;
+            document.getElementById("servername").innerHTML = obj[0].ServerName;
         },
         error: function() {
             console.log("fail");
