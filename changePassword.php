@@ -16,8 +16,7 @@
       //runs query on the database
       $stmt = simpleQuery($db, $query);
   
-      //if statement success
-      if($stmt != NULL) {
+      
             //bind query results to variables
       	$stmt->bind_result($currentPassword);
             $stmt->fetch();
@@ -34,9 +33,4 @@
             else{
                   die('{"error" : "failed to change password"}');
             }
-      }
-      else {
-            //if passwords do not match goes to login page
-            include "profile_page.html";
-      }
 ?>
