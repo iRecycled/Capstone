@@ -6,21 +6,6 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             document.getElementById("servername").innerHTML = obj[0].ServerName;
-        },
-        error: function() {
-            console.log("fail");
-        }
-    })
-
-    //gets a list of servers that the user belongs to
-    //redirects the user to chat.html with localstorage Key serverID set to the server ID
-    $.ajax({
-        type: "post",
-        url: "getServerList.php",
-        data: {username: localStorage.getItem('username')},
-        success: function(data) {
-            obj = JSON.parse(data);
-            console.log(obj);
             
             for( var x in obj) {
                 let memberList = document.getElementById("UserList");
@@ -37,6 +22,20 @@ $(document).ready(function(){
                 scrollbarDiv.appendChild(list);
                 memberList.appendChild(scrollbarDiv);
             }
+        },
+        error: function() {
+            console.log("fail");
+        }
+    })
+
+    $.ajax({
+        type: "post",
+        url: "getAllServerList.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            //createAllServerTable(obj, "allServersBody")
         },
         error: function(data) {
             console.log("fail");
