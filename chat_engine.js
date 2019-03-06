@@ -81,7 +81,7 @@ function updateChat(serverID){
                             console.log("starting message shit");
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
-                            var str = data.text[i].split("<<");
+                            var str = data.text[i].split("<");
                             data.text[i] = parse.parse(str[1]);
                             console.log(data.text[i]);
                             //console.log(generateMsg(data.text[i],"",""));
