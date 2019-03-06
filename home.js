@@ -48,9 +48,13 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    searchUser('test');
+    searchUser('t');
 });
 
+function processSearchResults(names)
+{
+    console.log(names)
+}
 
 function searchUser(name){
     $.ajax({
@@ -60,7 +64,7 @@ function searchUser(name){
         success: function(data) {
             obj = JSON.parse(data);
             if(obj.length>0){
-               processSearchResults()
+               processSearchResults(obj)
             }
         },
         error: function(data) {
