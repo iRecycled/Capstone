@@ -43,12 +43,12 @@ $(document).ready(function(){
         success: function(result) {
             //If successful, go to the home page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-            alert("Password changed successfully!")
+            alert(result.msg)
         },
         error: function(result) {
             //If not successful, return to the profile page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
-            alert(result.error)
+            alert(result.msg)
         }
     })
     })
