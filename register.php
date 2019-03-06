@@ -12,25 +12,25 @@ header("index.php");
   $password = strip_tags($_POST['password']);
 
         // 2. Run the Query
-        $emailCheck = "SELECT * FROM WebUser WHERE email='$email'";
-        $mailResult = simpleQuery($db,$emailCheck);
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE email = '$email';";
+        $stmt = simpleQuery($db, $query);
+  
+      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
+        $stmt->fetch();
 
-        $usernameCheck = "SELECT * FROM WebUser WHERE username='$username'";
-        $userResult = simpleQuery($db,$usernameCheck);
-
-        if($mailResult == NULL){
-                $data = -2; //email already in use
+        if($emailTest == $email){
+                $data = -2; //email is already taken
         }
-        else if($userResult == NULL)
-        {
-                $data = -3;//username already in use      
-        }
-        else { //if username and password dont exist then create user
-                $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
-	        $stmt = simpleQuery($db, $query);
-        }
-
         
+        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
+        $stmt = simpleQuery($db, $query);
+  
+      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
+        $stmt->fetch();
+
+        if($usernameTest == $username){
+                $data = -3; //username is already taken
+        }
 
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
 	$stmt = simpleQuery($db, $query);
@@ -38,10 +38,6 @@ header("index.php");
                 //added success
                 $data=-1;
         }
-      	else{
-                //Advanced rest client (ARC)
-                //failure in insertion
-                $data=-10;
-        }
+      	
 echo json_encode($data);
 ?>

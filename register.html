@@ -48,14 +48,19 @@
                             localStorage.setItem("dataTest", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                           }
+                          
                         },
                         error: function(data){
                             //on registration failure
+                            if(data == -2){
+
+        
                               document.getElementById("username").style.borderColor = "red";
                               document.getElementById("password").style.borderColor = "red";
                               document.getElementById("email").style.borderColor = "red";
                               document.getElementById("errorText").innerHTML = "Username or Email is Already In Use";
                               document.getElementById("errorText").style.color = "red";
+                            }
                         }
                     })
                     })
