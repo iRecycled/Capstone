@@ -52,6 +52,11 @@ $(document).ready(function(){
 
 function processSearchResults(names)
 {
+    dropdown = document.getElementById('searchDropdown');
+    dropdown.innerHTML = ''
+    for(i = 0; i < name.length; i++){
+        dropdown.innerHTML+= "<a class='dropdown-item' href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i]+"\")'/>" + names[i] + "</a>";
+    }
     console.log(names)
 }
 
