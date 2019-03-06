@@ -125,6 +125,8 @@ $(document).ready(function(){
     })
 })
 
+console.log("fart")
+
 function AddFriendButton(e){
     console.log("calls")
     if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
