@@ -48,8 +48,23 @@
                             localStorage.setItem("dataTest", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                           }
-                          if(data == -2){
-                              console.log("Im in here");
+                          else if(data == -2){
+                            document.getElementById("email").style.borderColor = "red";
+                            document.getElementById("email").style.borderColor = "red";
+                            document.getElementById("errorText").innerHTML = "Email is Already In Use";
+                            document.getElementById("errorText").style.color = "red";
+                          }
+                          else if(data == -3){
+                            document.getElementById("username").style.borderColor = "red";
+                            document.getElementById("username").style.borderColor = "red";
+                            document.getElementById("errorText").innerHTML = "Username is Already In Use";
+                            document.getElementById("errorText").style.color = "red";
+                          }
+                          else if(data == -5){
+                            document.getElementById("username").style.borderColor = "red";
+                            document.getElementById("email").style.borderColor = "red";
+                            document.getElementById("errorText").innerHTML = "Email & Username are already in use";
+                            document.getElementById("errorText").style.color = "red";
                           }
                           
                         },
