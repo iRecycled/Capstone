@@ -125,10 +125,11 @@ $(document).ready(function(){
     })
 })
 
-function AddFriendButton(){
+function AddFriendButton(e){
+    console.log("calls")
     if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
     {
-        document.getElementById('friendZone').innerHTML += "\
+        document.getElementById(e).innerHTML += "\
             <button id='friendRequestSend'>\
                 Add Friend\
             </button>";
