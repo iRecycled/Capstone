@@ -124,3 +124,20 @@ $(document).ready(function(){
         }
     })
 })
+
+console.log("fart")
+
+function AddFriendButton(e){
+    console.log("calls")
+    if(localStorage.getItem('username') != localStorage.getItem('viewinfo'))
+    {
+        document.getElementById(e).innerHTML += "\
+            <button id='friendRequestSend'>\
+                Add Friend\
+            </button>";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    AddFriendButton('friendZone')
+})
