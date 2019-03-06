@@ -135,3 +135,7 @@ function AddFriendButton(e){
             </button>";
     }
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    AddFriendButton('friendZone')
+})
