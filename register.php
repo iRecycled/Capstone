@@ -20,6 +20,7 @@ header("index.php");
 
         if($emailTest == $email){
                 $data = -2; //email is already taken
+                echo json_encode($data);
         }
         
         $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
@@ -30,6 +31,7 @@ header("index.php");
 
         if($usernameTest == $username){
                 $data = -3; //username is already taken
+                echo json_encode($data);
         }
 
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
