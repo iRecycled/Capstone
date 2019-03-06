@@ -48,7 +48,6 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    searchUser('t');
 });
 
 function processSearchResults(names)
@@ -56,7 +55,9 @@ function processSearchResults(names)
     console.log(names)
 }
 
-function searchUser(name){
+function searchUser(id){
+    name = document.getElementById(id).value
+    console.log(name)
     $.ajax({
         type: "post",
         url: "searchForUser.php",
