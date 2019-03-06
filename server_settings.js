@@ -24,6 +24,7 @@ $(document).ready(function(){
             console.log(obj)
 
             createSidebarChats(obj, "chatSidebar");
+            getServerInfo(obj, "ServerInfo");
         },
         error: function(data) {
             console.log("fail");
@@ -59,19 +60,27 @@ function createSidebarChats(obj, id) {
         link.onclick = function() {
             localStorage.setItem("serverID", this.id);
         };
+
         link.href = "chat.html";
-        
-        // <li>
-        //     <a href="#">Chat 1</a>
-        // </li>
-        // <li>
-        //     <a href="#">Chat 2</a>
-        // </li>
-        // <li>
-        //     <a href="#">Chat 3</a>
-        // </li>
         link.appendChild(text);
         list.appendChild(link);
         memberList.appendChild(list);
     }
+}
+
+function getServerInfo(obj, id) {
+
+    let serverName = document.createTextNode(obj[0].ServerName);
+    let serverID = document.createTextNode(obj[0].ServerID);
+    
+
+    let memberList = document.getElementById(id);
+    let list = document.createElement("li");
+    
+    
+
+    link.appendChild(text);
+    list.appendChild(link);
+    memberList.appendChild(list);
+    
 }
