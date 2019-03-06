@@ -153,14 +153,15 @@ function CheckFriend(name){
             }
             names.sort()
             console.log(names)
+            console.log(name)
             if(names.indexOf(name) > -1)
-            {
-                return true;
-            }
-            else
             {
                 console.log("already friends")
                 return false;
+            }
+            else
+            {
+                return true;
             }
         },
         error: function(data) {
