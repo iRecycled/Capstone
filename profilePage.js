@@ -43,6 +43,7 @@ $(document).ready(function(){
         success: function(result) {
             //If successful, go to the home page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            console.log(result);
             if(result.status === 'fail'){
                 alert("Password failed to change.");
             }
@@ -53,6 +54,8 @@ $(document).ready(function(){
         error: function(result) {
             //If not successful, return to the profile page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            console.log(result);
+            alert("Password failed to change.");
         }
     })
     })
