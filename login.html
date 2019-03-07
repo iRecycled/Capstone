@@ -30,7 +30,7 @@
     return name}
     </script>
     <script>
-        //agax call for a login attempt
+        // ajax call for forgot password
         $(document).ready(function(){
           $("#continueBtn").click(function(e){
             e.preventDefault();
@@ -39,20 +39,16 @@
             url: "forgotPassword.php",
             data:{username: localStorage.getItem('username'), email: document.getElementById(getEmail)},
             success: function(result) { 
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-                if(result.status === 'pass') {
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                     alert("You received an email with your new password!");
-                }
-                else{
-                    alert("Failed to reset your password.");
-                }
             },
             error: function(result) {
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
                 alert("Failed to reset your password.");
             }
             })
           })
+                    //ajax call for a login attempt
                     $("#loginBtn").click(function(e){
                         e.preventDefault();
                         $.ajax({
