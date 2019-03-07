@@ -7,6 +7,7 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
+        $data = 0;
   $username = strip_tags($_POST['username']); 
   $email = strip_tags($_POST['email']);
   $password = strip_tags($_POST['password']);
@@ -42,6 +43,5 @@ header("index.php");
                 //added success
                 $data=-1;
         }
-      	
 echo json_encode($data);
 ?>
