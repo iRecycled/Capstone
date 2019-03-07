@@ -27,11 +27,12 @@
         $stmt->bind_result($usernameList, $email);
         while($stmt->fetch()) {
             if($emailInput == $email) {
+                $username = $usernameList;
                 //query that updates the password
-                $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$usernameList';";
+                $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$username';";
                 $stmt = simpleQuery($db, $query);
 
-                $msg = "Hi " . $usernameList . ",\n\n Here is your new password:\n\n" . $password . 
+                $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
                     "\n\nPlease login and change your password to something you will remember immediately.";
                 $subject = "TerryChat Password Reset";
                 //send email to the user with the new password
