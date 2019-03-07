@@ -43,11 +43,11 @@ $(document).ready(function(){
         success: function(result) {
             //If successful, go to the home page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-            if(result.status === 'pass'){
-                alert("Password changed successfully!")
+            if(result.status === 'fail'){
+                alert("Password failed to change.");
             }
             else{
-                alert("Password failed to change.")
+                alert("Password changed successfully!");
             }
         },
         error: function(result) {

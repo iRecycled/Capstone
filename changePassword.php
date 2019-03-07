@@ -26,7 +26,6 @@
                   if(strcmp($newPassword,$confirmNewPassword)==0){
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
-                        die('{"status": "pass"}');
                   }
                   else{
                         die('{"status": "fail"}');
