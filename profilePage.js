@@ -42,21 +42,17 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
         success: function(result) {
             //If successful, go to the home page
-            console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-            console.log(result);
             if(result == 0){
                 alert("Password failed to change.");
             }
             else{
                 alert("Password changed successfully!");
             }
-            console.log(result);
         },
         error: function(result) {
             //If not successful, return to the profile page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
-            console.log(result);
             alert("Password failed to change.");
         }
     })
@@ -69,10 +65,16 @@ $(document).ready(function(){
         url: "forgotPassword.php",
         data: {username: localStorage.getItem('username')},
         success: function(result) {
-            //logs out the user
-            localStorage.setItem("username", "logout"); 
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-            alert("You received an email with your new password!");
+            if(result == 1) {
+                //logs out the user
+                localStorage.setItem("username", "logout"); 
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+                alert("You received an email with your new password!");
+            }
+            else{
+                alert("Email does not match an account in the Database.");
+            }
+            
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
