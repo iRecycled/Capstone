@@ -42,6 +42,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
         success: function(result) {
             //If successful, go to the home page
+            console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
             console.log(result);
             if(result.status === 'fail'){
@@ -50,6 +51,7 @@ $(document).ready(function(){
             else{
                 alert("Password changed successfully!");
             }
+            console.log(result);
         },
         error: function(result) {
             //If not successful, return to the profile page
