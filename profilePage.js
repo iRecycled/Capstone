@@ -46,7 +46,7 @@ $(document).ready(function(){
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
             console.log(result);
             if(result == 0){
-                alert(result);
+                alert("Password failed to change.");
             }
             else{
                 alert("Password changed successfully!");
