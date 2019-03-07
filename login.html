@@ -32,6 +32,27 @@
     <script>
         //agax call for a login attempt
         $(document).ready(function(){
+          $("#continueBtn").click(function(e){
+            e.preventDefault();
+            $.ajax({
+            type: "post",
+            url: "forgotPassword.php",
+            data:{username: localStorage.getItem('username'), email: document.getElementById(getEmail)},
+            success: function(result) { 
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+                if(result.status === 'pass') {
+                    alert("You received an email with your new password!");
+                }
+                else{
+                    alert("Failed to reset your password.");
+                }
+            },
+            error: function(result) {
+                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+                alert("Failed to reset your password.");
+            }
+            })
+          })
                     $("#loginBtn").click(function(e){
                         e.preventDefault();
                         $.ajax({
@@ -112,7 +133,7 @@
               <span class="signUpSeparator">or</span>
             </div>
            <form method="get" action="register.html">
-              <button type="submit" class= "btn" id="continueBtn">Register</button>
+              <button type="submit" class= "btn" id="registerBtn">Register</button>
             <p>  </p>
           </form> 
           </div>
