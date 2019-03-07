@@ -45,7 +45,7 @@ $(document).ready(function(){
             console.log(result);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
             console.log(result);
-            if(result.status === 'fail'){
+            if(result === 0){
                 alert("Password failed to change.");
             }
             else{
@@ -72,12 +72,7 @@ $(document).ready(function(){
             //logs out the user
             localStorage.setItem("username", "logout"); 
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-            if(result.status === 'pass') {
-                alert("You received an email with your new password!");
-            }
-            else{
-                alert("Failed to reset your password.");
-            }
+            alert("You received an email with your new password!");
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
