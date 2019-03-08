@@ -71,9 +71,9 @@ function getServerInfo(obj, id) {
 
     let serverName = document.createTextNode(localStorage.getItem('servername'));
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
-    let memberList = document.getElementById(id);
-    let servername = document.getElementById('servername');
-    let serverid = document.getElementById('servername');
+    //let memberList = document.getElementById(id);
+    let servername = document.getElementById('serverInfoServerName');
+    let serverid = document.getElementById('serverInfoServerID');
 
     // obj = [{
     //     ServerName: localStorage.getItem('servername'), 
@@ -81,6 +81,6 @@ function getServerInfo(obj, id) {
     // }]
     
     servername.appendChild(serverName);
-    serverid.appendChild(ServerID);
+    serverid.appendChild(serverID);
         
 }
