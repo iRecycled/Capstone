@@ -104,7 +104,7 @@ function updateChat(serverID){
 function generateMsg(text, sender, time)
 {
     var username = sender;
-    var today = new Date();
+
     //creates html code
     msg = "\
     <tr id = 'singleMessage'>\
@@ -201,6 +201,7 @@ function sendChat(message, nickname, serverID)
 {
     updateChat(serverID);
     console.log("sent successfully");
+    var today = new Date();
     var time = today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
      $.ajax({
 		   type: "POST",
