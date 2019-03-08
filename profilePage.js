@@ -151,6 +151,17 @@ function SendFriendRequest()
     user = localStorage.getItem('username');
     friend = localStorage.getItem('viewInfo');
     //SEND REQUEST
+    return $.ajax({
+        type: "post",
+        url: "sendFriendRequest.php",
+        data: {user: user, friend: friend},
+        success: function(data) {
+            alert("success");
+        },
+        error: function(data) {
+            alert("fail");
+        }
+    })
 }
 
 function CheckFriend(name){
