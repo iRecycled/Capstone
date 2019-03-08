@@ -92,3 +92,13 @@ body {
 #topText {
   text-align: center;
 }
+
+#needAccount {
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#signUp {
+  color: blue;
+}
