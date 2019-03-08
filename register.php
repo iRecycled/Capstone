@@ -13,7 +13,7 @@ header("index.php");
   $password = strip_tags($_POST['password']);
         $check = 0;
         // 2. Run the Query
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE email = '$email';";
+        $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE email = '$email';";
         $stmt = simpleQuery($db, $query);
   
       	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
@@ -24,10 +24,10 @@ header("index.php");
                 $check = -2;
         }
         
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
+        $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
   
-      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
+      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest, $SessionIDTest);
         $stmt->fetch();
 
         if($usernameTest == $username){
@@ -37,7 +37,7 @@ header("index.php");
                 }
         }
 
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email')";
+        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email',null)";
 	$stmt = simpleQuery($db, $query);
         if($stmt != NULL) {
                 //added success
