@@ -147,7 +147,7 @@ function AddFriendButton(e){
 
 function SendFriendRequest()
 {
-    console.log("FRIEND REQUEST SENT")
+    console.log("FRIEND REQUEST SENT");
     user = localStorage.getItem('username');
     friend = localStorage.getItem('viewInfo');
     //SEND REQUEST
