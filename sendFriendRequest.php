@@ -34,8 +34,8 @@ header("index.php");
         }
 
         if ($alreadyExists == false) {
-                /*echo($userIDFrom, $userIDTo);
+                echo($userIDFrom, $userIDTo);
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
-                $stmt = simpleQuery($db, $query);*/
+                $stmt = simpleQuery($db, $query);
         }
 ?>
