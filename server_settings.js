@@ -74,11 +74,11 @@ function getServerInfo(obj, id) {
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
 
-    let list1 = document.createElement("ul");
-    let list2 = document.createElement("ul");
+    let list1 = document.createElement("ul").appendChild(serverName);
+    let list2 = document.createElement("ul").appendChild(serverID);
 
-    list1.appendChild(serverName);
-    list2.appendChild(serverID);
-    memberList.appendChild(list1, list2);
+    
+    memberList.appendChild(list1);
+    memberList.appendChild(list2);
     
 }
