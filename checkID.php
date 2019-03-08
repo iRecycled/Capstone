@@ -15,5 +15,5 @@
       	$stmt->bind_result($userID, $username1, $password, $email, $SessionID);
     $stmt->fetch();
     //sends the information from the database back as a json object to the ajax call
-echo json_encode($userID);
+echo json_encode($SessionID);
 ?>
