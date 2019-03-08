@@ -164,8 +164,9 @@ function SendFriendRequest()
 
 function CheckFriend(name){
     //get list of user's friends
+    notFriends = false;
     console.log(localStorage.getItem('username'))
-    return $.ajax({
+    $.ajax({
         type: "post",
         url: "getFriendsList.php",
         data: {username: localStorage.getItem('username')},
@@ -181,19 +182,20 @@ function CheckFriend(name){
             if(names.indexOf(name) > -1)
             {
                 console.log("already friends")
-                return false;
+                notFriends = false
             }
             else
             {
                 console.log("not friends")
-                return true;
+                notFriends = true
             }
         },
         error: function(data) {
             console.log("fail");
-            return false;
+            notFriends = false
         }
     })
+    return notFriends
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
