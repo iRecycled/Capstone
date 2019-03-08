@@ -11,11 +11,11 @@ header("index.php");
   $username = strip_tags($_POST['user']); 
   $friendname = strip_tages($_POST['friend'])
         // 2. Run the Query
-        $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
+        /*$query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userIDFrom);
-        $stmt->fetch();
+        $stmt->fetch();*/
 
         /*$query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
         $stmt = simpleQuery($db, $query);
