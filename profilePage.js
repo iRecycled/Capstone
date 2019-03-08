@@ -147,11 +147,8 @@ function AddFriendButton(e){
 
 function SendFriendRequest()
 {
-    console.log("TEST");
     user = localStorage.getItem('username');
-    console.log("TEST1");
     friend = localStorage.getItem('viewInfo');
-    console.log("TEST2");
     return $.ajax({
         type: "post",
         url: "sendFriendRequest.php",
