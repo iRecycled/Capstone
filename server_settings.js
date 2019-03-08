@@ -74,12 +74,13 @@ function getServerInfo(obj, id) {
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
     let scrollbarDiv = document.createElement("div");
+    
     let list1 = document.createElement("ul").appendChild(serverName);
-    let list2 = document.createElement("ul").appendChild(serverID);
+    //let list2 = document.createElement("ul").appendChild(serverID);
 
 
     scrollbarDiv.appendChild(list1);
-    scrollbarDiv.appendChild(list2);
+    //scrollbarDiv.appendChild(list2);
     memberList.appendChild(scrollbarDiv);
     
 }
