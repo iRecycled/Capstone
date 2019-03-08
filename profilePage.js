@@ -67,14 +67,13 @@ $(document).ready(function(){
         success: function(result) {
             if(result == 1) {
                 //logs out the user
-                localStorage.setItem("username", "logout"); 
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+                localStorage.setItem("username", "logout");
                 alert("You received an email with your new password!");
             }
             else{
                 alert("Email does not match an account in the Database.");
             }
-            
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },
         error: function(result) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
@@ -147,17 +146,14 @@ function AddFriendButton(e){
 
 function SendFriendRequest()
 {
-    console.log("TEST");
     user = localStorage.getItem('username');
-    console.log("TEST1");
     friend = localStorage.getItem('viewInfo');
-    console.log("TEST2");
     return $.ajax({
         type: "post",
         url: "sendFriendRequest.php",
         data: {user: user, friend: friend},
         success: function(data) {
-            alert("success");
+            alert(data);
         },
         error: function(data) {
             alert("fail");
