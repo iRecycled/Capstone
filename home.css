@@ -74,7 +74,7 @@ tr:hover{
     margin: 0px;
 }
 
-#serverEntry:a{
+.serverEntry a{
     color: inherit;
     display:block;
     width: 100%;
