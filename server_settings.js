@@ -33,7 +33,7 @@ $(document).ready(function(){
 });
 
 function createUL(obj, id) {
-    for( var x in obj) {
+    for( let x in obj) {
         let memberList = document.getElementById(id);
         let scrollbarDiv = document.createElement("div");
         let list = document.createElement("ul");
@@ -51,7 +51,7 @@ function createUL(obj, id) {
 }
 
 function createSidebarChats(obj, id) {
-    for( var x in obj) {
+    for( let x in obj) {
         let memberList = document.getElementById(id);
         let list = document.createElement("li");
         let link = document.createElement("a")
@@ -73,11 +73,13 @@ function getServerInfo(obj, id) {
     let serverName = document.createTextNode(localStorage.getItem('servername'));
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
+    let scrollbarDiv = document.createElement("div");
+    let list1 = document.createElement("ul").appendChild(serverName);
+    let list2 = document.createElement("ul").appendChild(serverID);
 
-    let list1 = document.createElement("li").appendChild(serverName);
-    let list2 = document.createElement("li").appendChild(serverID);
 
-    memberList.appendChild(list1);
-    memberList.appendChild(list2);
+    scrollbarDiv.appendChild(list1);
+    scrollbarDiv.appendChild(list2);
+    memberList.appendChild(scrollbarDiv);
     
 }
