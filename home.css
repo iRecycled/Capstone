@@ -66,7 +66,6 @@ tr:hover{
     background-color: gray;
     min-width: 230px;
     overflow: auto;
-    border: 1px solid #ddd;
     z-index: 1;
   }
 #searchBar{
