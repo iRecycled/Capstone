@@ -58,7 +58,7 @@
         $stmt = simpleQuery($db, $query);
 
         $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-            "\n\nPlease login and change your password to something you will remember immediately. \n Test";
+            "\n\nPlease login and change your password to something you will remember immediately.";
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
