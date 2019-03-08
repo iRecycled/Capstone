@@ -246,6 +246,7 @@ $.ajax({
 </head>
 
 <body>
+    <div class="page">
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
     <ul class="navbar-nav mr-auto">
@@ -313,44 +314,43 @@ $.ajax({
             <li>
                 <a href="#">Server</a>
             </li>
-            
         </ul>
-
     </nav>
+
+    <!-- Navbar Right -->
+    <div id="wrapper-right">
+    <nav id="sidebar-right" class="navbar-text">
+            <div class="onlineUserTable">
+                    <table class="userTable" style="float:right;">
+                            <th>Online Users</th>
+                            <tr>
+                            <td>
+                            <ul>
+                                <style>
+                                li {
+                                    list-style-type: none;
+                                    padding-right: 30px;
+                                }
+                                th {
+                                    text-align: center;
+                                }
+                                </style>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>  
+                            </ul>                            
+                            </tr>
+                    </table>
+                </div>
+    </nav>
+    </div>
     <!-- Page Content -->
-    <div id="content">
-            <style>
-            table, th,td {
-                border: .5px black;
-            }
-            th, td {
-                padding: 5px;
-            }
-            tr {
-                text-align: right;
-            }
-            li {
-                list-style-type: none;
-            }
-            </style>
-                
+    <div id="content">      
         <div id="contain" class="container-fluid">
             <!--Chat Output Area-->
-            <div class="onlineUserTable">
-            <table class="userTable" style="float:right;">
-                    <th>Online Users</th>
-                    <tbody>
-                    <tr>
-                    <td>
-                    <li>User 1</li>
-                    <li>User 1</li>
-                    <li>User 1</li>
-                    <li>User 1</li>
-                    <li>User 1</li>                              
-                    </tr>
-                    </tbody>
-            </table>
-        </div>
+            
             <div id = "chatOutput">
                     
                 <!--Table to Display Messages-->
@@ -385,6 +385,7 @@ $.ajax({
                 </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
