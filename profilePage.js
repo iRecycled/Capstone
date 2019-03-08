@@ -1,3 +1,4 @@
+
 if(localStorage.getItem('viewInfo')=='' || !localStorage.getItem('viewInfo'))
 {
     console.log("empty")
@@ -134,6 +135,7 @@ $(document).ready(function(){
         }
     })
 })
+var isNotFriend = false;
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
     notFriends = CheckFriend(friendName)
@@ -161,7 +163,7 @@ function SendFriendRequest()
         }
     })
 }
-var isNotFriend;
+
 function CheckFriend(name){
     //get list of user's friends
     isNotFriend = false;
