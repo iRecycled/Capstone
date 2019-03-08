@@ -169,7 +169,7 @@ function sendServerRequest(id){
 }
 
 $('html').click(function(e) {                    
-    if(!$(e.target).id == 'searchButton' && !$(e.target).hasClass('dropdown-item'))
+    if(!$(e.target).id == 'searchButton' && !$(e.target).className == 'dropdown-item')
     {
         console.log("out click")
         $('#searchDropdown').classList.toggle("show");                
