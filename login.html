@@ -40,12 +40,7 @@
             data:{username: localStorage.getItem('username'), email: document.getElementById("getEmail").value},
             success: function(result) { 
                 window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-                if(result == 1) {
-                  alert("You received an email with your new password!");
-                }
-                else {
-                  alert("Reset password failed. Email does not match any account.");
-                }
+                    alert("You received an email with your new password!");
             },
             error: function(result) {
                 window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
