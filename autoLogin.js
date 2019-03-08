@@ -32,3 +32,4 @@
               }
             }
              });
+username=localStorage.getItem('username');
