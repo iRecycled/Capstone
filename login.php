@@ -12,13 +12,22 @@ header("index.php");
   
         // 2. Run the Query
   //SELECT username, password, money FROM logins WHERE username = '$username';
-        $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$name';";
+        $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
-      	$stmt->bind_result($userID, $username, $password, $email);
+      	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
-          $data=$userID;
+          $rand=rand(1, 50000);
+          $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
+          $stmt = simpleQuery($db, $query);
+
+          $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
+          $stmt = simpleQuery($db, $query);
+          $stmt->bind_result($userID, $username, $password, $email, $sessionID);
+          $stmt->fetch();
+
+          $data=$sessionID;
   		    //success, loads chat
    			 }
            else{

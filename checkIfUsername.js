@@ -14,6 +14,7 @@
          else{
            //login is correct upon loading of this webpage and automatically goes to the home page
          //window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+         username=localStorage.getItem('username');
          }
        }
        else{
