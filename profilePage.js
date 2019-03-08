@@ -71,7 +71,7 @@ $(document).ready(function(){
                 alert("You received an email with your new password!");
             }
             else{
-                alert("Email does not match an account in the Database.");
+                alert("Failed to reset your password.");
             }
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },
