@@ -65,7 +65,7 @@
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
-        $status = 1;
+        $status = -1;
     }
     echo json_encode($status);
 ?>
