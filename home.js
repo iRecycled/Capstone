@@ -174,7 +174,7 @@ $('html').click(function(e) {
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {
         console.log("out click")
-        document.getElementById('searchDropdown').style.display = 'hidden';
+        document.getElementById('searchDropdown').style.display = 'none';
         console.log("???")
     }
  }); 
