@@ -7,8 +7,7 @@
        success: function(data) {
        if(data==localStorage.getItem("sessionID")){
          if(localStorage.getItem('username').length==0){
-           localStorage.setItem("username","oheystopmesingaround")
-           localStorage.setItem("sessionID","-1")
+          localStorage.clear();
            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
          }
          else{
@@ -18,6 +17,7 @@
          }
        }
        else{
+        localStorage.clear();
            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
        }
      }
