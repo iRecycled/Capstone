@@ -168,7 +168,9 @@ function sendServerRequest(id){
     */
 }
 
-$('html').click(function(e) {                 
+$('html').click(function(e) {        
+    console.log(!e.target.id == 'searchButton')
+    console.log(!e.target.className == 'btn') 
     if(!e.target.id == 'searchButton' && !e.target.className == 'btn')
     {
         console.log("out click")
