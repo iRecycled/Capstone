@@ -16,7 +16,7 @@ header("index.php");
   
         $stmt->bind_result($userIDFrom);
         $stmt->fetch();
-/*
+
         $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
         $stmt = simpleQuery($db, $query);
   
@@ -32,5 +32,5 @@ header("index.php");
         if($alreadyExists = null) {
                 $query = "INSERT IGNORE INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
-        }*/
+        }
 ?>
