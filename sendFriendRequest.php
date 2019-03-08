@@ -11,12 +11,12 @@ header("index.php");
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
         // 2. Run the Query
-        echo($username);
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userIDFrom);
         $stmt->fetch();
+
 
         $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
         $stmt = simpleQuery($db, $query);
@@ -25,13 +25,17 @@ header("index.php");
         $stmt->fetch();
 
         $query = "SELECT * FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
-        $stmt = simpleQuery($db, $query);
-
-        $stmt->bind_result($alreadyExists);
-        $stmt->fetch();
         
-        if($alreadyExists == null) {
+        $result = $db->query($query);
+        $response = array();
+        $alreadyExists = false;
+        while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $alreadyExists = true;
+        }
+
+        /*if(!$alreadyExists) {
+                echo($userIDFrom, $userIDTo);
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
-        }
+        }*/
 ?>
