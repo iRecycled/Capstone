@@ -106,7 +106,7 @@ function generateMsg(text, sender, time)
     var today = new Date();
     //creates html code
     msg = "\
-    <tr>\
+    <tr id = 'singleMessage'>\
         <td style='vertical-align: top;'>\
             <div class='message'>\
              <p class ='msgUname'>"
