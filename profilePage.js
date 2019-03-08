@@ -65,13 +65,13 @@ $(document).ready(function(){
         url: "forgotPassword.php",
         data: {username: localStorage.getItem('username')},
         success: function(result) {
-            if(result == 1) {
+            if(result == 0) {
+                alert("Email does not match an account in the Database.");
+            }
+            else{
                 //logs out the user
                 localStorage.setItem("username", "logout");
                 alert("You received an email with your new password!");
-            }
-            else{
-                alert("Email does not match an account in the Database.");
             }
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },

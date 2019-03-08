@@ -7,7 +7,7 @@
           die('{ "errMessage": "Failed to Connect to DB." }');
     }
     $username = $_POST['username']; 
-    
+    $status = 0;
     //randomly set password for the user to change
     $length = 8;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
