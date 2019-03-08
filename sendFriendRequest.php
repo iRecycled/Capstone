@@ -29,7 +29,7 @@ header("index.php");
         $stmt->bind_result($alreadyExists);
         $stmt->fetch();
         
-        if(json_encode($alreadyExists) == null) {
+        if($alreadyExists == null) {
                 echo "test";
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
