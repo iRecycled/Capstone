@@ -22,18 +22,19 @@
       	$stmt->bind_result($currentPassword);
             $stmt->fetch();
             //check if passwords match
-  		if(strcmp($password,$currentPassword)==0){
-                  if(strcmp($newPassword,$confirmNewPassword)==0){
+  		if($password == $currentPassword){
+                  if($newPassword == $confirmNewPassword){
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
-                        die('{"status": "pass"}');
+                        $status = 1;
                   }
                   else{
-                        die('{"status": "fail"}');
+                        $status = 0;
                   }
    		}
             else{
-                  die('{"status": "fail"}');
+                  $status = 0;
             }
+            echo json_encode($status);
       }
 ?>
