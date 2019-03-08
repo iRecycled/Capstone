@@ -202,7 +202,8 @@ function sendChat(message, nickname, serverID)
     updateChat(serverID);
     console.log("sent successfully");
     var today = new Date();
-    var time = today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
+    var tmp = today.getMonth()+1;
+    var time = tmp + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
