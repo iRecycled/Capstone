@@ -65,6 +65,7 @@ $(document).ready(function(){
         url: "forgotPassword.php",
         data: {username: localStorage.getItem('username')},
         success: function(result) {
+            console.log(result);
             if(result == 1) {
                 //logs out the user
                 localStorage.setItem("username", "logout");
