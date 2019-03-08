@@ -11,12 +11,13 @@ header("index.php");
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
         // 2. Run the Query
-        echo($username);
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userIDFrom);
         $stmt->fetch();
+
+        echo($userIDFrom);
 
         $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
         $stmt = simpleQuery($db, $query);
