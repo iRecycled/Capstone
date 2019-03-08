@@ -166,7 +166,6 @@ function SendFriendRequest()
 
 function CheckFriend(name){
     //get list of user's friends
-    isNotFriend = false;
     console.log(localStorage.getItem('username'))
     $.ajax({
         type: "post",
