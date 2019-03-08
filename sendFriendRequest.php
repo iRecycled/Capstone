@@ -23,14 +23,15 @@ header("index.php");
         $stmt->bind_result($userIDTo);
         $stmt->fetch();
 
-        $query = "SELECT * FROM FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
+        $query = "SELECT * FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
         $stmt = simpleQuery($db, $query);
 
         $stmt->bind_result($alreadyExists);
         $stmt->fetch();
 
+        
         if($alreadyExists = null) {
-                $query = "INSERT IGNORE INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
+                $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
         }
 ?>
