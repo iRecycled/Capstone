@@ -7,7 +7,6 @@
           die('{ "errMessage": "Failed to Connect to DB." }');
     }
     $username = $_POST['username']; 
-    // sends back 0 if no match found
     $status = 0;
     //randomly set password for the user to change
     $length = 8;
@@ -40,8 +39,12 @@
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
                 // sends back 1 if email sent
-                $status = 1;
+                $status = -1;
                 break;
+            }
+            else {
+                // sends back 0 if no match found
+                $status = 0;
             }
         }
     }
@@ -62,7 +65,7 @@
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
-        $status = 1;
+        $status = -1;
     }
     echo json_encode($status);
 ?>

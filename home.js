@@ -58,7 +58,7 @@ function processSearchResults(names)
     for(i = 0; i < names.length; i++){
         dropdown.innerHTML+= "<a class='dropdown-item' href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i].UserName+"\")'/>" + names[i].UserName + "</a>";
     }
-    
+    document.getElementById('searchDropdown').style.display = 'block';
 }
 
 function searchUser(id){
@@ -95,7 +95,9 @@ function createFriendsList(d, targetID){
         text +="<tr>\
                     <td class = 'serverEntry'>\
                         <a href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i]+"\")'>\
+                        <span style='display: block; padding: 15px;'>\
                         " + names[i] + "\
+                        </span>\
                         </a>\
                     </td>\
                 </tr>";
@@ -165,3 +167,14 @@ function sendServerRequest(id){
     })
     */
 }
+
+$('html').click(function(e) {        
+    console.log(e.target.id == 'searchButton')
+    console.log(e.target.className == 'btn') 
+    if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
+    {
+        console.log("out click")
+        document.getElementById('searchDropdown').style.display = 'none';
+        console.log("???")
+    }
+ }); 

@@ -5,7 +5,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
-            document.getElementById("servername").innerHTML = obj[0].ServerName;
+            document.getElementById("servername").appendChild(obj[0].ServerName);//.innerHTML = obj[0].ServerName;
             
             createUL(obj, "UserList");
             
@@ -21,8 +21,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
-            console.log(obj)
-
+        
             createSidebarChats(obj, "chatSidebar");
             getServerInfo(obj, "ServerInfo");
         },
@@ -33,7 +32,7 @@ $(document).ready(function(){
 });
 
 function createUL(obj, id) {
-    for( var x in obj) {
+    for(let x in obj) {
         let memberList = document.getElementById(id);
         let scrollbarDiv = document.createElement("div");
         let list = document.createElement("ul");
@@ -51,7 +50,7 @@ function createUL(obj, id) {
 }
 
 function createSidebarChats(obj, id) {
-    for( var x in obj) {
+    for(let x in obj) {
         let memberList = document.getElementById(id);
         let list = document.createElement("li");
         let link = document.createElement("a")
@@ -70,17 +69,18 @@ function createSidebarChats(obj, id) {
 
 function getServerInfo(obj, id) {
 
-    let serverName = document.createTextNode(obj[0].ServerName);
-    let serverID = document.createTextNode(obj[0].ServerID);
-    let memberList = document.getElementById(id);
-    let list = document.createElement("li");
-    
+    let serverName = document.createTextNode(localStorage.getItem('servername'));
+    let serverID = document.createTextNode(localStorage.getItem('serverID'));
+    //let memberList = document.getElementById(id);
+    let servername = document.getElementById('serverInfoServerName');
+    let serverid = document.getElementById('serverInfoServerID');
 
-    list.appendChild(serverName);
-    list.appendChild(serverID);
-
-    // link.appendChild(text);
-    // list.appendChild(link);
-    memberList.appendChild(list);
+    // obj = [{
+    //     ServerName: localStorage.getItem('servername'), 
+    //     ServerID: localStorage.getItem('serverID')
+    // }]
     
+    servername.appendChild(serverName);
+    serverid.appendChild(serverID);
+        
 }

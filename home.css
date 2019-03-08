@@ -39,12 +39,10 @@
 }
 
 tr:nth-child(even){
-    height: 80px;
     background: #CCC;
     border-top: 2px solid #464e5b;
 }
 tr:nth-child(odd) {
-    height: 80px;
     background: #CCC;
     border-top: 2px solid #464e5b;
 }
@@ -54,7 +52,7 @@ tr:hover{
 }
 
 .serverEntry{
-    padding:0px;
+    height: 60px;
 }
 
 #userSearch{
@@ -67,7 +65,16 @@ tr:hover{
     min-width: 230px;
     overflow: auto;
     z-index: 9999;
+    position: absolute;
+    width:300px;
   }
 #searchBar{
     margin: 0px;
+}
+
+.serverEntry a{
+    color: inherit;
+    display:block;
+    width: 100%;
+    height: 100%;
 }
