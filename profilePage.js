@@ -69,11 +69,10 @@ $(document).ready(function(){
             if(result == 1) {
                 //logs out the user
                 localStorage.setItem("username", "logout");
-                //alert("You received an email with your new password!");
-                alert(result);
+                alert("You received an email with your new password!");
             }
             else{
-                alert("Email does not match an account in the Database.");
+                alert("Failed to reset your password.");
             }
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
         },
