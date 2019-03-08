@@ -19,7 +19,7 @@
     }
 
     //checks to see if user is logged in
-    if($username == "oheystopmesingaround") {
+    if($username == "") {
         // if not logged in must check to see if email input macthes an account in the DB
         $emailInput = $_POST['email'];
 
