@@ -8,11 +8,11 @@
         }
   $username = $_POST['username']; 
   
-  $query = "SELECT UserID, UserName, Password, email FROM WebUser WHERE UserName = '$username';";
+  $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$username';";
   //runs query
         $stmt = simpleQuery($db, $query);
   //binds results of query to the database
-      	$stmt->bind_result($userID, $username1, $password, $email);
+      	$stmt->bind_result($userID, $username1, $password, $email, $SessionID);
     $stmt->fetch();
     //sends the information from the database back as a json object to the ajax call
 echo json_encode($userID);
