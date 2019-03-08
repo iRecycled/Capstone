@@ -161,10 +161,10 @@ function SendFriendRequest()
         }
     })
 }
-
+var isNotFriend;
 function CheckFriend(name){
     //get list of user's friends
-    var isNotFriend = false;
+    isNotFriend = false;
     console.log(localStorage.getItem('username'))
     $.ajax({
         type: "post",
