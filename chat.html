@@ -313,21 +313,56 @@ $.ajax({
             <li>
                 <a href="#">Server</a>
             </li>
+            
         </ul>
 
     </nav>
     <!-- Page Content -->
     <div id="content">
-        <div class="container-fluid">
+            <style>
+            table, th,td {
+                border: .5px black;
+            }
+            th, td {
+                padding: 5px;
+            }
+            tr {
+                text-align: right;
+            }
+            li {
+                list-style-type: none;
+            }
+            </style>
+                
+        <div id="contain" class="container-fluid">
             <!--Chat Output Area-->
+            <div class="onlineUserTable">
+            <table class="userTable" style="float:right;">
+                    <th>Online Users</th>
+                    <tbody>
+                    <tr>
+                    <td>
+                    <li>User 1</li>
+                    <li>User 1</li>
+                    <li>User 1</li>
+                    <li>User 1</li>
+                    <li>User 1</li>                              
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
             <div id = "chatOutput">
+                    
                 <!--Table to Display Messages-->
                 <table id = "chatBox">
+                        
                     <tbody id ="chatBody">
 
                     </tbody>
+                    
                 </table>
             </div>
+            
             <!--Chat Input Area-->
             <div id = "chatBoxInput">
                 <div id = "inputContainer" class = 'input-group'>
@@ -340,10 +375,12 @@ $.ajax({
 
                             </div>
                           </div>
+                          
                     <!--Chat Submit Button-->
                     <div class="input-group-append">
                         <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
                     </div>
+                    
                 </div>
                 </div>
         </div>
