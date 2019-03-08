@@ -142,6 +142,19 @@
             <div id="welcome">
 
             </div>
+            <div id = 'userSearch'>
+                <h4>Search by User</h4>
+                <div class="input-group mb-3" id='searchBar'>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon2" id='searchText'>
+                        <div class="input-group-append">
+                            <button class="btn" type="button" onclick='searchUser("searchText")'>Search</button>
+                        </div>
+                </div>
+                <div id="searchDropdown" class="dropdown-content">
+
+                </div>
+            </div>
+
             <!--Container for showing friends list-->
             <div id = "friendsListContainer" class="landingItem">
                 <h3>Your Friends</h3>
@@ -171,19 +184,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div id = 'userSearch'>
-                <h4>Search by User</h4>
-                <div class="input-group mb-3" id='searchBar'>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon2" id='searchText'>
-                        <div class="input-group-append">
-                            <button class="btn" type="button" onclick='searchUser("searchText")'>Search</button>
-                        </div>
-                </div>
-                <div id="searchDropdown" class="dropdown-content">
-
-                </div>
-            </div>
+            </div>    
         </div>
     </div>
 </div>
