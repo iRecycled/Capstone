@@ -72,16 +72,17 @@ function getServerInfo(obj, id) {
     let serverName = document.createTextNode(localStorage.getItem('servername'));
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
-    obj = [{ServerName: localStorage.getItem('servername'), ServerID: localStorage.getItem('serverID')}]
-    console.log(obj)
-    createUL(obj, id)
-    let list1 = document.createElement("ul");
-    //list1.appendChild(serverName);
-    //let list2 = document.createElement("ul").appendChild(serverID);
+    // obj = [{
+    //     ServerName: localStorage.getItem('servername'), 
+    //     ServerID: localStorage.getItem('serverID')
+    // }]
+    
+    let list1 = document.createElement("ul").appendChild(serverName);
+    let list2 = document.createElement("ul").appendChild(serverID);
 
 
-    scrollbarDiv.appendChild(list1);
-    scrollbarDiv.appendChild(list2);
+    memberList.appendChild(list1);
+    memberList.appendChild(list2);
     memberList.appendChild(scrollbarDiv);
     
 }
