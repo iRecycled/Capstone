@@ -58,7 +58,7 @@ function processSearchResults(names)
     for(i = 0; i < names.length; i++){
         dropdown.innerHTML+= "<a class='dropdown-item' href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i].UserName+"\")'/>" + names[i].UserName + "</a>";
     }
-    
+    document.getElementById('searchDropdown').style.display = 'block';
 }
 
 function searchUser(id){
@@ -174,7 +174,7 @@ $('html').click(function(e) {
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {
         console.log("out click")
-        a = document.getElementById('searchDropdown');
+        document.getElementById('searchDropdown').style.display = 'hidden';
         console.log("???")
     }
  }); 
