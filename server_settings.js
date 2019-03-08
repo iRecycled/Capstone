@@ -21,8 +21,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
-            console.log(obj)
-
+        
             createSidebarChats(obj, "chatSidebar");
             getServerInfo(obj, "ServerInfo");
         },
@@ -74,6 +73,7 @@ function getServerInfo(obj, id) {
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
     obj = [{ServerName: localStorage.getItem('servername'), ServerID: localStorage.getItem('serverID')}]
+    console.log(obj)
     createUL(obj, id)
     let list1 = document.createElement("ul");
     //list1.appendChild(serverName);
