@@ -177,7 +177,7 @@ function CheckFriend(name){
             for(i = 0; i < obj.length; i++){
                 names.push(obj[i].UserName)
             }
-            print(names)
+            console.log(names)
             names.sort()
             if(names.indexOf(name) > -1)
             {
