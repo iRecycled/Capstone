@@ -74,10 +74,9 @@ function getServerInfo(obj, id) {
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
     let memberList = document.getElementById(id);
 
-    let list1 = document.createElement("ul").appendChild(serverName);
-    let list2 = document.createElement("ul").appendChild(serverID);
+    let list1 = document.createElement("li").appendChild(serverName);
+    let list2 = document.createElement("li").appendChild(serverID);
 
-    
     memberList.appendChild(list1);
     memberList.appendChild(list2);
     
