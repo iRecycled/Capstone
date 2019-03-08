@@ -65,10 +65,12 @@ $(document).ready(function(){
         url: "forgotPassword.php",
         data: {username: localStorage.getItem('username')},
         success: function(result) {
+            console.log(result);
             if(result == 1) {
                 //logs out the user
                 localStorage.setItem("username", "logout");
-                alert("You received an email with your new password!");
+                //alert("You received an email with your new password!");
+                alert(result);
             }
             else{
                 alert("Email does not match an account in the Database.");
