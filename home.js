@@ -168,7 +168,9 @@ function sendServerRequest(id){
     */
 }
 
-$('html').click(function(e) {                    
+$('html').click(function(e) {     
+    console.log($(e.target).id)
+    console.log($(e.target).className)              
     if(!$(e.target).id == 'searchButton' && !$(e.target).className == 'dropdown-item')
     {
         console.log("out click")
