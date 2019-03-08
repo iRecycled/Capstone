@@ -45,7 +45,8 @@
                 <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
                 <script>
                     function selfProfilePage(){
-                        localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                        //localStorage.getItem("username")
+                        localStorage.setItem('viewInfo', username);
                     }
                 </script>
                 <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
