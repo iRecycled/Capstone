@@ -67,7 +67,13 @@ tr:hover{
     min-width: 230px;
     overflow: auto;
     z-index: 9999;
+    position: absolute;
+    width:300px;
   }
 #searchBar{
     margin: 0px;
+}
+
+a{
+    color: inherit;
 }
