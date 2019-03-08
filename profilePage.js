@@ -153,7 +153,7 @@ function SendFriendRequest()
         url: "sendFriendRequest.php",
         data: {user: user, friend: friend},
         success: function(data) {
-            alert("success");
+            alert(data);
         },
         error: function(data) {
             alert("fail");
