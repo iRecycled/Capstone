@@ -72,15 +72,15 @@ function getServerInfo(obj, id) {
 
     let serverName = document.createTextNode(obj[0].ServerName);
     let serverID = document.createTextNode(obj[0].ServerID);
-    
-
     let memberList = document.getElementById(id);
     let list = document.createElement("li");
     
-    
 
-    link.appendChild(text);
-    list.appendChild(link);
+    list.appendChild(serverName);
+    list.appendChild(serverID);
+
+    // link.appendChild(text);
+    // list.appendChild(link);
     memberList.appendChild(list);
     
 }

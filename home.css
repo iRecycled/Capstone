@@ -59,15 +59,14 @@ tr:hover{
 
 #userSearch{
     text-align:left;
-    width: 50%;
+    width: 80%;
     margin:20px;
 }
 .dropdown-content {
     background-color: gray;
     min-width: 230px;
     overflow: auto;
-    border: 1px solid #ddd;
-    z-index: 1;
+    z-index: 9999;
   }
 #searchBar{
     margin: 0px;
