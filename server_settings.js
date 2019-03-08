@@ -5,7 +5,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username')},
         success: function(data) {
             obj = JSON.parse(data);
-            document.getElementById("servername").innerHTML = obj[0].ServerName;
+            document.getElementById("servername").appendChild(obj[0].ServerName);//.innerHTML = obj[0].ServerName;
             
             createUL(obj, "UserList");
             
@@ -71,18 +71,16 @@ function getServerInfo(obj, id) {
 
     let serverName = document.createTextNode(localStorage.getItem('servername'));
     let serverID = document.createTextNode(localStorage.getItem('serverID'));
-    let memberList = document.getElementById(id);
+    //let memberList = document.getElementById(id);
+    let servername = document.getElementById('serverInfoServerName');
+    let serverid = document.getElementById('serverInfoServerID');
+
     // obj = [{
     //     ServerName: localStorage.getItem('servername'), 
     //     ServerID: localStorage.getItem('serverID')
     // }]
     
-    let list1 = document.createElement("ul").appendChild(serverName);
-    let list2 = document.createElement("ul").appendChild(serverID);
-
-
-    memberList.appendChild(list1);
-    memberList.appendChild(list2);
-    memberList.appendChild(scrollbarDiv);
-    
+    servername.appendChild(serverName);
+    serverid.appendChild(serverID);
+        
 }

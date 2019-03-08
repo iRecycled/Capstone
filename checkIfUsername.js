@@ -23,9 +23,7 @@
      }
       });
 
-      
       function Logout(){
         localStorage.clear();
         window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
-    }
-    
+      }
