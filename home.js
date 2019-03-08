@@ -168,12 +168,10 @@ function sendServerRequest(id){
     */
 }
 
-$('html').click(function(e) {     
-    console.log(e.target.id)
-    console.log(e.target.className)              
-    if(e.target.id == 'searchButton' && e.target.className == 'dropdown-item')
+$('html').click(function(e) {                 
+    if(!e.target.id == 'searchButton' && !e.target.className == 'btn')
     {
         console.log("out click")
-        $('#searchDropdown').classList.toggle("show");                
+        document.getElementById('searchDropdown').classList.toggle("show");                
     }
  }); 
