@@ -25,7 +25,4 @@ header("index.php");
 
         $query = "INSERT IGNORE INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
         $stmt = simpleQuery($db, $query);
-
-        
-echo json_encode($data);
 ?>
