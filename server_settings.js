@@ -70,10 +70,10 @@ function createSidebarChats(obj, id) {
 
 function getServerInfo(obj, id) {
 
-    let serverName = document.createTextNode(obj[0].ServerName);
-    let serverID = document.createTextNode(obj[0].ServerID);
+    let serverName = document.createTextNode(localStorage.getItem(servername));
+    let serverID = document.createTextNode(localStorage.getItem(serverID));
     let memberList = document.getElementById(id);
-    let list = document.createElement("li");
+    let list = document.createElement("ul");
     
 
     list.appendChild(serverName);
