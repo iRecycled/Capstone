@@ -33,7 +33,7 @@ header("index.php");
                 $alreadyExists = true;
         }
 
-        if($alreadyExists === false) {
+        if ($alreadyExists === false) {
                 echo($userIDFrom, $userIDTo);
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
