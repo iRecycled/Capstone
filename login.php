@@ -15,7 +15,7 @@ header("index.php");
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
-      	$stmt->bind_result($userID, $username, $password, $email);
+      	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
   			if(strcmp($pass,$password)==0){
           $rand=rand(1, 50000);
