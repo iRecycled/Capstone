@@ -29,8 +29,9 @@ header("index.php");
         $stmt->bind_result($alreadyExists);
         $stmt->fetch();
 
+        /*
         if($alreadyExists = null) {
                 $query = "INSERT IGNORE INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
-        }
+        }*/
 ?>
