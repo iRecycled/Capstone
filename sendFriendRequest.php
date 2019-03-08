@@ -28,12 +28,12 @@ header("index.php");
         
         $result = $db->query($query);
         $response = array();
-        $alreadyExists = false;
+        $alreadyExists = 0;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $alreadyExists = true;
+                $alreadyExists = 1;
         }
 
-        if($alreadyExists == false) {
+        if($alreadyExists == 0) {
                 echo($userIDFrom, $userIDTo);
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
                 $stmt = simpleQuery($db, $query);
