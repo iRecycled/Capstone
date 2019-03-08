@@ -81,7 +81,7 @@ function getServerInfo(obj, id) {
 
 
     scrollbarDiv.appendChild(list1);
-    //scrollbarDiv.appendChild(list2);
+    scrollbarDiv.appendChild(list2);
     memberList.appendChild(scrollbarDiv);
     
 }
