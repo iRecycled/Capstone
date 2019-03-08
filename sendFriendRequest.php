@@ -8,14 +8,14 @@ header("index.php");
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
         $data = 0;
-  $username = strip_tags($_POST['user']); 
-  $friendname = strip_tages($_POST['friend']);
+        $username = $_POST['user']; 
+        $friendname = $_POST['friend'];
         // 2. Run the Query
-        /*$query = "SELECT UserID FROM WebUser WHERE username = '$username';";
+        $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userIDFrom);
-        $stmt->fetch();*/
+        $stmt->fetch();
 /*
         $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
         $stmt = simpleQuery($db, $query);
