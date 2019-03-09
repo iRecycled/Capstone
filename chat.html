@@ -281,10 +281,11 @@ function loadFriendsToInvite() {
 </head>
 
 <body>
+    <div class="page">
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
     <ul class="navbar-nav mr-auto">
-        <a class="nav-item nav-link active" href="chat.html">Home</a>
+        <a class="nav-item nav-link active" href="home.html">Home</a>
     </ul>
 
     <ul class="navbar-nav mr-auto ">
@@ -292,7 +293,7 @@ function loadFriendsToInvite() {
     </ul>
 
     <ul class="navbar-nav right">
-        <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
         <script>
         function selfProfilePage(){
             localStorage.setItem('viewInfo', localStorage.getItem("username"));
@@ -318,20 +319,54 @@ function loadFriendsToInvite() {
                 <div id="Invite"></div>
             </li>
         </ul>
-
     </nav>
+
+    <!-- Navbar Right -->
+    <div id="wrapper-right">
+    <nav id="sidebar-right" class="navbar-text">
+            <div class="onlineUserTable">
+                    <table class="userTable" style="float:right;">
+                            <th>Online Users</th>
+                            <tr>
+                            <td>
+                            <ul>
+                                <style>
+                                li {
+                                    list-style-type: none;
+                                    padding-right: 30px;
+                                }
+                                th {
+                                    text-align: center;
+                                }
+                                </style>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>
+                                <li>User 1</li>  
+                            </ul>                            
+                            </tr>
+                    </table>
+                </div>
+    </nav>
+    </div>
     <!-- Page Content -->
-    <div id="content">
-        <div class="container-fluid">
+    <div id="content">      
+        <div id="contain" class="container-fluid">
             <!--Chat Output Area-->
+            
             <div id = "chatOutput">
+                    
                 <!--Table to Display Messages-->
                 <table id = "chatBox">
+                        
                     <tbody id ="chatBody">
 
                     </tbody>
+                    
                 </table>
             </div>
+            
             <!--Chat Input Area-->
             <div id = "chatBoxInput">
                 <div id = "inputContainer" class = 'input-group'>
@@ -344,14 +379,17 @@ function loadFriendsToInvite() {
 
                             </div>
                           </div>
+                          
                     <!--Chat Submit Button-->
                     <div class="input-group-append">
                         <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
                     </div>
+                    
                 </div>
                 </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

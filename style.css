@@ -1,7 +1,17 @@
-
 .wrapper {
     display: flex;
     align-items: stretch;
+}
+
+body {
+    width: 100%;
+    margin: auto;
+}
+
+.page {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
 }
 
 #sidebar {
@@ -47,29 +57,32 @@ a:hover{
 
 #content{
     width: 100vw;
+    height: 100vh;
     text-align: center;
 }
 
 #chatOutput
 {
-    width: 95%;
+    width: 88%;
     height: 70vh;
-    padding: 0px;
     border: 6px solid grey;
     border-right: 0px;
     margin: 17px;
     background-color: whitesmoke;
-    display:inline-block;
+    /* display:inline-block; */
     word-wrap: break-word;
     overflow-y: scroll;
+    float:left;
+
 }
 
 #chatBoxInput{
-    width: 90%;
+    width: 88%;
     height: 12vh;
     text-align: left;
     margin: 0vh 23px 0vh;
-    display: inline-block;
+    /* display: inline-block; */
+    float:left;
 }
 #sendie{
     width: calc(100% - 100px);
@@ -78,6 +91,7 @@ a:hover{
     margin: 1px;
     vertical-align: middle;
     overflow: hidden;
+    
 }
 #chatTextSubmit{
     width: 80px;
@@ -179,4 +193,17 @@ a:hover{
 
 #emoteDropdown::-webkit-scrollbar-thumb {
     background-color: gray;
+}
+
+.onlineUserTable{
+    min-height: 100vh;
+}
+
+.page {
+    position: fixed;
+}
+
+#wrapper-right {
+    position: fixed;
+    right: 10px;
 }

@@ -76,14 +76,15 @@ function updateChat(serverID){
 			   success: function(data){
 				   if(data.text){
 						for (var i = 0; i < data.text.length; i++) {
-                            console.log("starting message shit");
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
                             var str = data.text[i].split("<");
-                            data.text[i] = parse.parse(str[1]);
+                            console.log("original string:"+data.text[i]);
+                            data.text[i] = parse.parse(str[2]);
                             console.log(data.text[i]);
                             //console.log(generateMsg(data.text[i],"",""));
-                            data.text[i] = generateMsg(data.text[i], str[0], "");
+                            console.log(str[1]);
+                            data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
@@ -103,7 +104,7 @@ function updateChat(serverID){
 function generateMsg(text, sender, time)
 {
     var username = sender;
-    var today = new Date();
+
     //creates html code
     msg = "\
     <tr id = 'singleMessage'>\
@@ -112,7 +113,7 @@ function generateMsg(text, sender, time)
              <p class ='msgUname'>"
                  + username
                  + "<span class='msgDate'>"
-                     + today.getMonth() + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2) + '</span>'
+                     + time + '</span>'
              + "</p>"
             + text + "\
             </div>\
@@ -200,7 +201,9 @@ function sendChat(message, nickname, serverID)
 {
     updateChat(serverID);
     console.log("sent successfully");
-
+    var today = new Date();
+    var tmp = today.getMonth()+1;
+    var time = tmp + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
      $.ajax({
 		   type: "POST",
 		   url: "process.php",
@@ -208,6 +211,7 @@ function sendChat(message, nickname, serverID)
 		   		'function': 'send',
 					'message': message,
 					'nickname': nickname,
+          'time': time,
 					'file': serverID
 				 },
 		   dataType: "json",

@@ -1,3 +1,4 @@
+
 if(localStorage.getItem('viewInfo')=='' || !localStorage.getItem('viewInfo'))
 {
     console.log("empty")
@@ -134,14 +135,19 @@ $(document).ready(function(){
         }
     })
 })
+var isNotFriend = false;
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
-    if((localStorage.getItem('username') != friendName) && CheckFriend(friendName))
-    {
-        console.log("Calls");
-        document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
-        document.getElementById(e).onclick = function(){ SendFriendRequest()};
-    }
+    $.when(CheckFriend(friendName)).done(function(a1){
+        console.log(isNotFriend)
+        if((localStorage.getItem('username') != friendName) && isNotFriend)
+        {
+            console.log("Calls");
+            document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+            document.getElementById(e).onclick = function(){ SendFriendRequest()};
+        }
+    });
+
 }
 
 function SendFriendRequest()
@@ -175,21 +181,22 @@ function CheckFriend(name){
             for(i = 0; i < obj.length; i++){
                 names.push(obj[i].UserName)
             }
+            console.log(names)
             names.sort()
             if(names.indexOf(name) > -1)
             {
                 console.log("already friends")
-                return false;
+                isNotFriend = false
             }
             else
             {
                 console.log("not friends")
-                return true;
+                isNotFriend = true
             }
         },
         error: function(data) {
             console.log("fail");
-            return false;
+            isNotFriend = false
         }
     })
 }
