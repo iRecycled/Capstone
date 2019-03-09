@@ -6,7 +6,7 @@
 
 .serverTableDiv{
     display: inline-block;
-    height: 55vh;
+    height: 180px;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
