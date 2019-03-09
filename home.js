@@ -78,12 +78,56 @@ $(document).ready(function(){
 
 function createServerRequestList(e, id)
 {
-    
+    //generates and sorts list of user names 
+    names = []
+    for(i = 0; i < e.length; i++){
+        names.push(e[i].ServerName)
+    }
+    names.sort()
+    text = "";
+    //uses name list to inject table rows
+    for(i = 0; i < names.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry'>\
+                        <a>\
+                        <span style='display: block; padding: 15px;'>\
+                        " + names[i] + "\
+                        </span>\
+                        <button>&#10003</button>\
+                        <button>X</button>\
+                        </a>\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(id).innerHTML += text;
 }
 
 function createFriendRequestList(e, id)
 {
-
+    //generates and sorts list of user names 
+    names = []
+    for(i = 0; i < e.length; i++){
+        names.push(e[i].UserName)
+    }
+    names.sort()
+    text = "";
+    //uses name list to inject table rows
+    for(i = 0; i < names.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry'>\
+                        <a>\
+                        <span style='display: block; padding: 15px;'>\
+                        " + names[i] + "\
+                        </span>\
+                        <button>&#10003</button>\
+                        <button>X</button>\
+                        </a>\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(id).innerHTML += text;
 }
 
 function processSearchResults(names)
