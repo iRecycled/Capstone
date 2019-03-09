@@ -138,13 +138,15 @@ $(document).ready(function(){
 var isNotFriend = false;
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
-    CheckFriend(friendName)
-    if((localStorage.getItem('username') != friendName) && isNotFriend)
-    {
-        console.log("Calls");
-        document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
-        document.getElementById(e).onclick = function(){ SendFriendRequest()};
-    }
+    $.when(CheckFriend(friendName)).done(function(a1){
+        if((localStorage.getItem('username') != friendName) && isNotFriend)
+        {
+            console.log("Calls");
+            document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+            document.getElementById(e).onclick = function(){ SendFriendRequest()};
+        }
+    });
+
 }
 
 function SendFriendRequest()
