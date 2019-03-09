@@ -142,8 +142,8 @@ function createFriendRequestList(e, id)
                         <a>\
                         <span style='display: block; padding: 15px;'>\
                         " + names[i] + "\
-                        <button onclick='acceptServerRequest(\"" + names[i] + "\")'>&#10003</button>\
-                        <button onclick='rejectServerRequest(\"" + names[i] + "\")'>X</button>\
+                        <button class = 'btn' onclick='acceptServerRequest(\"" + names[i] + "\")'>&#10003</button>\
+                        <button class = 'btn' onclick='rejectServerRequest(\"" + names[i] + "\")'>X</button>\
                         </span>\
                         </a>\
                     </td>\
