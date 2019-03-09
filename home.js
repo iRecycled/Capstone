@@ -1,5 +1,6 @@
 //on load of page
 $(document).ready(function(){
+    document.getElementById('searchDropdown').style.display = 'none';
     //adds welcome message to page
     if(welcome.innerHTML.trim() == "")
     {
