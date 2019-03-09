@@ -49,6 +49,7 @@ tr:nth-child(odd) {
 
 tr:hover{
     background: rgb(100, 100, 100);
+    cursor: pointer; 
 }
 
 .serverEntry{
