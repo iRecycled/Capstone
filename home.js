@@ -48,7 +48,43 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    $.ajax({
+        type: "post",
+        url: "getFriendRequests.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            createFriendRequestList(obj, "friendRequestsBody")
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
+    $.ajax({
+        type: "post",
+        url: "getServerInvites.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            createServerRequestList(obj, "serverRequestsBody")
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
 });
+
+function createServerRequestList(e, id)
+{
+    
+}
+
+function createFriendRequestList(e, id)
+{
+
+}
 
 function processSearchResults(names)
 {
