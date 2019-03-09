@@ -3,7 +3,7 @@ $(document).ready(function(){
     //adds welcome message to page
     if(welcome.innerHTML.trim() == "")
     {
-        document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
+        //document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
     }
     //get list of users servers
     $.ajax({
