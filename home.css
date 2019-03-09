@@ -58,7 +58,7 @@ tr:hover{
 #userSearch{
     text-align:left;
     width: 80%;
-    margin:auto;
+    margin:20px;
 }
 .dropdown-content {
     background-color: gray;
