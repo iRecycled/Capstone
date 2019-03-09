@@ -139,6 +139,7 @@ var isNotFriend = false;
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
     $.when(CheckFriend(friendName)).done(function(a1){
+        console.log(isNotFriend)
         if((localStorage.getItem('username') != friendName) && isNotFriend)
         {
             console.log("Calls");
