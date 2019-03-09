@@ -181,7 +181,7 @@ function CheckFriend(name){
             for(i = 0; i < obj.length; i++){
                 names.push(obj[i].UserName)
             }
-            document.getElementById("friendsCount").innerHTML = names.length;
+            console.log(names)
             names.sort()
             if(names.indexOf(name) > -1)
             {
