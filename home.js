@@ -78,12 +78,12 @@ $(document).ready(function(){
 
 function acceptServerRequest(name)
 {
-    console.log(name + "accepted")
+    console.log(name + " accepted")
 }
 
 function rejectServerRequest(name)
 {
-    console.log(name + "ReJeCtEd!!!!")
+    console.log(name + " ReJeCtEd!!!!")
 }
 
 function createServerRequestList(e, id)
@@ -116,12 +116,12 @@ function createServerRequestList(e, id)
 
 function acceptFriendRequest(name)
 {
-    console.log(name + "accepted")
+    console.log(name + " accepted")
 }
 
 function rejectFriendRequest(name)
 {
-    console.log(name + "ReJeCtEd!!!!")
+    console.log(name + " ReJeCtEd!!!!")
 }
 
 function createFriendRequestList(e, id)
@@ -142,8 +142,8 @@ function createFriendRequestList(e, id)
                         <a>\
                         <span style='display: block; padding: 15px;'>\
                         " + names[i] + "\
-                        <button onclick='acceptFriendRequest(\"" + names[i] + "\")>&#10003</button>\
-                        <button onclick='rejectFriendRequest(\"" + names[i] + "\")>X</button>\
+                        <button onclick='acceptServerRequest(\"" + names[i] + "\")'>&#10003</button>\
+                        <button onclick='rejectServerRequest(\"" + names[i] + "\")'>X</button>\
                         </span>\
                         </a>\
                     </td>\
