@@ -221,7 +221,9 @@ function createServerTable(d, targetID){
         text +="<tr>\
                     <td class = 'serverEntry'>\
                         <a href = 'chat.html' onclick = setServerID(" + d[i].ServerID + ")>\
+                        <span style='display: block; padding: 15px;'>\
                         " + d[i].ServerName + "\
+                        </span>\
                         </a>\
                     </td>\
                 </tr>";
