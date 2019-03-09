@@ -204,13 +204,9 @@ function sendServerRequest(id){
     */
 }
 
-$('html').click(function(e) {        
-    console.log(e.target.id == 'searchButton')
-    console.log(e.target.className == 'btn') 
+$('html').click(function(e) {         
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {
-        console.log("out click")
         document.getElementById('searchDropdown').style.display = 'none';
-        console.log("???")
     }
  }); 

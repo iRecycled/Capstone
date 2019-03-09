@@ -15,7 +15,7 @@ header("index.php");
         $stmt->bind_result($userID);
         $stmt->fetch();
 
-        $query = "SELECT ServerID FROM ServerInvite WHERE UserID = '$userID';";
+        $query = "SELECT s.ServerName FROM Server s JOIN ServerInvite si on s.ServerID = si.ServerID where si.UserID = '$userID';";
         
         $result = $db->query($query);
         $response = array();
