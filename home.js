@@ -78,6 +78,7 @@ $(document).ready(function(){
 
 function createServerRequestList(e, id)
 {
+    document.getElementById(id).innerHTML = "";
     //generates and sorts list of user names 
     names = []
     for(i = 0; i < e.length; i++){
@@ -93,9 +94,9 @@ function createServerRequestList(e, id)
                         <a>\
                         <span style='display: block; padding: 15px;'>\
                         " + names[i] + "\
-                        </span>\
                         <button>&#10003</button>\
                         <button>X</button>\
+                        </span>\
                         </a>\
                     </td>\
                 </tr>";
@@ -105,6 +106,7 @@ function createServerRequestList(e, id)
 
 function createFriendRequestList(e, id)
 {
+    document.getElementById(id).innerHTML = "";
     //generates and sorts list of user names 
     names = []
     for(i = 0; i < e.length; i++){
@@ -120,9 +122,9 @@ function createFriendRequestList(e, id)
                         <a>\
                         <span style='display: block; padding: 15px;'>\
                         " + names[i] + "\
-                        </span>\
                         <button>&#10003</button>\
                         <button>X</button>\
+                        </span>\
                         </a>\
                     </td>\
                 </tr>";
