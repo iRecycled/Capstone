@@ -241,7 +241,42 @@ $.ajax({
   }
 }
  });
-    </script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    InviteToServer('Invite')
+})
+
+function InviteToServer(e) {
+    if(isAllowedToInvite()) {
+        document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
+        document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
+    }
+}
+
+function isAllowedToInvite(){
+    return $.ajax({
+        type: "post",
+        url: "getServerPermissions.php",
+        data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
+        success: function(data) {
+            if (data == 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        error: function(data) {
+            console.log("fail");
+            return false;
+        }
+    })
+}
+
+function loadFriendsToInvite() {
+    return false;
+}
+</script>
 
 </head>
 
@@ -279,39 +314,8 @@ $.ajax({
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Chat 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 3</a>
-                    </li>
-                </ul>
-            </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatroom</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Chat 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Chat 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Server</a>
+                <div id="Invite"></div>
             </li>
         </ul>
 
