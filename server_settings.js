@@ -6,21 +6,18 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                
+                // Get classes
                 let ServerName = document.getElementsByClassName("servername");
+                // Get local storage
                 servername = localStorage.getItem('servername')
-                console.log(ServerName);
-                console.log(ServerName.length);
-                console.log(obj)
-
+                
+                // Place servername into each class
                 for(let i = 0; i < ServerName.length; i++) {
-                    //document.write(servername[i])
                     ServerName[i].innerHTML = servername;
                 }
-                // servername.forEach(function(element) {
-                //     console.log(element);
-                //     element.appendChild(obj[0].ServerName);
-                // });
-                
+
+                // create user list
                 createUL(obj, "UserList");
                 
             },
@@ -36,7 +33,9 @@
             success: function(data) {
                 obj = JSON.parse(data);
             
+                // populate sidebar with chats
                 createSidebarChats(obj, "chatSidebar");
+                // populate server info
                 getServerInfo(obj, "ServerInfo");
             },
             error: function(data) {
