@@ -9,9 +9,9 @@ header("index.php");
         }
   $name = strip_tags($_POST['user']);
   $pass = strip_tags($_POST['pass']);
-  if($pass.strlen()==0){
-    $pass='oiergneirogne234ionefwinweof234'
-  }
+  //if($pass.strlen()==0){
+  // $pass='oiergneirogne234ionefwinweof234'
+  //}
   
         // 2. Run the Query
   //SELECT username, password, money FROM logins WHERE username = '$username';
