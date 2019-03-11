@@ -265,7 +265,7 @@ function InviteToServer(e) {
                         let text = document.createTextNode(obj[x].UserName);
                         link.id = obj[x].UserName;
                         link.onclick = function() {
-                            sendInvite(UserName);
+                            sendInvite(obj[x].UserName);
                         };
                         link.appendChild(text);
                         listItem.appendChild(link);
