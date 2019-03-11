@@ -19,7 +19,6 @@ body {
 }
 
 #sidebar {
-    min-width: 150px;
     max-width: 250px;
     min-height: 100vh;
 }

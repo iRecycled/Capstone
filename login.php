@@ -1,7 +1,7 @@
 <?php
 header("index.php");
         // 1. Connect to the database
-        include "database.php";
+        include "databasePass.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
             http_response_code(500);
@@ -21,13 +21,12 @@ header("index.php");
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
 
-        //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-        //$stmt = simpleQuery($db, $query);
-        //$hashBool=password_verify($password, $stmt->get_result());
-
+        $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+        $stmt2 = simpleQueryPassword($db, $query);
+        
         $bool1 = strcmp($name,$username)==0;
         $bool2 = strcmp($pass,$password)==0;
-  			if($bool1 && $bool2){
+  			if($bool1 && $stmt2){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
           $stmt = simpleQuery($db, $query);
