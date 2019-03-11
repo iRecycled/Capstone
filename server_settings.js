@@ -7,10 +7,11 @@ $(document).ready(function(){
             obj = JSON.parse(data);
             //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
             let servername = document.getElementsByClassName("servername");
-            
-            console.log(servername);
+
+           
 
             servername.foreach(function(element) {
+                console.log(element);
                 element.appendChild(obj[0].ServerName);
             });
             
