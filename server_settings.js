@@ -7,10 +7,13 @@
                 obj = JSON.parse(data);
                 //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                 let servername = document.getElementsByClassName("servername");
-                
+
                 console.log(servername);
                 console.log(servername.length);
 
+                for(let i = 0; i < servername.length; i++) {
+                    servername[i].appendChild(obj[0].ServerName);
+                }
                 // servername.forEach(function(element) {
                 //     console.log(element);
                 //     element.appendChild(obj[0].ServerName);
