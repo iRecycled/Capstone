@@ -267,6 +267,7 @@ function InviteToServer(e) {
                         link.onclick = function() {
                             sendInvite(obj[x].UserName);
                         };
+                        link.href = "";
                         link.appendChild(text);
                         listItem.appendChild(link);
                         privateServerList.appendChild(listItem);
