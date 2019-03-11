@@ -32,6 +32,7 @@
             data: {username: localStorage.getItem('username')},
             success: function(data) {
                 obj = JSON.parse(data);
+                console.log(data)
             
                 // populate sidebar with chats
                 createSidebarChats(obj, "chatSidebar");
@@ -71,6 +72,7 @@
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
+                //localStorage.setItem("server name", this.ServerName)
             };
 
             link.href = "chat.html";
