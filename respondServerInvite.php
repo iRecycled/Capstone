@@ -12,7 +12,7 @@ header("index.php");
         $serverID = $_POST['serverID'];
         $accept = $_POST['accept'];
         // 2. Run the Query
-        $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
+        $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userID);
