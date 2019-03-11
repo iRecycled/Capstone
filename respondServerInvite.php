@@ -9,13 +9,19 @@ header("index.php");
         }
         $data = 0;
         $username = $_POST['user']; 
-        $serverID = $_POST['serverID'];
+        $serverName = $_POST['serverName'];
         $accept = $_POST['accept'];
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
   
         $stmt->bind_result($userID);
+        $stmt->fetch();
+
+        $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
+        $stmt = simpleQuery($db, $query);
+  
+        $stmt->bind_result($serverID);
         $stmt->fetch();
 
         if($accept = "true") {

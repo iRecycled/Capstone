@@ -83,7 +83,7 @@ function acceptServerRequest(name)
     $.ajax({
         type: "post",
         url: "respondServerInvite.php",
-        data: {user: localStorage.getItem('username'), serverID: localStorage.getItem('serverID'), accept: "true"},
+        data: {user: localStorage.getItem('username'), serverName: name, accept: "true"},
         success: function(data) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
