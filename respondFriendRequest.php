@@ -32,9 +32,9 @@ header("index.php");
         }
         else {
             echo("fail");
-        }
+        }*/
 
         $query = "DELETE FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
-        $stmt = simpleQuery($db, $query);*/
+        $stmt = simpleQuery($db, $query);
         echo("");
 ?>
