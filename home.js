@@ -80,6 +80,7 @@ $(document).ready(function(){
 
 function acceptServerRequest(name)
 {
+    alert(name);
     $.ajax({
         type: "post",
         url: "respondServerInvite.php",
