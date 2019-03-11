@@ -242,14 +242,14 @@ $.ajax({
 }
  });
 
-var isAllowedToInvite = false;
+var allowedToInvite = false;
 document.addEventListener("DOMContentLoaded", function(event) {
     InviteToServer('Invite')
 })
 
 function InviteToServer(e) {
     isAllowedToInvite();
-    if(isAllowedToInvite) {
+    if(allowedToInvite) {
         document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
         document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
     }
@@ -263,16 +263,16 @@ function isAllowedToInvite(){
         success: function(data) {
             if (data == 0) {
                 console.log("data = 0");
-                isAllowedToInvite = true;
+                allowedToInvite = true;
             }
             else {
                 console.log("data != 0");
-                isAllowedToInvite = false;
+                allowedToInvite = false;
             }
         },
         error: function(data) {
             console.log("fail");
-            isAllowedToInvite = false;
+            allowedToInvite = false;
         }
     })
 }
