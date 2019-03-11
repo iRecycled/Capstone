@@ -265,16 +265,16 @@ function isAllowedToInvite(){
         success: function(data) {
             if (data == 0) {
                 console.log("data = 0");
-                allowedToInvite = true;
+                allowedToInvite = true
             }
             else {
                 console.log("data != 0");
-                allowedToInvite = false;
+                allowedToInvite = false
             }
         },
         error: function(data) {
             console.log("fail");
-            allowedToInvite = false;
+            allowedToInvite = false
         }
     })
 }
