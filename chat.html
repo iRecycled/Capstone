@@ -265,7 +265,7 @@ function InviteToServer(e) {
                         let text = document.createTextNode(obj[x].UserName);
                         link.id = obj[x].UserName;
                         link.onclick = function() {
-                            sendInvite(obj[x].UserName);
+                            sendInvite(this.id);
                         };
                         link.appendChild(text);
                         listItem.appendChild(link);
@@ -351,17 +351,16 @@ function isAllowedToInvite(){
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><u>Chatrooms</u></h4>
+            <h4 style="padding:15px; float:left;"><u>Chatrooms</u></h4>
         </div>
 
         <ul class="list-unstyled components" style="padding: 10px;">
             <li>
-                <div id="Invite"></div>
+                <div id="Invite" style="text-align:center;"></div>
             </li>
             <li></li>
             <div class="onlineUserTable">
                 <table class="userTable">
-                        <th>Online Users</th>
                         <tr>
                         <td>
                         <ul>
@@ -369,14 +368,11 @@ function isAllowedToInvite(){
                             li {
                                 list-style-type: none;
                                 color: white;
-                                
+                                padding-right: 10px;    
                             }
-                            th {
-                                text-align: center;
-                                color: white;
-                            }
+                            
                             </style>
-                            <li>User 1</li>
+                            <li ><b>Online Users</b></li>
                             <li>User 1</li>
                             <li>User 1</li>
                             <li>User 1</li>
