@@ -248,13 +248,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function InviteToServer(e) {
-    isAllowedToInvite();
-    console.log(allowedToInvite);
-    if(allowedToInvite) {
-        
-        document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
-        document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
-    }
+    $.when(isAllowedToInvite()).done(function(a){
+        if(allowedToInvite) {
+            document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
+            document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
+        }
+    });
 }
 
 function isAllowedToInvite(){
