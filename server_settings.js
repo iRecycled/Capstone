@@ -6,14 +6,14 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
-                let servername = document.getElementsByClassName("servername");
+                let ServerName = document.getElementsByClassName("servername");
 
-                console.log(servername);
-                console.log(servername.length);
+                console.log(ServerName);
+                console.log(ServerName.length);
 
-                for(let i = 0; i < servername.length; i++) {
+                for(let i = 0; i < ServerName.length; i++) {
                     //document.write(servername[i])
-                    servername[i].innerHTML = obj[0].ServerName;
+                    ServerName[i].innerHTML = obj[0].servername;
                 }
                 // servername.forEach(function(element) {
                 //     console.log(element);

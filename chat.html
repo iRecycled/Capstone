@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function InviteToServer(e) {
     $.when(isAllowedToInvite()).done(function(a){
         if(allowedToInvite) {
-            document.getElementById(e).innerHTML += "<li><a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul></li>";
+            document.getElementById(e).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
             $.ajax({
                 type: "post",
                 url: "getFriendsList.php",
@@ -267,6 +267,7 @@ function InviteToServer(e) {
                         link.onclick = function() {
                             sendInvite(obj[x].UserName);
                         };
+                        link.href = "";
                         link.appendChild(text);
                         listItem.appendChild(link);
                         privateServerList.appendChild(listItem);
