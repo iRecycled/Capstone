@@ -129,9 +129,9 @@ $(document).ready(function(){
                 let link = document.createElement("a");
                 let text = document.createTextNode(obj[x].UserName);
                 listItem.style.color = "white";
-                link.id = obj[x].ServerID;
+                link.id = obj[x].UserName;
                 link.onclick = function() {
-                    localStorage.setItem("viewInfo", obj[x].UserName);
+                    localStorage.setItem("viewInfo", this.id);
                 };
                 link.href = "profile_page.html";
                 link.appendChild(text);
