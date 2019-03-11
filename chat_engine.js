@@ -59,6 +59,7 @@ function getStateOfChat(serverID){
 			});
 	}
 }
+//DELETE THIS IF STILL NOT WORKING
 function userList(newuser, users){
   add = true;
   for(i = 0; i < users.length; i++){
@@ -95,8 +96,10 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
+                            //DELETE THIS IF NOT WORKING
                             if(userList(str[0], allusers)){
                               newstr = "<tr><td>"+str[0]+"</td></tr>";
+                              allusers.push(str[0]);
                               $('#userTable').append($(newstr));
                             }
                             $('#chatBox').append($(data.text[i]));
