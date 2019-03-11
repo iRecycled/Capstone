@@ -282,12 +282,11 @@ function InviteToServer(e) {
 }
 
 function sendInvite(username) {
-    user = localStorage.getItem('username');
     serverID = localStorage.getItem('serverID');
     return $.ajax({
         type: "post",
         url: "sendServerInvite.php",
-        data: {user: user, serverID: serverID},
+        data: {user: username, serverID: serverID},
         success: function(data) {
             alert(data);
         },
