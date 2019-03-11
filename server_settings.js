@@ -6,7 +6,13 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
-            document.getElementsByClassName("servername").appendChild(obj[0].ServerName);
+            let servername = document.getElementsByClassName("servername");
+            
+            console.log(servername);
+
+            servername.foreach(function(element) {
+                element.appendChild(obj[0].ServerName);
+            });
             
             createUL(obj, "UserList");
             

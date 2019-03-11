@@ -48,16 +48,17 @@
                     localStorage.setItem('viewInfo', localStorage.getItem("username"));
                 }
             </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
+            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                     function selfProfilePage(){
+                        console.log("clicked");
                         localStorage.setItem('viewInfo', localStorage.getItem("username"));
                     }
                     document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
+                    function(){
+                        selfProfilePage();
+                    });
                 </script>
             <span class="sr-only">(current)</span></a>
             
@@ -69,7 +70,7 @@
 <!-- Sidebar -->
 <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><a href="chat.html"><u>My Chatrooms</u></a></h4>
+            <h4><a><u>My Chatrooms</u></a></h4>
         </div>
 
         <ul class="list-unstyled components">
