@@ -47,4 +47,5 @@
 }
 #friendZone:hover{
     color: gray;
+    cursor: pointer;
 }
