@@ -20,6 +20,11 @@ header("index.php");
   
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
+
+        //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+        //$stmt = simpleQuery($db, $query);
+        //$hashBool=password_verify($password, $stmt->get_result());
+
         $bool1 = strcmp($name,$username)==0;
         $bool2 = strcmp($pass,$password)==0;
   			if($bool1 && $bool2){
