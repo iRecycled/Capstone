@@ -247,14 +247,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function InviteToServer(e) {
-    console.log(isAllowedToInvite());
-    if(isAllowedToInvite() == 0) {
+    console.log(isAllowedToInvite(e));
+    if(isAllowedToInvite(e) == 0) {
         document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
         document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
     }
 }
 
-function isAllowedToInvite(){
+function isAllowedToInvite(e){
     return $.ajax({
         type: "post",
         url: "getServerPermissions.php",
