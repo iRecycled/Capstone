@@ -120,7 +120,7 @@ function acceptFriendRequest(name)
     $.ajax({
         type: "post",
         url: "respondFriendRequest.php",
-        data: {user: localStorage.getItem('username'), friend: name, accept: true},
+        data: {friend: localStorage.getItem('username'), user: name, accept: true},
         success: function(data) {
             alert(name + " accepted");
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
@@ -136,7 +136,7 @@ function rejectFriendRequest(name)
     $.ajax({
         type: "post",
         url: "respondFriendRequest.php",
-        data: {user: localStorage.getItem('username'), friend: name, accept: false},
+        data: {friend: localStorage.getItem('username'), user: name, accept: false},
         success: function(data) {
             alert(name + " rejected");
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
