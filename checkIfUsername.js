@@ -26,7 +26,7 @@
       $.ajax({
         method:'post',
         dataType: "json",
-        url: 'checkID.php',
+        url: 'getAllInfo.php',
        data: {username: localStorage.getItem('username')},
        success: function(data) {
        console.log(data)
