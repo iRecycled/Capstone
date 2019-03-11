@@ -135,7 +135,7 @@ $(document).ready(function(){
                 };
                 link.href = "profile_page.html";
                 link.appendChild(text);
-                listItem.appendChild(text);
+                listItem.appendChild(link);
                 privateServerList.appendChild(listItem);
             }
         },
@@ -156,6 +156,7 @@ $(document).ready(function(){
             document.getElementById("email").innerHTML = obj.email;
             document.getElementById("chatCount").innerHTML = obj.chatCount;
             document.getElementById("privateCount").innerHTML = obj.privateCount;
+            document.getElementById("friendsCount").innerHTML = obj.friendsCount;
             document.getElementById("otherData").innerHTML = "nothing right now";
         },
         error: function(data) {
