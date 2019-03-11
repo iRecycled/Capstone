@@ -30,7 +30,10 @@
        data: {username: localStorage.getItem('username')},
        success: function(data) {
        console.log(data)
-     }
+       },
+       error: function(data) {
+       console.log(data)
+       }
       });
       function Logout(){
         localStorage.clear();
