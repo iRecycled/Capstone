@@ -89,7 +89,7 @@ function acceptServerRequest(name)
         },
         error: function(data) {
             alert("Failed to accept friend request.");
-        } 
+        }
     })
 }
 
@@ -98,7 +98,7 @@ function rejectServerRequest(name)
     $.ajax({
         type: "post",
         url: "respondServerInvite.php",
-        data: {user: localStorage.getItem('username'), serverID: localStorage.getItem('serverID'), accept: "false"},
+        data: {user: localStorage.getItem('username'), serverName: name, accept: "false"},
         success: function(data) {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
