@@ -129,12 +129,12 @@ $(document).ready(function(){
                 let link = document.createElement("a");
                 let text = document.createTextNode(obj[x].UserName);
                 listItem.style.color = "white";
-                /*link.id = obj[x].ServerID;
+                link.id = obj[x].ServerID;
                 link.onclick = function() {
-                    localStorage.setItem("serverID", this.id);
+                    localStorage.setItem("setViewInfo", obj[x].UserName);
                 };
-                link.href = "chat.html";
-                link.appendChild(text);*/
+                link.href = "profile_page.html";
+                link.appendChild(text);
                 listItem.appendChild(text);
                 privateServerList.appendChild(listItem);
             }
