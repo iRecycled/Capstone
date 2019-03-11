@@ -131,7 +131,7 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].ServerID;
                 link.onclick = function() {
-                    localStorage.setItem("setViewInfo", obj[x].UserName);
+                    localStorage.setItem("viewInfo", obj[x].UserName);
                 };
                 link.href = "profile_page.html";
                 link.appendChild(text);
