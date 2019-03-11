@@ -104,6 +104,7 @@ $(document).ready(function(){
                 link.onclick = function() {
                     localStorage.setItem("serverID", this.id);
                 };
+                link.href = "chat.html";
                 link.appendChild(text);
                 listItem.appendChild(link);
                 privateServerList.appendChild(listItem);
