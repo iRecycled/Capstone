@@ -33,10 +33,10 @@
         url: 'getAllInfo.php',
        data: {username: localStorage.getItem('username')},
        success: function(data) {
-       console.log(data)
+       allInfo=data;
        },
        error: function(data) {
-       console.log(data)
+        allInfo=data;
        }
       });
     </script>
