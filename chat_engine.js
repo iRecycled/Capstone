@@ -116,7 +116,7 @@ function generateMsg(text, sender, time)
         <td style='vertical-align: top;'>\
             <div class='message'>\
              <p class ='msgUname'>\
-             <a href='profile_page.html' onclick=setViewName('" + username + "')>"
+             <a id='unameLink' href='profile_page.html' onclick=setViewName('" + username + "')>"
                  + username
                  + "</a>\
                  <span class='msgDate'>"
