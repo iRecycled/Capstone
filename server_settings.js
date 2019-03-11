@@ -7,9 +7,12 @@ $(document).ready(function(){
             obj = JSON.parse(data);
             //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
             let servername = document.getElementsByClassName("servername");
-            servername.foreach(function(i) {
-                i.appendChild(obj[0].ServerName);
-            })
+            
+            console.log(servername);
+
+            servername.foreach(function(element) {
+                element.appendChild(obj[0].ServerName);
+            });
             
             createUL(obj, "UserList");
             
