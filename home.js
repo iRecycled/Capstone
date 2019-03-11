@@ -117,12 +117,32 @@ function createServerRequestList(e, id)
 
 function acceptFriendRequest(name)
 {
-    console.log(name + " accepted")
+    $.ajax({
+        type: "post",
+        url: "respondFriendRequest.php",
+        data: {friend: localStorage.getItem('username'), user: name, accept: "true"},
+        success: function(data) {
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+        },
+        error: function(data) {
+            alert("Failed to accept friend request.");
+        }
+    })
 }
 
 function rejectFriendRequest(name)
 {
-    console.log(name + " ReJeCtEd!!!!")
+    $.ajax({
+        type: "post",
+        url: "respondFriendRequest.php",
+        data: {friend: localStorage.getItem('username'), user: name, accept: "false"},
+        success: function(data) {
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+        },
+        error: function(data) {
+            alert("Failed to reject friend request.");
+        }
+    })
 }
 
 function createFriendRequestList(e, id)

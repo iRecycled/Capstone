@@ -242,15 +242,18 @@ $.ajax({
 }
  });
 
+var allowedToInvite = false;
 document.addEventListener("DOMContentLoaded", function(event) {
     InviteToServer('Invite')
 })
 
 function InviteToServer(e) {
-    if(isAllowedToInvite()) {
-        document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
-        document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
-    }
+    $.when(isAllowedToInvite()).done(function(a){
+        if(allowedToInvite) {
+            document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
+            document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
+        }
+    });
 }
 
 function isAllowedToInvite(){
@@ -260,21 +263,23 @@ function isAllowedToInvite(){
         data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
         success: function(data) {
             if (data == 0) {
-                return true;
+                console.log("data = 0");
+                allowedToInvite = true
             }
             else {
-                return false;
+                console.log("data != 0");
+                allowedToInvite = false
             }
         },
         error: function(data) {
             console.log("fail");
-            return false;
+            allowedToInvite = false
         }
     })
 }
 
 function loadFriendsToInvite() {
-    return false;
+    console.log("click");
 }
 </script>
 
