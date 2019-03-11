@@ -265,7 +265,7 @@ function InviteToServer(e) {
                         let text = document.createTextNode(obj[x].UserName);
                         link.id = obj[x].UserName;
                         link.onclick = function() {
-                            sendInvite(obj[x].UserName);
+                            sendInvite(this.id);
                         };
                         link.appendChild(text);
                         listItem.appendChild(link);
@@ -356,7 +356,7 @@ function isAllowedToInvite(){
 
         <ul class="list-unstyled components" style="padding: 10px;">
             <li>
-                <div id="Invite"></div>
+                <div id="Invite" style="padding-left:12px;"></div>
             </li>
             <li></li>
             <div class="onlineUserTable">
@@ -372,7 +372,7 @@ function isAllowedToInvite(){
                             }
                             
                             </style>
-                            <li>Online Users</li>
+                            <li ><b>Online Users</b></li>
                             <li>User 1</li>
                             <li>User 1</li>
                             <li>User 1</li>
