@@ -265,9 +265,8 @@ function InviteToServer(e) {
                         let text = document.createTextNode(obj[x].UserName);
                         link.id = obj[x].UserName;
                         link.onclick = function() {
-                            sendInvite(UserName);
+                            sendInvite(obj[x].UserName);
                         };
-                        link.href = "chat.html";
                         link.appendChild(text);
                         listItem.appendChild(link);
                         privateServerList.appendChild(listItem);
@@ -352,38 +351,36 @@ function loadFriendsToInvite() {
             <li>
                 <div id="Invite"></div>
             </li>
+            <div class="onlineUserTable">
+                <table class="userTable">
+                        <th>Online Users</th>
+                        <tr>
+                        <td>
+                        <ul>
+                            <style>
+                            li {
+                                list-style-type: none;
+                                padding-right: 20px;
+                                color: white;
+                                
+                            }
+                            th {
+                                text-align: center;
+                                color: white;
+                            }
+                            </style>
+                            <li>User 1</li>
+                            <li>User 1</li>
+                            <li>User 1</li>
+                            <li>User 1</li>
+                            <li>User 1</li>  
+                        </ul>                            
+                        </tr>
+                </table>
+            </div>
         </ul>
     </nav>
 
-    <!-- Navbar Right -->
-    <div id="wrapper-right">
-    <nav id="sidebar-right" class="navbar-text">
-            <div class="onlineUserTable">
-                    <table class="userTable" style="float:right;">
-                            <th>Online Users</th>
-                            <tr>
-                            <td>
-                            <ul>
-                                <style>
-                                li {
-                                    list-style-type: none;
-                                    padding-right: 30px;
-                                }
-                                th {
-                                    text-align: center;
-                                }
-                                </style>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>  
-                            </ul>                            
-                            </tr>
-                    </table>
-                </div>
-    </nav>
-    </div>
     <!-- Page Content -->
     <div id="content">      
         <div id="contain" class="container-fluid">
