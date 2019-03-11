@@ -189,12 +189,12 @@ a:hover{
 }
 
 #emoteDropdown::-webkit-scrollbar-track {
-    background-color: whitesmoke;
+    background-color:gray;
     height: 10px;
 }
 
 #emoteDropdown::-webkit-scrollbar-thumb {
-    background-color: gray;
+    background-color:  whitesmoke;
 }
 
 .onlineUserTable{
