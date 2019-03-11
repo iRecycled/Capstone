@@ -27,7 +27,7 @@
     $stmt->fetch();
 
     //Counts the number of friends the user has
-    $query = "SELECT COUNT(*) FROM Friend JOIN WebUser w2 ON Friend.Friend2ID = w2.UserID WHERE Friend1ID = '$userID';";
+    $query = "SELECT COUNT(*) FROM Friend JOIN WebUser w2 ON Friend.Friend1ID = w2.UserID OR Friend.Friend2ID = w2.UserID WHERE w2.UserID = '$userID';";
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($friendCount);
     $stmt->fetch();
@@ -38,7 +38,7 @@
         "email": <?=json_encode($email)?>,
         "chatCount": <?=json_encode($chatCount)?>,
         "privateCount": <?=json_encode($privateCount)?>,
-        "friendsCount": <?=json_encode($friendsCount)?>
+        "friendsCount": <?=json_encode($friendCount)?>
     <?php
     echo "}";
 ?>
