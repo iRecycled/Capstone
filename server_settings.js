@@ -32,7 +32,7 @@
             data: {username: localStorage.getItem('username')},
             success: function(data) {
                 obj = JSON.parse(data);
-                console.log(data)
+                //console.log(data)
             
                 // populate sidebar with chats
                 createSidebarChats(obj, "chatSidebar");
@@ -69,6 +69,7 @@
             let list = document.createElement("li");
             let link = document.createElement("a")
             let text = document.createTextNode(obj[x].ServerName);
+            console.log(obj[x].ServerName)
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
