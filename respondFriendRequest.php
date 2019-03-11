@@ -25,7 +25,7 @@ header("index.php");
         $stmt->bind_result($userIDTo);
         $stmt->fetch();
 
-        if($accept) {
+        if($accept = "true") {
             $query = "INSERT INTO Friend VALUES '$userIDFrom' '$userIDTo';";
             $stmt = simpleQuery($db, $query);
         }
