@@ -80,12 +80,32 @@ $(document).ready(function(){
 
 function acceptServerRequest(name)
 {
-    console.log(name + " accepted")
+    $.ajax({
+        type: "post",
+        url: "respondServerInvite.php",
+        data: {user: localStorage.getItem('username'), serverID: localStorage.getItem('serverID'), accept: "true"},
+        success: function(data) {
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+        },
+        error: function(data) {
+            alert("Failed to accept friend request.");
+        }
+    })
 }
 
 function rejectServerRequest(name)
 {
-    console.log(name + " ReJeCtEd!!!!")
+    $.ajax({
+        type: "post",
+        url: "respondServerInvite.php",
+        data: {user: localStorage.getItem('username'), serverID: localStorage.getItem('serverID'), accept: "false"},
+        success: function(data) {
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+        },
+        error: function(data) {
+            alert("Failed to accept friend request.");
+        }
+    })
 }
 
 function createServerRequestList(e, id)
