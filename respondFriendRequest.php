@@ -24,8 +24,8 @@ header("index.php");
   
         $stmt->bind_result($userIDTo);
         $stmt->fetch();
-
-        if($accept = "TESTtrue") {
+/*
+        if($accept = "true") {
             $query = "INSERT INTO Friend VALUES ('$userIDFrom' '$userIDTo');";
             $stmt = simpleQuery($db, $query);
             echo("success");
@@ -35,5 +35,6 @@ header("index.php");
         }
 
         $query = "DELETE FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
-        $stmt = simpleQuery($db, $query);
+        $stmt = simpleQuery($db, $query);*/
+        echo("");
 ?>
