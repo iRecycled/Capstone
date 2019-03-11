@@ -21,6 +21,7 @@ $(document).ready(function(){
         }
     })
     //get list of servers user does not belong to
+    /**
     $.ajax({
         type: "post",
         url: "getAllServerList.php",
@@ -33,7 +34,7 @@ $(document).ready(function(){
         error: function(data) {
             console.log("fail");
         }
-    })
+    }) */
     //get list of user's friends
     console.log(localStorage.getItem('username'))
     $.ajax({
