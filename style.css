@@ -65,7 +65,7 @@ a:hover{
 
 #chatOutput
 {
-    width: 100%;
+    width: 90%;
     height: 70vh;
     border: 6px solid grey;
     border-right: 0px;
@@ -79,7 +79,7 @@ a:hover{
 }
 
 #chatBoxInput{
-    width: 100%;
+    width: 90%;
     height: 12vh;
     text-align: left;
     margin: 0vh 23px 0vh;
