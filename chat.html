@@ -242,19 +242,19 @@ $.ajax({
 }
  });
 
+var isAllowedToInvite = false;
 document.addEventListener("DOMContentLoaded", function(event) {
     InviteToServer('Invite')
 })
 
 function InviteToServer(e) {
-    console.log(isAllowedToInvite(e));
-    if(isAllowedToInvite(e) == 0) {
+    if(isAllowedToInvite) {
         document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
         document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
     }
 }
 
-function isAllowedToInvite(e){
+function isAllowedToInvite(){
     return $.ajax({
         type: "post",
         url: "getServerPermissions.php",
@@ -262,16 +262,16 @@ function isAllowedToInvite(e){
         success: function(data) {
             if (data == 0) {
                 console.log("data = 0");
-                return 0;
+                isAllowedToInvite = true;
             }
             else {
                 console.log("data != 0");
-                return 1;
+                isAllowedToInvite = false;
             }
         },
         error: function(data) {
             console.log("fail");
-            return 2;
+            isAllowedToInvite = false;
         }
     })
 }
