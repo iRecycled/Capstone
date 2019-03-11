@@ -122,11 +122,10 @@ function acceptFriendRequest(name)
         url: "respondFriendRequest.php",
         data: {friend: localStorage.getItem('username'), user: name, accept: "true"},
         success: function(data) {
-            alert(data);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
-            alert("fail");
+            alert("Failed to accept friend request.");
         }
     })
 }
@@ -138,11 +137,10 @@ function rejectFriendRequest(name)
         url: "respondFriendRequest.php",
         data: {friend: localStorage.getItem('username'), user: name, accept: "false"},
         success: function(data) {
-            alert(name + " rejected");
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
-            alert("fail");
+            alert("Failed to reject friend request.");
         }
     })
 }
