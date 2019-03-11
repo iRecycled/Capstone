@@ -1,4 +1,5 @@
 var instanse = false;
+var allusers;
 var state;
 var mes;
 var file;
@@ -58,7 +59,15 @@ function getStateOfChat(serverID){
 			});
 	}
 }
-
+function userList(newuser, users){
+  add = true;
+  for(i = 0; i < users.length; i++){
+    if(newuser == users[i]){
+      add = false;
+    }
+  }
+  return add;
+}
 //Updates the chat
 function updateChat(serverID){
 	 if(!instanse){
@@ -86,6 +95,10 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
+                            if(userList(str[0], allusers)){
+                              newstr = "<tr><td>"+str[0]+"</td></tr>";
+                              $('#userTable').append($(newstr));
+                            }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }
