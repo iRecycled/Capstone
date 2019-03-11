@@ -117,12 +117,32 @@ function createServerRequestList(e, id)
 
 function acceptFriendRequest(name)
 {
-    console.log(name + " accepted")
+    $.ajax({
+        type: "post",
+        url: "respondFriendRequest.php",
+        data: {user: localStorage.getItem('username'), friend: name, accept: true},
+        success: function(data) {
+            alert(name + " accepted");
+        },
+        error: function(data) {
+            alert("fail");
+        }
+    })
 }
 
 function rejectFriendRequest(name)
 {
-    console.log(name + " ReJeCtEd!!!!")
+    $.ajax({
+        type: "post",
+        url: "respondFriendRequest.php",
+        data: {user: localStorage.getItem('username'), friend: name, accept: false},
+        success: function(data) {
+            alert(name + " rejected");
+        },
+        error: function(data) {
+            alert("fail");
+        }
+    })
 }
 
 function createFriendRequestList(e, id)
