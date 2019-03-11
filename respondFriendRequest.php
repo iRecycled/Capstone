@@ -28,10 +28,8 @@ header("index.php");
         if($accept = "true") {
             $query = "INSERT INTO Friend VALUES ('$userIDFrom', '$userIDTo');";
             $stmt = simpleQuery($db, $query);
-            echo("success");
         }
         else {
-            echo("fail");
         }
 
         $query = "DELETE FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
