@@ -27,7 +27,7 @@
     $stmt->fetch();
 
     //Counts the number of friends the user has
-    $query = "SELECT COUNT(*) FROM Friend JOIN WebUser w2 ON Friend.Friend2ID = w2.UserID WHERE Friend1ID = '$userID';";
+    $query = "SELECT COUNT(*) FROM Friend JOIN WebUser w2 ON Friend.Friend1ID = w2.UserID WHERE Friend1ID = '$userID';";
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($friendCount);
     $stmt->fetch();
