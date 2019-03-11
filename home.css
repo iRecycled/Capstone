@@ -1,12 +1,12 @@
 .landingItem{
     display:inline-block;
-    width: 30%;
+    width: 20%;
     margin: 12px;
 }
 
 .serverTableDiv{
     display: inline-block;
-    height: 180px;
+    height: 400px;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
