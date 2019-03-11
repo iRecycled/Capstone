@@ -40,7 +40,7 @@ header("index.php");
         }
 
         if ($alreadyExists == false) {
-                $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
+                $query = "INSERT INTO ServerInvite VALUES ('$serverID', '$userID');";
                 $stmt = simpleQuery($db, $query);
                 echo("Server invite sent!");
         }
