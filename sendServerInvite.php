@@ -45,6 +45,6 @@ header("index.php");
                 echo("Friend request sent!");
         }
         else {
-                echo("Already sent friend request to this user.");
+                echo("Already sent server invite to this user.");
         }
 ?>
