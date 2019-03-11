@@ -71,12 +71,13 @@
         for(let x in obj) {
             let memberList = document.getElementById(id);
             let list = document.createElement("li");
-            let link = document.createElement("a")
+            let link = document.createElement("a");
             let text = document.createTextNode(obj[x].ServerName);
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
-                localStorage.setItem("servername", this.ServerName)
+                localStorage.setItem("servername", this.ServerName);
+                // CHANGE ON CLICK IN CHAT.HTML
                 console.log(`obj Server name ${obj[x].ServerName}`);
                 console.log(`this Server name ${this.ServerName}`);
             };
