@@ -127,7 +127,8 @@ $(document).ready(function(){
                 let privateServerList = document.getElementById("homeSubmenu1");
                 let listItem = document.createElement("li");
                 let link = document.createElement("a");
-                let text = document.createTextNode(obj[x].UserName).style.color = "white";
+                let text = document.createTextNode(obj[x].UserName);
+                listItem.style.color = "white";
                 /*link.id = obj[x].ServerID;
                 link.onclick = function() {
                     localStorage.setItem("serverID", this.id);
