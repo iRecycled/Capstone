@@ -267,6 +267,7 @@ function InviteToServer(e) {
                         link.onclick = function() {
                             sendInvite(obj[x].UserName);
                         };
+                        link.href = "";
                         link.appendChild(text);
                         listItem.appendChild(link);
                         privateServerList.appendChild(listItem);
@@ -361,7 +362,6 @@ function loadFriendsToInvite() {
                             <style>
                             li {
                                 list-style-type: none;
-                                padding-right: 20px;
                                 color: white;
                                 
                             }
