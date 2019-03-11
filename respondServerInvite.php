@@ -15,7 +15,7 @@ header("index.php");
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
-        $stmt->bind_result($userIDFrom);
+        $stmt->bind_result($userID);
         $stmt->fetch();
 
         if($accept = "true") {
