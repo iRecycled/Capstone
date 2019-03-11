@@ -73,11 +73,12 @@
             let list = document.createElement("li");
             let link = document.createElement("a")
             let text = document.createTextNode(obj[x].ServerName);
-            console.log(obj[x].ServerName)
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
                 localStorage.setItem("servername", this.ServerName)
+                console.log(`obj Server name ${obj[x].ServerName}`);
+                console.log(`this Server name ${this.ServerName}`);
             };
 
             link.href = "chat.html";
