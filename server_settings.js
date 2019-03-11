@@ -10,10 +10,11 @@
 
                 console.log(ServerName);
                 console.log(ServerName.length);
+                console.log(obj)
 
                 for(let i = 0; i < ServerName.length; i++) {
                     //document.write(servername[i])
-                    ServerName[i].innerHTML = obj[0].servername;
+                    ServerName[i].innerHTML = obj[0];
                 }
                 // servername.forEach(function(element) {
                 //     console.log(element);
