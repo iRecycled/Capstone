@@ -250,8 +250,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function InviteToServer(e) {
     $.when(isAllowedToInvite()).done(function(a){
         if(allowedToInvite) {
-            document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
-            document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
+            document.getElementById(e).innerHTML += "<li><a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul></li>";
         }
     });
 }
