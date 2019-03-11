@@ -250,9 +250,49 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function InviteToServer(e) {
     $.when(isAllowedToInvite()).done(function(a){
         if(allowedToInvite) {
-            document.getElementById(e).innerHTML += "<li><a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul></li>";
+            document.getElementById(e).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
+            $.ajax({
+                type: "post",
+                url: "getFriendsList.php",
+                data: {username: localStorage.getItem('username')},
+                success: function(data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
+                    for( var x in obj) {
+                        let privateServerList = document.getElementById("pageSubmenu");
+                        let listItem = document.createElement("li");
+                        let link = document.createElement("a");
+                        let text = document.createTextNode(obj[x].UserName);
+                        link.id = obj[x].UserName;
+                        link.onclick = function() {
+                            sendInvite(obj[x].UserName);
+                        };
+                        link.appendChild(text);
+                        listItem.appendChild(link);
+                        privateServerList.appendChild(listItem);
+                    }
+            },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
         }
     });
+}
+
+function sendInvite(username) {
+    serverID = localStorage.getItem('serverID');
+    return $.ajax({
+        type: "post",
+        url: "sendServerInvite.php",
+        data: {user: username, serverID: serverID},
+        success: function(data) {
+            alert(data);
+        },
+        error: function(data) {
+            alert("fail");
+        }
+    })
 }
 
 function isAllowedToInvite(){
@@ -275,10 +315,6 @@ function isAllowedToInvite(){
             allowedToInvite = false
         }
     })
-}
-
-function loadFriendsToInvite() {
-    console.log("click");
 }
 </script>
 
@@ -315,45 +351,39 @@ function loadFriendsToInvite() {
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><u>Chatrooms</u></h4>
+            <h4 style="padding:15px; float:left;"><u>Chatrooms</u></h4>
         </div>
 
-        <ul class="list-unstyled components">
+        <ul class="list-unstyled components" style="padding: 10px;">
             <li>
                 <div id="Invite"></div>
             </li>
+            <li></li>
+            <div class="onlineUserTable">
+                <table class="userTable">
+                        <tr>
+                        <td>
+                        <ul>
+                            <style>
+                            li {
+                                list-style-type: none;
+                                color: white;
+                                padding-right: 10px;    
+                            }
+                            
+                            </style>
+                            <li>Online Users</li>
+                            <li>User 1</li>
+                            <li>User 1</li>
+                            <li>User 1</li>
+                            <li>User 1</li>  
+                        </ul>                            
+                        </tr>
+                </table>
+            </div>
         </ul>
     </nav>
 
-    <!-- Navbar Right -->
-    <div id="wrapper-right">
-    <nav id="sidebar-right" class="navbar-text">
-            <div class="onlineUserTable">
-                    <table class="userTable" style="float:right;">
-                            <th>Online Users</th>
-                            <tr>
-                            <td>
-                            <ul>
-                                <style>
-                                li {
-                                    list-style-type: none;
-                                    padding-right: 30px;
-                                }
-                                th {
-                                    text-align: center;
-                                }
-                                </style>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>
-                                <li>User 1</li>  
-                            </ul>                            
-                            </tr>
-                    </table>
-                </div>
-    </nav>
-    </div>
     <!-- Page Content -->
     <div id="content">      
         <div id="contain" class="container-fluid">

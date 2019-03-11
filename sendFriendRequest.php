@@ -32,7 +32,7 @@ header("index.php");
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
         }
-        $query = "SELECT * FROM Friend WHERE Friend1ID = ('$userIDFrom' AND Friend1ID =  '$userIDTo') OR ('$userIDFTo' AND Friend1ID =  '$userIDFrom');";
+        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDFTo' AND Friend2ID =  '$userIDFrom');";
         
         $result = $db->query($query);
         $response = array();

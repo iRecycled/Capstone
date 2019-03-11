@@ -62,7 +62,7 @@ tr:hover{
     margin:auto;
 }
 .dropdown-content {
-    background-color: gray;
+    background-color: #2F7585;
     min-width: 230px;
     overflow: auto;
     z-index: 9999;
@@ -86,6 +86,7 @@ tr:hover{
 }
 .dropdown-item{
     border: 1px solid #ddd;
+    color: white;
 }
 #searchBar{
     margin: 0px;
