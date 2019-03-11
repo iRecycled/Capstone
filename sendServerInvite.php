@@ -9,22 +9,15 @@ header("index.php");
         }
         $data = 0;
         $username = $_POST['user']; 
-        $friendname = $_POST['friend'];
+        $serverID = $_POST['serverID'];
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
   
-        $stmt->bind_result($userIDFrom);
+        $stmt->bind_result($userID);
         $stmt->fetch();
 
-
-        $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
-        $stmt = simpleQuery($db, $query);
-  
-        $stmt->bind_result($userIDTo);
-        $stmt->fetch();
-
-        $query = "SELECT * FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
+        $query = "SELECT * FROM ServerInvite WHERE serverID = '$userIDFrom' AND UserID =  '$userID';";
         
         $result = $db->query($query);
         $response = array();
@@ -32,22 +25,17 @@ header("index.php");
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
         }
-        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDFTo' AND Friend2ID =  '$userIDFrom');";
+        $query = "SELECT * FROM ServerMember WHERE UserID = $userID AND ServerID = $serverID;";
         
         $result = $db->query($query);
         $response = array();
-        $alreadyFriends = false;
+        $alreadyInServer = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $alreadyFriends = true;
+                $alreadyInServer = true;
         }
 
-        if($alreadyFriends == true) {
-                echo("Already friends with this user.");
-                return;
-        }
-
-        if($userIDFrom == $userIDTo) {
-                echo("You don't need to ask yourself to be your friend.");
+        if($alreadyInServer == true) {
+                echo("Friend is already a member of this server.");
                 return;
         }
 
