@@ -45,6 +45,6 @@ header("index.php");
                 echo("Server invite sent!");
         }
         else {
-                echo("Already sent server invite to this user.");
+                echo($username);
         }
 ?>
