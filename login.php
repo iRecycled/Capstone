@@ -101,7 +101,7 @@ header("index.php");
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
 
-        $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+        $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt2 = simpleQueryPassword($db, $query);
         
         $bool1 = strcmp($name,$username)==0;
