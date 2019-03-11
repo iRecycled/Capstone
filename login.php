@@ -17,7 +17,7 @@ header("index.php");
   
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
-  			if(strcmp($pass,$password)==0){
+  			if(password_verify($pass, $password)){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
           $stmt = simpleQuery($db, $query);
