@@ -89,7 +89,7 @@ function acceptServerRequest(name)
         },
         error: function(data) {
             alert("Failed to accept friend request.");
-        }
+        } 
     })
 }
 
