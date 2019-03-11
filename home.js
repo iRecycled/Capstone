@@ -226,6 +226,7 @@ function searchUser(id){
 
 //takes friends list data and injects into HTML
 function createFriendsList(d, targetID){
+    document.getElementById(targetID).innerHTML = "";
     //generates and sorts list of user names 
     names = []
     for(i = 0; i < d.length; i++){
@@ -257,6 +258,7 @@ function setViewInfo(name)
 //takes server list data and injects into HTML
 function createServerTable(d, targetID){
     text = "";
+    document.getElementById(targetID).innerHTML = "";
     //generates table rows from list of server names
     for(i = 0; i < d.length; i++)
     {
@@ -276,6 +278,7 @@ function createServerTable(d, targetID){
 //takes server list data and injects into HTML
 function createAllServerTable(d, targetID){
     text = "";
+    document.getElementById(targetID).innerHTML = "";
     //generates table rows from list of server names
     for(i = 0; i < d.length; i++)
     {

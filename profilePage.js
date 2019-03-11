@@ -135,7 +135,7 @@ $(document).ready(function(){
                 };
                 link.href = "profile_page.html";
                 link.appendChild(text);
-                listItem.appendChild(text);
+                listItem.appendChild(link);
                 privateServerList.appendChild(listItem);
             }
         },
