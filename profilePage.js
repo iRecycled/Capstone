@@ -128,7 +128,7 @@ $(document).ready(function(){
                 let listItem = document.createElement("li");
                 let link = document.createElement("a");
                 let text = document.createTextNode(obj[x].UserName);
-                text.style.color = "white";
+                listItem.style.color = "white";
                 /*link.id = obj[x].ServerID;
                 link.onclick = function() {
                     localStorage.setItem("serverID", this.id);
