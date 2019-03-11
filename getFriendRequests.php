@@ -15,7 +15,8 @@ header("index.php");
         $stmt->bind_result($userID);
         $stmt->fetch();
 
-        $query = "SELECT FromID FROM FriendRequest WHERE ToID = '$userID';";
+        $query = "select wu.UserName from WebUser wu join FriendRequest fr on wu.UserID = fr.FromID where ToID = '$userID';";
+        
         
         $result = $db->query($query);
         $response = array();

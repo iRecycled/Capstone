@@ -1,9 +1,10 @@
 //on load of page
 $(document).ready(function(){
+    document.getElementById('searchDropdown').style.display = 'none';
     //adds welcome message to page
     if(welcome.innerHTML.trim() == "")
     {
-        document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
+        //document.getElementById("welcome").innerHTML += "<h1>Welcome back, " + localStorage.getItem('username') + "!</h1>"; 
     }
     //get list of users servers
     $.ajax({
@@ -48,7 +49,109 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    $.ajax({
+        type: "post",
+        url: "getFriendRequests.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            createFriendRequestList(obj, "friendRequestsBody")
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
+    $.ajax({
+        type: "post",
+        url: "getServerInvites.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj)
+            createServerRequestList(obj, "serverRequestsBody")
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
 });
+
+function acceptServerRequest(name)
+{
+    console.log(name + " accepted")
+}
+
+function rejectServerRequest(name)
+{
+    console.log(name + " ReJeCtEd!!!!")
+}
+
+function createServerRequestList(e, id)
+{
+    document.getElementById(id).innerHTML = "";
+    //generates and sorts list of user names 
+    names = []
+    for(i = 0; i < e.length; i++){
+        names.push(e[i].ServerName)
+    }
+    names.sort()
+    text = "";
+    //uses name list to inject table rows
+    for(i = 0; i < names.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry'>\
+                        <a>\
+                        <span style='display: block; padding: 15px;'>\
+                        " + names[i] + "\
+                        <button class = 'btn btn-success' onclick='acceptServerRequest(\"" + names[i] + "\")'>&#10003</button>\
+                        <button class = 'btn btn-danger'onclick='rejectServerRequest(\"" + names[i] + "\")'>X</button>\
+                        </span>\
+                        </a>\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(id).innerHTML += text;
+}
+
+function acceptFriendRequest(name)
+{
+    console.log(name + " accepted")
+}
+
+function rejectFriendRequest(name)
+{
+    console.log(name + " ReJeCtEd!!!!")
+}
+
+function createFriendRequestList(e, id)
+{
+    document.getElementById(id).innerHTML = "";
+    //generates and sorts list of user names 
+    names = []
+    for(i = 0; i < e.length; i++){
+        names.push(e[i].UserName)
+    }
+    names.sort()
+    text = "";
+    //uses name list to inject table rows
+    for(i = 0; i < names.length; i++)
+    {
+        text +="<tr>\
+                    <td class = 'serverEntry'>\
+                        <a>\
+                        <span style='display: block; padding: 15px;'>\
+                        " + names[i] + "\
+                        <button class = 'btn btn-success' onclick='acceptFriendRequest(\"" + names[i] + "\")'>&#10003</button>\
+                        <button class = 'btn btn-danger' onclick='rejectFriendRequest(\"" + names[i] + "\")'>X</button>\
+                        </span>\
+                        </a>\
+                    </td>\
+                </tr>";
+    }
+    document.getElementById(id).innerHTML += text;
+}
 
 function processSearchResults(names)
 {
@@ -119,7 +222,9 @@ function createServerTable(d, targetID){
         text +="<tr>\
                     <td class = 'serverEntry'>\
                         <a href = 'chat.html' onclick = setServerID(" + d[i].ServerID + ")>\
+                        <span style='display: block; padding: 15px;'>\
                         " + d[i].ServerName + "\
+                        </span>\
                         </a>\
                     </td>\
                 </tr>";
@@ -168,13 +273,9 @@ function sendServerRequest(id){
     */
 }
 
-$('html').click(function(e) {        
-    console.log(e.target.id == 'searchButton')
-    console.log(e.target.className == 'btn') 
+$('html').click(function(e) {         
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {
-        console.log("out click")
         document.getElementById('searchDropdown').style.display = 'none';
-        console.log("???")
     }
  }); 
