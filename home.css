@@ -1,12 +1,12 @@
 .landingItem{
     display:inline-block;
-    width: 30%;
+    width: 20%;
     margin: 12px;
 }
 
 .serverTableDiv{
     display: inline-block;
-    height: 180px;
+    height: 400px;
     overflow-y: scroll;
     border: 5px solid black;
     margin: 3%;
@@ -69,7 +69,21 @@ tr:hover{
     position: absolute;
     border: 1px solid #ddd;
     width:300px;
+    height: 300px;
   }
+.dropdown-content::-webkit-scrollbar {
+    width: 10px;
+    max-height: 2px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+    height: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: gray;
+}
 .dropdown-item{
     border: 1px solid #ddd;
 }

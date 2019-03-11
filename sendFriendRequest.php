@@ -32,6 +32,24 @@ header("index.php");
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
         }
+        $query = "SELECT * FROM Friend WHERE Friend1ID = ('$userIDFrom' AND Friend1ID =  '$userIDTo') OR ('$userIDFTo' AND Friend1ID =  '$userIDFrom');";
+        
+        $result = $db->query($query);
+        $response = array();
+        $alreadyFriends = false;
+        while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $alreadyFriends = true;
+        }
+
+        if($alreadyFriends == true) {
+                echo("Already friends with this user.");
+                return;
+        }
+
+        if($userIDFrom == $userIDTo) {
+                echo("You don't need to ask yourself to be your friend.");
+                return;
+        }
 
         if ($alreadyExists == false) {
                 $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";

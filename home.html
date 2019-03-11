@@ -26,20 +26,6 @@
 
     <script src="home.js"></script>
     <script src="checkIfUsername.js"></script>
-<script>
-    $.ajax({
-        method:'post',
-        dataType: "json",
-        url: 'getAllInfo.php',
-       data: {username: localStorage.getItem('username')},
-       success: function(data) {
-       allInfo=data;
-       },
-       error: function(data) {
-        allInfo=data;
-       }
-      });
-    </script>
 </head>
 
 <body>
@@ -62,16 +48,17 @@
                     localStorage.setItem('viewInfo', localStorage.getItem("username"));
                 }
             </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
+            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                     function selfProfilePage(){
+                        console.log("clicked");
                         localStorage.setItem('viewInfo', localStorage.getItem("username"));
                     }
                     document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
+                    function(){
+                        selfProfilePage();
+                    });
                 </script>
             <span class="sr-only">(current)</span></a>
             
@@ -83,7 +70,7 @@
 <!-- Sidebar -->
 <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><a href="chat.html"><u>My Chatrooms</u></a></h4>
+            <h4><a><u>My Chatrooms</u></a></h4>
         </div>
 
         <ul class="list-unstyled components">
@@ -126,20 +113,6 @@
                         </li>
                     </ul>
             </li> 
-        </ul>
-        <div class="sidebar-header">
-                <h4><u>Features</u></h4>
-        </div>
-        <ul class="list-unstyled components">
-            <li>
-                <a href="#" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</a>
-            </li>
-            <li>
-                <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a>
-            </li>
-            <li>
-                <a href="#">Invite to server</a>
-            </li>
         </ul>
         <ul class="list-unstyled components">    
             <li>
@@ -191,7 +164,8 @@
                     </table>
                 </div>
             </div>  
-            <!--Container for showing servers user does not belong to -->
+
+            <!--Container for showing servers user does not belong to 
             <div id = "allServersContainer" class="landingItem">
                 <h6>Meet New Friends</h6>
                 <div class = "serverTableDiv">
@@ -201,6 +175,7 @@
                     </table>
                 </div>
             </div>  
+            -->
             <!--Container for showing friend requests-->
             <div id = "friendRequestContainer" class="landingItem">
                 <h6>Friend Requests</h6>
