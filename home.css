@@ -62,7 +62,8 @@ tr:hover{
     margin:auto;
 }
 .dropdown-content {
-    background-color: gray;
+    background-color: #2F7585;
+    color: white;
     min-width: 230px;
     overflow: auto;
     z-index: 9999;
