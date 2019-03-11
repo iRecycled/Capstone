@@ -6,21 +6,23 @@
                     servername: localStorage.getItem('servername')
             },
             success: function(data) {
-                obj = JSON.parse(data);
-                //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
-                
-                // Get classes
-                let ServerName = document.getElementsByClassName("servername");
-                // Get local storage
-                //servername = localStorage.getItem('servername')
-                
-                // Place servername into each class
-                for(let i = 0; i < ServerName.length; i++) {
-                    ServerName[i].innerHTML = servername;
-                }
+                if(localStorage.getItem('servername')) {
+                    obj = JSON.parse(data);
+                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    
+                    // Get classes
+                    let ServerName = document.getElementsByClassName("servername");
+                    // Get local storage
+                    //servername = localStorage.getItem('servername')
+                    
+                    // Place servername into each class
+                    for(let i = 0; i < ServerName.length; i++) {
+                        ServerName[i].innerHTML = servername;
+                    }
 
-                // create user list
-                createUL(obj, "UserList");
+                    // create user list
+                    createUL(obj, "UserList");
+                }
                 
             },
             error: function() {
