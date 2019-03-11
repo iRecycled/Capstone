@@ -24,7 +24,7 @@ header("index.php");
         $stmt->bind_result($serverID);
         $stmt->fetch();
 
-        if($accept = "true") {
+        if($accept == "true") {
             $query = "INSERT INTO ServerMember VALUES ('$serverID', '$userID', '1');";
             $stmt = simpleQuery($db, $query);
         }
