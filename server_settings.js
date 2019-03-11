@@ -73,7 +73,7 @@
             let list = document.createElement("li");
             let link = document.createElement("a")
             let text = document.createTextNode(obj[x].ServerName);
-            console.log(obj[x].ServerName)
+            console.log(`Server name ${obj[x].ServerName}`);
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
