@@ -100,6 +100,11 @@ function updateChat(serverID){
 		 setTimeout(updateChat, 1500);
      }
 }
+
+function setViewName(name){
+    localStorage.setItem("viewInfo", name);
+}
+
 //takes message data and generates the table rows in the document
 function generateMsg(text, sender, time)
 {
@@ -110,9 +115,11 @@ function generateMsg(text, sender, time)
     <tr id = 'singleMessage'>\
         <td style='vertical-align: top;'>\
             <div class='message'>\
-             <p class ='msgUname'>"
+             <p class ='msgUname'>\
+             <a href='profile_page.html' onclick=setViewName('" + username + "')>"
                  + username
-                 + "<span class='msgDate'>"
+                 + "</a>\
+                 <span class='msgDate'>"
                      + time + '</span>'
              + "</p>"
             + text + "\
