@@ -7,7 +7,7 @@
                 obj = JSON.parse(data);
                 //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                 let ServerName = document.getElementsByClassName("servername");
-                servername = document.localStorage.getItem('servername')
+                servername = localStorage.getItem('servername')
                 console.log(ServerName);
                 console.log(ServerName.length);
                 console.log(obj)
