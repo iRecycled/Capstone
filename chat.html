@@ -267,7 +267,6 @@ function InviteToServer(e) {
                         link.onclick = function() {
                             sendInvite(obj[x].UserName);
                         };
-                        link.href = "";
                         link.appendChild(text);
                         listItem.appendChild(link);
                         privateServerList.appendChild(listItem);
@@ -282,7 +281,18 @@ function InviteToServer(e) {
 }
 
 function sendInvite(username) {
-    console.log("Server Invite");
+    serverID = localStorage.getItem('serverID');
+    return $.ajax({
+        type: "post",
+        url: "sendServerInvite.php",
+        data: {user: username, serverID: serverID},
+        success: function(data) {
+            alert(data);
+        },
+        error: function(data) {
+            alert("fail");
+        }
+    })
 }
 
 function isAllowedToInvite(){
@@ -305,10 +315,6 @@ function isAllowedToInvite(){
             allowedToInvite = false
         }
     })
-}
-
-function loadFriendsToInvite() {
-    console.log("click");
 }
 </script>
 
