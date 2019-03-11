@@ -17,7 +17,7 @@ header("index.php");
         $stmt->bind_result($userID);
         $stmt->fetch();
 
-        $query = "SELECT * FROM ServerInvite WHERE serverID = '$userIDFrom' AND UserID =  '$userID';";
+        $query = "SELECT * FROM ServerInvite WHERE serverID = '$serverID' AND UserID =  '$userID';";
         
         $result = $db->query($query);
         $response = array();
@@ -40,9 +40,9 @@ header("index.php");
         }
 
         if ($alreadyExists == false) {
-                $query = "INSERT INTO FriendRequest VALUES ('$userIDFrom', '$userIDTo');";
+                $query = "INSERT INTO ServerInvite VALUES ('$serverID', '$userID');";
                 $stmt = simpleQuery($db, $query);
-                echo("Friend request sent!");
+                echo("Server invite sent!");
         }
         else {
                 echo("Already sent server invite to this user.");
