@@ -14,6 +14,10 @@ body {
     width: 100vw;
 }
 
+#unameLink{
+    color: inherit;
+}
+
 #sidebar {
     min-width: 150px;
     max-width: 250px;
@@ -57,7 +61,6 @@ a:hover{
 
 #content{
     width: 100vw;
-    height: 100vh;
     text-align: center;
 }
 

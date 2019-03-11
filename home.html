@@ -14,8 +14,9 @@
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    
-    
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -48,16 +49,17 @@
                     localStorage.setItem('viewInfo', localStorage.getItem("username"));
                 }
             </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
+            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                     function selfProfilePage(){
+                        console.log("clicked");
                         localStorage.setItem('viewInfo', localStorage.getItem("username"));
                     }
                     document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
+                    function(){
+                        selfProfilePage();
+                    });
                 </script>
             <span class="sr-only">(current)</span></a>
             
@@ -69,7 +71,7 @@
 <!-- Sidebar -->
 <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><a href="chat.html"><u>My Chatrooms</u></a></h4>
+            <h4><a><u>My Chatrooms</u></a></h4>
         </div>
 
         <ul class="list-unstyled components">
@@ -112,20 +114,6 @@
                         </li>
                     </ul>
             </li> 
-        </ul>
-        <div class="sidebar-header">
-                <h4><u>Features</u></h4>
-        </div>
-        <ul class="list-unstyled components">
-            <li>
-                <a href="#" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</a>
-            </li>
-            <li>
-                <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a>
-            </li>
-            <li>
-                <a href="#">Invite to server</a>
-            </li>
         </ul>
         <ul class="list-unstyled components">    
             <li>

@@ -62,14 +62,29 @@ tr:hover{
     margin:auto;
 }
 .dropdown-content {
-    background-color: gray;
+    background-color: #2F7585;
+    color: white;
     min-width: 230px;
     overflow: auto;
     z-index: 9999;
     position: absolute;
     border: 1px solid #ddd;
     width:300px;
+    height: 300px;
   }
+.dropdown-content::-webkit-scrollbar {
+    width: 10px;
+    max-height: 2px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+    height: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: gray;
+}
 .dropdown-item{
     border: 1px solid #ddd;
 }
