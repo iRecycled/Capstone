@@ -19,7 +19,6 @@ body {
 }
 
 #sidebar {
-    min-width: 150px;
     max-width: 250px;
     min-height: 100vh;
 }
@@ -66,7 +65,7 @@ a:hover{
 
 #chatOutput
 {
-    width: 88%;
+    width: 90%;
     height: 70vh;
     border: 6px solid grey;
     border-right: 0px;
@@ -80,7 +79,7 @@ a:hover{
 }
 
 #chatBoxInput{
-    width: 88%;
+    width: 90%;
     height: 12vh;
     text-align: left;
     margin: 0vh 23px 0vh;

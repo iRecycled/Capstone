@@ -114,7 +114,35 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-
+    // populates friend list on sidebar
+    $.ajax({
+        type: "post",
+        url: "getFriendsList.php",
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+            obj = JSON.parse(data);
+            console.log(obj);
+            
+            for( var x in obj) {
+                let privateServerList = document.getElementById("homeSubmenu1");
+                let listItem = document.createElement("li");
+                let link = document.createElement("a");
+                let text = document.createTextNode(obj[x].UserName);
+                listItem.style.color = "white";
+                link.id = obj[x].UserName;
+                link.onclick = function() {
+                    localStorage.setItem("viewInfo", this.id);
+                };
+                link.href = "profile_page.html";
+                link.appendChild(text);
+                listItem.appendChild(link);
+                privateServerList.appendChild(listItem);
+            }
+        },
+        error: function(data) {
+            console.log("fail");
+        }
+    })
     //gets information related to the user
     $.ajax({
         type: "post",

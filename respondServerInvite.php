@@ -9,27 +9,26 @@ header("index.php");
         }
         $data = 0;
         $username = $_POST['user']; 
-        $friendname = $_POST['friend'];
+        $serverName = $_POST['serverName'];
         $accept = $_POST['accept'];
         // 2. Run the Query
-        $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
+        $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
   
-        $stmt->bind_result($userIDFrom);
+        $stmt->bind_result($userID);
         $stmt->fetch();
 
-
-        $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
+        $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
         $stmt = simpleQuery($db, $query);
   
-        $stmt->bind_result($userIDTo);
+        $stmt->bind_result($serverID);
         $stmt->fetch();
 
         if($accept = "true") {
-            $query = "INSERT INTO Friend VALUES ('$userIDFrom', '$userIDTo');";
+            $query = "INSERT INTO ServerMember VALUES ('$serverID', '$userID', '1');";
             $stmt = simpleQuery($db, $query);
         }
 
-        $query = "DELETE FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
+        $query = "DELETE FROM ServerInvite WHERE UserID = '$userID' AND ServerID =  '$serverID';";
         $stmt = simpleQuery($db, $query);
 ?>
