@@ -247,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function InviteToServer(e) {
+    console.log(isAllowedToInvite());
     if(isAllowedToInvite() == 0) {
         document.getElementById(e).innerHTML += "<a><u>Invite</u></a>";
         document.getElementById(e).onclick = function(){ loadFriendsToInvite()};
