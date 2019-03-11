@@ -12,7 +12,8 @@
                 console.log(servername.length);
 
                 for(let i = 0; i < servername.length; i++) {
-                    servername[i].appendChild(obj[0].ServerName);
+                    //document.write(servername[i])
+                    servername[i].innerHTML = obj[0].ServerName;
                 }
                 // servername.forEach(function(element) {
                 //     console.log(element);
