@@ -2,7 +2,9 @@
         $.ajax({
             type: "post",
             url: "getServerList.php", //"userInfo.php", 
-            data: {username: localStorage.getItem('username')},
+            data: { username: localStorage.getItem('username'), 
+                    servername: localStorage.getItem('servername')
+            },
             success: function(data) {
                 obj = JSON.parse(data);
                 //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
@@ -10,7 +12,7 @@
                 // Get classes
                 let ServerName = document.getElementsByClassName("servername");
                 // Get local storage
-                servername = localStorage.getItem('servername')
+                //servername = localStorage.getItem('servername')
                 
                 // Place servername into each class
                 for(let i = 0; i < ServerName.length; i++) {
@@ -73,7 +75,7 @@
             link.id = obj[x].ServerID;
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
-                localStorage.setItem("servername", obj[x].ServerName)
+                localStorage.setItem("servername", this.ServerName)
             };
 
             link.href = "chat.html";
