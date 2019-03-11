@@ -26,6 +26,20 @@
 
     <script src="home.js"></script>
     <script src="checkIfUsername.js"></script>
+<script>
+    $.ajax({
+        method:'post',
+        dataType: "json",
+        url: 'getAllInfo.php',
+       data: {username: localStorage.getItem('username')},
+       success: function(data) {
+       console.log(data)
+       },
+       error: function(data) {
+       console.log(data)
+       }
+      });
+    </script>
 </head>
 
 <body>
