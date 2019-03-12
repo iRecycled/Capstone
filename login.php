@@ -98,7 +98,7 @@ header("index.php");
         $stmt->fetch();
 
 
-        if(password_verify($pass,$password){
+        if(password_verify($pass,$password)){
           $bool2=true;
         }
         else{
