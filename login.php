@@ -35,7 +35,7 @@ header("index.php");
         
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                  $hash='$2y$10$mBxK5uhT.DF56'
+                  $hash='$2y$10$mBxK5uhT.DF56';
                   //$row['Password']
                     if(password_verify($_POST['pass'],$hash)){
                         return true;
@@ -87,7 +87,7 @@ header("index.php");
 
   $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
   //$stmt2 = simpleQueryPassword($db, $query);
-  $hash='$2y$10$mBxK5uhT.DF56'
+  $hash='$2y$10$mBxK5uhT.DF56';
   if(password_verify($_POST['pass'],$hash)){
     $stmt2 true;
   }
