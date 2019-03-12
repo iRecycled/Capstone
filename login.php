@@ -37,11 +37,14 @@ header("index.php");
                 while($row = mysqli_fetch_assoc($result)) {
                   $hash =password_hash('hashtest', PASSWORD_DEFAULT);
                   $pass=$_POST['pass'];
-                    if(password_verify($pass,$hash)){
+                    if(strlen($pass)>strlen($row['Password'])){
                         return true;
                     }
+                    else{
+                      return false;
+                    }
                 }
-                return false;
+                
              } else {
                 return false;
              }
