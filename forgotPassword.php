@@ -57,7 +57,8 @@
         $stmt->fetch();
         
         //query that updates the password
-        $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$username';";
+        $passwordHash=password_hash($password, PASSWORD_DEFAULT);
+        $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
 
         $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
