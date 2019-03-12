@@ -86,14 +86,8 @@ header("index.php");
   //$pass = strip_tags($_POST['pass']);
 
   $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-  //$stmt2 = simpleQueryPassword($db, $query);
-  $hash='$2y$10$mBxK5uhT.DF56';
-  if(password_verify($_POST['pass'],$hash)){
-    $stmt2 true;
-  }
-  else{
-    $stmt2=false;
-  }
+  $stmt2 = simpleQueryPassword($db, $query);
+  
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
