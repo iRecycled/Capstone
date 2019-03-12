@@ -36,7 +36,8 @@ header("index.php");
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                   $hash =password_hash('hashtest', PASSWORD_DEFAULT);
-                    if(password_verify($_POST['pass'],$hash)){
+                  $pass=$_POST['pass'];
+                    if(password_verify($pass,$hash)){
                         return true;
                     }
                 }
