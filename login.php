@@ -36,10 +36,10 @@ header("index.php");
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     if(password_verify($_POST['pass'],$row[0])){
-                        return true;
+                        return false;
                     }
                     else{
-                        return false;
+                        return true;
                     }
                 }
              } else {
