@@ -85,12 +85,15 @@ header("index.php");
   $name = strip_tags($_POST['user']);
   //$pass = strip_tags($_POST['pass']);
 
-  $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-  $stmt2 = simpleQueryPassword($db, $query);
+  //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+  //$stmt2 = simpleQueryPassword($db, $query);
   
+  $query = "ALTER TABLE WebUser ALTER COLUMN Password VARCHAR (60) NOT NULL;";
+  $stmt = simpleQuery($db, $query);
+
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
-  
+  //ALTER TABLE YourTable ALTER COLUMN YourColumn VARCHAR (500) NOT NULL;
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
 
