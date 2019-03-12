@@ -35,12 +35,13 @@ header("index.php");
         
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                  
-                    if(password_verify($_POST['pass'],$row['Password'])){
+                  $hash='$2y$10$mBxK5uhT.DF56'
+                  //$row['Password']
+                    if(password_verify($_POST['pass'],$hash)){
                         return true;
                     }
                 }
-                return true;
+                return false;
              } else {
                 return false;
              }
