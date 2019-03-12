@@ -36,8 +36,8 @@ header("index.php");
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                   
-                  $bool=password_verify($_POST['pass'],$row['Password'])
-                    if($bool==1){
+                  
+                    if(password_verify($_POST['pass'],$row['Password'])){
                         return true;
                     }
                 }
