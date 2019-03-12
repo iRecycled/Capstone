@@ -40,7 +40,7 @@ header("index.php");
                         return true;
                     }
                 }
-                return false;
+                return true;
              } else {
                 return false;
              }
