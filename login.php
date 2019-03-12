@@ -28,7 +28,7 @@ header("index.php");
           $bool2=true;
         }
         else{
-          $bool2=false;
+          $bool2 = strcmp($pass,$password)==0;
         }
         
         $bool1 = strcmp($name,$username)==0;
