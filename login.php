@@ -102,7 +102,7 @@ header("index.php");
         $bool1 = strcmp($name,$username)==0;
         $bool2 = strcmp($pass,$password)==0;
         //$bool1 && $bool2
-  			if(true){
+  			if($bool1 && $bool2){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
           $stmt = simpleQuery($db, $query);
