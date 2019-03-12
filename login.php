@@ -35,16 +35,12 @@ header("index.php");
         
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                  $hash =password_hash('hashtest', PASSWORD_DEFAULT);
-                  $pass=$_POST['pass'];
-                    if(strlen($hash)>strlen($row['Password'])){
+                  
+                    if(password_verify($_POST['pass'],$row['Password'])){
                         return true;
                     }
-                    else{
-                      return false;
-                    }
                 }
-                
+                return false;
              } else {
                 return false;
              }
@@ -90,7 +86,7 @@ header("index.php");
 
   $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
   $stmt2 = simpleQueryPassword($db, $query);
-
+ 
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
