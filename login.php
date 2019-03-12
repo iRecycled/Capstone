@@ -1,14 +1,12 @@
 <?php
 header("index.php");
-        // 1. Connect to the database
+        
         abstract class DBDeets {
           const DB_NAME = 'cs458sp19Team1';
           const DB_USER = 'cs458sp19Team1';
           const DB_PW = 'Wutm2ft?';
         }
-        // Function to establish a connection to a named database using the above user and PW
-        // Only makes localhost connections during PHP processing.
-        // - returns an active database connection handle (be sure to close it later)
+        
         function connectToDatabase($databaseName) {
           $db = new mysqli('localhost', DBDeets::DB_USER, DBDeets::DB_PW, $databaseName);
           if ($db->connect_errno) {
@@ -16,9 +14,7 @@ header("index.php");
           }
           return $db;
         }
-        // Execute a simple query with no parameters
-        // - returns a 'statement' object for further use
-        // - returns null on error and prints details in the HTML comments
+        
         function simpleQuery($db, $query) {
           // Prepare the query
           if(!($stmt = $db->prepare($query))) {
@@ -53,9 +49,7 @@ header("index.php");
         
         
           }
-        // Execute a simple query with one dynamically bound input parameter
-        // - returns a 'statement' object for further use
-        // - returns null on error and prints details in the HTML comments
+        
         function simpleQueryParam($db, $query, $ptype, &$param) {
           // Prepare the query
           if(!($stmt = $db->prepare($query))) {
@@ -87,14 +81,13 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
+
   $name = strip_tags($_POST['user']);
-  $pass = strip_tags($_POST['pass']);
-  //if($pass.strlen()==0){
-  // $pass='oiergneirogne234ionefwinweof234'
-  //}
-  
-        // 2. Run the Query
-  //SELECT username, password, money FROM logins WHERE username = '$username';
+  //$pass = strip_tags($_POST['pass']);
+
+  $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+  $stmt2 = simpleQueryPassword($db, $query);
+ 
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
   
@@ -105,8 +98,8 @@ header("index.php");
         //$stmt2 = simpleQueryPassword($db, $query);
         
         $bool1 = strcmp($name,$username)==0;
-        $bool2 = strcmp($pass,$password)==0;
-  			if($bool1 && $bool2){
+        //$bool2 = strcmp($pass,$password)==0;
+  			if($bool1 && $stmt2){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
           $stmt = simpleQuery($db, $query);
