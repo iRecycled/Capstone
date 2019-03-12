@@ -88,7 +88,7 @@ header("index.php");
   //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
   //$stmt2 = simpleQueryPassword($db, $query);
   
-  $query = "ALTER TABLE WebUser ALTER COLUMN Password VARCHAR (500);";
+  $query = "ALTER TABLE WebUser ALTER COLUMN Password VARCHAR(100);";
   $stmt = simpleQuery($db, $query);
 
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
