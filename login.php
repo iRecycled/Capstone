@@ -33,13 +33,19 @@ header("index.php");
         function simpleQueryPassword($db, $query) {
             $result = mysqli_query($db,$query);
         
-            $row = $result->fetch_assoc()); 
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
                     if(password_verify($_POST['pass'],$row['Password'])){
                         return true;
                     }
-                    else{
-                        return false;
-                    }
+                }
+                return false;
+             } else {
+                return false;
+             }
+             //mysqli_close($db);
+        
+        
           }
         
         function simpleQueryParam($db, $query, $ptype, &$param) {
