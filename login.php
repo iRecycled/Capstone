@@ -35,9 +35,9 @@ header("index.php");
         
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                  $hash='$2y$10$mBxK5uhT.DF56';
+                  
                   //$row['Password']
-                    if(password_verify($_POST['pass'],$hash)){
+                    if(password_verify($_POST['pass'],$row['Password'])){
                         return true;
                     }
                 }
@@ -85,11 +85,10 @@ header("index.php");
   $name = strip_tags($_POST['user']);
   //$pass = strip_tags($_POST['pass']);
 
-  //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-  //$stmt2 = simpleQueryPassword($db, $query);
+  $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+  $stmt2 = simpleQueryPassword($db, $query);
   
-  $query = "ALTER TABLE WebUser ALTER COLUMN Password VARCHAR (60) NOT NULL;";
-  $stmt = simpleQuery($db, $query);
+
 
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
