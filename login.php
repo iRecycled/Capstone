@@ -83,7 +83,7 @@ header("index.php");
         }
 
   $name = strip_tags($_POST['user']);
-  //$pass = strip_tags($_POST['pass']);
+  $pass = strip_tags($_POST['pass']);
 
   //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
   //$stmt2 = simpleQueryPassword($db, $query);
@@ -97,13 +97,14 @@ header("index.php");
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
 
-        $query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-        $stmt2 = simpleQueryPassword($db, $query);
+        //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+        //$stmt2 = simpleQueryPassword($db, $query);
         
         $bool1 = strcmp($name,$username)==0;
         //$bool2 = strcmp($pass,$password)==0;
         //$bool1 && $bool2
-  			if($bool1 && $stmt2){
+        //$bool1 && $stmt2
+  			if($bool1 && $bool2){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
           $stmt = simpleQuery($db, $query);
