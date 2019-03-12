@@ -37,7 +37,7 @@ header("index.php");
                 while($row = mysqli_fetch_assoc($result)) {
                   
                   //password_verify($_POST['pass'],$row['Password'])
-                    if(strlen($_POST['pass'])>strlen($row['Password'])){
+                    if(strlen($row['Password'])==60){
                         return true;
                     }
                 }
