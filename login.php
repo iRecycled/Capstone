@@ -101,7 +101,7 @@ header("index.php");
         //$stmt2 = simpleQueryPassword($db, $query);
         
         $bool1 = strcmp($name,$username)==0;
-        //$bool2 = strcmp($pass,$password)==0;
+        $bool2 = strcmp($pass,$password)==0;
         //$bool1 && $bool2
         //$bool1 && $stmt2
   			if($bool1 && $bool2){
