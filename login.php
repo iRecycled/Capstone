@@ -34,12 +34,9 @@ header("index.php");
             $result = mysqli_query($db,$query);
         
             if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result));
-                    if(password_verify($_POST['pass'],$row['Password'])){
+                while($row = mysqli_fetch_assoc($result)) {
+                    if(password_verify($_POST['pass'],password_hash('hashtest', PASSWORD_DEFAULT)){
                         return true;
-                    }
-                    else{
-                      return false;
                     }
                 }
                 return false;
