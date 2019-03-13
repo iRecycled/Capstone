@@ -439,15 +439,15 @@ function isAllowedToInvite(){
 
 <!--Delete an existing private Server Modal-->
 <div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold" id="deletePrivateServerModal">Are you sure you want to delete this server?</h4>
             </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-success" id="deleteServerBtn">Delete Server</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="deleteServerBtn">Delete Server</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
+            </div>
         </div>
     </div>
 </div>
