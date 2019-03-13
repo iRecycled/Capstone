@@ -20,7 +20,7 @@ header("index.php");
         $stmt->fetch();
 
         if($emailTest == $email){
-                $data = -2; //email is already taken
+                $data = 0; //email is already taken
                 $check = -2;
         }
         
