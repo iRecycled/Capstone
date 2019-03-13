@@ -22,8 +22,17 @@
       	$stmt->bind_result($currentPassword);
             $stmt->fetch();
             //check if passwords match
-  		if($password == $currentPassword){
+            
+            if(password_verify($password,$currentPassword)){
+                  $bool2=true;
+                }
+                else{
+                  $bool2 = strcmp($password,$currentPassword)==0;
+            }
+
+  		if($bool2){
                   if($newPassword == $confirmNewPassword){
+                        $newPassword=password_hash($newPassword, PASSWORD_DEFAULT);
                         $query2 = "UPDATE WebUser SET Password='$newPassword' WHERE UserName = '$username';";
                         $stmt2 = simpleQuery($db, $query2);
                         $status = 1;

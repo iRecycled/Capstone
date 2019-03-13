@@ -39,7 +39,7 @@
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
                 // sends back 1 if email sent
-                $status = -1;
+                $status = 1;
                 break;
             }
             else {
@@ -57,7 +57,8 @@
         $stmt->fetch();
         
         //query that updates the password
-        $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$username';";
+        $passwordHash=password_hash($password, PASSWORD_DEFAULT);
+        $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
 
         $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
@@ -65,7 +66,7 @@
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
-        $status = -1;
+        $status = 1;
     }
     echo json_encode($status);
 ?>

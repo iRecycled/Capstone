@@ -88,7 +88,7 @@ function acceptServerRequest(name)
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
-            alert("Failed to accept friend request.");
+            alert("Failed to accept server request.");
         }
     })
 }
@@ -103,7 +103,7 @@ function rejectServerRequest(name)
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
-            alert("Failed to accept friend request.");
+            alert("Failed to reject server request.");
         }
     })
 }

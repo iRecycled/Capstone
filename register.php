@@ -20,7 +20,7 @@ header("index.php");
         $stmt->fetch();
 
         if($emailTest == $email){
-                $data = -2; //email is already taken
+                $data = 0; //email is already taken
                 $check = -2;
         }
         
@@ -36,7 +36,7 @@ header("index.php");
                         $data = -5;
                 }
         }
-        //$password=password_hash($password, PASSWORD_DEFAULT);
+        $password=password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email',null)";
 	$stmt = simpleQuery($db, $query);
         if($stmt != NULL) {

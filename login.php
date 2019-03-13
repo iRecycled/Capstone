@@ -1,111 +1,40 @@
 <?php
 header("index.php");
-        // 1. Connect to the database
-        abstract class DBDeets {
-          const DB_NAME = 'cs458sp19Team1';
-          const DB_USER = 'cs458sp19Team1';
-          const DB_PW = 'Wutm2ft?';
-        }
-        // Function to establish a connection to a named database using the above user and PW
-        // Only makes localhost connections during PHP processing.
-        // - returns an active database connection handle (be sure to close it later)
-        function connectToDatabase($databaseName) {
-          $db = new mysqli('localhost', DBDeets::DB_USER, DBDeets::DB_PW, $databaseName);
-          if ($db->connect_errno) {
-              die('<p>Failed to connect to database: ' . $db->connect_error . '</p></body></html>');
-          }
-          return $db;
-        }
-        // Execute a simple query with no parameters
-        // - returns a 'statement' object for further use
-        // - returns null on error and prints details in the HTML comments
-        function simpleQuery($db, $query) {
-          // Prepare the query
-          if(!($stmt = $db->prepare($query))) {
-            echo "<!-- Query Prepare failed: (" . $db->errno . ") " . $db->error . "-->\n";
-            return null;
-          }
-          // Execute query
-          if(!$stmt->execute()) {
-            //echo "<!-- Query Execute failed: (" . $stmt->errno . ") " . $stmt->error . "-->\n";
-            return null;
-          }
-          // Store the results and return the statement object
-          if(strpos($query, 'SELECT') !== false) { $stmt->store_result(); }
-          return $stmt;
-        }
-        function simpleQueryPassword($db, $query) {
-            $result = mysqli_query($db,$query);
         
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    if(password_verify($_POST['pass'],$row['Password'])){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
-                }
-             } else {
-                return false;
-             }
-             //mysqli_close($db);
-        
-        
-          }
-        // Execute a simple query with one dynamically bound input parameter
-        // - returns a 'statement' object for further use
-        // - returns null on error and prints details in the HTML comments
-        function simpleQueryParam($db, $query, $ptype, &$param) {
-          // Prepare the query
-          if(!($stmt = $db->prepare($query))) {
-            echo "<!-- Query Prepare failed: (" . $db->errno . ") " . $db->error . "-->\n";
-            return null;
-          }
-          // Bind input param
-          if(!($stmt->bind_param($ptype, $param))) {
-            echo "<!-- Query Param Binding Failed: (" . $stmt->errno . ") " . $stmt->error . "-->\n";
-            return null;
-          }
-          // Execute query
-          if(!$stmt->execute()) {
-            echo "<!-- Query Execute failed: (" . $stmt->errno . ") " . $stmt->error . "-->\n";
-            return null;
-          }
-          // Store the results and return the statement object
-          if(strpos($query, 'SELECT') !== false) { $stmt->store_result(); }
-          return $stmt;
-        }
-
-
-
-
-
-
+  include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $name = strip_tags($_POST['user']);
-  $pass = strip_tags($_POST['pass']);
-  //if($pass.strlen()==0){
-  // $pass='oiergneirogne234ionefwinweof234'
-  //}
+
+  $name = ($_POST['user']);
+  $pass = ($_POST['pass']);
+
+  //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
+  //$stmt2 = simpleQueryPassword($db, $query);
   
-        // 2. Run the Query
-  //SELECT username, password, money FROM logins WHERE username = '$username';
+  //$query = "alter table WebUser modify column Password varchar(500) not null;";
+  //$stmt = simpleQuery($db, $query);
+
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$name';";
         $stmt = simpleQuery($db, $query);
-  
+  //ALTER TABLE YourTable ALTER COLUMN YourColumn VARCHAR (500) NOT NULL;
       	$stmt->bind_result($userID, $username, $password, $email, $sessionID);
         $stmt->fetch();
 
-        //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
-        //$stmt2 = simpleQueryPassword($db, $query);
+
+        if(password_verify($pass,$password)){
+          $bool2=true;
+        }
+        else{
+          $bool2 = strcmp($pass,$password)==0;
+        }
         
         $bool1 = strcmp($name,$username)==0;
-        $bool2 = strcmp($pass,$password)==0;
+        //$bool2 = strcmp($pass,$password)==0;
+        //$bool1 && $bool2
+        //$bool1 && $stmt2
   			if($bool1 && $bool2){
           $rand=rand(1, 50000);
           $query = "UPDATE WebUser SET SessionID=$rand WHERE UserName = '$username';";
