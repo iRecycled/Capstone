@@ -12,7 +12,7 @@ header("index.php");
         $password = strip_tags($_POST['password']);
         $data = 0;
         $checkEmail = 0;
-        // 2. Run the Query
+        
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE email = '$email';";
         $stmt = simpleQuery($db, $query);
   
