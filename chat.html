@@ -244,13 +244,14 @@ $.ajax({
 
 var allowedToInvite = false;
 document.addEventListener("DOMContentLoaded", function(event) {
-    InviteToServer('Invite')
+    InviteToServer('Invite', 'Delete')
 })
 
-function InviteToServer(e) {
+function InviteToServer(inv, del) {
     $.when(isAllowedToInvite()).done(function(a){
         if(allowedToInvite) {
-            document.getElementById(e).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
+            document.getElementById(inv).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
+            document.getElementById(del).innerHTML += "<a href='#' id='deleteServer' data-toggle='modal' data-target='#deleteServerModal'>Delete Server</a>";
             $.ajax({
                 type: "post",
                 url: "getFriendsList.php",
@@ -360,6 +361,9 @@ function isAllowedToInvite(){
             <li>
                 <div id="Invite" style="padding-left:12px;"></div>
             </li>
+            <li>
+                <div id="Delete" style="padding-left:12px;"></div>
+            </li>
             <li></li>
             <div class="onlineUserTable">
                 <table class="userTable">
@@ -432,5 +436,21 @@ function isAllowedToInvite(){
     </div>
 </div>
 </div>
+
+<!--Delete an existing private Server Modal-->
+<div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold" id="deletePrivateServerModal">Are you sure you want to delete this server?</h4>
+            </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-success" id="deleteServerBtn">Delete Server</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
