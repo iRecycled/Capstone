@@ -25,6 +25,9 @@ checkIfUsername.js
 database.php
 	Constructs Database, constructs queries, etc. Berrier code.
 
+deleteServer.php
+	Deletes server from database
+
 forgotPassword.php
 	Sends new password via email
 
@@ -120,6 +123,12 @@ script.js
 
 searchForUser.php
 	Returns all usernames similar to inputted character sequence
+
+sendFriendRequest.php
+	Adds friend request to server
+
+sendServerInvite.php
+	Adds server invite to server
 
 server_settings.html
 	Allows users to modify parameters of a server
