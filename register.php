@@ -12,11 +12,11 @@ header("index.php");
         $password = strip_tags($_POST['password']);
         $data = 0;
         $checkEmail = 0;
-        
+
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE email = '$email';";
         $stmt = simpleQuery($db, $query);
   
-      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
+      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest,$SessionIDTest);
         $stmt->fetch();
 
         if($emailTest == $email){
