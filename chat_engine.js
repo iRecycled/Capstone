@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers;
+var allusers = ["ETHANTESTWITHFILLED"];
 var state;
 var mes;
 var file;
