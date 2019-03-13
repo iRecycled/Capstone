@@ -77,7 +77,7 @@ $(document).ready(function(){
         }
     })
 });
-
+//handles when user accepts server invite
 function acceptServerRequest(name)
 {
     $.ajax({
@@ -92,7 +92,7 @@ function acceptServerRequest(name)
         }
     })
 }
-
+//handles when user rejects server invite
 function rejectServerRequest(name)
 {
     $.ajax({
@@ -107,7 +107,7 @@ function rejectServerRequest(name)
         }
     })
 }
-
+//generates and injects list of server invites
 function createServerRequestList(e, id)
 {
     document.getElementById(id).innerHTML = "";
@@ -135,7 +135,7 @@ function createServerRequestList(e, id)
     }
     document.getElementById(id).innerHTML += text;
 }
-
+//handles when user accepts friend invite
 function acceptFriendRequest(name)
 {
     $.ajax({
@@ -150,7 +150,7 @@ function acceptFriendRequest(name)
         }
     })
 }
-
+//handles when user rejects friend invite
 function rejectFriendRequest(name)
 {
     $.ajax({
@@ -165,7 +165,7 @@ function rejectFriendRequest(name)
         }
     })
 }
-
+//generates and injects list of friend invites
 function createFriendRequestList(e, id)
 {
     document.getElementById(id).innerHTML = "";
@@ -193,7 +193,7 @@ function createFriendRequestList(e, id)
     }
     document.getElementById(id).innerHTML += text;
 }
-
+//outputs search results to dropdown
 function processSearchResults(names)
 {
     console.log(names)
@@ -204,7 +204,7 @@ function processSearchResults(names)
     }
     document.getElementById('searchDropdown').style.display = 'block';
 }
-
+//processes user search function
 function searchUser(id){
     name = document.getElementById(id).value
     console.log(name)
@@ -316,9 +316,7 @@ function sendServerRequest(id){
     })
     */
 }
-
-
-
+//hides dropdown if focus lost
 $('html').click(function(e) {         
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {

@@ -164,6 +164,7 @@ $(document).ready(function(){
         }
     })
 })
+//adds friend request if valid user
 var isNotFriend = false;
 function AddFriendButton(e){
     friendName = localStorage.getItem('viewInfo')
@@ -178,7 +179,7 @@ function AddFriendButton(e){
     });
 
 }
-
+//sends friend request to server
 function SendFriendRequest()
 {
     user = localStorage.getItem('username');
