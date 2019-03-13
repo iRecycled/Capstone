@@ -8,8 +8,8 @@ header("index.php");
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
 
-  $name = strip_tags($_POST['user']);
-  $pass = strip_tags($_POST['pass']);
+  $name = mysql_real_escape_string($_POST['user']);
+  $pass = mysql_real_escape_string($_POST['pass']);
 
   //$query = "SELECT Password FROM WebUser WHERE UserName = '$name';";
   //$stmt2 = simpleQueryPassword($db, $query);
