@@ -332,7 +332,7 @@ function sendServerRequest(id){
         }
     })
   })();
-//setTimeout(refreshRequests, 2000);
+setTimeout(refreshRequests, 2000);
 
 $('html').click(function(e) {         
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
