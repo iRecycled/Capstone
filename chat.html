@@ -213,6 +213,27 @@
      });
     </script>
 
+    <script>
+    $(document).ready(function(){
+    $("#deleteServerBtn").click(function(e){
+        e.preventDefault();
+        $.ajax({
+        type: "post",
+        url: "deleteServer.php",
+        data: {serverID: localStorage.getItem('serverID')},
+        success: function(result) {
+            //If successful, go to the home page
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+        },
+        error: function(result) {
+            //If not successful, return to the chat page
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+        }
+    })
+    })  
+})
+    </script>
+
 <script>
 
 $.ajax({
