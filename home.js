@@ -317,6 +317,22 @@ function sendServerRequest(id){
     */
 }
 
+function refreshRequests(){
+$.ajax({
+    type: "post",
+    url: "getFriendRequests.php",
+    data: {username: localStorage.getItem('username')},
+    success: function(data) {
+        obj = JSON.parse(data);
+        console.log(obj)
+        createFriendRequestList(obj, "friendRequestsBody")
+    },
+    error: function(data) {
+        console.log("fail");
+    }
+})
+}
+
 $('html').click(function(e) {         
     if(!(e.target.id == 'searchButton') && !(e.target.className == 'btn'))
     {
