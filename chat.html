@@ -136,7 +136,7 @@
     });
 
     //testing unload of the page
-    $(window).unload("unload",function(){
+    $(window).on("unload",function(){
         alert("goodbye");
     });
     </script>
