@@ -7,8 +7,8 @@
             }
 
             $data = json_decode(file_get_contents("php://input"));
-            //$username = $data->username;
-            $username = "darkpiggy73";
+            $username = $data->username;
+            //$username = "darkpiggy73";
             $servername = $data->servername;
         if($servername == NULL){
             
