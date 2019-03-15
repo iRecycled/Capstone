@@ -6,8 +6,10 @@
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $username = $_POST['username']; 
-  
+  //$username = $_POST['username']; 
+  $username = json_decode(file_get_contents("php://input"));
+
+
   $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$username';";
   //runs query
         $stmt = simpleQuery($db, $query);
