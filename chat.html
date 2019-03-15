@@ -128,10 +128,12 @@
       function load(){
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
-        alert("page load");
+        userList += username;
+        alert(userList);
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
+
       //when the user leaves the page
       $(window).bind('beforeunload', function(){
         alert("test");
