@@ -64,7 +64,7 @@ $(window).unload(function(){
     return "goodbye";
 });
 //testing load of the page
-$(document).ready(function(){
+$(window).on("load",function(){
     console.log("Hello");
 });
 //DELETE THIS IF STILL NOT WORKING
