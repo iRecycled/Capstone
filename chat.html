@@ -127,21 +127,15 @@
     	});
       function load(){
         targetfile = localStorage.getItem('serverID');
+        alert("page load");
         setInterval('chat.update(targetfile)',1000);
       }
+      function unload(){
+          alert("Page unloaded");
+      }
       window.onload = load;
+      window.onunload = unload;
 
-    $(window).on("load",function(){
-        alert("Page loaded");
-    });
-
-    //testing unload of the page
-    window.addEventListener("beforeunload",function(event){
-        alert("goodbye");
-    });
-    window.addEventListener('unload', function(event) {
-        alert('I am the 3rd one.');
-    });
     </script>
 
 
