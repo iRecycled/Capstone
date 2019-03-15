@@ -59,14 +59,8 @@ function getStateOfChat(serverID){
 			});
 	}
 }
-//testing unload of the page
-$(window).unload(function(){
-    return "goodbye";
-});
-//testing load of the page
-$(window).on("load",function(){
-    alert("Page loaded");
-});
+
+
 //DELETE THIS IF STILL NOT WORKING
 function userList(newuser, users){
   add = true;
