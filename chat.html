@@ -128,8 +128,8 @@
       function load(){
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
-        userList += username;
-        alert(userList);
+        allusers += username;
+        alert(allusers);
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
