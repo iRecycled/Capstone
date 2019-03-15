@@ -9,7 +9,8 @@
   //$username = $_POST['username']; 
   $data = json_decode(file_get_contents("php://input"));
   $username = $data->username;
-  $username='darkpiggy73';
+  $username=file_get_contents("php://input");
+
 
 
   $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$username';";
