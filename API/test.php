@@ -9,7 +9,7 @@
   //$username = $_POST['username']; 
   $data = json_decode(file_get_contents("php://input"));
   $username = $data->username;
-  $username=file_get_contents("php://input");
+  $username=json_decode(file_get_contents("php://input"));
 
 
 
