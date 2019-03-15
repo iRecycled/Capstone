@@ -7,21 +7,21 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
+        $username = strip_tags($_POST['username']); 
+        $email = strip_tags($_POST['email']);
+        $password = strip_tags($_POST['password']);
         $data = 0;
-  $username = strip_tags($_POST['username']); 
-  $email = strip_tags($_POST['email']);
-  $password = strip_tags($_POST['password']);
-        $check = 0;
-        // 2. Run the Query
+        $checkEmail = 0;
+
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE email = '$email';";
         $stmt = simpleQuery($db, $query);
   
-      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest);
+      	$stmt->bind_result($userIDTest, $usernameTest, $passwordTest, $emailTest,$SessionIDTest);
         $stmt->fetch();
 
         if($emailTest == $email){
-                $data = 0; //email is already taken
-                $check = -2;
+                $data = -2; //email is already taken
+                $checkEmail = -2;
         }
         
         $query = "SELECT UserID, UserName, Password, email, SessionID FROM WebUser WHERE UserName = '$username';";
@@ -32,7 +32,7 @@ header("index.php");
 
         if($usernameTest == $username){
                 $data = -3; //username is already taken
-                if($check == -2){
+                if($checkEmail == -2){
                         $data = -5;
                 }
         }

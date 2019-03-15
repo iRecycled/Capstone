@@ -52,7 +52,7 @@
                             localStorage.setItem("dataTest", data);
                             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
                           }
-                          else if(data == 0){
+                          else if(data == -2){
                             document.getElementById("email").style.borderColor = "red";
                             document.getElementById("email").style.borderColor = "red";
                             document.getElementById("errorText").innerHTML = "Email is Already In Use";
@@ -72,16 +72,16 @@
                           }
                         },
                         error: function(data){
-                            //on registration failure
-                            console.log(data);
-                            if(data == -2){
-                            console.log(data);
-                              document.getElementById("username").style.borderColor = "red";
-                              document.getElementById("password").style.borderColor = "red";
-                              document.getElementById("email").style.borderColor = "red";
-                              document.getElementById("errorText").innerHTML = "Username or Email is Already In Use";
-                              document.getElementById("errorText").style.color = "red";
-                            }
+                            // //on registration failure
+                            // console.log(data);
+                            // if(data == -2){
+                            // console.log(data);
+                            //   document.getElementById("username").style.borderColor = "red";
+                            //   document.getElementById("password").style.borderColor = "red";
+                            //   document.getElementById("email").style.borderColor = "red";
+                            //   document.getElementById("errorText").innerHTML = "Username or Email is Already In Use";
+                            //   document.getElementById("errorText").style.color = "red";
+                            // }
                         }
                     })
                     })
