@@ -130,11 +130,10 @@
         alert("page load");
         setInterval('chat.update(targetfile)',1000);
       }
-      function unload(){
-          alert("Page unloaded");
-      }
       window.onload = load;
-      window.onunload = unload;
+      $(window).bind('beforeunload', function(){
+        return "does this work?";
+      });
 
     </script>
 
