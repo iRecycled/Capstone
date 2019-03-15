@@ -159,6 +159,7 @@ a:hover{
     right: 10px;
     bottom: 10px;
     border: 0px;
+    z-index: 5; 
     background-color: transparent;
     background-image: url("emotes/button.png");
     background-size: cover;
