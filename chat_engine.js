@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = ["ETHANTESTWITHFILLED"];
+var allusers = [];
 var state;
 var mes;
 var file;
@@ -99,11 +99,11 @@ function updateChat(serverID){
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
                             //DELETE THIS IF NOT WORKING
-                            // if(userList(str[0], allusers)){
-                            //   newstr = "<tr><td>"+str[0]+"</td></tr>";
-                            //   allusers.push(str[0]);
-                            //   $('#userTable').append($(newstr));
-                            // }
+                             if(userList(str[0], allusers)){
+                               newstr = "<tr><td>"+str[0]+"</td></tr>";
+                               allusers.push(str[0]);
+                               $('#userTable').append($(newstr));
+                             }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }
