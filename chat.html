@@ -136,9 +136,11 @@
     });
 
     //testing unload of the page
-    $(window).on("unload",function(){
+    window.addEventListener("beforeunload",function(event){
         alert("goodbye");
     });
+    window.addEventListener('unload', function(event) {
+        alert('I am the 3rd one.');
     </script>
 
 
