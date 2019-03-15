@@ -7,10 +7,11 @@
             }
 
             $data = json_decode(file_get_contents("php://input"));
-            $username = $data->username;
+            //$username = $data->username;
+            $username = "darkpiggy73";
             $servername = $data->servername;
         if($servername == NULL){
-            include 'register.html';
+            
         } else {
             //gets the highest server ID + 1
             $query = "SELECT * FROM (SELECT COALESCE(MAX(ServerID)+1,0) FROM Server) as tmptable";
