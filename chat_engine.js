@@ -65,7 +65,7 @@ $(window).unload(function(){
 });
 //testing load of the page
 $(window).on("load",function(){
-    console.log("Hello");
+    alert("Page loaded");
 });
 //DELETE THIS IF STILL NOT WORKING
 function userList(newuser, users){
