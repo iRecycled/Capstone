@@ -64,8 +64,8 @@ $(window).unload(function(){
     return "goodbye";
 });
 //testing load of the page
-$(window).load(function(){
-    return "Hello";
+$(document).ready(function(){
+    console.log("Hello");
 });
 //DELETE THIS IF STILL NOT WORKING
 function userList(newuser, users){
