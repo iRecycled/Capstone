@@ -75,7 +75,7 @@ function userList(username){
 function updateChat(serverID){
 	 if(!instanse){
 		 instanse = true;
-		 console.log("start update");
+		 //console.log("start update");
 	     $.ajax({
 			   type: "POST",
 			   url: "process.php",
@@ -92,9 +92,6 @@ function updateChat(serverID){
                             newstr = "<li>"+username+"<li>";
                             allusers.push(newstr);
                             $('#onlineList').append($(newstr));
-                        }
-                        else {
-                            console.log("not in online users");
                         } 
 						for (var i = 0; i < data.text.length; i++) {
                             //data.text[i] = msgParse(data.text[i]);
