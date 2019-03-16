@@ -98,6 +98,10 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
+                            username = localStorage.getItem('username');
+                            newstr = "<li>"+username+"<li>";
+                            allusers.push(newstr);
+                            $('#onlineList').append($(newstr));
                             //DELETE THIS IF NOT WORKING
                             
                             //  if(userList(str[0], allusers)){

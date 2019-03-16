@@ -127,10 +127,6 @@
     	});
       function load(){
         targetfile = localStorage.getItem('serverID');
-        username = localStorage.getItem('username');
-        newstr = "<li>"+username+"<li>";
-        allusers.push(newstr);
-        $('#onlineList').append($(newstr));
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
