@@ -99,6 +99,7 @@ function updateChat(serverID){
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
                             //DELETE THIS IF NOT WORKING
+                            alert(allusers);
                              if(userList(str[0], allusers)){
                                newstr = "<tr><td>"+str[0]+"</td></tr>";
                                allusers.push(str[0]);
