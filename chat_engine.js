@@ -100,7 +100,7 @@ function updateChat(serverID){
                             console.log(data.text[i]);
                             username = localStorage.getItem('username');
                             for(var i = 0;i < allusers.length; i++){
-                                if(newuser != users[i]){
+                                if(username != allusers[i]){
                                     newstr = "<li>"+username+"<li>";
                                     allusers.push(newstr);
                                     $('#onlineList').append($(newstr));
