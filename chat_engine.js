@@ -100,12 +100,12 @@ function updateChat(serverID){
                             console.log(data.text[i]);
                             //DELETE THIS IF NOT WORKING
                             
-                             if(userList(str[0], allusers)){
-                               newstr = "<li>"+str[0]+"<li>";
-                               allusers.push(str[0]);
-                               //alert(allusers);
-                               $('#onlineList').append($(newstr));
-                             }
+                            //  if(userList(str[0], allusers)){
+                            //    newstr = "<li>"+str[0]+"<li>";
+                            //    allusers.push(str[0]);
+                               
+                            //    $('#onlineList').append($(newstr));
+                            //  }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }

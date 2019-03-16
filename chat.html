@@ -128,9 +128,9 @@
       function load(){
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
-        allusers += username;
-        //userList(username,allusers)
-        //alert(allusers);
+        newstr = "<li>"+username+"<li>";
+        allusers.push(newstr);
+        $('#onlineList').append($(newstr));
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
