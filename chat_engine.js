@@ -62,12 +62,12 @@ function getStateOfChat(serverID){
 
 
 //DELETE THIS IF STILL NOT WORKING
-function userList(newuser, users){
+function userList(username){
   add = true;
-  for(i = 0; i < users.length; i++){
-    if(newuser == users[i]){
-      add = false;
-    }
+  for(i = 0; i < allusers.length; i++){
+    if(username == allusers[i]){
+        add = false;
+      }
   }
   return add;
 }
@@ -99,15 +99,10 @@ function updateChat(serverID){
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
                             username = localStorage.getItem('username');
-                            for(var i = 0;i < allusers.length; i++){
-                                if(username != allusers[i]){
-                                    newstr = "<li>"+username+"<li>";
-                                    allusers.push(newstr);
-                                    $('#onlineList').append($(newstr));
-                                  }
-                                else {
-                                    console.log("error username not in online users");
-                                }
+                            if(userList(username)){
+                                newstr = "<li>"+username+"<li>";
+                                allusers.push(newstr);
+                                $('#onlineList').append($(newstr));
                             }                            
                             //DELETE THIS IF NOT WORKING
                             
