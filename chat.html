@@ -137,7 +137,11 @@
 
       //when the user leaves the page
       $(window).bind('beforeunload', function(){
-        alert("test");
+        for(var i = 0; i < allusers.size();i++){
+            if(username == allusers[i]){
+                delete allusers[i];
+            }
+        }
       });
 
     </script>
