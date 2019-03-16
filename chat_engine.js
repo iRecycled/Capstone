@@ -101,10 +101,10 @@ function updateChat(serverID){
                             //DELETE THIS IF NOT WORKING
                             alert(allusers);
                              if(userList(str[0], allusers)){
-                               newstr = "<tr><td>"+str[0]+"</td></tr>";
+                               newstr = "<li>"+str[0]+"<li>";
                                allusers.push(str[0]);
-                               alert(allusers);
-                               $('#userTable').append($(newstr));
+                               //alert(allusers);
+                               $('#onlineList').append($(newstr));
                              }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
