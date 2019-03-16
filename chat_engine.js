@@ -87,6 +87,15 @@ function updateChat(serverID){
 			   dataType: "json",
 			   success: function(data){
 				   if(data.text){
+                        username = localStorage.getItem('username');
+                        if(userList(username)){
+                            newstr = "<li>"+username+"<li>";
+                            allusers.push(newstr);
+                            $('#onlineList').append($(newstr));
+                        }
+                        else {
+                            console.log("not in online users");
+                        } 
 						for (var i = 0; i < data.text.length; i++) {
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
@@ -98,15 +107,7 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
-                            username = localStorage.getItem('username');
-                            if(userList(username)){
-                                newstr = "<li>"+username+"<li>";
-                                allusers.push(newstr);
-                                $('#onlineList').append($(newstr));
-                            }
-                            else {
-                                console.log("not in online users");
-                            }                         
+                                                    
                             //DELETE THIS IF NOT WORKING
                             
                             //  if(userList(str[0], allusers)){
