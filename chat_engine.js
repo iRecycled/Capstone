@@ -105,6 +105,9 @@ function updateChat(serverID){
                                     allusers.push(newstr);
                                     $('#onlineList').append($(newstr));
                                   }
+                                else {
+                                    console.log("error username not in online users");
+                                }
                             }                            
                             //DELETE THIS IF NOT WORKING
                             
