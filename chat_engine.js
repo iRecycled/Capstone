@@ -102,6 +102,7 @@ function updateChat(serverID){
                              if(userList(str[0], allusers)){
                                newstr = "<tr><td>"+str[0]+"</td></tr>";
                                allusers.push(str[0]);
+                               alert(allusers);
                                $('#userTable').append($(newstr));
                              }
                             $('#chatBox').append($(data.text[i]));
