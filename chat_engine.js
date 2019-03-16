@@ -88,6 +88,7 @@ function updateChat(serverID){
 			   success: function(data){
 				   if(data.text){
                         username = localStorage.getItem('username');
+                        //not working with server because it grabs localhost js, need to be integrated into database
                         if(userList(username)){
                             newstr = "<li>"+username+"<li>";
                             allusers.push(newstr);
