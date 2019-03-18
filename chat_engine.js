@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = [];
+var allusers = ["Test"];
 var state;
 var mes;
 var file;
@@ -61,16 +61,7 @@ function getStateOfChat(serverID){
 }
 
 
-//DELETE THIS IF STILL NOT WORKING
-function userList(username){
-  add = true;
-  for(i = 0; i < allusers.length; i++){
-    if(username == allusers[i]){
-        add = false;
-      }
-  }
-  return add;
-}
+
 //Updates the chat
 function updateChat(serverID){
 	 if(!instanse){
