@@ -1,17 +1,8 @@
 <?php
 //$privateserver = "../chat/private/".$serverId.".txt";
-$privateserver = "../chat/private/9.txt";
-$log = array();
-
-if(file_exists($privateserver)){
-    $lines = file($privateserver);
-    $log['state'] = count($lines);
-  }
-  else{
-    $lines = "Failure"
-    $log="Failure"
-  }
-  //mysql_close($db);
+$server = "9";
+$privateserver = "../chat/private/".$server.".txt";
   
+
   echo json_encode($privateserver);
 ?>
