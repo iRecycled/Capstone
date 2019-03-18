@@ -203,7 +203,7 @@ function addIM(e) {
     $.when(CheckFriend(friendName)).done(function(a1){
         checkImExists(friendName)
         console.log(isImCreated)
-        if((localStorage.getItem('username') != friendName) && isNotFriend && !isImCreated)
+        if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
             document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
