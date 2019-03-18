@@ -39,6 +39,11 @@ ul ul a {
 a {
     color: white;
 }
+
+a.active.show{
+    color: inherit;
+}
+
 a:hover{
     color: white;
     text-decoration: none;
