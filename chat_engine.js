@@ -192,7 +192,7 @@ function msgParse(){
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
                     {
-                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                        parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
                 }
                 else if(imgExists){
