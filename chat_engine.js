@@ -86,13 +86,6 @@ function updateChat(serverID){
 						},
 			   dataType: "json",
 			   success: function(data){
-                    username = localStorage.getItem('username');
-                    //not working with server because it grabs localhost js, need to be integrated into database
-                    if(userList(username)){
-                        newstr = "<li style='padding: 0px;'>"+username+"<li>";
-                        allusers.push(newstr);
-                        $('#onlineList').append($(newstr));
-                    } 
 				   if(data.text){
 						for (var i = 0; i < data.text.length; i++) {
                             //data.text[i] = msgParse(data.text[i]);
@@ -189,10 +182,15 @@ function msgParse(){
             if(words[i].charAt(0) == ':')
             {
                 //get phrase from tag
-                phrase = words[i].substring(1).toLowerCase()
+                phrase = words[i].substring(1).toLowerCase().trim()
                 //check if phrase is valid
                 var imgExists = this.imgExists(phrase)
-                if(imgExists){
+                if (phrase.substring(0,3).valueOf()=="img")
+                {
+                    imgUrl = phrase.substring(0,4).substring(0, phrase.length()-1)
+                    print(imgUrl)
+                }
+                else if(imgExists){
                     //inject code
                     parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
                 }
