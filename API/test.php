@@ -20,5 +20,6 @@
     $stmt->fetch();
     //sends the information from the database back as a json object to the ajax call
 //echo json_encode($username);
+mysql_close($db);
 echo json_encode($SessionID);
 ?>

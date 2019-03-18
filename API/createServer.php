@@ -39,4 +39,5 @@
             //fwrite($openfile,"");
             fclose($openfile);
         }
+        mysql_close($db);
 ?>
