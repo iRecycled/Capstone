@@ -187,7 +187,7 @@ function msgParse(){
                 var imgExists = this.imgExists(phrase)
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
-                    imgUrl = phrase.substring(0,4).substring(0, phrase.length-1)
+                    imgUrl = phrase.substring(4)
                     console.log(imgUrl)
                 }
                 else if(imgExists){
