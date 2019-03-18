@@ -28,7 +28,9 @@
             success: function(data) {
                     obj = JSON.parse(data);
                     console.log(obj);
-                
+
+
+                    createUL(obj, "UserList");
             },
             error: function() {
                 console.log("fail");
