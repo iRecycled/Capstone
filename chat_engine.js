@@ -180,7 +180,8 @@ function msgParse(){
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
                     imgUrl = phrase.substring(4)
-                    console.log(imgUrl)
+                    imgUrl = imgUrl.replace(/&quot;/g, '')
+                    console.log(imgUrl.substring(imgUrl.length-4))
                 }
                 else if(imgExists){
                     //inject code
