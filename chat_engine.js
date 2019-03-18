@@ -181,7 +181,11 @@ function msgParse(){
                 {
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
-                    console.log(imgUrl.substring(imgUrl.length-4))
+                    endTag = imgUrl.substring(imgUrl.length-4)
+                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
+                    {
+                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' />")
+                    }
                 }
                 else if(imgExists){
                     //inject code
