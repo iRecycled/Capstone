@@ -123,40 +123,17 @@
 
              });
         });
-        // function userList(username){
-        //     add = true;
-        //     for(i = 0; i < allusers.length; i++){
-        //         if(username == allusers[i]){
-        //             add = false;
-        //         }
-        //     }
-        //     return add;
-        // }
+        
       function load(){
         targetfile = localStorage.getItem('serverID');
-        //username = localStorage.getItem('username');
-        
-                // newstr = "<li>"+username+"<li>";
-                // if(userList(username) == true){
-                //     allusers.push(newstr);
-                //     $('#onlineList').append($(newstr));
-                //     console.log("added");
-                // }
-                // else {
-                //     console.log("Online user in array already");
-                // } 
+        username = localStorage.getItem('username');
+        allusers.push("<li>"+username+"<li>");
+        $('#onlineList').append($(allusers));
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
 
-    //when the user leaves the page
-    //   $(window).bind('beforeunload', function(){
-    //     for(var i = 0; i < allusers.size();i++){
-    //         if(allusers[i] == username){
-    //             delete allusers[i];
-    //         }
-    //     }
-    //   });
+    
 
     </script>
 
@@ -466,8 +443,20 @@ function isAllowedToInvite(){
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
+                                    <li><a data-toggle="tab" href="#imgUpload">Images</a></li>
+                                  </ul>
+                                <div class = "tab-content">
+                                    <div id= "emoteDropdown" class="tab-pane fade in active">
 
+                                    </div>
+                                    <div id = "imgUpload" class = "tab-pane fade">
+                                        
+                                    </div>
+                                </div>
                             </div>
                           </div>
                           
