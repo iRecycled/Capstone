@@ -39,6 +39,11 @@ ul ul a {
 a {
     color: white;
 }
+
+.dropdownEle{
+    color: #007bff;
+}
+
 a:hover{
     color: white;
     text-decoration: none;

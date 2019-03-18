@@ -128,6 +128,9 @@
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
         allusers.push("<li>"+username+"<li>");
+        for(var i = 0; i < allusers.length;i++){
+            $('#onlineList').append($(allusers[i]));
+        }
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
@@ -358,12 +361,6 @@ function isAllowedToInvite(){
         <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
     </ul>
     <ul class="navbar-nav right">
-        <script>
-            // function setServerName(){
-            //     localStorage.setItem("servername", ServerName);
-            //onclick='setServerName()'
-            // }
-        </script>
         <a class="nav-item nav-link active" href='server_settings.html' >Server Settings <span class="sr-only"></span></a>
     </ul>
     <ul class="navbar-nav right">
@@ -451,8 +448,8 @@ function isAllowedToInvite(){
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
-                                    <li><a data-toggle="tab" href="#imgUpload">Images</a></li>
+                                    <li class="active"><a class = "dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
+                                    <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
                                   </ul>
                                 <div class = "tab-content">
                                     <div id= "emoteDropdown" class="tab-pane fade in active">

@@ -1,6 +1,6 @@
 <?php
 $data = json_decode(file_get_contents("php://input"));
-$auth = $data->auth;
+/*$auth = $data->auth;
 $serverName = $data->servername;
 
 include "database.php";
@@ -15,14 +15,17 @@ include "database.php";
             $stmt->bind_result($serverId);
             $stmt->fetch();
 
-$privateserver = "../chat/private/".$serverId.".txt";
-
+            */
+//$privateserver = "../chat/private/".$serverId.".txt";
+$privateserver = "../chat/private/9.txt";
 if(file_exists($privateserver)){
     $lines = file($privateserver);
+    $log['state'] = count($lines);
   }
   else{
-    $lines = "Failure"  
+    $lines = "Failure"
+    $log="Failure"
   }
   mysql_close($db);
-  echo json_encode($lines);
+  echo json_encode($log);
 ?>
