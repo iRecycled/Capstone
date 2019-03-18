@@ -20,6 +20,21 @@ function generateEmoteList(e)
         e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
     }
 }
+
+function InsertImage(e)
+{
+    var url = e.value.trim();
+    if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
+    {
+        url = url.substring(8)
+    }
+    else if(url.substring(0,8).toLowerCase().indexOf("http")>-1)
+    {
+        url = url.substring(7)
+    }
+    chatInputArea.value += ':img="'+ url + '"'
+}
+
 //sets functions when the document loads
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -27,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatInputArea = document.getElementById("sendie")
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
-
+    
 
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
@@ -165,9 +180,9 @@ function msgParse(){
             {
                 console.log(words[i])
                 //get phrase from tag
-                phrase = words[i].substring(1).toLowerCase().trim()
+                phrase = words[i].substring(1).trim()
                 //check if phrase is valid
-                var imgExists = this.imgExists(phrase)
+                var imgExists = this.imgExists(phrase.toLowerCase())
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
                     imgUrl = phrase.substring(4)
@@ -180,7 +195,7 @@ function msgParse(){
                 }
                 else if(imgExists){
                     //inject code
-                    parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
+                    parse += ("<img class='emote' src='emotes/" + phrase.trim().toLowerCase() +  ".png' alt='" + phrase.trim().toLowerCase() + "' /> ")
                 }
                 else{
                     //else keep phrase but do not inject code
