@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = ["ETHANTESTWITHFILLED"];
+var allusers = [];
 var state;
 var mes;
 var file;
@@ -59,13 +59,15 @@ function getStateOfChat(serverID){
 			});
 	}
 }
+
+
 //DELETE THIS IF STILL NOT WORKING
-function userList(newuser, users){
+function userList(username){
   add = true;
-  for(i = 0; i < users.length; i++){
-    if(newuser == users[i]){
-      add = false;
-    }
+  for(i = 0; i < allusers.length; i++){
+    if(username == allusers[i]){
+        add = false;
+      }
   }
   return add;
 }
@@ -73,7 +75,7 @@ function userList(newuser, users){
 function updateChat(serverID){
 	 if(!instanse){
 		 instanse = true;
-		 console.log("start update");
+		 //console.log("start update");
 	     $.ajax({
 			   type: "POST",
 			   url: "process.php",
@@ -96,12 +98,15 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
+                                                    
                             //DELETE THIS IF NOT WORKING
-                            // if(userList(str[0], allusers)){
-                            //   newstr = "<tr><td>"+str[0]+"</td></tr>";
-                            //   allusers.push(str[0]);
-                            //   $('#userTable').append($(newstr));
-                            // }
+                            
+                            //  if(userList(str[0], allusers)){
+                            //    newstr = "<li>"+str[0]+"<li>";
+                            //    allusers.push(str[0]);
+                               
+                            //    $('#onlineList').append($(newstr));
+                            //  }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }
@@ -177,10 +182,15 @@ function msgParse(){
             if(words[i].charAt(0) == ':')
             {
                 //get phrase from tag
-                phrase = words[i].substring(1).toLowerCase()
+                phrase = words[i].substring(1).toLowerCase().trim()
                 //check if phrase is valid
                 var imgExists = this.imgExists(phrase)
-                if(imgExists){
+                if (phrase.substring(0,3).valueOf()=="img")
+                {
+                    imgUrl = phrase.substring(0,4).substring(0, phrase.length-1)
+                    print(imgUrl)
+                }
+                else if(imgExists){
                     //inject code
                     parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
                 }

@@ -29,24 +29,38 @@
                 console.log("fail");
             }
         })
-
+        //get list of users servers
         $.ajax({
             type: "post",
             url: "getServerList.php",
             data: {username: localStorage.getItem('username')},
             success: function(data) {
                 obj = JSON.parse(data);
-                //console.log(data)
-            
-                // populate sidebar with chats
+                console.log(obj)
                 createSidebarChats(obj, "chatSidebar");
-                // populate server info
-                getServerInfo(obj, "ServerInfo");
+                //createServerTable(obj, "userServersBody")
             },
             error: function(data) {
                 console.log("fail");
             }
         })
+    //     $.ajax({
+    //         type: "post",
+    //         url: "getAllServerList.php",
+    //         data: {username: localStorage.getItem('username')},
+    //         success: function(data) {
+    //             obj = JSON.parse(data);
+    //             //console.log(data)
+            
+    //             // populate sidebar with chats
+    //             createSidebarChats(obj, "chatSidebar");
+    //             // populate server info
+    //             getServerInfo(obj, "ServerInfo");
+    //         },
+    //         error: function(data) {
+    //             console.log("fail");
+    //         }
+    //     })
     });
 
     function createUL(obj, id) {

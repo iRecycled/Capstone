@@ -43,6 +43,7 @@
                         data: {username: removeTags(document.getElementById('username').value), password: removeTags(document.getElementById("password").value), email: removeTags(document.getElementById("email").value)},
                         success: function(data) {
                             //on regestration sucsess
+                          console.log(data);
                           document.getElementById("email").style.borderColor = "";
                           document.getElementById("username").style.borderColor = "";
 
@@ -71,16 +72,16 @@
                           }
                         },
                         error: function(data){
-                            //on registration failure
-                            console.log(data);
-                            if(data == -2){
-                            console.log(data);
-                              document.getElementById("username").style.borderColor = "red";
-                              document.getElementById("password").style.borderColor = "red";
-                              document.getElementById("email").style.borderColor = "red";
-                              document.getElementById("errorText").innerHTML = "Username or Email is Already In Use";
-                              document.getElementById("errorText").style.color = "red";
-                            }
+                            // //on registration failure
+                            // console.log(data);
+                            // if(data == -2){
+                            // console.log(data);
+                            //   document.getElementById("username").style.borderColor = "red";
+                            //   document.getElementById("password").style.borderColor = "red";
+                            //   document.getElementById("email").style.borderColor = "red";
+                            //   document.getElementById("errorText").innerHTML = "Username or Email is Already In Use";
+                            //   document.getElementById("errorText").style.color = "red";
+                            // }
                         }
                     })
                     })
