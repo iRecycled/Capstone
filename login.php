@@ -53,5 +53,6 @@ header("index.php");
              //edit html element to show error
    
            }
+           mysql_close($db);
   echo json_encode($data);
 ?>
