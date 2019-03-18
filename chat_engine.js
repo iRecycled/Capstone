@@ -32,7 +32,9 @@ function InsertImage(e)
     {
         url = url.substring(7)
     }
-    chatInputArea.value += ':img="'+ url + '"'
+    if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+        chatInputArea.value += ':img="'+ url + '"'
+    }
 }
 
 //sets functions when the document loads
@@ -188,9 +190,10 @@ function msgParse(){
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
                     endTag = imgUrl.substring(imgUrl.length-4)
-                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
+                    console.log(imgUrl)
+                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
-                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' />")
+                        parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
                 }
                 else if(imgExists){
