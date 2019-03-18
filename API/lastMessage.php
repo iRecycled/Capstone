@@ -15,8 +15,8 @@ include "database.php";
             $stmt->bind_result($serverId);
             $stmt->fetch();
 
-$privateserver = "../chat/private/".$serverId.".txt";
-
+//$privateserver = "../chat/private/".$serverId.".txt";
+$privateserver = "../chat/private/9.txt";
 if(file_exists($privateserver)){
     $lines = file($privateserver);
   }
