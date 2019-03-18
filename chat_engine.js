@@ -86,14 +86,14 @@ function updateChat(serverID){
 						},
 			   dataType: "json",
 			   success: function(data){
+                    username = localStorage.getItem('username');
+                    //not working with server because it grabs localhost js, need to be integrated into database
+                    if(userList(username)){
+                        newstr = "<li style='padding: 0px;'>"+username+"<li>";
+                        allusers.push(newstr);
+                        $('#onlineList').append($(newstr));
+                    } 
 				   if(data.text){
-                        username = localStorage.getItem('username');
-                        //not working with server because it grabs localhost js, need to be integrated into database
-                        if(userList(username)){
-                            newstr = "<li>"+username+"<li>";
-                            allusers.push(newstr);
-                            $('#onlineList').append($(newstr));
-                        } 
 						for (var i = 0; i < data.text.length; i++) {
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
