@@ -9,7 +9,8 @@
         $serverID = $_POST['serverID']; 
         $query = "SELECT ServerName FROM Server WHERE ServerID = '$serverID';";
         //runs the query
-        $result = $db->query($query);
+
+        $stmt = simpleQuery($db, $query);
         $stmt->bind_result($serverName);
 
         echo json_encode($serverName);
