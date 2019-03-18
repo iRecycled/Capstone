@@ -13,8 +13,8 @@ $(document).ready(function(){
             for(let i = 0; i < ServerName.length; i++) {
                 ServerName[i].innerHTML = obj;
             }
-
-            document.getElementById("serverInfoServerID").createTextNode(serverID);
+            // place serverID in ServerInfo
+            //document.getElementById("serverInfoServerID").createTextNode(serverID);
             
         },
         error: function() {
