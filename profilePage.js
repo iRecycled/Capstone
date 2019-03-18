@@ -130,10 +130,20 @@ $(document).ready(function(){
                 let text = document.createTextNode(obj[x].UserName);
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
-                link.onclick = function() {
-                    localStorage.setItem("viewInfo", this.id);
-                };
-                link.href = "profile_page.html";
+                // if instant message file exists direct user to im file
+                if( checkImExists(obj[x].UserName)) {
+                    link.onclick = function() {
+                        localStorage.setItem("serverId", this.id); // won't work correctly yet
+                    };
+                    link.href = "instant_messages.html"; 
+                }
+                else {
+                    // if instant message file does not exist
+                    link.onclick = function() {
+                        localStorage.setItem("viewInfo", this.id);
+                    };
+                    link.href = "profile_page.html";
+                }
                 link.appendChild(text);
                 listItem.appendChild(link);
                 privateServerList.appendChild(listItem);
@@ -201,7 +211,7 @@ let isImCreated = false;
 function addIM(e) {
     friendName = localStorage.getItem('viewInfo')
     $.when(CheckFriend(friendName)).done(function(a1){
-        checkImExists(friendName)
+        isImCreated = checkImExists(friendName)
         console.log(isImCreated)
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
@@ -221,7 +231,7 @@ function createImFile() {
 function checkImExists(name) {
     // TODO ajax call to query database and see if file exists
     // TODO set flag to correct value
-    isImCreated = false;
+    return false;
 }
 function CheckFriend(name){
     //get list of user's friends
