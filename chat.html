@@ -123,40 +123,19 @@
 
              });
         });
-        // function userList(username){
-        //     add = true;
-        //     for(i = 0; i < allusers.length; i++){
-        //         if(username == allusers[i]){
-        //             add = false;
-        //         }
-        //     }
-        //     return add;
-        // }
+        
       function load(){
         targetfile = localStorage.getItem('serverID');
-        //username = localStorage.getItem('username');
-        
-                // newstr = "<li>"+username+"<li>";
-                // if(userList(username) == true){
-                //     allusers.push(newstr);
-                //     $('#onlineList').append($(newstr));
-                //     console.log("added");
-                // }
-                // else {
-                //     console.log("Online user in array already");
-                // } 
+        username = localStorage.getItem('username');
+        allusers.push("<li>"+username+"<li>");
+        for(var i = 0; i < allusers.length;i++){
+            $('#onlineList').append($(allusers[i]));
+        }
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
 
-    //when the user leaves the page
-    //   $(window).bind('beforeunload', function(){
-    //     for(var i = 0; i < allusers.size();i++){
-    //         if(allusers[i] == username){
-    //             delete allusers[i];
-    //         }
-    //     }
-    //   });
+    
 
     </script>
 
