@@ -118,5 +118,4 @@
         
         servername.appendChild(serverName);
         serverid.appendChild(serverID);
-            
     }
