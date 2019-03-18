@@ -122,23 +122,20 @@
                     }
 
              });
-
-
-    	});
+        });
+        
       function load(){
         targetfile = localStorage.getItem('serverID');
+        username = localStorage.getItem('username');
+        allusers.push("<li>"+username+"<li>");
+        for(var i = 0; i < allusers.length;i++){
+            $('#onlineList').append($(allusers[i]));
+        }
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
 
-      //when the user leaves the page
-      $(window).bind('beforeunload', function(){
-        for(var i = 0; i < allusers.size();i++){
-            if(username == allusers[i]){
-                delete allusers[i];
-            }
-        }
-      });
+    
 
     </script>
 
@@ -364,12 +361,7 @@ function isAllowedToInvite(){
         <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
     </ul>
     <ul class="navbar-nav right">
-        <script>
-            function setServerName(){
-                localStorage.setItem("servername", ServerName);
-            }
-        </script>
-        <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href='server_settings.html' >Server Settings <span class="sr-only"></span></a>
     </ul>
     <ul class="navbar-nav right">
         <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
@@ -415,7 +407,7 @@ function isAllowedToInvite(){
                             
                             </style>
                             <li ><b>Online Users</b></li>
-                             
+                             <li> test </li>
                         </ul>  
                         </td>                          
                         </tr>
@@ -453,8 +445,20 @@ function isAllowedToInvite(){
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a class = "dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
+                                    <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
+                                  </ul>
+                                <div class = "tab-content">
+                                    <div id= "emoteDropdown" class="tab-pane fade in active">
 
+                                    </div>
+                                    <div id = "imgUpload" class = "tab-pane fade">
+                                        
+                                    </div>
+                                </div>
                             </div>
                           </div>
                           

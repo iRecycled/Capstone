@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = [];
+var allusers = ["Test"];
 var state;
 var mes;
 var file;
@@ -61,16 +61,7 @@ function getStateOfChat(serverID){
 }
 
 
-//DELETE THIS IF STILL NOT WORKING
-function userList(username){
-  add = true;
-  for(i = 0; i < allusers.length; i++){
-    if(username == allusers[i]){
-        add = false;
-      }
-  }
-  return add;
-}
+
 //Updates the chat
 function updateChat(serverID){
 	 if(!instanse){
@@ -87,13 +78,6 @@ function updateChat(serverID){
 			   dataType: "json",
 			   success: function(data){
 				   if(data.text){
-                        username = localStorage.getItem('username');
-                        //not working with server because it grabs localhost js, need to be integrated into database
-                        if(userList(username)){
-                            newstr = "<li>"+username+"<li>";
-                            allusers.push(newstr);
-                            $('#onlineList').append($(newstr));
-                        } 
 						for (var i = 0; i < data.text.length; i++) {
                             //data.text[i] = msgParse(data.text[i]);
                             var parse = new msgParse();
@@ -105,15 +89,6 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
-                                                    
-                            //DELETE THIS IF NOT WORKING
-                            
-                            //  if(userList(str[0], allusers)){
-                            //    newstr = "<li>"+str[0]+"<li>";
-                            //    allusers.push(str[0]);
-                               
-                            //    $('#onlineList').append($(newstr));
-                            //  }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }
@@ -188,11 +163,22 @@ function msgParse(){
             //if word has emote tag
             if(words[i].charAt(0) == ':')
             {
+                console.log(words[i])
                 //get phrase from tag
-                phrase = words[i].substring(1).toLowerCase()
+                phrase = words[i].substring(1).toLowerCase().trim()
                 //check if phrase is valid
                 var imgExists = this.imgExists(phrase)
-                if(imgExists){
+                if (phrase.substring(0,3).valueOf()=="img")
+                {
+                    imgUrl = phrase.substring(4)
+                    imgUrl = imgUrl.replace(/&quot;/g, '')
+                    endTag = imgUrl.substring(imgUrl.length-4)
+                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
+                    {
+                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' />")
+                    }
+                }
+                else if(imgExists){
                     //inject code
                     parse += ("<img class='emote' src='emotes/" + phrase.trim() +  ".png' alt='" + phrase.trim() + "' /> ")
                 }
