@@ -188,7 +188,7 @@ function msgParse(){
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
                     imgUrl = phrase.substring(0,4).substring(0, phrase.length-1)
-                    print(imgUrl)
+                    console.log(imgUrl)
                 }
                 else if(imgExists){
                     //inject code
