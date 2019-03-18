@@ -20,6 +20,20 @@
                 console.log("fail");
             }
         })
+        $.ajax({
+            type: "post",
+            url: "getServerMembers.php", 
+            data: { serverID: localStorage.getItem('serverID')
+            },
+            success: function(data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
+                
+            },
+            error: function() {
+                console.log("fail");
+            }
+        })
         //get list of users servers
         $.ajax({
             type: "post",
@@ -49,24 +63,6 @@
                 console.log("fail");
             }
         })
-        // Gets all server lists
-        /*$.ajax({
-            type: "post",
-            url: "getAllServerList.php",
-            data: {username: localStorage.getItem('username')},
-            success: function(data) {
-                obj = JSON.parse(data);
-                //console.log(data)
-            
-                // populate sidebar with chats
-                createSidebar(obj, "chatSidebar");
-                // populate server info
-                getServerInfo(obj, "ServerInfo");
-            },
-            error: function(data) {
-                console.log("fail");
-            }
-        })*/
     });
 
     function createUL(obj, id) {
@@ -129,22 +125,4 @@
             list.appendChild(link);
             memberList.appendChild(list);
         }
-    }
-   
-
-    function getServerInfo(obj, id) {
-
-        let serverName = document.createTextNode(localStorage.getItem('servername'));
-        let serverID = document.createTextNode(localStorage.getItem('serverID'));
-        //let memberList = document.getElementById(id);
-        let servername = document.getElementById('serverInfoServerName');
-        let serverid = document.getElementById('serverInfoServerID');
-
-        // obj = [{
-        //     ServerName: localStorage.getItem('servername'), 
-        //     ServerID: localStorage.getItem('serverID')
-        // }]
-        
-        servername.appendChild(serverName);
-        serverid.appendChild(serverID);
     }
