@@ -6,7 +6,6 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-
                     // Get classes
                     ServerName = document.getElementsByClassName("servername");                    
 
@@ -28,7 +27,9 @@
             success: function(data) {
                     obj = JSON.parse(data);
                     console.log(obj);
-                
+
+
+                    createUL(obj, "UserList");
             },
             error: function() {
                 console.log("fail");
@@ -70,7 +71,7 @@
             let memberList = document.getElementById(id);
             let scrollbarDiv = document.createElement("div");
             let list = document.createElement("ul");
-            let text = document.createTextNode(obj[x].username);
+            let text = document.createTextNode(obj[x].UserName);
             
             // <div id="ScrollbarRow">
             // <ul>user1</ul>
@@ -93,9 +94,6 @@
             link.onclick = function() {
                 localStorage.setItem("serverID", this.id);
                 localStorage.setItem("servername", this.ServerName);
-                // CHANGE ON CLICK IN CHAT.HTML
-                console.log(`obj Server name ${obj[x].ServerName}`);
-                console.log(`this Server name ${this.ServerName}`);
             };
 
             link.href = "chat.html";
@@ -115,9 +113,6 @@
             console.log(`obj name ${obj[x].UserName}`);
             link.onclick = function() {
                 localStorage.setItem("viewInfo", obj[x].UserName);
-                // CHANGE ON CLICK IN CHAT.HTML
-                console.log(`obj name ${obj[x].UserName}`);
-                console.log(`this name ${this.UserName}`);
             };
 
             link.href = "profile_page.html";
