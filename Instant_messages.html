@@ -13,7 +13,6 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="checkIfUsername.js"></script>
     <script src = 'chat_engine.js'></script>
@@ -180,40 +179,36 @@
 </head>
 
 <body>
-<!-- Nav Bar-->
-<div id="nav-template">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
-        </ul>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
+    <ul class="navbar-nav mr-auto">
+        <a class="nav-item nav-link active" href="home.html">Home</a>
+    </ul>
 
-        <ul class="navbar-nav mr-auto ">
-            <a class="navbar-brand mb-0 h1" href="#">TerryChat <span class="sr-only">(current)</span></a>
-        </ul>
-
-        <ul class="navbar-nav right">
-            <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
-            <script>
-                function selfProfilePage(){
-                    localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                }
-            </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
+    <ul class="navbar-nav mr-auto ">
+        <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
+    </ul>
+    <ul class="navbar-nav right">
+        <script>
+            function setServerName(){
+                localStorage.setItem("servername", ServerName);
+            }
+        </script>
+    </ul>
+    <ul class="navbar-nav right">
+        <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
+        <script>
+        function selfProfilePage(){
+            localStorage.setItem('viewInfo', localStorage.getItem("username"));
+        }
+        </script>
+        <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
-                    function selfProfilePage(){
-                        localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                    }
-                    document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                 </script>
             <span class="sr-only">(current)</span></a>
-            
         </ul>
-    </nav>
-</div>
+</nav>
 
 <div class="wrapper">
     <!-- Sidebar -->
@@ -248,58 +243,57 @@
         </ul>
 
     </nav>
-    <!-- Page Content -->
-    <div id="content">      
-        <div id="contain" class="container-fluid">
-            <!--Chat Output Area-->
-            
-            <div id = "chatOutput">
-                    
-                <!--Table to Display Messages-->
-                <table id = "chatBox">
-                        
-                    <tbody id ="chatBody">
+<!-- Page Content -->
+<div id="content">
+    <div id="contain" class="container-fluid">
+        <!--Chat Output Area-->
 
-                    </tbody>
-                    
-                </table>
-            </div>
-            
-            <!--Chat Input Area-->
-            <div id = "chatBoxInput">
-                <div id = "inputContainer" class = 'input-group'>
-                    <!--Chat Text Input-->
-                    <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
-                    <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </button>
-                            
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a class = "dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
-                                    <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
-                                  </ul>
-                                <div class = "tab-content">
-                                    <div id= "emoteDropdown" class="tab-pane fade in active">
+        <div id="chatOutput">
 
-                                    </div>
-                                    <div id = "imgUpload" class = "tab-pane fade">
-                                        
-                                    </div>
-                                </div>
+            <!--Table to Display Messages-->
+            <table id="chatBox">
+
+                <tbody id="chatBody">
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <!--Chat Input Area-->
+        <div id="chatBoxInput">
+            <div id="inputContainer" class='input-group'>
+                <!--Chat Text Input-->
+                <textarea id='sendie' maxlength='1000' class='form-control'></textarea>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a class="dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
+                            <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="emoteDropdown" class="tab-pane fade in active">
+
                             </div>
-                          </div>
-                          
-                    <!--Chat Submit Button-->
-                    <div class="input-group-append">
-                        <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
+                            <div id="imgUpload" class="tab-pane fade">
+
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
+
+                <!--Chat Submit Button-->
+                <div class="input-group-append">
+                    <button id='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
                 </div>
+
+            </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 
