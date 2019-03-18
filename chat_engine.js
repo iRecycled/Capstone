@@ -61,16 +61,7 @@ function getStateOfChat(serverID){
 }
 
 
-//DELETE THIS IF STILL NOT WORKING
-function userList(username){
-  add = true;
-  for(i = 0; i < allusers.length; i++){
-    if(username == allusers[i]){
-        add = false;
-      }
-  }
-  return add;
-}
+
 //Updates the chat
 function updateChat(serverID){
 	 if(!instanse){
@@ -181,13 +172,14 @@ function msgParse(){
             //if word has emote tag
             if(words[i].charAt(0) == ':')
             {
+                console.log(words[i])
                 //get phrase from tag
                 phrase = words[i].substring(1).toLowerCase().trim()
                 //check if phrase is valid
                 var imgExists = this.imgExists(phrase)
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
-                    imgUrl = phrase.substring(0,4).substring(0, phrase.length-1)
+                    imgUrl = phrase.substring(4)
                     console.log(imgUrl)
                 }
                 else if(imgExists){
