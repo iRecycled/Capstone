@@ -40,8 +40,8 @@ a {
     color: white;
 }
 
-a.active.show{
-    color: inherit;
+#dropdownEle{
+    color: #007bff;
 }
 
 a:hover{
