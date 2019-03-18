@@ -180,40 +180,37 @@
 </head>
 
 <body>
-<!-- Nav Bar-->
-<div id="nav-template">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
-        </ul>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
+    <ul class="navbar-nav mr-auto">
+        <a class="nav-item nav-link active" href="home.html">Home</a>
+    </ul>
 
-        <ul class="navbar-nav mr-auto ">
-            <a class="navbar-brand mb-0 h1" href="#">TerryChat <span class="sr-only">(current)</span></a>
-        </ul>
-
-        <ul class="navbar-nav right">
-            <a class="nav-item nav-link active" href="index.html" onclick="logout()">Logout <span class="sr-only">(current)</span></a>
-            <script>
-                function selfProfilePage(){
-                    localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                }
-            </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>       
+    <ul class="navbar-nav mr-auto ">
+        <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
+    </ul>
+    <ul class="navbar-nav right">
+        <script>
+            function setServerName(){
+                localStorage.setItem("servername", ServerName);
+            }
+        </script>
+        <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
+    </ul>
+    <ul class="navbar-nav right">
+        <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
+        <script>
+        function selfProfilePage(){
+            localStorage.setItem('viewInfo', localStorage.getItem("username"));
+        }
+        </script>
+        <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
-                    function selfProfilePage(){
-                        localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                    }
-                    document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
+                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
                 </script>
             <span class="sr-only">(current)</span></a>
-            
         </ul>
-    </nav>
-</div>
+</nav>
 
 <div class="wrapper">
     <!-- Sidebar -->
