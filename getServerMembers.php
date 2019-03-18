@@ -6,7 +6,7 @@
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
             //connects to database
-        $username = $_POST['serverID']; 
+        $serverID = $_POST['serverID']; 
         //sql query code where username belongs to server
         $query = "SELECT wu.UserName, wu.UserID FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId JOIN WebUser wu ON wu.UserId = sm.UserId WHERE s.ServerID = '$serverID';";
         //runs the query
