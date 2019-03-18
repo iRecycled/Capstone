@@ -136,15 +136,15 @@
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
         
-                newstr = "<li>"+username+"<li>";
-                if(userList(username) == true){
-                    allusers.push(newstr);
-                    $('#onlineList').append($(newstr));
-                    console.log("added");
-                }
-                else {
-                    console.log("Online user in array already");
-                } 
+                // newstr = "<li>"+username+"<li>";
+                // if(userList(username) == true){
+                //     allusers.push(newstr);
+                //     $('#onlineList').append($(newstr));
+                //     console.log("added");
+                // }
+                // else {
+                //     console.log("Online user in array already");
+                // } 
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
