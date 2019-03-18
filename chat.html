@@ -122,14 +122,29 @@
                     }
 
              });
-
-
     	});
       function load(){
         targetfile = localStorage.getItem('serverID');
+        username = localStorage.getItem('username');
+        //not working with server because it grabs localhost js, need to be integrated into database
+        if(userList(username)){
+            newstr = "<li style='padding: 0px;'>"+username+"<li>";
+            allusers.push(newstr);
+            $('#onlineList').append($(newstr));
+        } 
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
+
+      //when the user leaves the page
+      $(window).bind('beforeunload', function(){
+        for(var i = 0; i < allusers.size();i++){
+            if(username == allusers[i]){
+                delete allusers[i];
+            }
+        }
+      });
+
     </script>
 
 
@@ -395,7 +410,7 @@ function isAllowedToInvite(){
                 <table class="userTable">
                         <tr>
                         <td>
-                        <ul> 
+                        <ul id="onlineList"> 
                             <style>
                             li {
                                 list-style-type: none;
@@ -405,10 +420,7 @@ function isAllowedToInvite(){
                             
                             </style>
                             <li ><b>Online Users</b></li>
-                            <li>Kevin</li>
-                            <li>Jordan</li>
-                            <li>NotACop</li>
-                            <li>darkpiggy73</li>  
+                             
                         </ul>  
                         </td>                          
                         </tr>

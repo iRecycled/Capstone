@@ -196,7 +196,33 @@ function SendFriendRequest()
         }
     })
 }
-
+//add Instant Message if no message created
+let isImCreated = false;
+function addIM(e) {
+    friendName = localStorage.getItem('viewInfo')
+    $.when(CheckFriend(friendName)).done(function(a1){
+        checkImExists(friendName)
+        console.log(isImCreated)
+        if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
+        {
+            console.log("Calls");
+            document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
+            document.getElementById(e).onclick = function(){ createImFile()};
+        }
+    });
+}
+function createImFile() {
+    // look at create server for a template
+    // TODO create file for IM
+    // TODO add to database
+    // TODO send link to html page
+    // TODO send notification to other user?
+}
+function checkImExists(name) {
+    // TODO ajax call to query database and see if file exists
+    // TODO set flag to correct value
+    isImCreated = false;
+}
 function CheckFriend(name){
     //get list of user's friends
     console.log(localStorage.getItem('username'))
@@ -233,4 +259,5 @@ function CheckFriend(name){
 
 document.addEventListener("DOMContentLoaded", function(event) {
     AddFriendButton('friendZone')
+    addIM('imTag')
 })
