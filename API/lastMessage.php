@@ -10,7 +10,7 @@ include "database.php";
   $data = json_decode(file_get_contents("php://input"));
   $serverName = $data->servername;
 
-  $query = "SELECT ServerID FROM Server WHERE ServerName = '$servername';";
+  $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
   //runs query
         $stmt = simpleQuery($db, $query);
   //binds results of query to the database
