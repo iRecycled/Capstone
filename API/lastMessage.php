@@ -7,5 +7,5 @@ $exists = file_exists($privateserver);
 $lines = file($privateserver);
 
 
-  echo json_encode($lines);
+  echo json_encode($exists);
 ?>
