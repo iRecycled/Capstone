@@ -192,7 +192,7 @@ a:hover{
     border: 0px;
     z-index: 5; 
     background-color: transparent;
-    background-image: url("emotes/emote.png");
+    background-image: url("emotes/emote_fade.png");
     background-size: cover;
     -o-transition:.2s;
     -ms-transition:.2s;
@@ -200,6 +200,15 @@ a:hover{
     -webkit-transition:.2s;
     /* ...and now for the proper property */
     transition:.2s;
+}
+
+.msgImg{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#chatEmoteButton:hover{
+    background-image: url("emotes/emote.png");
 }
 
 #insertImageButton:hover {

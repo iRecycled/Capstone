@@ -32,6 +32,7 @@ function InsertImage(e)
     {
         url = url.substring(7)
     }
+    if(url.substring(url.length-4).valueOf 
     chatInputArea.value += ':img="'+ url + '"'
 }
 
@@ -190,7 +191,7 @@ function msgParse(){
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
                     {
-                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' />")
+                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
                 }
                 else if(imgExists){
