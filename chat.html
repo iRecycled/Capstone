@@ -123,19 +123,40 @@
 
              });
         });
-        
+        // function userList(username){
+        //     add = true;
+        //     for(i = 0; i < allusers.length; i++){
+        //         if(username == allusers[i]){
+        //             add = false;
+        //         }
+        //     }
+        //     return add;
+        // }
       function load(){
         targetfile = localStorage.getItem('serverID');
-        username = localStorage.getItem('username');
-        allusers.push("<li>"+username+"<li>");
-        for(var i = 0; i < allusers.length;i++){
-            $('#onlineList').append($(allusers[i]));
-        }
+        //username = localStorage.getItem('username');
+        
+                // newstr = "<li>"+username+"<li>";
+                // if(userList(username) == true){
+                //     allusers.push(newstr);
+                //     $('#onlineList').append($(newstr));
+                //     console.log("added");
+                // }
+                // else {
+                //     console.log("Online user in array already");
+                // } 
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
 
-    
+      //when the user leaves the page
+    //   $(window).bind('beforeunload', function(){
+    //     for(var i = 0; i < allusers.size();i++){
+    //         if(allusers[i] == username){
+    //             delete allusers[i];
+    //         }
+    //     }
+    //   });
 
     </script>
 
@@ -361,7 +382,12 @@ function isAllowedToInvite(){
         <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
     </ul>
     <ul class="navbar-nav right">
-        <a class="nav-item nav-link active" href='server_settings.html' >Server Settings <span class="sr-only"></span></a>
+        <script>
+            function setServerName(){
+                localStorage.setItem("servername", ServerName);
+            }
+        </script>
+        <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
     </ul>
     <ul class="navbar-nav right">
         <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
@@ -442,23 +468,16 @@ function isAllowedToInvite(){
                 <div id = "inputContainer" class = 'input-group'>
                     <!--Chat Text Input-->
                     <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
+                    <div>
+                            <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertImage">
+                            </button>
+                            
+                        </div>
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
-                            
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a class = "dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
-                                    <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
-                                  </ul>
-                                <div class = "tab-content">
-                                    <div id= "emoteDropdown" class="tab-pane fade in active">
-
-                                    </div>
-                                    <div id = "imgUpload" class = "tab-pane fade">
-                                        
-                                    </div>
-                                </div>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                                
                             </div>
                           </div>
                           
@@ -473,6 +492,41 @@ function isAllowedToInvite(){
     </div>
 </div>
 </div>
+
+<div id="insertImage" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Insert Content</h4>
+            </div>
+            <div class="modal-body">
+                    <ul class="nav nav-tab">
+                            <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
+                            <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
+                    </ul>
+                    <div class="tab-content">
+                            <div id="image" class="tab-pane fade show active">
+                                <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">URL:</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                                        </div>
+                            </div>
+                            <div id="video" class="tab-pane fade">
+                              <h3>Future</h3>
+                            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
 
 <!--Delete an existing private Server Modal-->
 <div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
