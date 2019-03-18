@@ -28,12 +28,6 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-<<<<<<< HEAD
-=======
-
-    <!-- Testing Variables -->
-    <!-- <script>localStorage.setItem('servername', 'test server')</script> -->
->>>>>>> 307f5dfb7de52d628d02346e2f0b715276bb0622
     
     <!-- Our Scripts -->
     <!-- <script src="home.js"></script>
@@ -88,15 +82,15 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">        
-                <a href="#friendlist" aria-expanded="true" data-toggle="collapse" class="dropdown-toggle">Friends</a>
+            <li>        
+                <a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a>
                 <ul class="collapse list-unstyled" id="sidebarFriends">
                 
                 </ul>
             </li>
             <li>
-                <a href="#chatSubmenu1" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Chatrooms</a>
-                <ul class="collapse show list-unstyled" id="chatSidebar">
+                <a href="#chatSidebar" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chatrooms</a>
+                <ul class="collapse list-unstyled" id="chatSidebar">
                     
                 </ul>
             </li>
@@ -162,9 +156,6 @@
             <tbody>
                 <tr>
                     <td scope="row" id="ServerInfo">
-                        <!-- <p>
-                            <i>Server information here...</i>                        
-                        </p> -->
                         <ul><b>Server Name:</b><div class ='servername'></div></ul>
                         <ul><b>Server ID:</b><div id ='serverInfoServerID'></div></ul>
                     </td>
