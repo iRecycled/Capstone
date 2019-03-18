@@ -6,8 +6,8 @@
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
             //connects to database
-        $username = $_POST['username']; 
-        $query = "SELECT ServerName FROM Server s WHERE ServerName = '$servername';";
+        $serverID = $_POST['serverID']; 
+        $query = "SELECT ServerName FROM Server s WHERE ServerID = '$serverID';";
         //runs the query
         $result = $db->query($query);
         $response = array();
