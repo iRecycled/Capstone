@@ -6,12 +6,17 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
                     console.log(data);
 
                     // Get classes
                     let ServerName = document.getElementsByClassName("servername");
+<<<<<<< HEAD
+=======
+                    // Get local storage
+                    servername = localStorage.getItem('servername')
+>>>>>>> 9e899d0f89c0699a0a46c702444f4abf707ed8e8
                     
                     // Place servername into each class
                     for(let i = 0; i < ServerName.length; i++) {
@@ -34,8 +39,22 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 console.log(obj)
-                createSidebarChats(obj, "chatSidebar");
+                createSidebar(obj, "chatSidebar");
                 //createServerTable(obj, "userServersBody")
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
+        //get list of user's friends
+        $.ajax({
+            type: "post",
+            url: "getFriendsList.php",
+            data: {username: localStorage.getItem('username')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj)
+                createSidebar(obj, "sidebarFriends")
             },
             error: function(data) {
                 console.log("fail");
@@ -50,7 +69,7 @@
     //             //console.log(data)
             
     //             // populate sidebar with chats
-    //             createSidebarChats(obj, "chatSidebar");
+    //             createSidebar(obj, "chatSidebar");
     //             // populate server info
     //             getServerInfo(obj, "ServerInfo");
     //         },
@@ -78,7 +97,7 @@
         }
     }
 
-    function createSidebarChats(obj, id) {
+    function createSidebar(obj, id) {
         for(let x in obj) {
             let memberList = document.getElementById(id);
             let list = document.createElement("li");
@@ -99,6 +118,8 @@
             memberList.appendChild(list);
         }
     }
+
+   
 
     function getServerInfo(obj, id) {
 
