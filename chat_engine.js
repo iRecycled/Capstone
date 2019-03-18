@@ -32,8 +32,9 @@ function InsertImage(e)
     {
         url = url.substring(7)
     }
-    if(url.substring(url.length-4).valueOf 
-    chatInputArea.value += ':img="'+ url + '"'
+    if(url.substring(url.length-4).valueOf() == '.jpg'){
+        chatInputArea.value += ':img="'+ url + '"'
+    }
 }
 
 //sets functions when the document loads
