@@ -71,7 +71,7 @@
             let memberList = document.getElementById(id);
             let scrollbarDiv = document.createElement("div");
             let list = document.createElement("ul");
-            let text = document.createTextNode(obj[x].username);
+            let text = document.createTextNode(obj[x].UserName);
             
             // <div id="ScrollbarRow">
             // <ul>user1</ul>
