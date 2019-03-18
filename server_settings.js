@@ -6,22 +6,28 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
-                    
 
                     // Get classes
-                    ServerName = document.getElementsByClassName("servername");
-                    
-                    console.log(ServerName);
+                    ServerName = document.getElementsByClassName("servername");                    
 
                     // Place servername into each class
                     for(let i = 0; i < ServerName.length; i++) {
                         ServerName[i].innerHTML = obj;
                     }
-
-                    // create user list
-                    /*
-                    createUL(obj, "UserList");*/
+                
+            },
+            error: function() {
+                console.log("fail");
+            }
+        })
+        $.ajax({
+            type: "post",
+            url: "getServerMembers.php", 
+            data: { serverID: localStorage.getItem('serverID')
+            },
+            success: function(data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
                 
             },
             error: function() {
@@ -57,24 +63,6 @@
                 console.log("fail");
             }
         })
-        // Gets all server lists
-        /*$.ajax({
-            type: "post",
-            url: "getAllServerList.php",
-            data: {username: localStorage.getItem('username')},
-            success: function(data) {
-                obj = JSON.parse(data);
-                //console.log(data)
-            
-                // populate sidebar with chats
-                createSidebar(obj, "chatSidebar");
-                // populate server info
-                getServerInfo(obj, "ServerInfo");
-            },
-            error: function(data) {
-                console.log("fail");
-            }
-        })*/
     });
 
     function createUL(obj, id) {
@@ -123,8 +111,8 @@
             let list = document.createElement("li");
             let link = document.createElement("a");
             let text = document.createTextNode(obj[x].UserName);
-            
-            
+            //link.id = obj[x].ServerID;
+            console.log(`obj name ${obj[x].UserName}`);
             link.onclick = function() {
                 localStorage.setItem("viewInfo", obj[x].UserName);
                 // CHANGE ON CLICK IN CHAT.HTML
@@ -137,22 +125,4 @@
             list.appendChild(link);
             memberList.appendChild(list);
         }
-    }
-   
-
-    function getServerInfo(obj, id) {
-
-        let serverName = document.createTextNode(localStorage.getItem('servername'));
-        let serverID = document.createTextNode(localStorage.getItem('serverID'));
-        //let memberList = document.getElementById(id);
-        let servername = document.getElementById('serverInfoServerName');
-        let serverid = document.getElementById('serverInfoServerID');
-
-        // obj = [{
-        //     ServerName: localStorage.getItem('servername'), 
-        //     ServerID: localStorage.getItem('serverID')
-        // }]
-        
-        servername.appendChild(serverName);
-        serverid.appendChild(serverID);
     }
