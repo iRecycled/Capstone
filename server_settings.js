@@ -2,7 +2,7 @@
         $.ajax({
             type: "post",
             url: "getServerInfo.php", 
-            data: { username: localStorage.getItem('serverID')
+            data: { serverID: localStorage.getItem('serverID')
             },
             success: function(data) {
                     obj = JSON.parse(data);
