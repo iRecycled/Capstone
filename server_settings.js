@@ -6,7 +6,8 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    console.log(obj);
+                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
                     console.log(data);
 
