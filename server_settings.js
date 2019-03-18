@@ -32,7 +32,7 @@
 
         $.ajax({
             type: "post",
-            url: "getAllServerList.php",
+            url: "getServerList.php",
             data: {username: localStorage.getItem('username')},
             success: function(data) {
                 obj = JSON.parse(data);
@@ -104,5 +104,4 @@
         
         servername.appendChild(serverName);
         serverid.appendChild(serverID);
-            
     }
