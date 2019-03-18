@@ -32,7 +32,7 @@ function InsertImage(e)
     {
         url = url.substring(7)
     }
-    if(url.substring(url.length-4).valueOf() == '.jpg'){
+    if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
         chatInputArea.value += ':img="'+ url + '"'
     }
 }
