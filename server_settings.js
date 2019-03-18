@@ -124,8 +124,8 @@
             let list = document.createElement("li");
             let link = document.createElement("a");
             let text = document.createTextNode(obj[x].UserName);
-            //link.id = obj[x].ServerID;
-            console.log(`obj name ${obj[x].UserName}`);
+            
+            
             link.onclick = function() {
                 localStorage.setItem("viewInfo", obj[x].UserName);
                 // CHANGE ON CLICK IN CHAT.HTML
