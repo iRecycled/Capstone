@@ -6,6 +6,9 @@ $exists = file_exists($privateserver);
 
 $lines = file($privateserver);
 $log= count($lines);
+
+
 $file = file_get_contents($privateserver);
-  echo json_encode($file);
+$array = explode("\n",$file);
+  echo json_encode($array);
 ?>
