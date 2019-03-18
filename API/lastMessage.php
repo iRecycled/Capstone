@@ -24,4 +24,5 @@ if(file_exists($privateserver)){
     $lines = "Failure"  
   }
   mysql_close($db);
+  echo json_encode($lines);
 ?>

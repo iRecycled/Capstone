@@ -6,7 +6,7 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
                     console.log(data);
 
@@ -16,9 +16,9 @@
                     console.log(ServerName);
 
                     // Place servername into each class
-                    /*for(let i = 0; i < ServerName.length; i++) {
+                    for(let i = 0; i < ServerName.length; i++) {
                         ServerName[i].innerHTML = data;
-                    }*/
+                    }
 
                     // create user list
                     /*
@@ -123,17 +123,17 @@
             let memberList = document.getElementById(id);
             let list = document.createElement("li");
             let link = document.createElement("a");
-            let text = document.createTextNode(obj[x].name);
+            let text = document.createTextNode(obj[x].UserName);
             //link.id = obj[x].ServerID;
 
             link.onclick = function() {
-                localStorage.setItem("viewInfo", obj[x].name);
+                localStorage.setItem("viewInfo", obj[x].UserName);
                 // CHANGE ON CLICK IN CHAT.HTML
-                console.log(`obj Server name ${obj[x].ServerName}`);
-                console.log(`this Server name ${this.ServerName}`);
+                console.log(`obj name ${obj[x].UserName}`);
+                console.log(`this name ${this.UserName}`);
             };
 
-            link.href = "chat.html";
+            link.href = "profile_page.html";
             link.appendChild(text);
             list.appendChild(link);
             memberList.appendChild(list);
