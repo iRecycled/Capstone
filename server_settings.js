@@ -19,6 +19,7 @@
                 console.log("fail");
             }
         })
+        //get list of members of current server
         $.ajax({
             type: "post",
             url: "getServerMembers.php", 
@@ -30,6 +31,23 @@
 
 
                     createUL(obj, "UserList");
+            },
+            error: function() {
+                console.log("fail");
+            }
+        })
+        //get list of blocked users of current server
+        $.ajax({
+            type: "post",
+            url: "getBlockedUsers.php", 
+            data: { serverID: localStorage.getItem('serverID')
+            },
+            success: function(data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
+
+
+                    createUL(obj, "BlockList");
             },
             error: function() {
                 console.log("fail");
