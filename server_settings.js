@@ -12,19 +12,17 @@
 
                     // Get classes
                     let ServerName = document.getElementsByClassName("servername");
-<<<<<<< HEAD
-=======
-                    // Get local storage
-                    servername = localStorage.getItem('servername')
->>>>>>> 9e899d0f89c0699a0a46c702444f4abf707ed8e8
                     
+                    console.log(ServerName);
+
                     // Place servername into each class
-                    for(let i = 0; i < ServerName.length; i++) {
+                    /*for(let i = 0; i < ServerName.length; i++) {
                         ServerName[i].innerHTML = data;
-                    }
+                    }*/
 
                     // create user list
-                    createUL(obj, "UserList");
+                    /*
+                    createUL(obj, "UserList");*/
                 
             },
             error: function() {
