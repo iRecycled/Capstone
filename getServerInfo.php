@@ -12,6 +12,6 @@
 
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($serverName);
-
+        $stmt->fetch();
         echo json_encode($serverName);
 ?>
