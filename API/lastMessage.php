@@ -1,5 +1,5 @@
 <?php
-$data = json_decode(file_get_contents("php://input"));
+//$data = json_decode(file_get_contents("php://input"));
 /*$auth = $data->auth;
 $serverName = $data->servername;
 
@@ -26,6 +26,6 @@ if(file_exists($privateserver)){
     $lines = "Failure"
     $log="Failure"
   }
-  mysql_close($db);
+  //mysql_close($db);
   echo json_encode($log);
 ?>
