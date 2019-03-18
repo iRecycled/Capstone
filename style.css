@@ -43,6 +43,9 @@ a {
 .dropdownEle{
     color: #007bff;
 }
+.dropdownEle:hover{
+    color: #007;
+}
 
 a:hover{
     color: white;
@@ -157,11 +160,15 @@ a:hover{
     height: 30px;
 }
 
-#chatEmoteButton{
+#insertImage{
+
+}
+
+#insertImageButton{
     position: absolute;
     height: 24px;
     width: 24px;
-    right: 10px;
+    right: 120px;
     bottom: 10px;
     border: 0px;
     z-index: 5; 
@@ -176,7 +183,26 @@ a:hover{
     transition:.2s;
 }
 
-#chatEmoteButton:hover {
+#chatEmoteButton{
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    right: 10px;
+    bottom: 10px;
+    border: 0px;
+    z-index: 5; 
+    background-color: transparent;
+    background-image: url("emotes/emote.png");
+    background-size: cover;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    /* ...and now for the proper property */
+    transition:.2s;
+}
+
+#insertImageButton:hover {
     background-image: url("emotes/button_select.png"); 
 }
 
