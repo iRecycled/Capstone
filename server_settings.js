@@ -8,7 +8,6 @@
                     obj = JSON.parse(data);
                     //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
-                    console.log(data);
 
                     // Get classes
                     ServerName = document.getElementsByClassName("servername");
@@ -17,7 +16,7 @@
 
                     // Place servername into each class
                     for(let i = 0; i < ServerName.length; i++) {
-                        ServerName[i].innerHTML = data;
+                        ServerName[i].innerHTML = obj;
                     }
 
                     // create user list
