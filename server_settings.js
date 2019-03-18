@@ -37,7 +37,7 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 console.log(obj)
-                createSidebar(obj, "chatSidebar");
+                createSidebarChats(obj, "chatSidebar");
                 //createServerTable(obj, "userServersBody")
             },
             error: function(data) {
@@ -52,29 +52,30 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 console.log(obj)
-                createSidebar(obj, "sidebarFriends")
+                createSidebarFriends(obj, "sidebarFriends")
             },
             error: function(data) {
                 console.log("fail");
             }
         })
-    //     $.ajax({
-    //         type: "post",
-    //         url: "getAllServerList.php",
-    //         data: {username: localStorage.getItem('username')},
-    //         success: function(data) {
-    //             obj = JSON.parse(data);
-    //             //console.log(data)
+        // Gets all server lists
+        /*$.ajax({
+            type: "post",
+            url: "getAllServerList.php",
+            data: {username: localStorage.getItem('username')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                //console.log(data)
             
-    //             // populate sidebar with chats
-    //             createSidebar(obj, "chatSidebar");
-    //             // populate server info
-    //             getServerInfo(obj, "ServerInfo");
-    //         },
-    //         error: function(data) {
-    //             console.log("fail");
-    //         }
-    //     })
+                // populate sidebar with chats
+                createSidebar(obj, "chatSidebar");
+                // populate server info
+                getServerInfo(obj, "ServerInfo");
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })*/
     });
 
     function createUL(obj, id) {
@@ -95,7 +96,7 @@
         }
     }
 
-    function createSidebar(obj, id) {
+    function createSidebarChats(obj, id) {
         for(let x in obj) {
             let memberList = document.getElementById(id);
             let list = document.createElement("li");
@@ -117,6 +118,27 @@
         }
     }
 
+    function createSidebarFriends(obj, id) {
+        for(let x in obj) {
+            let memberList = document.getElementById(id);
+            let list = document.createElement("li");
+            let link = document.createElement("a");
+            let text = document.createTextNode(obj[x].name);
+            //link.id = obj[x].ServerID;
+
+            link.onclick = function() {
+                localStorage.setItem("viewInfo", obj[x].name);
+                // CHANGE ON CLICK IN CHAT.HTML
+                console.log(`obj Server name ${obj[x].ServerName}`);
+                console.log(`this Server name ${this.ServerName}`);
+            };
+
+            link.href = "chat.html";
+            link.appendChild(text);
+            list.appendChild(link);
+            memberList.appendChild(list);
+        }
+    }
    
 
     function getServerInfo(obj, id) {
