@@ -6,10 +6,8 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    console.log(obj);
-                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
-                    console.log(data);
 
                     // Get classes
                     ServerName = document.getElementsByClassName("servername");
@@ -18,7 +16,7 @@
 
                     // Place servername into each class
                     for(let i = 0; i < ServerName.length; i++) {
-                        ServerName[i].innerHTML = data;
+                        ServerName[i].innerHTML = obj;
                     }
 
                     // create user list
