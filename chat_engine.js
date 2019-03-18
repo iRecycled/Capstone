@@ -89,15 +89,6 @@ function updateChat(serverID){
                             console.log(str[1]);
                             data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                             console.log(data.text[i]);
-                                                    
-                            //DELETE THIS IF NOT WORKING
-                            
-                            //  if(userList(str[0], allusers)){
-                            //    newstr = "<li>"+str[0]+"<li>";
-                            //    allusers.push(str[0]);
-                               
-                            //    $('#onlineList').append($(newstr));
-                            //  }
                             $('#chatBox').append($(data.text[i]));
                             document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                         }
@@ -181,7 +172,11 @@ function msgParse(){
                 {
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
-                    console.log(imgUrl.substring(imgUrl.length-4))
+                    endTag = imgUrl.substring(imgUrl.length-4)
+                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
+                    {
+                        parse += ("<img src='http://" + imgUrl + "' alt='userimg' />")
+                    }
                 }
                 else if(imgExists){
                     //inject code
