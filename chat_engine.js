@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = [];
+var allusers = ["Test"];
 var state;
 var mes;
 var file;
