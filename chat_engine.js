@@ -172,6 +172,7 @@ function msgParse(){
             //if word has emote tag
             if(words[i].charAt(0) == ':')
             {
+                console.log(words[i])
                 //get phrase from tag
                 phrase = words[i].substring(1).toLowerCase().trim()
                 //check if phrase is valid
