@@ -126,7 +126,8 @@
         
       function load(){
         targetfile = localStorage.getItem('serverID');
-        //username = localStorage.getItem('username');
+        username = localStorage.getItem('username');
+        allusers.push("<li>"+username+"<li>");
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
