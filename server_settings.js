@@ -11,7 +11,7 @@
                     console.log(data);
 
                     // Get classes
-                    let ServerName = document.getElementsByClassName("servername");
+                    ServerName = document.getElementsByClassName("servername");
                     
                     console.log(ServerName);
 
