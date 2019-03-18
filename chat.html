@@ -122,16 +122,28 @@
                     }
 
              });
-    	});
+        });
+        function userList(username){
+            add = true;
+            for(i = 0; i < allusers.length; i++){
+                if(username == allusers[i]){
+                    add = false;
+                }
+            }
+            return add;
+        }
       function load(){
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
-        //not working with server because it grabs localhost js, need to be integrated into database
-        if(userList(username)){
-            newstr = "<li style='padding: 0px;'>"+username+"<li>";
-            allusers.push(newstr);
-            $('#onlineList').append($(newstr));
-        } 
+        
+                newstr = "<li>"+username+"<li>";
+                if(userList(username) == true){
+                    allusers.push(newstr);
+                    $('#onlineList').append($(newstr));
+                }
+                else {
+                    console.log("Online user in array already");
+                } 
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
