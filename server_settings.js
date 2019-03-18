@@ -37,8 +37,22 @@
             success: function(data) {
                 obj = JSON.parse(data);
                 console.log(obj)
-                createSidebarChats(obj, "chatSidebar");
+                createSidebar(obj, "chatSidebar");
                 //createServerTable(obj, "userServersBody")
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
+        //get list of user's friends
+        $.ajax({
+            type: "post",
+            url: "getFriendsList.php",
+            data: {username: localStorage.getItem('username')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj)
+                createSidebar(obj, "sidebarFriends")
             },
             error: function(data) {
                 console.log("fail");
@@ -53,7 +67,7 @@
     //             //console.log(data)
             
     //             // populate sidebar with chats
-    //             createSidebarChats(obj, "chatSidebar");
+    //             createSidebar(obj, "chatSidebar");
     //             // populate server info
     //             getServerInfo(obj, "ServerInfo");
     //         },
@@ -81,7 +95,7 @@
         }
     }
 
-    function createSidebarChats(obj, id) {
+    function createSidebar(obj, id) {
         for(let x in obj) {
             let memberList = document.getElementById(id);
             let list = document.createElement("li");
@@ -102,6 +116,8 @@
             memberList.appendChild(list);
         }
     }
+
+   
 
     function getServerInfo(obj, id) {
 
