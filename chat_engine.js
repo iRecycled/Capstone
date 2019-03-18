@@ -191,7 +191,7 @@ function msgParse(){
                     imgUrl = imgUrl.replace(/&quot;/g, '')
                     endTag = imgUrl.substring(imgUrl.length-4)
                     console.log(imgUrl)
-                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png')
+                    if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
