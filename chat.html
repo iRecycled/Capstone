@@ -128,6 +128,7 @@
         targetfile = localStorage.getItem('serverID');
         username = localStorage.getItem('username');
         allusers.push("<li>"+username+"<li>");
+        $('#onlineList').append($(allusers));
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
