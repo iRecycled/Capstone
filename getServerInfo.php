@@ -7,13 +7,11 @@
             }
             //connects to database
         $serverID = $_POST['serverID']; 
-        $query = "SELECT ServerName FROM Server s WHERE ServerID = '$serverID';";
+        $query = "SELECT ServerName FROM Server WHERE ServerID = '$serverID';";
         //runs the query
-        $result = $db->query($query);
-        $response = array();
-        while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $response[] = $row;
-        }
-        echo json_encode($response);
-        
+
+        $stmt = simpleQuery($db, $query);
+        $stmt->bind_result($serverName);
+
+        echo json_encode($serverName);
 ?>
