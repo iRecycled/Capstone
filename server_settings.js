@@ -8,12 +8,12 @@
             success: function(data) {
                 if(localStorage.getItem('servername')) {
                     obj = JSON.parse(data);
-                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
                     // Get classes
                     let ServerName = document.getElementsByClassName("servername");
                     // Get local storage
-                    //servername = localStorage.getItem('servername')
+                    servername = localStorage.getItem('servername')
                     
                     // Place servername into each class
                     for(let i = 0; i < ServerName.length; i++) {
@@ -118,5 +118,4 @@
         
         servername.appendChild(serverName);
         serverid.appendChild(serverID);
-            
     }
