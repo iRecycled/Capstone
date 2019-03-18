@@ -149,7 +149,7 @@
       }
       window.onload = load;
 
-      //when the user leaves the page
+    //when the user leaves the page
     //   $(window).bind('beforeunload', function(){
     //     for(var i = 0; i < allusers.size();i++){
     //         if(allusers[i] == username){
@@ -383,11 +383,12 @@ function isAllowedToInvite(){
     </ul>
     <ul class="navbar-nav right">
         <script>
-            function setServerName(){
-                localStorage.setItem("servername", ServerName);
-            }
+            // function setServerName(){
+            //     localStorage.setItem("servername", ServerName);
+            //onclick='setServerName()'
+            // }
         </script>
-        <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href='server_settings.html' >Server Settings <span class="sr-only"></span></a>
     </ul>
     <ul class="navbar-nav right">
         <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
@@ -433,7 +434,7 @@ function isAllowedToInvite(){
                             
                             </style>
                             <li ><b>Online Users</b></li>
-                             
+                             <li> test </li>
                         </ul>  
                         </td>                          
                         </tr>

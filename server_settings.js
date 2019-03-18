@@ -6,9 +6,8 @@
             },
             success: function(data) {
                     obj = JSON.parse(data);
-                    document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
+                    //document.getElementById("servername").appendChild(obj[0].ServerName); //.innerHTML = obj[0].ServerName;
                     
-                    console.log(data);
 
                     // Get classes
                     ServerName = document.getElementsByClassName("servername");
@@ -16,9 +15,9 @@
                     console.log(ServerName);
 
                     // Place servername into each class
-                    /*for(let i = 0; i < ServerName.length; i++) {
-                        ServerName[i].innerHTML = data;
-                    }*/
+                    for(let i = 0; i < ServerName.length; i++) {
+                        ServerName[i].innerHTML = obj;
+                    }
 
                     // create user list
                     /*
@@ -124,8 +123,8 @@
             let list = document.createElement("li");
             let link = document.createElement("a");
             let text = document.createTextNode(obj[x].UserName);
-            //link.id = obj[x].ServerID;
-
+            
+            
             link.onclick = function() {
                 localStorage.setItem("viewInfo", obj[x].UserName);
                 // CHANGE ON CLICK IN CHAT.HTML
