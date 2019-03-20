@@ -2,166 +2,107 @@
 <html lang="en">
 
 <head>
-    <title>Chat</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="checkIfUsername.js"></script>
-    <script src = 'chat_engine.js'></script>
-    <script type="text/javascript">
-        /*
-        // ask user for name with popup prompt
-        var name = prompt("Enter your chat name:", "Guest");
-
-        // default name is 'Guest'
-    	if (!name || name === ' ') {
-    	   name = "Guest";
-    	}
-
-    	// strip tags
-    	name = name.replace(/(<([^>]+)>)/ig,"");
-
-    	// display name on page
-    	//$("#name-area").html("You are: <span>" + name + "</span>");
-        */
-        name = localStorage.getItem('username');
-    	// kick off chat
-        var chat =  new Chat();
-        var targetfile;
-    	$(function() {
-
-    		 chat.getState(targetfile);
-
-    		 // watch textarea for key presses
-             $("#sendie").keydown(function(event) {
-                console.log("key down");
-                 var key = event.which;
-                 console.log(key);
-                 //all keys including return.
-                 if (key >= 33) {
-                     console.log(key);
-                     var maxLength = $(this).attr("maxlength");
-                     var length = this.value.length;
-
-                     // don't allow new content if length is maxed out
-                     if (length >= maxLength) {
-                         console.log("too long?");
-                         event.preventDefault();
-                     }
-                }
-            });
-
-            // watch textarea for key presses
-            $("#chatTextSubmit").mousedown(function(event) {
-                console.log("key down");
-                var maxLength = $('#sendie').attr("maxlength");
-                var length = document.getElementById('sendie').value.length;
-
-                // don't allow new content if length is maxed out
-                if (length >= maxLength) {
-                    console.log("too long?");
-                    event.preventDefault();
-                }
-            });
-
-    		 // watch textarea for release of key press
-    		 $('#sendie').keyup(function(e) {
-    		 		console.log("key up");
-                    console.log(e.keyCode);
-    			  if (e.keyCode == 13) {
-    			    console.log("enter key");
-                    var text = $(this).val();
-    				var maxLength = $(this).attr("maxlength");
-                    var length = text.length;
-                     console.log(length);
-                      console.log(maxLength);
-                    // send
-                    if (length <= maxLength + 1) {
-                        console.log("right size");
-    			        chat.send(text, name, targetfile);
-    			        $(this).val("");
-
-                    } else {
-
-    					$(this).val(text.substring(0, maxLength));
-
-    				}
-
-
-    			  }
-             });
-
-             // watch textarea for release of key press
-    		 $('#chatTextSubmit').mouseup(function(e) {
-    		 		console.log("key up");
-    			    console.log("enter key");
-                    var text = $("#sendie").val();
-    				var maxLength = $("#sendie").attr("maxlength");
-                    var length = text.length;
-                    console.log(length);
-                    console.log(maxLength);
-                    // send
-                    if (length <= maxLength + 1) {
-                        console.log("right size");
-                        chat.send(text, name, targetfile);
-                        $('#sendie').val("");
-
-                    } else {
-
-                        $('#sendie').val(text.substring(0, maxLength));
-
-                    }
-
-             });
-        });
-        // function userList(username){
-        //     add = true;
-        //     for(i = 0; i < allusers.length; i++){
-        //         if(username == allusers[i]){
-        //             add = false;
-        //         }
-        //     }
-        //     return add;
-        // }
+  <title>Chat</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="checkIfUsername.js"></script>
+  <script src = 'chat_engine.js'></script>
+  <script type="text/javascript">
+    
+    
+    /*
+    // ask user for name with popup prompt
+    var name = prompt("Enter your chat name:", "Guest");
+    
+    // default name is 'Guest'
+    if (!name || name === ' ') {
+      name = "Guest";
+    }
+    
+    // strip tags
+    name = name.replace(/(<([^>]+)>)/ig,"");
+    
+    // display name on page
+    //$("#name-area").html("You are: <span>" + name + "</span>");
+    */
+    name = localStorage.getItem('username');
+    // kick off chat
+    var chat =  new Chat();
+    var targetfile;
+    $(function() {
+      
+      chat.getState(targetfile);
+      
+      // watch textarea for key presses
+      $("#sendie").keydown(function(event) {
+        console.log("key down");
+        var key = event.which;
+        console.log(key);
+        //all keys including return.
+        if (key >= 33) {
+          console.log(key);
+          var maxLength = $(this).attr("maxlength");
+          var length = this.value.length;
+          
+          // don't allow new content if length is maxed out
+          if (length >= maxLength) {
+            console.log("too long?");
+            event.preventDefault();
+          }
+        }
+      });
+      
+      // watch textarea for key presses
+      $("#chatTextSubmit").mousedown(function(event) {
+        console.log("key down");
+        var maxLength = $('#sendie').attr("maxlength");
+        var length = document.getElementById('sendie').value.length;
+        
       function load(){
         targetfile = localStorage.getItem('serverID');
-        //username = localStorage.getItem('username');
-        
-                // newstr = "<li>"+username+"<li>";
-                // if(userList(username) == true){
-                //     allusers.push(newstr);
-                //     $('#onlineList').append($(newstr));
-                //     console.log("added");
-                // }
-                // else {
-                //     console.log("Online user in array already");
-                // } 
+            $.ajax({
+            type: "post",
+            url: "isOnline.php",
+            data: {serverID: localStorage.getItem('serverID')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj)
+                createOnlineList(obj);
+                console.log("TEST IF THIS WORKS");
+                for(i = 0; i < jsonObj.length; i++){
+                    var listName = "<li>"+jsonObj[i].UserName+"<li>";
+                    onlineusers.push(listName);
+                    $('#onlineList').append($(onlineusers[i]));
+                    console.log(listName);
+                }           
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
 
       //when the user leaves the page
     //   $(window).bind('beforeunload', function(){
-    //     for(var i = 0; i < allusers.size();i++){
-    //         if(allusers[i] == username){
-    //             delete allusers[i];
-    //         }
-    //     }
-    //   });
-
+      //    
+      //   });
+      
     </script>
-
-
-
+    
+    
+    
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -170,36 +111,37 @@
     crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
     <!-- Scrollbar Custom CSS -->
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <script>
-        //returns session ID of current user name in local storage
-        //also checks the username to be compatible with sessionID
-        //if username != sessionID then it is sent to loginPage
-            $.ajax({
-               method:'post',
-               dataType: "json",
-               url: 'checkID.php',
-              data: {username: localStorage.getItem('username')},
-              success: function(data) {
-              if(data!=localStorage.getItem("sessionID")){
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-              }
-            }
-             });
-            </script>
-
-<script>
+      //returns session ID of current user name in local storage
+      //also checks the username to be compatible with sessionID
+      //if username != sessionID then it is sent to loginPage
+      $.ajax({
+        method:'post',
+        dataType: "json",
+        url: 'checkID.php',
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+          if(data!=localStorage.getItem("sessionID")){
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+          }
+        }
+      });
+    </script>
+    
+    <script>
       //runs on start of page
       //checks to see if the username is null upon startup
       //if null then change local storage values to failed login values and send back to login screen
-        $.ajax({
-           method:'post',
-           dataType: "json",
-           url: 'checkID.php',
-          data: {username: localStorage.getItem('username')},
-          success: function(data) {
+      $.ajax({
+        method:'post',
+        dataType: "json",
+        url: 'checkID.php',
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
           if(data==localStorage.getItem("sessionID")){
             if(localStorage.getItem('username').length==0){
               localStorage.setItem("username","oheystopmesingaround")
@@ -207,295 +149,285 @@
               window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
             }
             else{
-
-               }
+              
+            }
           }
           else{
-
+            
             if(localStorage.getItem('username').length==0){
               localStorage.setItem("username","oheystopmesingaround")
               localStorage.setItem("sessionID","-1")
               window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
             }
-
+            
           }
         }
-         });
-            </script>
-
-
-<script>
-    $.ajax({
-       method:'post',
-       dataType: "json",
-       url: 'checkID.php',
-      data: {username: localStorage.getItem('username')},
-      success: function(data) {
-      if(data==localStorage.getItem("sessionID")){
-
-      }
-      else{
-        window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-      }
-    }
-     });
+      });
     </script>
-
+    
+    
     <script>
-    $(document).ready(function(){
-    $("#deleteServerBtn").click(function(e){
-        e.preventDefault();
-        $.ajax({
-        type: "post",
-        url: "deleteServer.php",
-        data: {serverID: localStorage.getItem('serverID')},
-        success: function(result) {
-            //If successful, go to the home page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
-        },
-        error: function(result) {
-            //If not successful, return to the chat page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+      $.ajax({
+        method:'post',
+        dataType: "json",
+        url: 'checkID.php',
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+          if(data==localStorage.getItem("sessionID")){
+            
+          }
+          else{
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+          }
         }
-    })
-    })  
-})
+      });
     </script>
-
-<script>
-
-$.ajax({
-   method:'post',
-   dataType: "json",
-   url: 'checkID.php',
-  data: {username: localStorage.getItem('username')},
-  success: function(data) {
-  if(data==localStorage.getItem("sessionID")){
-    if(localStorage.getItem('username').length==0){
-      localStorage.setItem("username","oheystopmesingaround")
-      localStorage.setItem("sessionID","-1")
-      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-    }
-    else{
-
-       }
-  }
-  else{
-
-    if(localStorage.getItem('username').length==0){
-      localStorage.setItem("username","oheystopmesingaround")
-      localStorage.setItem("sessionID","-1")
-      window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
-    }
-  }
-}
- });
-
-var allowedToInvite = false;
-document.addEventListener("DOMContentLoaded", function(event) {
-    InviteToServer('Invite', 'Delete')
-})
-
-function InviteToServer(inv, del) {
-    $.when(isAllowedToInvite()).done(function(a){
-        if(allowedToInvite) {
+    
+    <script>
+      $(document).ready(function(){
+        $("#deleteServerBtn").click(function(e){
+          e.preventDefault();
+          $.ajax({
+            type: "post",
+            url: "deleteServer.php",
+            data: {serverID: localStorage.getItem('serverID')},
+            success: function(result) {
+              //If successful, go to the home page
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            },
+            error: function(result) {
+              //If not successful, return to the chat page
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+            }
+          })
+        })  
+      })
+    </script>
+    
+    <script>
+      
+      $.ajax({
+        method:'post',
+        dataType: "json",
+        url: 'checkID.php',
+        data: {username: localStorage.getItem('username')},
+        success: function(data) {
+          if(data==localStorage.getItem("sessionID")){
+            if(localStorage.getItem('username').length==0){
+              localStorage.setItem("username","oheystopmesingaround")
+              localStorage.setItem("sessionID","-1")
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+            }
+            else{
+              
+            }
+          }
+          else{
+            
+            if(localStorage.getItem('username').length==0){
+              localStorage.setItem("username","oheystopmesingaround")
+              localStorage.setItem("sessionID","-1")
+              window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+            }
+          }
+        }
+      });
+      
+      var allowedToInvite = false;
+      document.addEventListener("DOMContentLoaded", function(event) {
+        InviteToServer('Invite', 'Delete')
+      })
+      
+      function InviteToServer(inv, del) {
+        $.when(isAllowedToInvite()).done(function(a){
+          if(allowedToInvite) {
             document.getElementById(inv).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
             document.getElementById(del).innerHTML += "<a href='#' id='deleteServer' data-toggle='modal' data-target='#deleteServerModal'>Delete Server</a>";
             $.ajax({
-                type: "post",
-                url: "getFriendsList.php",
-                data: {username: localStorage.getItem('username')},
-                success: function(data) {
-                    obj = JSON.parse(data);
-                    console.log(obj);
-                    for( var x in obj) {
-                        let privateServerList = document.getElementById("pageSubmenu");
-                        let listItem = document.createElement("li");
-                        let link = document.createElement("a");
-                        let text = document.createTextNode(obj[x].UserName);
-                        link.id = obj[x].UserName;
-                        link.onclick = function() {
-                            sendInvite(this.id);
-                        };
-                        link.appendChild(text);
-                        listItem.appendChild(link);
-                        privateServerList.appendChild(listItem);
-                    }
-            },
-        error: function(data) {
-            console.log("fail");
-        }
-    })
-        }
-    });
-}
-
-function sendInvite(username) {
-    serverID = localStorage.getItem('serverID');
-    return $.ajax({
-        type: "post",
-        url: "sendServerInvite.php",
-        data: {user: username, serverID: serverID},
-        success: function(data) {
+              type: "post",
+              url: "getFriendsList.php",
+              data: {username: localStorage.getItem('username')},
+              success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj);
+                for( var x in obj) {
+                  let privateServerList = document.getElementById("pageSubmenu");
+                  let listItem = document.createElement("li");
+                  let link = document.createElement("a");
+                  let text = document.createTextNode(obj[x].UserName);
+                  link.id = obj[x].UserName;
+                  link.onclick = function() {
+                    sendInvite(this.id);
+                  };
+                  link.appendChild(text);
+                  listItem.appendChild(link);
+                  privateServerList.appendChild(listItem);
+                }
+              },
+              error: function(data) {
+                console.log("fail");
+              }
+            })
+          }
+        });
+      }
+      
+      function sendInvite(username) {
+        serverID = localStorage.getItem('serverID');
+        return $.ajax({
+          type: "post",
+          url: "sendServerInvite.php",
+          data: {user: username, serverID: serverID},
+          success: function(data) {
             alert(data);
-        },
-        error: function(data) {
+          },
+          error: function(data) {
             alert("fail");
-        }
-    })
-}
-
-function isAllowedToInvite(){
-    return $.ajax({
-        type: "post",
-        url: "getServerPermissions.php",
-        data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
-        success: function(data) {
+          }
+        })
+      }
+      
+      function isAllowedToInvite(){
+        return $.ajax({
+          type: "post",
+          url: "getServerPermissions.php",
+          data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
+          success: function(data) {
             if (data == 0) {
-                console.log("data = 0");
-                allowedToInvite = true
+              console.log("data = 0");
+              allowedToInvite = true
             }
             else {
-                console.log("data != 0");
-                allowedToInvite = false
+              console.log("data != 0");
+              allowedToInvite = false
             }
-        },
-        error: function(data) {
+          },
+          error: function(data) {
             console.log("fail");
             allowedToInvite = false
-        }
-    })
-}
-</script>
-
-</head>
-
-<body>
+          }
+        })
+      }
+    </script>
+    
+  </head>
+  
+  <body>
     <div class="page">
-<!-- Nav Bar -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
-    <ul class="navbar-nav mr-auto">
-        <a class="nav-item nav-link active" href="home.html">Home</a>
-    </ul>
-
-    <ul class="navbar-nav mr-auto ">
-        <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
-    </ul>
-    <ul class="navbar-nav right">
-        <script>
-            function setServerName(){
-                localStorage.setItem("servername", ServerName);
-            }
-        </script>
-        <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
-    </ul>
-    <ul class="navbar-nav right">
-        <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
-        <script>
-        function selfProfilePage(){
-            localStorage.setItem('viewInfo', localStorage.getItem("username"));
-        }
-        </script>
-        <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
-                <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
-                </script>
-            <span class="sr-only">(current)</span></a>
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand navbar-dark bg-dark" id = 'NaviBar'>
+        <ul class="navbar-nav mr-auto">
+          <a class="nav-item nav-link active" href="home.html">Home</a>
         </ul>
-</nav>
-
-<div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar" class="bg-dark navbar-text text-center">
-        <div class="sidebar-header">
-            <h4 style="padding:15px; float:left;"><u>Chatrooms</u></h4>
-        </div>
-
-        <ul class="list-unstyled components" style="padding: 10px;">
-            <li>
-                <div id="Invite" style="padding-left:12px;"></div>
-            </li>
-            <li>
-                <div id="Delete" style="padding-left:12px;"></div>
-            </li>
-            <li></li>
-            <div class="onlineUserTable">
-                <table class="userTable">
-                        <tr>
-                        <td>
-                        <ul id="onlineList"> 
-                            <style>
-                            li {
-                                list-style-type: none;
-                                color: white;
-                                padding-right: 10px;    
-                            }
-                            
-                            </style>
-                            <li ><b>Online Users</b></li>
-                             <li> test </li>
-                        </ul>  
-                        </td>                          
-                        </tr>
-                </table>
+        
+        <ul class="navbar-nav mr-auto ">
+          <a class="navbar-brand mb-0 h1" href="#">TerryChat </a>
+        </ul>
+        <ul class="navbar-nav right">
+          <script>
+            function setServerName(){
+              localStorage.setItem("servername", ServerName);
+            }
+          </script>
+          <a class="nav-item nav-link active" href='server_settings.html' onclick='setServerName()'>Server Settings <span class="sr-only"></span></a>
+        </ul>
+        <ul class="navbar-nav right">
+          <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
+          <script>
+            function selfProfilePage(){
+              localStorage.setItem('viewInfo', localStorage.getItem("username"));
+            }
+          </script>
+          <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
+            <script>
+              document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+            </script>
+            <span class="sr-only">(current)</span></a>
+          </ul>
+        </nav>
+        
+        <div class="wrapper">
+          <!-- Sidebar -->
+          <nav id="sidebar" class="bg-dark navbar-text text-center">
+            <div class="sidebar-header">
+              <h4>Chatrooms</h4>
             </div>
             
-        </ul>
-        <div class="sidebar">
-            <h4 style="padding:15px; float:left;" href="server_settings.html"><u>Server Settings</u></h4>
-        </div>
-    </nav>
+            <ul class="list-unstyled components">
 
-    <!-- Page Content -->
-    <div id="content">      
-        <div id="contain" class="container-fluid">
-            <!--Chat Output Area-->
+              <li>
+                <div id="Invite"></div>
+              </li>
+
+              <li>
+                <div id="Delete"></div>
+              </li>
             
-            <div id = "chatOutput">
-                    
+              <div class="onlineUserTable">
+                <table class="userTable">
+                  <tr>
+                    <td>
+                      <ul id="onlineList">                               
+                        <li><b>Online Users</b></li>
+                      </ul>  
+                    </td>                          
+                  </tr>
+                </table>
+              </div>
+
+            </ul>
+          </nav>
+          
+          <!-- Page Content -->
+          <div id="content">      
+            <div id="contain" class="container-fluid">
+              <!--Chat Output Area-->
+              
+              <div id = "chatOutput">
+                
                 <!--Table to Display Messages-->
                 <table id = "chatBox">
-                        
-                    <tbody id ="chatBody">
-
-                    </tbody>
+                  
+                  <tbody id ="chatBody">
                     
+                  </tbody>
+                  
                 </table>
-            </div>
-            
-            <!--Chat Input Area-->
-            <div id = "chatBoxInput">
+              </div>
+              
+              <!--Chat Input Area-->
+              <div id = "chatBoxInput">
                 <div id = "inputContainer" class = 'input-group'>
-                    <!--Chat Text Input-->
-                    <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
-                    <div>
-                            <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertImage">
-                            </button>
-                            
-                        </div>
-                    <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
-                                
-                            </div>
-                          </div>
-                          
-                    <!--Chat Submit Button-->
-                    <div class="input-group-append">
-                        <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
-                    </div>
+                  <!--Chat Text Input-->
+                  <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
+                  <div>
+                    <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertImage">
+                    </button>
                     
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                      
+                    </div>
+                  </div>
+                  
+                  <!--Chat Submit Button-->
+                  <div class="input-group-append">
+                    <button id ='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
+                  </div>
+                  
                 </div>
-                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-</div>
-
-<div id="insertImage" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+      </div>
       
+      <div id="insertImage" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
@@ -516,32 +448,40 @@ function isAllowedToInvite(){
                                         </div>
                             </div>
                             <div id="video" class="tab-pane fade">
-                              <h3>Future</h3>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">URL:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL" onchange="UpdatePreview('inputURL', 'videoPreview')">
+                                    </div>
+                                <div>
+                                    <span id="videoPreview"></span>
+                                </div>
                             </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
+            
           </div>
-      
         </div>
-      </div>
-
-<!--Delete an existing private Server Modal-->
-<div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
+        
+        <!--Delete an existing private Server Modal-->
+        <div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold" id="deletePrivateServerModal">Are you sure you want to delete this server?</h4>
-            </div>
-            <div class="modal-footer">
+              </div>
+              <div class="modal-footer">
                 <button type="button" class="btn btn-success" id="deleteServerBtn">Delete Server</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-
-</body>
-</html>
+        
+      </body>
+      </html>
+      

@@ -124,7 +124,7 @@ $(document).ready(function(){
             console.log(obj);
             
             for( var x in obj) {
-                let privateServerList = document.getElementById("homeSubmenu1");
+                let friendsList = document.getElementById("sidebarFriends");
                 let listItem = document.createElement("li");
                 let link = document.createElement("a");
                 let text = document.createTextNode(obj[x].UserName);
@@ -146,7 +146,7 @@ $(document).ready(function(){
                 }
                 link.appendChild(text);
                 listItem.appendChild(link);
-                privateServerList.appendChild(listItem);
+                friendsList.appendChild(listItem);
             }
         },
         error: function(data) {

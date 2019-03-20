@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = ["Test"];
+var allusers = [];
 var state;
 var mes;
 var file;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
     
-
+    document.getElementById('inputURL').addEventListener('oninput', UpdatePreview('inputURL', 'videoPreview'));
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
@@ -167,6 +167,19 @@ var emoteWL = [
     "triforce"
 ]
 
+function YouTubeGetID(url){
+    var ID = '';
+    url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    if(url[2] !== undefined) {
+      ID = url[2].split(/[^0-9a-z_\-]/i);
+      ID = ID[0];
+    }
+    else {
+      ID = url;
+    }
+      return ID;
+  }
+
 //parses messages for emotes/html tags
 function msgParse(){
     this.parse = function(text){
@@ -194,6 +207,20 @@ function msgParse(){
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                    }
+                }
+                else if (phrase.substring(0,3) == "ytb")
+                {
+                    console.log("Phrase: ", phrase)
+                    imgUrl = phrase.substring(4)
+                    imgUrl = imgUrl.replace(/&quot;/g, '')
+                    console.log("URL: " + imgUrl)
+                    id = YouTubeGetID(imgUrl)
+                    console.log("IDLen: ", id.length)
+                    if(id.length == 11)
+                    {
+                        console.log("inside")
+                        parse += '<iframe class="msgImg" width="560" height="350" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
                     }
                 }
                 else if(imgExists){
@@ -235,6 +262,14 @@ function msgParse(){
         }
     }
 }
+
+function UpdatePreview(e, t){
+    console.log("UPDATING!!!")
+    url = e.value;
+    id = YouTubeGetID(url)
+    t.innerHtml = "ID: " + id;
+}
+
 //send the message
 function sendChat(message, nickname, serverID)
 {
