@@ -218,7 +218,7 @@ function addIM(e) {
         {
             console.log("Calls");
             document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
-            document.getElementById(e).onclick = function(){ createImFile()};
+           // document.getElementById(e).onclick = function(){ createImFile()};
         }
     });
 }
@@ -229,6 +229,7 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
+            localStorage.setItem('imName', result.file);
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {

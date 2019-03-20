@@ -32,5 +32,5 @@
         $openfile = fopen($filename,"w") or die("can't open file");
         //fwrite($openfile,"");
         fclose($openfile);
-        
+        echo ?> "file": <?=json_encode($mesageFileName)
 ?>
