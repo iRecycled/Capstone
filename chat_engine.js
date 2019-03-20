@@ -311,10 +311,3 @@ function sendChat(message, nickname, serverID)
 		   },
 		});
 }
-
-
-$('#insertContent').on('hidden.bs.modal', function () {
-    console.log("hides")
-    document.getElementById("inputURL").value = ""
-    document.getElementById("vidURL").value = ""
-})
