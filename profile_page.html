@@ -72,13 +72,14 @@
             <nav id="sidebar" class="bg-dark navbar-text text-center">
                 <div id="friendZone" class="sidebar-header"></div>
                 <div id="imTag" class="sidebar-header"></div>
+
                 <div class="sidebar-header">
-                    <h4><a href="chat.html"><u>My Chatrooms</u></a></h4>
+                    <h4><a href="chat.html">My Chatrooms</a></h4>
                 </div>
         
                 <ul class="list-unstyled components">
                     <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Public Chatrooms</a>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle head">Public Chatrooms</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
                                 <a href="#">Chat 1</a>
@@ -98,20 +99,32 @@
                         </ul>
                     </li>
                 </ul>
+
+                <hr>
+
                 <div class="sidebar-header">
-                        <h4><a href="Instant_messages.html"><u>Instant Messages</u></a></h4>
+                    <h4><a href="Instant_messages.html">Instant Messages</a></h4>
                 </div>
+
+                <hr>
+
                 <ul class="list-unstyled components">
                     <li class="active">
-                        <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Friends</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu1">
-                                <!--populated in JavaScript-->
-                            </ul>
-                    </li> 
+                        <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Friends</a></h4>
+                        <ul class="collapse list-unstyled" id="sidebarFriends">
+                            <!--populated in JavaScript-->
+                        </ul>
+                    </li>
                 </ul>
+
+                <hr>
+
                 <div class="sidebar-header">
-                        <h4><u>Features</u></h4>
+                    <h4>Features</h4>
                 </div>
+
+                <hr>
+
                 <ul class="list-unstyled components">
                     <li>
                         <a href="#" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</a>
@@ -123,12 +136,12 @@
                         <a href="#">Invite to server</a>
                     </li>
                 </ul>
+
+                <hr>
+
                 <ul class="list-unstyled components">    
                     <li>
                         <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Server</a>
                     </li>
                 </ul> 
         
