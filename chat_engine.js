@@ -217,7 +217,7 @@ function msgParse(){
                     console.log("URL: " + imgUrl)
                     id = YouTubeGetID(imgUrl)
                     console.log("IDLen: ", id.length)
-                    if(id.length.valueOf == 11)
+                    if(id.length == 11)
                     {
                         console.log("inside")
                         parse += '<iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
