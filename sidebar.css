@@ -1,17 +1,6 @@
-#friendlist {
-    /* width: 150px; */
-    overflow-y: scroll;
-    /* height: 300px; */
-}
-
-
-.ScrollbarRow {
-    /* height: 200px; */
-    overflow-y: scroll;
-}
-
 #sidebar {
     width:15%;
+    overflow-y: scroll;
 }
 
 
