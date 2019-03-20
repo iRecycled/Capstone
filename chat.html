@@ -126,6 +126,19 @@
         
       function load(){
         targetfile = localStorage.getItem('serverID');
+        //set online
+        $.ajax({
+            type: "post",
+            url: "setOnline.php",
+            data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
+            success: function(data) {
+                console.log("UserOnline");
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
+        //getOnline
             $.ajax({
             type: "post",
             url: "isOnline.php",
