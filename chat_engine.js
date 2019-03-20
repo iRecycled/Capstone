@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = ["Test"];
+var allusers = [];
 var state;
 var mes;
 var file;
@@ -258,4 +258,14 @@ function sendChat(message, nickname, serverID)
 			   updateChat(serverID);
 		   },
 		});
+}
+
+function createOnlineList(jsonObj){
+    //generates and sorts list of user names 
+    users = []
+    onlineList = "";
+    for(i = 0; i < jsonObj.length; i++){
+        users.push(jsonObj[i].UserName)
+        $('#onlineList').append($(users[i]));
+    }
 }
