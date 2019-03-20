@@ -224,8 +224,8 @@ function addIM(e) {
 function createImFile() {
     $.ajax({
         type: "post",
-        url: "server.php",
-        data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
+        url: "createIM.php",
+        data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/instant_messages.html';
@@ -235,7 +235,6 @@ function createImFile() {
             window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
-    // TODO send notification to other user?
 }
 function checkImExists(name) {
     // TODO ajax call to query database and see if file exists
