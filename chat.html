@@ -129,7 +129,7 @@
             $.ajax({
             type: "post",
             url: "isOnline.php",
-            data: {username: localStorage.getItem('username')},
+            data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 obj = JSON.parse(data);
                 console.log(obj)
