@@ -289,10 +289,12 @@ function sendChat(message, nickname, serverID)
 
 function createOnlineList(jsonObj){
     //generates and sorts list of user names 
-    users = []
+    onlineusers = []
     onlineList = "";
     for(i = 0; i < jsonObj.length; i++){
-        users.push(jsonObj[i].UserName)
-        $('#onlineList').append($(users[i]));
+        var listName = "<li>"+jsonObj[i].UserName+"<li>";
+        onlineusers.push(listName);
+        //$('#onlineList').append($(onlineusers[i]));
+        console.log(listName);
     }
 }
