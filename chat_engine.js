@@ -39,7 +39,6 @@ function InsertImage(e)
 
 function InsertVid()
 {
-    console.log("inserts")
     var url = document.getElementById("vidURL").value;
     if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
     {
@@ -49,9 +48,7 @@ function InsertVid()
     {
         url = url.substring(7)
     }
-    console.log(url)
-    id = YouTubeGetID(url)  
-    console.log(id)  
+    id = YouTubeGetID(url)    
     if(id.length == 11){
         chatInputArea.value += ':ytb="youtu.be/' +  id + '"'
     }
@@ -223,7 +220,6 @@ function msgParse(){
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
                     endTag = imgUrl.substring(imgUrl.length-4)
-                    console.log(imgUrl)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
@@ -231,15 +227,11 @@ function msgParse(){
                 }
                 else if (phrase.substring(0,3) == "ytb")
                 {
-                    console.log("Phrase: ", phrase)
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
-                    console.log("URL: " + imgUrl)
                     id = YouTubeGetID(imgUrl)
-                    console.log("IDLen: ", id.length)
                     if(id.length == 11)
                     {
-                        console.log("inside")
                         parse += '<iframe class="msgImg" width="560" height="350" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
                     }
                 }
@@ -284,8 +276,8 @@ function msgParse(){
 }
 
 function UpdatePreview(){
-    url = document.getElementById("vidURL").value;
-    console.log(url)
+    url = ""
+    url += document.getElementById("vidURL").value;
     id = YouTubeGetID(url)
     if(id.length==11)
     {
