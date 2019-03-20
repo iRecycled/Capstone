@@ -286,15 +286,3 @@ function sendChat(message, nickname, serverID)
 		   },
 		});
 }
-
-function createOnlineList(jsonObj){
-    //generates and sorts list of user names 
-    onlineusers = []
-    onlineList = "";
-    for(i = 0; i < jsonObj.length; i++){
-        var listName = "<li>"+jsonObj[i].UserName+"<li>";
-        onlineusers.push(listName);
-        //$('#onlineList').append($(onlineusers[i]));
-        console.log(listName);
-    }
-}
