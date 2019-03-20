@@ -216,7 +216,10 @@ function msgParse(){
                     imgUrl = imgUrl.replace(/&quot;/g, '')
                     console.log("URL: " + imgUrl)
                     id = YouTubeGetID(imgUrl)
-                    console.log("ID: " + id)
+                    if(id.length.valueOf == 11)
+                    {
+                        parse += ('<iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                    }
                 }
                 else if(imgExists){
                     //inject code
