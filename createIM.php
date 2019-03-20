@@ -7,7 +7,7 @@
             }
         $username = $_POST['username'];
         $friendUsername = $_POST['friendName'];
-        
+
         // Selects the ID of user logged in
         $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
         $stmt = simpleQuery($db, $query);
@@ -18,9 +18,9 @@
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($otherUserID);
         $stmt->fetch();
-
+            //User1ID, User2ID, FileName
         $mesageFileName = $username . "&" . $friendUsername;
-        $query = "INSERT INTO InstantMessage VALUES ('$mesageFileName', '$firstUserID', '$otherUserID')";
+        $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID', '$mesageFileName')";
 
         
         // TODO create file and store file in database
