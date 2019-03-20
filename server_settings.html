@@ -14,251 +14,263 @@
     <!-- Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="sidebar.css">
 
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    
+
     <!-- Our Scripts -->
     <!-- <script src="home.js"></script>
-    <script src="script.js"></script> -->
+        <script src="script.js"></script> -->
     <script src="server_settings.js"></script>
 
-    
+
 </head>
 
 <body>
- <!-- Nav Bar-->
- <div id="nav-template">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <ul class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
-        </ul>
+    <!-- Nav Bar-->
+    <div id="nav-template">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <ul class="navbar-nav mr-auto">
+                <a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
+            </ul>
 
-        <ul class="navbar-nav mr-auto ">
-            <a class="navbar-brand mb-0 h1" href="#">TerryChat <span class="sr-only">(current)</span></a>
-        </ul>
+            <ul class="navbar-nav mr-auto ">
+                <a class="navbar-brand mb-0 h1" href="#">TerryChat <span class="sr-only">(current)</span></a>
+            </ul>
 
-        <ul class="navbar-nav right">
-            <a class="nav-item nav-link active" href="#" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
-            <script>
-                function selfProfilePage(){
-                    localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                }
-            </script>
-            <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>   
+            <ul class="navbar-nav right">
+                <a class="nav-item nav-link active" href="#" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
                     function selfProfilePage(){
-                        console.log("click called")
-                        localStorage.setItem('viewInfo', localStorage.getItem("username"));
-                    }
-                    document.getElementById("username").addEventListener('onclick',
-                        function(){
-                            selfProfilePage();
-                        });
-                </script>
-            <span class="sr-only">(current)</span></a>
+                            localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                        }
+                    </script>
+                <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
+                    <script>
+                        document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
+                            function selfProfilePage(){
+                                console.log("click called")
+                                localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                            }
+                            document.getElementById("username").addEventListener('onclick',
+                            function(){
+                                selfProfilePage();
+                            });
+                        </script>
+                    <span class="sr-only">(current)</span>
+                </a>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="bg-dark navbar-text text-center">
             
-        </ul>
-    </nav>
-</div>
-
-<div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar" class="bg-dark navbar-text text-center">
-        
-
-        <div class="sidebar-header">
-            <h4><a href="chat.html">My Chatrooms</a></h4>
-        </div>
-
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#sidebarPublicServers" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle head">Public Chatrooms</a>
-                <ul class="collapse list-unstyled" id="sidebarPublicServers">
-                    
-                </ul>
-            </li>
-
-            <li>
-                <a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Private Chatrooms</a>
-                <ul class="collapse list-unstyled" id="sidebarServers">
-                    <!-- populated in JavaScript-->
-                </ul>
-            </li>
-            <!-- <li>
-                <div class="sidebar-header">
-                    <h4><a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chatrooms</a></h4> 
-                </div>
-
-                <ul class="collapse list-unstyled ScrollbarRow" id="sidebarServers">
-                    
-                </ul>
-            </li> -->
-
-            <hr>
-
-            <li>
-                <div class="sidebar-header">
-                    <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a></h4> 
-                </div>
-
-                <ul class="collapse list-unstyled ScrollbarRow" id="sidebarFriends">
-                
-                
-                    
-                </ul>
-            </li>
-
-            <hr>
-
-            <li>
-                <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a>
-            </li>
-
-           <div id="sidebar-bottom">
-                <li>
-                    <a href="#" class="head">About</a>
-                </li>
+            <div class="sidebar-header">
+                <h4>My Chatrooms</h4>
             </div>
-        </ul>
 
-    </nav>
-    <!-- Page Content -->
-    <div id="content">
-        <div id="change_server_title">
-            <label for="ChangeServerTitle"><h2 class='servername'> </h2></label>
-            <!-- Edit Button Trigger modal -->
-            <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#ChangeServerTitle">
-            Edit
-            </button>
-            
-            <!-- Edit button Modal -->
-            <div class="modal fade" id="ChangeServerTitle" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Change Server Title</h5>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#sidebarPublicServers" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle head">Public
+                        Chatrooms</a>
+                    <ul class="collapse list-unstyled" id="sidebarPublicServers">
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Private
+                        Chatrooms</a>
+                    <ul class="collapse list-unstyled" id="sidebarServers">
+                        <!-- populated in JavaScript-->
+                    </ul>
+                </li>
+                <!-- <li>
+                            <div class="sidebar-header">
+                                <h4><a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chatrooms</a></h4> 
+                            </div>
+                            
+                            <ul class="collapse list-unstyled ScrollbarRow" id="sidebarServers">
+                                
+                            </ul>
+                        </li> -->
+
+                <hr>
+
+                <li>
+                    <div class="sidebar-header">
+                        <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a></h4>
+                    </div>
+
+                    <ul class="collapse list-unstyled ScrollbarRow" id="sidebarFriends">
+
+
+
+                    </ul>
+                </li>
+
+                <hr>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a>
+                </li>
+
+                <hr>
+
+                <div id="sidebar-bottom">
+                    <li>
+                        <a href="#" class="head">About</a>
+                    </li>
+                </div>
+            </ul>
+
+        </nav>
+        <!-- Page Content -->
+        <div id="content">
+            <div id="change_server_title">
+                <label for="ChangeServerTitle">
+                    <h2 class='servername'> </h2>
+                </label>
+                <!-- Edit Button Trigger modal -->
+                <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#ChangeServerTitle">
+                    Edit
+                </button>
+
+                <!-- Edit button Modal -->
+                <div class="modal fade" id="ChangeServerTitle" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Change Server Title</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                        </div>
-                        <div class="modal-body">
-                            <label for="servertitle">Change Server Title:</label>
-                            <input type="text" class="servertitle" class="form-control">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="servertitle">Change Server Title:</label>
+                                <input type="text" class="servertitle" class="form-control">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <h4>Server Info</h4>
-                    </th>
-                    <th>
-                        <h4>Members</h4>
-                    </th>
-                    <th>
-                        <h4>Blocked Members</h4>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row" id="ServerInfo">
-                        <ul><b>Server Name:</b><div class ='servername'></div></ul>
-                        <ul><b>Server ID:</b><div id ='serverInfoServerID'></div></ul>
-                    </td>
-                    <td id="UserList">
 
-                    </td>
-                    <td id="BlockList">
-                        <div id="ScrollbarRow">
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                            <ul>user1</ul>
-                            <ul>user2</ul>
-                            <ul>user3</ul>
-                            <ul>...</ul>
-                        </div>                    
-                    </td>                    
-                </tr>
-                <tr>
-                    <td>
-                        <ul>
-                            <a href="server_chat_logs.txt" target="_blank" class="btn btn-outline-dark" role="button">View Chat Log</a>
-                        </ul>
-                    </td>
-                    <th>
-                        <ul>
-                            <!-- Invite Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#InviteUser">
-                                Invite
-                            </button>
-                                
-                            <!-- Remove User Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveUser">
-                                Remove User
-                            </button>  
-                        </ul>
-                    </th>
-                    <th>
-                        <ul>
-                            <!-- Block User Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#BlockUser">
-                                Block User
-                            </button>
-                            <!-- Remove Blocked User Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveBlockedUser">
-                                Remove User
-                            </button> 
-                        </ul>
-                    </th>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <h4>Server Info</h4>
+                        </th>
+                        <th>
+                            <h4>Members</h4>
+                        </th>
+                        <th>
+                            <h4>Blocked Members</h4>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" id="ServerInfo">
+                            <ul><b>Server Name:</b>
+                                <div class='servername'></div>
+                            </ul>
+                            <ul><b>Server ID:</b>
+                                <div id='serverInfoServerID'></div>
+                            </ul>
+                        </td>
+                        <td id="UserList">
 
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                        <td id="BlockList">
+                            <div id="ScrollbarRow">
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                                <ul>user1</ul>
+                                <ul>user2</ul>
+                                <ul>user3</ul>
+                                <ul>...</ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <a href="server_chat_logs.txt" target="_blank" class="btn btn-outline-dark" role="button">View
+                                    Chat Log</a>
+                            </ul>
+                        </td>
+                        <th>
+                            <ul>
+                                <!-- Invite Button trigger modal -->
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#InviteUser">
+                                    Invite
+                                </button>
 
-        
-               
-        <a href="#server_settings" aria-expanded="true" data-toggle="collapse" class="dropdown-toggle">Friends</a>
-        <ul class="collapse list-unstyled" id="server_settings">
+                                <!-- Remove User Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveUser">
+                                    Remove User
+                                </button>
+                            </ul>
+                        </th>
+                        <th>
+                            <ul>
+                                <!-- Block User Button trigger modal -->
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#BlockUser">
+                                    Block User
+                                </button>
+                                <!-- Remove Blocked User Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveBlockedUser">
+                                    Remove User
+                                </button>
+                            </ul>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <a href="#server_settings" aria-expanded="true" data-toggle="collapse" class="dropdown-toggle">Friends</a>
+            <ul class="collapse list-unstyled" id="server_settings">
                 <ul>
                     <a href="#">User</a>
                 </ul>
@@ -275,137 +287,142 @@
                     <a href="#">User</a>
                 </ul>
             </ul>
-        </ul>
-        
-    </div>
-</div>
+            </ul>
 
-<!-- Remove Blocked User button Modal -->
-<div class="modal fade" id="RemoveBlockedUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Remove Blocked User from <div class='servername'>test</div></h5>
+        </div>
+    </div>
+
+    <!-- Remove Blocked User button Modal -->
+    <div class="modal fade" id="RemoveBlockedUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remove Blocked User from <div class='servername'>test</div>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-            </div>
-            <div class="modal-body">
-                <label for="servertitle">User:</label>
-                <input type="text" class="servertitle" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Unblock</button>
+                </div>
+                <div class="modal-body">
+                    <label for="servertitle">User:</label>
+                    <input type="text" class="servertitle" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Unblock</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
- <!-- Block User button Modal -->
- <div class="modal fade" id="BlockUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Remove User from block list</h5>
+    <!-- Block User button Modal -->
+    <div class="modal fade" id="BlockUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remove User from block list</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-            </div>
-            <div class="modal-body">
-                <label for="servertitle">User:</label>
-                <input type="text" class="servertitle" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Block</button>
+                </div>
+                <div class="modal-body">
+                    <label for="servertitle">User:</label>
+                    <input type="text" class="servertitle" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Block</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Remove User button Modal -->
-<div class="modal fade" id="RemoveUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Remove User from <div class='servername'></div></h5>
+    <!-- Remove User button Modal -->
+    <div class="modal fade" id="RemoveUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remove User from <div class='servername'></div>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-            </div>
-            <div class="modal-body">
-                <label for="servertitle">User:</label>
-                <input type="text" class="servertitle" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Remove</button>
+                </div>
+                <div class="modal-body">
+                    <label for="servertitle">User:</label>
+                    <input type="text" class="servertitle" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Remove</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Inivte button Modal -->
-<div class="modal fade" id="InviteUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Invite User to <div class='servername'></div></h5>
+    <!-- Inivte button Modal -->
+    <div class="modal fade" id="InviteUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Invite User to <div class='servername'></div>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-            </div>
-            <div class="modal-body">
-                <label for="servertitle">User:</label>
-                <input type="text" class="servertitle" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Invite</button>
+                </div>
+                <div class="modal-body">
+                    <label for="servertitle">User:</label>
+                    <input type="text" class="servertitle" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Invite</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Friends Modal -->
-<div class="modal fade" id="friends" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+    <!-- Friends Modal -->
+    <div class="modal fade" id="friends" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title" center>Friends</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="container-fluid">
-                    User1
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="container-fluid">
-                    User2
-                </div>
-                <div class="container-fluid">
-                    User3
-                </div>
-                <div class="container-fluid">
-                    User4
-                </div>
-                    
-                
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove Friend</button>
-                <button type="button" class="btn btn-primary">Add Friend</button>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        User1
+                    </div>
+                    <div class="container-fluid">
+                        User2
+                    </div>
+                    <div class="container-fluid">
+                        User3
+                    </div>
+                    <div class="container-fluid">
+                        User4
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove Friend</button>
+                    <button type="button" class="btn btn-primary">Add Friend</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal Register-->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal Register-->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -434,14 +451,14 @@
 
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
     <!-- Modal Login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -465,12 +482,13 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 
 </body>
+
 </html>
