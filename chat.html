@@ -134,18 +134,11 @@
                 obj = JSON.parse(data);
                 console.log(obj)
                 createOnlineList(obj);
-                console.log("TEST IF THIS WORKS");
-                for(i = 0; i < jsonObj.length; i++){
-                    var listName = "<li>"+jsonObj[i].UserName+"<li>";
-                    onlineusers.push(listName);
-                    $('#onlineList').append($(onlineusers[i]));
-                    console.log(listName);
-                }           
             },
             error: function(data) {
                 console.log("fail");
             }
-        })
+})
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
@@ -516,6 +509,7 @@ function isAllowedToInvite(){
                                 </div>
                             </div>
                             <div id="video" class="tab-pane fade">
+<<<<<<< HEAD
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">URL:</span>
@@ -529,6 +523,9 @@ function isAllowedToInvite(){
                                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid(inputURL)">Insert</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
+=======
+                              <h3>Future</h3>
+>>>>>>> ec14cb483ac0e446d1521a0df02c5e7cb63aef0b
                             </div>
             </div>
           </div>
