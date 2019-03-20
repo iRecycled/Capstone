@@ -232,7 +232,7 @@ function msgParse(){
                     id = YouTubeGetID(imgUrl)
                     if(id.length == 11)
                     {
-                        parse += '<iframe class="msgImg" width="560" height="350" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
+                        parse += '<iframe class="msgImg" width="560" height="350" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                     }
                 }
                 else if(imgExists){
@@ -283,7 +283,7 @@ function UpdatePreview(){
     {
         document.getElementById("videoPreview").innerHTML = ""
         document.getElementById("videoPreview").innerHTML += "ID: " + id ;
-        document.getElementById("videoPreview").innerHTML += '<div><iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe></div>';
+        document.getElementById("videoPreview").innerHTML += '<div><iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe></div>';
     }
     else
     {
