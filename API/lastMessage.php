@@ -1,6 +1,23 @@
 <?php
-//$privateserver = "../chat/private/".$serverId.".txt";
-$server = "9";
+include "database.php";
+        $db = connectToDatabase(DBDeets::DB_NAME);
+        //connects to database
+        if ($db->connect_error) {
+            http_response_code(500);
+            die('{ "errMessage": "Failed to Connect to DB." }');
+        }
+  //$username = $_POST['username']; 
+  $data = json_decode(file_get_contents("php://input"));
+  $serverName = $data->servername;
+
+  $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
+  //runs query
+        $stmt = simpleQuery($db, $query);
+  //binds results of query to the database
+    $stmt->bind_result($server);
+    $stmt->fetch();
+
+
 $privateserver = "../chat/private/".$server.".txt";
 $exists = file_exists($privateserver);
 

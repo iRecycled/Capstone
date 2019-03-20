@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Chat</title>
+    <title>Instant Messaging</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@
     <script type="text/javascript">
         name = localStorage.getItem('username');
         var chat =  new Chat();
-        var targetfile;
+        var targetfile = 2; // might need a value sooner
     	$(function() {
     		 chat.getState(targetfile);
 
@@ -108,14 +108,6 @@
       }
       window.onload = load;
 
-      //when the user leaves the page
-      $(window).bind('beforeunload', function(){
-        for(var i = 0; i < allusers.size();i++){
-            if(username == allusers[i]){
-                delete allusers[i];
-            }
-        }
-      });
     </script> 
     <script>
         //returns session ID of current user name in local storage

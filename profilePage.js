@@ -222,10 +222,19 @@ function addIM(e) {
     });
 }
 function createImFile() {
-    // look at create server for a template
-    // TODO create file for IM
-    // TODO add to database
-    // TODO send link to html page
+    $.ajax({
+        type: "post",
+        url: "server.php",
+        data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
+        success: function(result) {
+            //If successful, go to the instant_messages page
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/instant_messages.html';
+        },
+        error: function(result) {
+            //If not successful, return to the profile page
+            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+        }
+    })
     // TODO send notification to other user?
 }
 function checkImExists(name) {
