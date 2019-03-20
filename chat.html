@@ -134,11 +134,18 @@
                 obj = JSON.parse(data);
                 console.log(obj)
                 createOnlineList(obj);
+                console.log("TEST IF THIS WORKS");
+                for(i = 0; i < jsonObj.length; i++){
+                    var listName = "<li>"+jsonObj[i].UserName+"<li>";
+                    onlineusers.push(listName);
+                    $('#onlineList').append($(onlineusers[i]));
+                    console.log(listName);
+                }           
             },
             error: function(data) {
                 console.log("fail");
             }
-})
+        })
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
