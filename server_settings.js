@@ -63,7 +63,7 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj)
-            createSidebarChats(obj, "chatSidebar");
+            createSidebarChats(obj, "sidebarServers");
             //createServerTable(obj, "userServersBody")
         },
         error: function(data) {
