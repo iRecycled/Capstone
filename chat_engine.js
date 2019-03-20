@@ -313,7 +313,7 @@ function sendChat(message, nickname, serverID)
 }
 
 
-$("#insertContentDialog").on('hidden.bs.modal', function () {
+$('#insertContent').on('hidden.bs.modal', function () {
     console.log("hides")
     document.getElementById("inputURL").value = ""
     document.getElementById("vidURL").value = ""
