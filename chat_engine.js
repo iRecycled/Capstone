@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
     
-    document.getElementById('inputURL').addEventListener('onchange', UpdatePreview('inputURL', 'videoPreview'));
+    document.getElementById('inputURL').addEventListener('oninput', UpdatePreview('inputURL', 'videoPreview'));
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
