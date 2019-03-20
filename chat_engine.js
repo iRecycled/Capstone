@@ -284,8 +284,8 @@ function msgParse(){
 }
 
 function UpdatePreview(){
-    url = document.getElementById("vidURL").value;
-    console.log(url)
+    url = ""
+    url += document.getElementById("vidURL").value;
     id = YouTubeGetID(url)
     if(id.length==11)
     {
