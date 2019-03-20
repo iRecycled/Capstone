@@ -9,7 +9,7 @@
             $serverID = $_POST['serverID'];
             //returns serverID of online users
             //$query = "SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = '$username';";
-            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID JOIN ServerMember ON ServerMember.userID = WebUser.UserID WHERE isOnline = true AND ServerMember.ServerID = '$serverID' ;";
+            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID JOIN ServerMember ON ServerMember.userID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID';";
             //returns array of users that are on that server and are online
             $result = $db->query($query);
             //output query result to json array
