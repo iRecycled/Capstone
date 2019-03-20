@@ -37,6 +37,25 @@ function InsertImage(e)
     }
 }
 
+function InsertVid(e)
+{
+    console.log("inserts")
+    var url = e.value.trim();
+    if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
+    {
+        url = url.substring(8)
+    }
+    else if(url.substring(0,8).toLowerCase().indexOf("http")>-1)
+    {
+        url = url.substring(7)
+    }
+    id = YouTubeGetID(url)    
+    if(id.length == 11){
+        chatInputArea.value += ':ytb="YOUTU.BE/' +  id + '"'
+    }
+
+}
+
 //sets functions when the document loads
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -45,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
     
-    document.getElementById('inputURL').addEventListener('oninput', UpdatePreview('inputURL', 'videoPreview'));
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
@@ -263,11 +281,16 @@ function msgParse(){
     }
 }
 
-function UpdatePreview(e, t){
-    console.log("UPDATING!!!")
-    url = e.value;
+function UpdatePreview(){
+    url = document.getElementById("vidURL").value;
+    console.log(url)
     id = YouTubeGetID(url)
-    t.innerHtml = "ID: " + id;
+    if(id.length==11)
+    {
+        document.getElementById("videoPreview").innerHTML = ""
+        document.getElementById("videoPreview").innerHTML += "ID: " + id ;
+        document.getElementById("videoPreview").innerHTML += '<div><iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe></div>';
+    }
 }
 
 //send the message
