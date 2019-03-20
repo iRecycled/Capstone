@@ -129,10 +129,10 @@
             $.ajax({
             type: "post",
             url: "isOnline.php",
-            data: {username: localStorage.getItem('username')},
+            data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 obj = JSON.parse(data);
-                console.log(obj)
+                console.log(obj);
                 createOnlineList(obj);
             },
             error: function(data) {
@@ -499,7 +499,7 @@ function isAllowedToInvite(){
                             <div id="image" class="tab-pane fade show active">
                                 <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">URL:</span>
+                                            <span class="input-group-text" id="basic-addon1">Image URL:</span>
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
                                         </div>
@@ -509,10 +509,9 @@ function isAllowedToInvite(){
                                 </div>
                             </div>
                             <div id="video" class="tab-pane fade">
-<<<<<<< HEAD
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">URL:</span>
+                                        <span class="input-group-text" id="basic-addon1">Video URL:</span>
                                     </div>
                                     <input type="text" class="form-control" aria-describedby="basic-addon1" id="vidURL" oninput="UpdatePreview()">
                                 </div>
@@ -520,12 +519,9 @@ function isAllowedToInvite(){
                                     <span id="videoPreview"></span>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid(inputURL)">Insert</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid()">Insert</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
-=======
-                              <h3>Future</h3>
->>>>>>> ec14cb483ac0e446d1521a0df02c5e7cb63aef0b
                             </div>
             </div>
           </div>
