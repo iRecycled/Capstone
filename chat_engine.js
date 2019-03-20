@@ -220,7 +220,7 @@ function msgParse(){
                     if(id.length == 11)
                     {
                         console.log("inside")
-                        parse += '<iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        parse += '<iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
                     }
                 }
                 else if(imgExists){
