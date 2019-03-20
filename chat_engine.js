@@ -285,6 +285,11 @@ function UpdatePreview(){
         document.getElementById("videoPreview").innerHTML += "ID: " + id ;
         document.getElementById("videoPreview").innerHTML += '<div><iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe></div>';
     }
+    else
+    {
+        document.getElementById("videoPreview").innerHTML = ""
+        document.getElementById("videoPreview").innerHTML += "ID: ";
+    }
 }
 
 //send the message
