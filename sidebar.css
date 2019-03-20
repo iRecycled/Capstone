@@ -1,7 +1,6 @@
 #sidebar {
     width:15%;
     overflow-y: scroll;
-    color:white;
     
 }
 
@@ -12,14 +11,6 @@
 hr {
     border-color: grey;
 }
-
-
-#onlineList {
-    list-style-type: none;
-    color: white;
-    padding-right: 10px;    
-}
-
 
 /* Scrollbar */
 /* width */
