@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chatOutputArea = document.getElementById("chatBody")
     chatOutputBox = document.getElementById("chatOutput")
     
-
+    document.getElementById('inputURL').addEventListener('onchange', UpdatePreview('inputURL', 'videoPreview'));
     //create emote list for dropdown
     generateEmoteList(document.getElementById("emoteDropdown"))
 });
@@ -209,7 +209,7 @@ function msgParse(){
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
                 }
-                else if (phrase.substring(0,3) == "vid")
+                else if (phrase.substring(0,3) == "ytb")
                 {
                     console.log("Phrase: ", phrase)
                     imgUrl = phrase.substring(4)
@@ -262,6 +262,14 @@ function msgParse(){
         }
     }
 }
+
+function UpdatePreview(e, t){
+    console.log("UPDATING!!!")
+    url = e.value;
+    id = YouTubeGetID(url)
+    t.innerHtml = "ID: " + id;
+}
+
 //send the message
 function sendChat(message, nickname, serverID)
 {
