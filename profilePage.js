@@ -133,7 +133,8 @@ $(document).ready(function(){
                 // if instant message file exists direct user to im file
                 if( checkImExists(obj[x].UserName)) {
                     link.onclick = function() {
-                        localStorage.setItem("serverId", this.id); // won't work correctly yet
+                        let fileName = localStorage.getItem('username') + "&" + obj[x].UserName;
+                        localStorage.setItem("imName", fileName); // won't work correctly yet
                     };
                     link.href = "instant_messages.html"; 
                 }
@@ -274,7 +275,6 @@ function CheckFriend(name){
         }
     })
 }
-
 document.addEventListener("DOMContentLoaded", function(event) {
     AddFriendButton('friendZone')
     addIM('imTag')
