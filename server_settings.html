@@ -82,26 +82,35 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li>        
-                <h3 href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</h3>
-                <ul class="collapse list-unstyled ScrollbarRow" id="sidebarFriends">
-                    
-                </ul>
-            </li>
             <li>
-                <h3 href="#chatSidebar" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chatrooms</h3>
-                <ul class="collapse list-unstyled ScrollbarRow" id="chatSidebar">
+                <div class="sidebar-header">
+                    <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a></h4> 
+                </div>
+
+                <ul class="collapse list-unstyled ScrollbarRow" id="sidebarFriends">
+                
+                
                     
                 </ul>
             </li>
 
+            <hr>
+
+            <li>
+                <div class="sidebar-header">
+                    <h4><a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chatrooms</a></h4> 
+                </div>
+
+                <ul class="collapse list-unstyled ScrollbarRow" id="sidebarServers">
+                    
+                </ul>
+            </li>
+
+            <hr>
+
            <div id="sidebar-bottom">
                 <li>
-                    <a href="#">About</a>
-                </li>
-                
-                <li>
-                    <a href="#">Server</a>
+                    <a href="#" class="head">About</a>
                 </li>
             </div>
         </ul>

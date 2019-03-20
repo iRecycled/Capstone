@@ -1,8 +1,16 @@
 #sidebar {
     width:15%;
     overflow-y: scroll;
+    
 }
 
+.sidebar-header {
+    color: #f1f1f1;
+}
+
+hr {
+    border-color: grey;
+}
 
 /* Scrollbar */
 /* width */
