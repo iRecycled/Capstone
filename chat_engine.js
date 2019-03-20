@@ -37,10 +37,10 @@ function InsertImage(e)
     }
 }
 
-function InsertVid(e)
+function InsertVid()
 {
     console.log("inserts")
-    var url = e.value.trim();
+    var url = document.getElementById("vidURL").value;
     if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
     {
         url = url.substring(8)
@@ -49,9 +49,11 @@ function InsertVid(e)
     {
         url = url.substring(7)
     }
-    id = YouTubeGetID(url)    
+    console.log(url)
+    id = YouTubeGetID(url)  
+    console.log(id)  
     if(id.length == 11){
-        chatInputArea.value += ':ytb="YOUTU.BE/' +  id + '"'
+        chatInputArea.value += ':ytb="youtu.be/' +  id + '"'
     }
 
 }
