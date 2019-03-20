@@ -68,84 +68,33 @@
         var maxLength = $('#sendie').attr("maxlength");
         var length = document.getElementById('sendie').value.length;
         
-        // don't allow new content if length is maxed out
-        if (length >= maxLength) {
-          console.log("too long?");
-          event.preventDefault();
-        }
-      });
-      
-      // watch textarea for release of key press
-      $('#sendie').keyup(function(e) {
-        console.log("key up");
-        console.log(e.keyCode);
-        if (e.keyCode == 13) {
-          console.log("enter key");
-          var text = $(this).val();
-          var maxLength = $(this).attr("maxlength");
-          var length = text.length;
-          console.log(length);
-          console.log(maxLength);
-          // send
-          if (length <= maxLength + 1) {
-            console.log("right size");
-            chat.send(text, name, targetfile);
-            $(this).val("");
-            
-          } else {
-            
-            $(this).val(text.substring(0, maxLength));
-            
-          }
-          
-          
-        }
-      });
-      
-      // watch textarea for release of key press
-      $('#chatTextSubmit').mouseup(function(e) {
-        console.log("key up");
-        console.log("enter key");
-        var text = $("#sendie").val();
-        var maxLength = $("#sendie").attr("maxlength");
-        var length = text.length;
-        console.log(length);
-        console.log(maxLength);
-        // send
-        if (length <= maxLength + 1) {
-          console.log("right size");
-          chat.send(text, name, targetfile);
-          $('#sendie').val("");
-          
-        } else {
-          
-          $('#sendie').val(text.substring(0, maxLength));
-          
-        }
-        
-      });
-    });
-    
-    function load(){
-      targetfile = localStorage.getItem('serverID');
-      $.ajax({
-        type: "post",
-        url: "isOnline.php",
-        data: {username: localStorage.getItem('username')},
-        success: function(data) {
-          obj = JSON.parse(data);
-          console.log(obj)
-          createOnlineList(obj);
-        },
-        error: function(data) {
-          console.log("fail");
-        }
-      })
-      setInterval('chat.update(targetfile)',1000);
-    }
-    window.onload = load;
-    
-    //when the user leaves the page
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+            $.ajax({
+            type: "post",
+            url: "isOnline.php",
+            data: {serverID: localStorage.getItem('serverID')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj)
+                createOnlineList(obj);
+                console.log("TEST IF THIS WORKS");
+                for(i = 0; i < jsonObj.length; i++){
+                    var listName = "<li>"+jsonObj[i].UserName+"<li>";
+                    onlineusers.push(listName);
+                    $('#onlineList').append($(onlineusers[i]));
+                    console.log(listName);
+                }           
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
+        setInterval('chat.update(targetfile)',1000);
+      }
+      window.onload = load;
+
+      //when the user leaves the page
     //   $(window).bind('beforeunload', function(){
       //    
       //   });
@@ -485,27 +434,34 @@
               <h4 class="modal-title">Insert Content</h4>
             </div>
             <div class="modal-body">
-              <ul class="nav nav-tab">
-                <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
-                <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
-              </ul>
-              <div class="tab-content">
-                <div id="image" class="tab-pane fade show active">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">URL:</span>
-                    </div>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
-                  </div>
-                </div>
-                <div id="video" class="tab-pane fade">
-                  <h3>Future</h3>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              </div>
+                    <ul class="nav nav-tab">
+                            <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
+                            <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
+                    </ul>
+                    <div class="tab-content">
+                            <div id="image" class="tab-pane fade show active">
+                                <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">URL:</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                                        </div>
+                            </div>
+                            <div id="video" class="tab-pane fade">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">URL:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL" onchange="UpdatePreview('inputURL', 'videoPreview')">
+                                    </div>
+                                <div>
+                                    <span id="videoPreview"></span>
+                                </div>
+                            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
             
           </div>

@@ -6,10 +6,10 @@
                 http_response_code(500);
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
-            $username = $_POST['username'];
+            $serverID = $_POST['serverID'];
             //returns usernames of online users
             //$query = "SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = '$username';";
-            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID JOIN ServerMember ON ServerMember.userID = WebUser.UserID WHERE isOnline = true AND serverID = '$serverID';"
+            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID JOIN ServerMember ON ServerMember.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID';"
             //returns array of users that are on that server and are online
             $result = $db->query($query);
             //output query result to json array
