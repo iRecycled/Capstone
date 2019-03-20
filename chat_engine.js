@@ -167,6 +167,19 @@ var emoteWL = [
     "triforce"
 ]
 
+function YouTubeGetID(url){
+    var ID = '';
+    url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    if(url[2] !== undefined) {
+      ID = url[2].split(/[^0-9a-z_\-]/i);
+      ID = ID[0];
+    }
+    else {
+      ID = url;
+    }
+      return ID;
+  }
+
 //parses messages for emotes/html tags
 function msgParse(){
     this.parse = function(text){
@@ -195,6 +208,13 @@ function msgParse(){
                     {
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
+                }
+                else if (phrase.substring(0,3) == "vid")
+                {
+                    imgUrl = phrase.substring(4)
+                    imgUrl = imgUrl.replace(/&quot;/g, '')
+                    id = YouTubeGetID(imgUrl)
+                    console.log(id)
                 }
                 else if(imgExists){
                     //inject code
