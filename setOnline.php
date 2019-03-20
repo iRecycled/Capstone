@@ -7,15 +7,26 @@
                 die('{ "errMessage": "Failed to Connect to DB." }');
             }
             $serverID = $_POST['serverID'];
-            //returns serverID of online users
-            //$query = "SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = '$username';";
-            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID';";
-            //returns array of users that are on that server and are online
+            $username = $_POST['username'];
+            $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
+            $stmt = simpleQuery($db, $query);
+    
+            $stmt->bind_result($userID);
+            $stmt->fetch();
+
+            $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            //output query result to json array
             $response = array();
+            $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $response[] = $row;
+                $alreadyExists = true;
             }
-            echo json_encode($response);
+            if($alreadyExists == false){
+                $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
+                $stmt = simpleQuery($db,$query);
+            }
+            else{
+                $query = "UPDATE Online SET isOnline = 1 WHERE UserID = $userID AND ServerID = $serverID;";
+                $stmt = simpleQuery($db,$query);
+            }
 ?>
