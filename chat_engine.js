@@ -211,10 +211,12 @@ function msgParse(){
                 }
                 else if (phrase.substring(0,3) == "vid")
                 {
+                    console.log("Phrase: ", phrase)
                     imgUrl = phrase.substring(4)
                     imgUrl = imgUrl.replace(/&quot;/g, '')
+                    console.log("URL: " + imgUrl)
                     id = YouTubeGetID(imgUrl)
-                    console.log(id)
+                    console.log("ID: " + id)
                 }
                 else if(imgExists){
                     //inject code
