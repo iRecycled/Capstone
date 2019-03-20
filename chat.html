@@ -126,11 +126,19 @@
         
       function load(){
         targetfile = localStorage.getItem('serverID');
-        username = localStorage.getItem('username');
-        allusers.push("<li>"+username+"<li>");
-        for(var i = 0; i < allusers.length;i++){
-            $('#onlineList').append($(allusers[i]));
-        }
+            $.ajax({
+            type: "post",
+            url: "isOnline.php",
+            data: {username: localStorage.getItem('username')},
+            success: function(data) {
+                obj = JSON.parse(data);
+                console.log(obj)
+                createOnlineList(obj);
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+})
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
