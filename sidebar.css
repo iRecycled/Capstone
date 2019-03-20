@@ -12,6 +12,11 @@ hr {
     border-color: grey;
 }
 
+#ScrollbarRow {
+    overflow-y: scroll;
+    min-height: 200px;
+}
+
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
