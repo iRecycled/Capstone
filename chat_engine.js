@@ -1,5 +1,5 @@
 var instanse = false;
-var allusers = ["Test"];
+var allusers = [];
 var state;
 var mes;
 var file;
@@ -216,7 +216,12 @@ function msgParse(){
                     imgUrl = imgUrl.replace(/&quot;/g, '')
                     console.log("URL: " + imgUrl)
                     id = YouTubeGetID(imgUrl)
-                    console.log("ID: " + id)
+                    console.log("IDLen: ", id.length)
+                    if(id.length == 11)
+                    {
+                        console.log("inside")
+                        parse += '<iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
+                    }
                 }
                 else if(imgExists){
                     //inject code
@@ -280,4 +285,14 @@ function sendChat(message, nickname, serverID)
 			   updateChat(serverID);
 		   },
 		});
+}
+
+function createOnlineList(jsonObj){
+    //generates and sorts list of user names 
+    users = []
+    onlineList = "";
+    for(i = 0; i < jsonObj.length; i++){
+        users.push(jsonObj[i].UserName)
+        $('#onlineList').append($(users[i]));
+    }
 }
