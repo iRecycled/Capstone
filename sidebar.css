@@ -1,5 +1,5 @@
 #sidebar {
-    width:15%;
+    width:20%;
     overflow-y: scroll;
     
 }
@@ -10,6 +10,11 @@
 
 hr {
     border-color: grey;
+}
+
+#ScrollbarRow {
+    overflow-y: scroll;
+    min-height: 200px;
 }
 
 /* Scrollbar */

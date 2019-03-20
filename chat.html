@@ -132,7 +132,7 @@
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 obj = JSON.parse(data);
-                console.log(obj)
+                console.log(obj);
                 createOnlineList(obj);
             },
             error: function(data) {
@@ -458,7 +458,7 @@ function isAllowedToInvite(){
                     <!--Chat Text Input-->
                     <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
                     <div>
-                            <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertImage">
+                            <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertContent">
                             </button>
                             
                         </div>
@@ -482,8 +482,8 @@ function isAllowedToInvite(){
 </div>
 </div>
 
-<div id="insertImage" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+<div id="insertContent" class="modal fade" role="dialog">
+        <div class="modal-dialog" id="insertContentDialog">
       
           <!-- Modal content-->
           <div class="modal-content">
@@ -499,7 +499,7 @@ function isAllowedToInvite(){
                             <div id="image" class="tab-pane fade show active">
                                 <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">URL:</span>
+                                            <span class="input-group-text" id="basic-addon1">Image URL:</span>
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
                                         </div>
@@ -511,7 +511,7 @@ function isAllowedToInvite(){
                             <div id="video" class="tab-pane fade">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">URL:</span>
+                                        <span class="input-group-text" id="basic-addon1">Video URL:</span>
                                     </div>
                                     <input type="text" class="form-control" aria-describedby="basic-addon1" id="vidURL" oninput="UpdatePreview()">
                                 </div>
