@@ -26,8 +26,9 @@ include "database.php";
 	     if (($message) != "\n") {
 	       if (preg_match($reg_exUrl, $message, $url)) {
 	         // $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-	       }
-	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
+             }
+                  //fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
+	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
 	     }
 
 ?>
