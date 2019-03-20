@@ -14,7 +14,7 @@ hr {
 
 #ScrollbarRow {
     overflow-y: scroll;
-    min-height: 200px;
+    max-height: 200px;
 }
 
 /* Scrollbar */
