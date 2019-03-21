@@ -11,7 +11,7 @@ if(localStorage.getItem('username')==localStorage.getItem('viewInfo'))
 
 function loadServer(serverID) {
     localStorage.setItem("serverID", serverID);
-    //window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/chat.html';
+    //window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/chat.html';
     console.log("TEST");
 }
 //Creates a private server and sets the currently logged in user as the leader
@@ -24,11 +24,11 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
         success: function(result) {
             //If successful, go to the home page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(result) {
             //If not successful, return to the profile page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
     })  
@@ -43,7 +43,7 @@ $(document).ready(function(){
         data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
         success: function(result) {
             //If successful, go to the home page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
             if(result == 0){
                 alert("Password failed to change.");
             }
@@ -53,7 +53,7 @@ $(document).ready(function(){
         },
         error: function(result) {
             //If not successful, return to the profile page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
             alert("Password failed to change.");
         }
     })
@@ -74,10 +74,10 @@ $(document).ready(function(){
             else{
                 alert("Email does not match an account in the Database.");
             }
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/index.html';
         },
         error: function(result) {
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
             alert("Failed to reset your password.");
         }
     })
@@ -230,11 +230,11 @@ function createImFile() {
         success: function(result) {
             //If successful, go to the instant_messages page
             localStorage.setItem('imName', result.file);
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/instant_messages.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {
             //If not successful, return to the profile page
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/profile_page.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
 }

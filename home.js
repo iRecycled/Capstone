@@ -85,7 +85,7 @@ function acceptServerRequest(name)
         url: "respondServerInvite.php",
         data: {user: localStorage.getItem('username'), serverName: name, accept: "true"},
         success: function(data) {
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
             alert("Failed to accept server request.");
@@ -100,7 +100,7 @@ function rejectServerRequest(name)
         url: "respondServerInvite.php",
         data: {user: localStorage.getItem('username'), serverName: name, accept: "false"},
         success: function(data) {
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
             alert("Failed to reject server request.");
@@ -143,7 +143,7 @@ function acceptFriendRequest(name)
         url: "respondFriendRequest.php",
         data: {friend: localStorage.getItem('username'), user: name, accept: "true"},
         success: function(data) {
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
             alert("Failed to accept friend request.");
@@ -158,7 +158,7 @@ function rejectFriendRequest(name)
         url: "respondFriendRequest.php",
         data: {friend: localStorage.getItem('username'), user: name, accept: "false"},
         success: function(data) {
-            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
         },
         error: function(data) {
             alert("Failed to reject friend request.");
