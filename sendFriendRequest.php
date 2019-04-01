@@ -7,9 +7,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-        $data = 0;
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
+
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
@@ -38,8 +38,11 @@ header("index.php");
         $response = array();
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $alreadyFriends = true;
+                $response[] = $row;
         }
+
+        echo json_encode($response);
+        return;
 
         if($alreadyFriends == true) {
                 echo("Already friends with this user.");
