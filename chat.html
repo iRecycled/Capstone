@@ -146,7 +146,8 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                document.getElementById("onlineList") +=  obj.UserName[0].username;
+                console.log(obj.UserName);
+                //document.getElementById("onlineList") =  obj.UserName " ";
                
                 
 
@@ -176,6 +177,7 @@
     crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
     <!-- Scrollbar Custom CSS -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -425,6 +427,9 @@ function isAllowedToInvite(){
                 <div id="Delete" style="padding-left:12px;"></div>
             </li>
             <li></li>
+
+            <hr>
+
             <div class="onlineUserTable">
                 <table class="userTable">
                         <tr>
@@ -438,7 +443,7 @@ function isAllowedToInvite(){
                             }
                             
                             </style>
-                            <li ><b>Online Users</b></li>
+                            <li><h4>Online Users</h4></li>
                         </ul>  
                         </td>                          
                         </tr>
