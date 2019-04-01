@@ -29,8 +29,8 @@
                 
                 $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
                 //$stmt = simpleQuery($db,$query);
-                echo("Why tho?");
-                return;
+                // echo("Why tho?");
+                // return;
             }
             //if user IS online update the database for user to 1
             else{
