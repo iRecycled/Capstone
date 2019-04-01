@@ -227,7 +227,7 @@
                         <th>
                             <ul>
                                     <!-- Unblock Button trigger modal -->
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#InviteUser">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#RemoveBlockedUser">
                                         Unblock User
                                     </button>
                             </ul>
@@ -326,133 +326,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary">Remove</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Inivte button Modal -->
-    <div class="modal fade" id="InviteUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Invite User to <div class='servername'></div>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <label for="servertitle">User:</label>
-                    <input type="text" class="servertitle" class="form-control">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Invite</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Friends Modal -->
-    <div class="modal fade" id="friends" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" center>Friends</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        User1
-                    </div>
-                    <div class="container-fluid">
-                        User2
-                    </div>
-                    <div class="container-fluid">
-                        User3
-                    </div>
-                    <div class="container-fluid">
-                        User4
-                    </div>
-
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove Friend</button>
-                    <button type="button" class="btn btn-primary">Add Friend</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Register-->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold" id="registerModal">Register</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="form-group mx-3">
-                    <div class="md-form">
-                        <label for="form1">Username</label>
-                        <input type="text" id="form1" class="form-control">
-                    </div>
-
-                    <div class="md-form mb-3">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Email:</label>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Password:</label>
-                        <input type="password" id="defaultForm-pass" class="form-control validate">
-                    </div>
-
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Login -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold" id="loginModal">Log-in</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="defaultForm-email-login">Email</label>
-                        <input type="email" id="defaultForm-email-login" class="form-control validate">
-                    </div>
-
-                    <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass-login">Password</label>
-                        <input type="password" id="defaultForm-pass-login" class="form-control validate">
-                    </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-success">Login</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
