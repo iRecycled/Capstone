@@ -146,10 +146,9 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                document.getElementById("onlineList").append(obj.UserName);
-               
-                
-
+                jQuery.each(data, function(i){
+                    document.getElementById("onlineList").append(obj[i].UserName);
+                })
             },
             error: function(data) {
                 console.log("fail here");
