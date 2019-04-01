@@ -15,8 +15,7 @@
            
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            
-            $alreadyExists = FALSE;
+            $alreadyExists = false;
              while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 //$alreadyExists = TRUE;
                 //return $alreadyExists;
