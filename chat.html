@@ -146,14 +146,9 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                var listItemString = $('#onlineList').html();
-                obj.forEach(addList);                
-                function addList(obj,index){
-                    var listItem = $('<li>' + listItemString + '</li>');
-                    var listItemVal = $(listItem);
-                    $('#onlineList').append(listItem);
-                }
-                //createOnlineList(obj);
+                document.getElementById("onlineList") +=  obj.UserName[0].username;
+               
+                
 
             },
             error: function(data) {
