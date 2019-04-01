@@ -56,7 +56,7 @@
             <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
                 <script>
                     function setUserAvatar(obj){
-                        document.getElementById("username").innerHTML = '<img src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
+                        document.getElementById("username").innerHTML = '<img class="avatar" src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
                     }
                     $.ajax({
                         type: "post",
