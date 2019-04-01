@@ -167,7 +167,7 @@ $(document).ready(function(){
             if(localStorage.getItem('viewInfo' === localStorage.getItem('username'))){
                 document.getElementById("email").innerHTML = obj.email;
             } else {
-                document.getElementById("email").innerHTML = hidden;
+                document.getElementById("email").innerHTML = "hidden";
             }
             document.getElementById("chatCount").innerHTML = obj.chatCount;
             document.getElementById("privateCount").innerHTML = obj.privateCount;
