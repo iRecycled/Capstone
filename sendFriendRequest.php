@@ -38,9 +38,11 @@ header("index.php");
         $response = array();
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $alreadyFriends = true;
-                echo($row);
+                $response[] = $row;
         }
+
+        echo json_encode($response);
+        return;
 
         if($alreadyFriends == true) {
                 echo("Already friends with this user.");
