@@ -153,10 +153,10 @@
                     var list = document.getElementById("onlineUserList");
                     var arr = [];
                     for(var i = 0; i < obj.length;i++){
-                        arr.push(obj[i].UserName + "\n");
+                        arr.push(obj[i].UserName);
                         //var output = obj[i].UserName;
                     }
-                list.append(arr);
+                list.append("<li>" + arr + "<li>");
                 }
                 //document.getElementById("onlineList").append(userName);
                 
