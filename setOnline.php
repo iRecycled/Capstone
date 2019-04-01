@@ -26,6 +26,8 @@
             
             //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
+                echo("Why tho?");
+                return;
                 $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
             }
