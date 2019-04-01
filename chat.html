@@ -151,11 +151,12 @@
                 if(obj.length >= 1){
                     //var userName = obj[0].UserName;
                     var list = document.getElementById("onlineUserList");
+                    var arr = [];
                     for(var i = 0; i < obj.length;i++){
-                        list.append(obj[i].UserName);
+                        arr.push(obj[i].UserName);
                         //var output = obj[i].UserName;
                     }
-                //list.append(output);
+                list.append(arr);
                 }
                 //document.getElementById("onlineList").append(userName);
                 
