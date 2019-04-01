@@ -19,7 +19,7 @@
             $alreadyExists = FALSE;
              while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 //$alreadyExists = TRUE;
-                return $alreadyExists;
+                //return $alreadyExists;
                 echo("Why tho?");
                 return;
              }
