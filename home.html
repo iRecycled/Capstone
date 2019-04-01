@@ -57,7 +57,7 @@
                 <script>
                     function setUserAvatar(obj){
                         console.log(obj)
-                        document.getElementById("username").innerHTML = '<img src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
+                        //document.getElementById("username").innerHTML = '<img src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
                     }
                     $.ajax({
                         type: "post",
@@ -65,7 +65,6 @@
                         data: {username: localStorage.getItem('username')},
                         success: function(data) {
                             obj = JSON.parse(data);
-                            console.log(obj)
                             setUserAvatar(obj);
                         },
                         error: function(data) {
