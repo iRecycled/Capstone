@@ -144,12 +144,15 @@
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
-                obj = JSON.parse(data);
+                var obj = JSON.parse(data);
                 console.log(obj);
-                createOnlineList(obj);
+                document.getElementById("onlineList").append(obj.UserName);
+               
+                
+
             },
             error: function(data) {
-                console.log("fail");
+                console.log("fail here");
             }
 })
         setInterval('chat.update(targetfile)',1000);
@@ -173,6 +176,7 @@
     crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
     <!-- Scrollbar Custom CSS -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -411,9 +415,9 @@ function isAllowedToInvite(){
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4 style="padding:15px; float:left;"><u>Chatrooms</u></h4>
+            <h4><u>Chatrooms</u></h4>
         </div>
-
+        <br>
         <ul class="list-unstyled components" style="padding: 10px;">
             <li>
                 <div id="Invite" style="padding-left:12px;"></div>
@@ -422,6 +426,9 @@ function isAllowedToInvite(){
                 <div id="Delete" style="padding-left:12px;"></div>
             </li>
             <li></li>
+
+            <hr>
+
             <div class="onlineUserTable">
                 <table class="userTable">
                         <tr>
@@ -435,7 +442,7 @@ function isAllowedToInvite(){
                             }
                             
                             </style>
-                            <li ><b>Online Users</b></li>
+                            <li><h4>Online Users</h4></li>
                         </ul>  
                         </td>                          
                         </tr>
@@ -444,7 +451,7 @@ function isAllowedToInvite(){
             
         </ul>
         <div class="sidebar">
-            <h4 style="padding:15px; float:left;" href="server_settings.html"><u>Server Settings</u></h4>
+            <h4 href="server_settings.html"><u>Server Settings</u></h4>
         </div>
     </nav>
 
