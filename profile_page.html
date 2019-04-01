@@ -141,16 +141,14 @@
         
         <ul class="list-unstyled components">
           <li>
-            <!-- <a href="#" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</a> -->
             <button type="button" class="btn btn-primary" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</button>
           </li>
           <li>
-            <!-- <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a> -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePrivateServerModal">Delete Server</button>
           </li>
-          <li>
+          <!-- <li>
             <button type="button" class="btn btn-success" href="#">Invite to server</button>
-          </li>
+          </li> -->
         </ul>
         
         <hr>
@@ -167,23 +165,6 @@
         <div class="row" >
           <div class="col-lg-4" id="firstRow">
             <span id = "profilePic"></span>
-            <script>
-              function userProfilePic(obj){
-                  document.getElementById("profilePic").innerHTML = '<img class="profilePicture" src="'+obj[0].Avatar+'"/>';
-              }
-              $.ajax({
-                  type: "post",
-                  url: "getUserAvatar.php",
-                  data: {username: localStorage.getItem('username')},
-                  success: function(data) {
-                      obj = JSON.parse(data);
-                      userProfilePic(obj);
-                  },
-                  error: function(data) {
-                      console.log("fail");
-                  }
-              })
-            </script>
             <h5><script>localStorage.getItem("username");</script></h5>
           </div>
           
