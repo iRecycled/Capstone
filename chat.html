@@ -146,10 +146,9 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                document.getElementById("onlineList").append(obj.UserName);
-               
-                
-
+                jQuery.each(obj, function(i){
+                    document.getElementById("userTable").append(obj[i].UserName);
+                })
             },
             error: function(data) {
                 console.log("fail here");
@@ -398,14 +397,28 @@ function isAllowedToInvite(){
     </ul>
     <ul class="navbar-nav right">
         <a class="nav-item nav-link active" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
-        <script>
-        function selfProfilePage(){
-            localStorage.setItem('viewInfo', localStorage.getItem("username"));
-        }
+        <script>         
+            function selfProfilePage(){
+                localStorage.setItem('viewInfo', localStorage.getItem("username"));
+            }
         </script>
         <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+                     function setUserAvatar(obj){
+                        document.getElementById("username").innerHTML = '<img class="avatar" src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
+                    }
+                    $.ajax({
+                        type: "post",
+                        url: "getUserAvatar.php",
+                        data: {username: localStorage.getItem('username')},
+                        success: function(data) {
+                            obj = JSON.parse(data);
+                            setUserAvatar(obj);
+                        },
+                        error: function(data) {
+                            console.log("fail");
+                        }
+                    })
                 </script>
             <span class="sr-only">(current)</span></a>
         </ul>

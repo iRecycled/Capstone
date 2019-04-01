@@ -250,3 +250,12 @@ a:hover{
     position: fixed;
     right: 10px;
 }
+
+.avatar{
+    border-radius: 50px;
+    border: 2px solid white;
+    background-color: white;
+    padding: 0px; 
+    width: 30px;
+    height: 30px; 
+}

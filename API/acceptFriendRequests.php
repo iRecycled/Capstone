@@ -11,6 +11,7 @@
 
             //Fetches the userId for the user that's logged in
             $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
+            echo json_encode($query);
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId);
             $stmt->fetch();
@@ -28,4 +29,5 @@
             $stmt = simpleQuery($db, $query);
             }
         mysql_close($db);
+        
 ?>

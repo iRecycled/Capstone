@@ -54,7 +54,21 @@
       </script>
       <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
         <script>
-          document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+          function setUserAvatar(obj){
+              document.getElementById("username").innerHTML = '<img class="avatar" src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
+          }
+          $.ajax({
+              type: "post",
+              url: "getUserAvatar.php",
+              data: {username: localStorage.getItem('username')},
+              success: function(data) {
+                  obj = JSON.parse(data);
+                  setUserAvatar(obj);
+              },
+              error: function(data) {
+                  console.log("fail");
+              }
+          })
           function selfProfilePage(){
             console.log("clicked");
             localStorage.setItem('viewInfo', localStorage.getItem("username"));
@@ -103,7 +117,7 @@
         <hr>
         
         <div class="sidebar-header">
-          <h4><a href="Instant_messages.html">Instant Messages</a></h4>
+          <h4><a href="#">Instant Messages</a></h4>
         </div>
         
         <hr>
@@ -132,10 +146,10 @@
           </li>
           <li>
             <!-- <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a> -->
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deletePrivateServerModal">Delete Server</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePrivateServerModal">Delete Server</button>
           </li>
           <li>
-            <a href="#">Invite to server</a>
+            <button type="button" class="btn btn-success" href="#">Invite to server</button>
           </li>
         </ul>
         
