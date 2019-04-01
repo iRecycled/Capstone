@@ -55,7 +55,23 @@
             </script>
             <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>    
                 <script>
-                    document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + " " + localStorage.getItem("username");
+                    function setUserAvatar(obj){
+                        console.log(obj)
+                        document.getElementById("username").innerHTML = '<img src="'+obj[0].Avatar+'"></i>' + " " + localStorage.getItem("username");
+                    }
+                    $.ajax({
+                        type: "post",
+                        url: "getServerList.php",
+                        data: {username: localStorage.getItem('username')},
+                        success: function(data) {
+                            obj = JSON.parse(data);
+                            console.log(obj)
+                            setUserAvatar(obj);
+                        },
+                        error: function(data) {
+                            console.log("fail");
+                        }
+                    })
                     function selfProfilePage(){
                         console.log("clicked");
                         localStorage.setItem('viewInfo', localStorage.getItem("username"));
