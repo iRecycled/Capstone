@@ -9,14 +9,7 @@ header("index.php");
         }
         $username = $_POST['username']; 
         // 2. Run the Query
-        $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
-        $stmt = simpleQuery($db, $query);
-  
-        $stmt->bind_result($userID);
-        $stmt->fetch();
-
-        $query = "select wu.UserName, wu.Avatar from WebUser wu join FriendRequest fr on wu.UserID = fr.FromID where ToID = '$userID';";
-        
+        $query = "SELECT Avatar FROM WebUser WHERE username = '$username';";        
         
         $result = $db->query($query);
         $response = array();
