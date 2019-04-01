@@ -39,11 +39,11 @@
             url: "forgotPassword.php",
             data:{username: localStorage.getItem('username'), email: document.getElementById("getEmail").value},
             success: function(result) { 
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/login.html';
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/login.html';
                     alert("You received an email with your new password!");
             },
             error: function(result) {
-                window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/index.html';
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/index.html';
                 alert("Failed to reset your password.");
             }
             })
@@ -70,7 +70,7 @@
                               //login succsess
                             localStorage.setItem("sessionID", data);
                             localStorage.setItem("sessionID", data);
-                            window.location.href = 'http://144.13.22.61/CS458SP19/Team1/Capstone/home.html';
+                            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
                           }
                         }
                     })
