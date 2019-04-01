@@ -8,9 +8,9 @@
 
     $name = $_POST['username']; 
     //Gets information relating to the user
-    $query = "SELECT UserID, UserName, email FROM WebUser WHERE UserName = '$name';";
+    $query = "SELECT UserID, UserName, email, Avatar FROM WebUser WHERE UserName = '$name';";
     $stmt = simpleQuery($db, $query);
-    $stmt->bind_result($userID, $username, $email);
+    $stmt->bind_result($userID, $username, $email, $avatar);
     $stmt->fetch();
     //SELECT ServerName FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username';";
     
@@ -38,7 +38,8 @@
         "email": <?=json_encode($email)?>,
         "chatCount": <?=json_encode($chatCount)?>,
         "privateCount": <?=json_encode($privateCount)?>,
-        "friendsCount": <?=json_encode($friendCount)?>
+        "friendsCount": <?=json_encode($friendCount)?>,
+        "avatar": <?=json_encode($avatar)?>
     <?php
     echo "}";
 ?>

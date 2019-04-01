@@ -58,16 +58,30 @@
                     </script>
                 <a class="nav-item nav-link active" href="profile_page.html" id="username" onclick='selfProfilePage()'>
                     <script>
-                        document.getElementById("username").innerHTML = '<i class="fas fa-user-circle" aria-hidden="true" ></i>' + localStorage.getItem("username");
-                            function selfProfilePage(){
-                                console.log("click called")
-                                localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                        function setUserAvatar(obj){
+                            document.getElementById("username").innerHTML = '<img class="avatar" src="'+obj[0].Avatar+'"></img>' + " " + localStorage.getItem("username");
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: "getUserAvatar.php",
+                            data: {username: localStorage.getItem('username')},
+                            success: function(data) {
+                                obj = JSON.parse(data);
+                                setUserAvatar(obj);
+                            },
+                            error: function(data) {
+                                console.log("fail");
                             }
-                            document.getElementById("username").addEventListener('onclick',
-                            function(){
-                                selfProfilePage();
-                            });
-                        </script>
+                        })
+                        function selfProfilePage(){
+                            console.log("click called")
+                            localStorage.setItem('viewInfo', localStorage.getItem("username"));
+                        }
+                        document.getElementById("username").addEventListener('onclick',
+                        function(){
+                            selfProfilePage();
+                        });
+                    </script>
                     <span class="sr-only">(current)</span>
                 </a>
 
@@ -94,7 +108,7 @@
 
                 <li>
                     <a href="#sidebarServers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Private
-                        Chatrooms</a>
+                        Chatrooms <span class="caret"></span></a>
                     <ul class="collapse list-unstyled" id="sidebarServers">
                         <!-- populated in JavaScript-->
                     </ul>
@@ -112,7 +126,7 @@
                 <hr>
 
                 <div class="sidebar-header">
-                    <h4><a href="Instant_messages.html">Instant Messages</a></h4>
+                    <h4><button type="button" class="btn btn-secondary" href="Instant_messages.html">Instant Messages</button></h4>
                 </div>
                 
                 <hr>
@@ -121,16 +135,14 @@
                     <div class="sidebar-header">
                         <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a></h4>
                     </div>
-
-                    <ul class="collapse list-unstyleda" id="sidebarFriends">
-                    </ul>
+                    <ul class="collapse list-unstyleda" id="sidebarFriends"></ul>
                 </li>
 
                 <hr>
 
                 <li>
                     <!-- <a href="#" data-toggle="modal" data-target="#deletePrivateServerModal">Delete server</a> -->
-                    <button type="button" class="btn btn-secondary">Delete Server</button>
+                    <button type="button" class="btn btn-danger">Delete Server</button>
                 </li>
 
                 <hr>
@@ -182,9 +194,6 @@
                 <thead>
                     <tr>
                         <th>
-                            <h4>Server Info</h4>
-                        </th>
-                        <th>
                             <h4>Members</h4>
                         </th>
                         <th>
@@ -194,69 +203,33 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row" id="ServerInfo">
-                            <ul><b>Server Name:</b>
-                                <div class='servername'></div>
-                            </ul>
-                        </td>
                         <td id="UserList">
 
                         </td>
                         <td id="BlockList">
-                            <div id="ScrollbarRow">
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                                <ul>user1</ul>
-                                <ul>user2</ul>
-                                <ul>user3</ul>
-                                <ul>...</ul>
-                            </div>
+
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <ul>
-                                <a href="server_chat_logs.txt" target="_blank" class="btn btn-outline-dark" role="button">View
-                                    Chat Log</a>
-                            </ul>
-                        </td>
                         <th>
                             <ul>
-                                <!-- Invite Button trigger modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#InviteUser">
-                                    Invite
-                                </button>
+                                    <!-- Remove User Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveUser">
+                                        Remove User
+                                    </button>
 
-                                <!-- Remove User Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RemoveUser">
-                                    Remove User
-                                </button>
+                                    <!-- Remove User Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#BlockUser">
+                                        Block User
+                                    </button>
                             </ul>
                         </th>
                         <th>
                             <ul>
-                                <!-- Block User Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#BlockUser">
-                                    Block User
-                                </button>
+                                    <!-- Unblock Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#InviteUser">
+                                        Unblock User
+                                    </button>
                             </ul>
                         </th>
 

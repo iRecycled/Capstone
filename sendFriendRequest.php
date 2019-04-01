@@ -7,9 +7,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-        $data = 0;
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
+
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
@@ -27,15 +27,13 @@ header("index.php");
         $query = "SELECT * FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
         
         $result = $db->query($query);
-        $response = array();
         $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
         }
-        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDFTo' AND Friend2ID =  '$userIDFrom');";
+        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDTo' AND Friend2ID =  '$userIDFrom');";
         
         $result = $db->query($query);
-        $response = array();
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyFriends = true;
