@@ -146,7 +146,7 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                var userName = '<li>' + obj[0].UserName + '<li>';
+                var userName = obj[0].UserName;
                 document.getElementById("onlineList").append(userName);
                 
             },
