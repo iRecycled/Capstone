@@ -28,7 +28,7 @@
             if($alreadyExists == false){
                 
                 $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
-                $stmt = simpleQuery($db,$query);
+                //$stmt = simpleQuery($db,$query);
                 echo("Why tho?");
                 return;
             }
