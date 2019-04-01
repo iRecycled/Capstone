@@ -4,11 +4,6 @@
     /* max-width: 20%; */
 }
 
-.sidebar-header {
-    color: #f1f1f1;
-    /* align-content: center; */
-}
-
 hr {
     border-color: grey;
 }
@@ -28,10 +23,10 @@ hr {
     margin-left: -250px;
 }
 
-#sidebar {
+/* #sidebar {
     max-width: 250px;
     min-height: 100vh;
-}
+} */
 
 #sidebar ul.components {
     padding: 20px;
