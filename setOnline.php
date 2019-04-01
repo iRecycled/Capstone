@@ -26,9 +26,7 @@
             
             //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
-                
-                $query = "UPDATE INTO Online VALUES ($UserID, $serverID, 0);";
-                //$query = "INSERT INTO Online VALUES ($UserID, $serverID, 0);";
+                $query = "INSERT INTO Online VALUES ($UserID, $serverID, 0);";
                 $stmt = simpleQuery($db,$query); //Query prepare failed (1064)
             }
             //if user IS online update the database for user to 1
