@@ -133,9 +133,11 @@
             data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
             success: function(data) {
                 console.log("UserOnline");
+                console.log(data);
             },
             error: function(data) {
                 console.log("failed to be online");
+                console.log(data);
             }
         })
         //getOnline

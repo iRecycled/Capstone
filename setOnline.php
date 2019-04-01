@@ -12,14 +12,17 @@
     
             $stmt->bind_result($userID);
             $stmt->fetch();
+           
 
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            $response = array();
+            //$response = array();
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
             }
+            echo("Hello");
+            return;
             if($alreadyExists == false){
                 $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
