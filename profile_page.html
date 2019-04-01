@@ -165,23 +165,6 @@
         <div class="row" >
           <div class="col-lg-4" id="firstRow">
             <span id = "profilePic"></span>
-            <script>
-              function userProfilePic(obj){
-                  document.getElementById("profilePic").innerHTML = '<img class="profilePicture" src="'+obj[0].Avatar+'"/>';
-              }
-              $.ajax({
-                  type: "post",
-                  url: "getUserAvatar.php",
-                  data: {username: localStorage.getItem('username')},
-                  success: function(data) {
-                      obj = JSON.parse(data);
-                      userProfilePic(obj);
-                  },
-                  error: function(data) {
-                      console.log("fail");
-                  }
-              })
-            </script>
             <h5><script>localStorage.getItem("username");</script></h5>
           </div>
           
