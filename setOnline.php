@@ -16,12 +16,13 @@
             
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            echo("Hello");
-            return;
+            
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
             }
+            echo("Hello");
+            return;
             
             //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
