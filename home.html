@@ -61,7 +61,7 @@
                     }
                     $.ajax({
                         type: "post",
-                        url: "getServerList.php",
+                        url: "getUserAvatar.php",
                         data: {username: localStorage.getItem('username')},
                         success: function(data) {
                             obj = JSON.parse(data);
