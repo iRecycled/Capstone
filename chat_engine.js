@@ -151,6 +151,7 @@ function generateMsg(text, sender, time)
         type: "post",
         url: "getUserAvatar.php",
         data: {username: username},
+        async: false,
         success: function(data) {
             obj = JSON.parse(data);
             avatar = obj[0].Avatar;
