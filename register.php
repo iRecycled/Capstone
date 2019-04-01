@@ -37,7 +37,7 @@ header("index.php");
                 }
         }
         $password=password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email',null)";
+        $query = "INSERT INTO WebUser VALUES ((SELECT * FROM (SELECT COALESCE(MAX(UserId)+1,0) FROM WebUser) as tmptable), '$username', '$password', '$email',null, 'emotes/terry.png', null)";
 	$stmt = simpleQuery($db, $query);
         if($stmt != NULL) {
                 //added success
