@@ -146,7 +146,7 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                //document.getElementById("onlineList") =  obj;
+                document.getElementById("onlineList").append(obj);
                
                 
 
@@ -451,7 +451,7 @@ function isAllowedToInvite(){
             
         </ul>
         <div class="sidebar">
-            <h4 style="padding:15px; float:left;" href="server_settings.html"><u>Server Settings</u></h4>
+            <h4 href="server_settings.html"><u>Server Settings</u></h4>
         </div>
     </nav>
 
