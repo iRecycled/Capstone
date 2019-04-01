@@ -28,5 +28,5 @@
             $stmt = simpleQuery($db, $query);
             }
         mysql_close($db);
-        echo json_encode($username);
+        echo json_encode($userId);
 ?>
