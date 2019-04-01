@@ -147,7 +147,7 @@
                 var obj = JSON.parse(data);
                 console.log(obj);
                 var userName = obj[0].UserName;
-                var list = document.getElementById("onlineList");
+                var list = document.getElementById("onlineUserList");
                 for(var i in obj.UserName){
                     var output = "<li>" + obj[i].UserName + "<li>";
                 }
@@ -460,7 +460,7 @@ function isAllowedToInvite(){
                             }
                             
                             </style>
-                            <li><h4>Online Users</h4></li>
+                            <li id="onlineUserList"><h4>Online Users</h4></li>
                         </ul>  
                         </td>                          
                         </tr>
