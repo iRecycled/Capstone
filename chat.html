@@ -135,7 +135,7 @@
                 console.log("UserOnline");
             },
             error: function(data) {
-                console.log("fail");
+                console.log("failed to be online");
             }
         })
         //getOnline
@@ -456,6 +456,7 @@ function isAllowedToInvite(){
                             li {
                                 list-style-type: none;
                                 color: white;
+
                             }
                             
                             </style>
@@ -465,7 +466,6 @@ function isAllowedToInvite(){
                         </tr>
                 </table>
             </div>
-            
         </ul>
         <div class="sidebar">
             <h4 href="server_settings.html"><u>Server Settings</u></h4>
@@ -567,7 +567,7 @@ function isAllowedToInvite(){
       </div>
 
 <!--Delete an existing private Server Modal-->
-<div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal fade" id="deleteServerModal" tabindex="1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">

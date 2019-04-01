@@ -165,7 +165,7 @@ $(document).ready(function(){
             console.log(obj);
             document.getElementById("profilePic").innerHTML = '<img class="profilePicture" src="'+obj.avatar+'"/>'
             document.getElementById("userName").innerHTML = obj.name;
-            if(localStorage.getItem('viewInfo' === localStorage.getItem('username'))){
+            if(localStorage.getItem('viewInfo') === localStorage.getItem('username')){
                 document.getElementById("email").innerHTML = obj.email;
             } else {
                 document.getElementById("email").innerHTML = "hidden";
