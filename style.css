@@ -265,7 +265,7 @@ a:hover{
 }
 
   .profileContainer:hover .profileOverlay {
-    opacity: 1;
+    opacity: 0.8;
   }
   
   .profileText {
