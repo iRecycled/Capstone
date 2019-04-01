@@ -259,7 +259,7 @@ a:hover{
     background-color: #008CBA;
   }
   
-  .profileContainer:hover .overlay {
+  .profileContainer:hover .profileOverlay {
     opacity: 1;
   }
   
