@@ -13,11 +13,11 @@
             $stmt->bind_result($userID);
             $stmt->fetch();
            
-            echo("Hello");
-            return;
+            
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            
+            echo("Hello");
+            return;
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
