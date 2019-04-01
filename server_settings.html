@@ -133,7 +133,9 @@
 
                 <li>
                     <div class="sidebar-header">
-                        <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends</a></h4>
+                        <h4><a href="#sidebarFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friends 
+                        <span class="caret"></span>
+                        </a></h4>
                     </div>
                     <ul class="collapse list-unstyleda" id="sidebarFriends"></ul>
                 </li>
@@ -194,6 +196,9 @@
                 <thead>
                     <tr>
                         <th>
+                            <h4>Server Info</h4>
+                        </th>
+                        <th>
                             <h4>Members</h4>
                         </th>
                         <th>
@@ -203,6 +208,11 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td scope="row" id="ServerInfo">
+                            <ul><b>Server Name:</b>
+                                <div class='servername'></div>
+                            </ul>
+                        </td>
                         <td id="UserList">
 
                         </td>

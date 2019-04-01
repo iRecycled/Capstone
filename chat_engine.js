@@ -146,7 +146,6 @@ function setViewName(name){
 function generateMsg(text, sender, time)
 {
     var username = sender;
-
     //creates html code
     msg = "\
     <tr id = 'singleMessage'>\
