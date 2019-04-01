@@ -177,7 +177,7 @@
                   data: {username: localStorage.getItem('username')},
                   success: function(data) {
                       obj = JSON.parse(data);
-                      setUserAvatar(obj);
+                      userProfilePic(obj);
                   },
                   error: function(data) {
                       console.log("fail");
