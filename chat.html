@@ -147,7 +147,12 @@
                 var obj = JSON.parse(data);
                 console.log(obj);
                 var userName = obj[0].UserName;
-                document.getElementById("onlineList").append(userName);
+                var list = document.getElementById("onlineList");
+                for(var i in obj.UserName){
+                    var output = "<li>" + obj[i].UserName + "<li>";
+                }
+                list.append(output);
+                //document.getElementById("onlineList").append(userName);
                 
             },
             error: function(data) {
