@@ -148,8 +148,8 @@
                 console.log(obj);
                 var userName = obj[0].UserName;
                 var list = document.getElementById("onlineUserList");
-                for(var i in obj.UserName){
-                    var output = "<li>" + obj[i].UserName + "<li>";
+                for(var i in obj){
+                    var output = obj[i].UserName;
                 }
                 list.append(output);
                 //document.getElementById("onlineList").append(userName);
