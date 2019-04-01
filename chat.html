@@ -146,7 +146,7 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                jQuery.each(data, function(i){
+                jQuery.each(obj, function(i){
                     document.getElementById("onlineList").append(obj[i].UserName);
                 })
             },
