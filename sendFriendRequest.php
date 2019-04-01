@@ -10,6 +10,10 @@ header("index.php");
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
 
+        echo($username);
+        echo($friendname);
+        return;
+
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
