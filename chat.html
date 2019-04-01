@@ -151,7 +151,7 @@
                 if(obj.length >= 1){
                     //var userName = obj[0].UserName;
                     var list = document.getElementById("onlineUserList");
-                    for(var i in obj.length){
+                    for(var i = 0; i < obj.length;i++){
                         var output = obj[i].UserName;
                     }
                 list.append(output);
