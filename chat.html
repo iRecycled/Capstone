@@ -144,7 +144,7 @@
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
-                var obj = JSON.stringify(data);
+                var obj = JSON.parse(data);
                 console.log(obj);
                 document.getElementById("onlineList") =  obj;
                
