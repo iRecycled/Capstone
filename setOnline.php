@@ -18,11 +18,11 @@
             $result = $db->query($query);
             
             $alreadyExists = false;
-            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $alreadyExists = true;
-            }
-            echo("Hello");
-            return;
+            // while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            //     $alreadyExists = true;
+            // }
+            // echo("Hello");
+            // return;
             
             //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
