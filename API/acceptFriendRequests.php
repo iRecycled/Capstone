@@ -16,18 +16,16 @@
             $stmt->bind_result($userId);
             $stmt->fetch();
 
-            $requesters = array();
             $query = "SELECT FromID FROM FriendRequest WHERE ToID = $userId";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($requesters);
             $stmt->fetch();
 
-            foreach ($requesters as $requester){
-            $query = "INSERT INTO Friend VALUES ($requester,$userId)";
+            
+            $query = "INSERT INTO Friend VALUES ($requesters,$userId)";
             $stmt = simpleQuery($db, $query);
-            $query = "DELETE FROM FriendRequest WHERE FromID=$requester and ToID=$userId";
+            $query = "DELETE FROM FriendRequest WHERE FromID=$requesters and ToID=$userId";
             $stmt = simpleQuery($db, $query);
-            }
         mysql_close($db);
         echo json_encode($requesters);
 ?>
