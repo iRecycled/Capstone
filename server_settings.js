@@ -126,7 +126,7 @@ function createSidebarChats(obj, id) {
 function createSidebarFriends(obj, id) {
     for(let x in obj) {
         let memberList = document.getElementById(id);
-        let list = document.createElement("li");
+        let list = document.createElement("ul");
         let link = document.createElement("a");
         let text = document.createTextNode(obj[x].UserName);
         //link.id = obj[x].ServerID;
