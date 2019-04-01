@@ -122,7 +122,7 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj);
-            
+            let username = localStorage.getItem('username');
             for( var x in obj) {
                 let friendsList = document.getElementById("sidebarFriends");
                 let listItem = document.createElement("li");
@@ -131,11 +131,7 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(obj[x].UserName)) {
-                    link.onclick = function() {
-                        let fileName = localStorage.getItem('username') + "&" + obj[x].UserName;
-                        localStorage.setItem("imName", fileName); // won't work correctly yet
-                    };
+                if( checkImExists(username, obj[x].UserName)) {
                     link.href = "instant_messages.html"; 
                 }
                 else {
@@ -233,7 +229,7 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
-            localStorage.setItem('imName', result.file);
+            localStorage.setItem('imName', result); // needs to return ID that was created
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {
@@ -242,10 +238,24 @@ function createImFile() {
         }
     })
 }
-function checkImExists(name) {
-    // TODO ajax call to query database and see if file exists
-    // TODO set flag to correct value
-    return false;
+function checkImExists(name1, name2) {
+    // might be broken
+    $.ajax({
+        type: "post",
+        url: "getIMList.php",
+        data: {loggedInUser: name1, otherUser: name2},
+        success: function(data) {
+            if(data !== -1) {
+                localStorage.setItem('imName', data);
+                return true;
+            } else {
+                return false;
+            }
+        },
+        error: function(data) {
+            return false;
+        }
+    })
 }
 function CheckFriend(name){
     //get list of user's friends
