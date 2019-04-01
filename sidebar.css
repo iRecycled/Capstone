@@ -1,6 +1,6 @@
 #sidebar {
-    /* width:300px; */
-    max-width: 250px;
+    width:300px;
+    /* max-width: 250px; */
     overflow-y: scroll;
     min-height: 100vh;
 }
