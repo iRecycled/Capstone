@@ -1,7 +1,7 @@
 #sidebar {
-    width:200px;
+    width:300px;
     overflow-y: scroll;
-    max-width: 20%;
+    /* max-width: 20%; */
 }
 
 .sidebar-header {
