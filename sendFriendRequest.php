@@ -39,7 +39,7 @@ header("index.php");
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyFriends = true;
-                echo($row + "    -     ");
+                echo($row);
         }
 
         if($alreadyFriends == true) {
