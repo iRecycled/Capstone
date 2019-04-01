@@ -13,7 +13,6 @@
             $stmt->bind_result($userID);
             $stmt->fetch();
            
-            
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
             
