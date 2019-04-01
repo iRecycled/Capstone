@@ -18,7 +18,7 @@
             
             $alreadyExists = false;
              while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                alreadyExists = true;
+                $alreadyExists = true;
                 echo("Hello");
                 return;
              }
