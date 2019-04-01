@@ -26,7 +26,7 @@
             
             //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
-                $query = "REPLACE INTO Online VALUES ($userID, $serverID, 1);";
+                $query = "INSERT IGNORE INTO Online ON DUPLICATE KEY UPDATE VALUES ($userID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
             }
             //if user IS online update the database for user to 1
