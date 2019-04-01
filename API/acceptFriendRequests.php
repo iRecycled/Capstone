@@ -10,7 +10,7 @@
             $username = $data->username;
 
             //Fetches the userId for the user that's logged in
-            $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
+            $query = "SELECT UserId FROM WebUser WHERE UserName = $username";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId);
             $stmt->fetch();
