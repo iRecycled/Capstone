@@ -18,19 +18,6 @@ body {
     color: inherit;
 }
 
-#sidebar {
-    max-width: 250px;
-    min-height: 100vh;
-}
-
-#sidebar ul.components {
-    padding: 20px;
-}
-
-#sidebar ul li {
-    padding-top: 20px;
-}
-
 ul ul a {
     font-size: .8em !important;
     color: #ddd;
@@ -50,16 +37,6 @@ a {
 a:hover{
     color: white;
     text-decoration: none;
-}
-
-.sidebar-header{
-    color:white;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-#sidebar.active {
-    margin-left: -250px;
 }
 
 #dropdown-toggle {
