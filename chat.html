@@ -148,13 +148,14 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                if(obj.length < 1){break;}
-                var userName = obj[0].UserName;
-                var list = document.getElementById("onlineUserList");
-                for(var i in obj){
-                    var output = obj[i].UserName;
-                }
+                if(obj.length >= 1){
+                    var userName = obj[0].UserName;
+                    var list = document.getElementById("onlineUserList");
+                    for(var i in obj){
+                        var output = obj[i].UserName;
+                    }
                 list.append(output);
+                }
                 //document.getElementById("onlineList").append(userName);
                 
             },
