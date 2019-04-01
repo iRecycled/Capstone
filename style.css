@@ -259,3 +259,12 @@ a:hover{
     width: 30px;
     height: 30px; 
 }
+
+.profilePic{
+    border-radius: 50px;
+    border: 8px solid white;
+    background-color: white;
+    padding: 0px; 
+    width: 300px;
+    height: 30px; 
+}
