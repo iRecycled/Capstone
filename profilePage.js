@@ -122,7 +122,7 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj);
-            let username = localStorage.getItem('username');
+            
             for( var x in obj) {
                 let friendsList = document.getElementById("sidebarFriends");
                 let listItem = document.createElement("li");
@@ -131,7 +131,11 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(username, obj[x].UserName)) {
+                if( checkImExists(obj[x].UserName)) {
+                    link.onclick = function() {
+                        let fileName = localStorage.getItem('username') + "&" + obj[x].UserName;
+                        localStorage.setItem("imName", fileName); // won't work correctly yet
+                    };
                     link.href = "instant_messages.html"; 
                 }
                 else {
@@ -161,7 +165,7 @@ $(document).ready(function(){
             console.log(obj);
             document.getElementById("profilePic").innerHTML = '<img class="profilePicture" src="'+obj.avatar+'"/>'
             document.getElementById("userName").innerHTML = obj.name;
-            if(localStorage.getItem('viewInfo' === localStorage.getItem('username'))){
+            if(localStorage.getItem('viewInfo') === localStorage.getItem('username')){
                 document.getElementById("email").innerHTML = obj.email;
             } else {
                 document.getElementById("email").innerHTML = "hidden";
@@ -230,7 +234,7 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
-            localStorage.setItem('imName', result); // needs to return ID that was created
+            localStorage.setItem('imName', result.file);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {
@@ -239,24 +243,10 @@ function createImFile() {
         }
     })
 }
-function checkImExists(name1, name2) {
-    // might be broken
-    $.ajax({
-        type: "post",
-        url: "getIMList.php",
-        data: {loggedInUser: name1, otherUser: name2},
-        success: function(data) {
-            if(data !== -1) {
-                localStorage.setItem('imName', data);
-                return true;
-            } else {
-                return false;
-            }
-        },
-        error: function(data) {
-            return false;
-        }
-    })
+function checkImExists(name) {
+    // TODO ajax call to query database and see if file exists
+    // TODO set flag to correct value
+    return false;
 }
 function CheckFriend(name){
     //get list of user's friends

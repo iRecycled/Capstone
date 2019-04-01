@@ -84,6 +84,21 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
+    $("#removeUser").click(function(e){
+        e.preventDefault();
+        $.ajax({
+        type: "post",
+        url: "removeUser.php",
+        data: {serverID: localStorage.getItem("serverID"), username: document.getElementById("userToRemove").value},
+        success: function(result) {
+            console.log("Success");
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
+        },
+        error: function(result) {
+            console.log("Failure");
+        }
+    })
+    })  
 });
 
 function createUL(obj, id) {

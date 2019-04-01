@@ -145,28 +145,13 @@ function setViewName(name){
 //takes message data and generates the table rows in the document
 function generateMsg(text, sender, time)
 {
-    var avatar = ""
     var username = sender;
-    $.ajax({
-        type: "post",
-        url: "getUserAvatar.php",
-        data: {username: username},
-        async: false,
-        success: function(data) {
-            obj = JSON.parse(data);
-            avatar = obj[0].Avatar;
-        },
-        error: function(data) {
-            console.log("fail");
-        }
-    })
     //creates html code
     msg = "\
     <tr id = 'singleMessage'>\
         <td style='vertical-align: top;'>\
             <div class='message'>\
              <p class ='msgUname'>\
-             <img class='avatar' src='"+avatar+"'/>\
              <a id='unameLink' href='profile_page.html' onclick=setViewName('" + username + "')>"
                  + username
                  + "</a>\
