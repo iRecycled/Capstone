@@ -15,6 +15,7 @@
             $stmt->bind_result($userId);
             $stmt->fetch();
 
+            $requesters = array();
             $query = "SELECT FromID FROM FriendRequest WHERE ToID = $userId";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($requesters);
