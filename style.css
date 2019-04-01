@@ -261,10 +261,10 @@ a:hover{
 }
 
 .profilePicture{
-    border-radius: 100px;
+    border-radius: 50px;
     border: 8px solid white;
     background-color: white;
     padding: 0px; 
-    width: 200px;
-    height: 200px; 
+    width: 300px;
+    height: 30px; 
 }
