@@ -147,16 +147,16 @@
                 var obj = JSON.parse(data);
                 console.log(obj);
                 var listItemString = $('#onlineList').html();
-                dataObject.forEach(addList);                
+                obj.forEach(addList);                
                 function addList(obj,index){
                     var listItem = $('<li>' + listItemString + '</li>');
-                    $('#onlineList').append(listItem);
+                    $('#onlineList').append(obj);
                 }
                 //createOnlineList(obj);
 
             },
             error: function(data) {
-                console.log("fail");
+                console.log("fail here");
             }
 })
         setInterval('chat.update(targetfile)',1000);
