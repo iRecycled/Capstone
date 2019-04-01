@@ -164,7 +164,17 @@
       <div class="container" id="content">
         <div class="row" >
           <div class="col-lg-4" id="firstRow">
-            <span id = "profilePic"></span>
+            <div class="profileContainer" id = "profContain">
+              <span id = "profilePic"></span>
+              <script>
+                if(localStorage.getItem("username")==localStorage.getItem("viewInfo")){
+                  document.getElementById("profContain").innerHTML+='\
+                  <div class="profileOverlay">\
+                    <div class="profileText">Change</div>\
+                  </div>'
+                }
+              </script>
+            </div>
             <h5><script>localStorage.getItem("username");</script></h5>
           </div>
           

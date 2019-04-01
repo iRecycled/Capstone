@@ -1,12 +1,8 @@
 #sidebar {
     width:300px;
+    /* max-width: 250px; */
     overflow-y: scroll;
-    /* max-width: 20%; */
-}
-
-.sidebar-header {
-    color: #f1f1f1;
-    /* align-content: center; */
+    min-height: 100vh;
 }
 
 hr {
@@ -17,6 +13,30 @@ hr {
     overflow-y: scroll;
     max-height: 200px;
 }
+
+.sidebar-header{
+    color:white;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar ul.components {
+    padding: 20px;
+}
+
+#sidebar ul li {
+    padding-top: 20px;
+}
+
+
+
+
+
+
 
 /* Scrollbar */
 /* width */
