@@ -9,7 +9,7 @@ header("index.php");
         }
         $username = $_POST['user']; 
         $friendname = $_POST['friend'];
-        
+
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
@@ -39,7 +39,7 @@ header("index.php");
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyFriends = true;
-                echo("TEST");
+                echo($row + "    -     ");
         }
 
         if($alreadyFriends == true) {
