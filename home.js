@@ -170,22 +170,19 @@ function createFriendRequestList(e, id)
 {
     document.getElementById(id).innerHTML = "";
     //generates and sorts list of user names 
-    names = []
-    for(i = 0; i < e.length; i++){
-        names.push(e[i].UserName)
-    }
-    names.sort()
+
     text = "";
     //uses name list to inject table rows
-    for(i = 0; i < names.length; i++)
+    for(i = 0; i < e.length; i++)
     {
         text +="<tr>\
                     <td class = 'serverEntry'>\
                         <a>\
                         <span style='display: block; padding: 15px;'>\
-                        " + names[i] + "\
-                        <button class = 'btn btn-success' onclick='acceptFriendRequest(\"" + names[i] + "\")'>&#10003</button>\
-                        <button class = 'btn btn-danger' onclick='rejectFriendRequest(\"" + names[i] + "\")'>X</button>\
+                        <img class=\"avatar\" src='"+e[i].Avatar+"'></img>\
+                        " + e[i].UserName + "\
+                        <button class = 'btn btn-success' onclick='acceptFriendRequest(\"" + e[i].UserName + "\")'>&#10003</button>\
+                        <button class = 'btn btn-danger' onclick='rejectFriendRequest(\"" + e[i].UserName + "\")'>X</button>\
                         </span>\
                         </a>\
                     </td>\
@@ -228,20 +225,16 @@ function searchUser(id){
 function createFriendsList(d, targetID){
     document.getElementById(targetID).innerHTML = "";
     //generates and sorts list of user names 
-    names = []
-    for(i = 0; i < d.length; i++){
-        names.push(d[i].UserName)
-    }
-    names.sort()
     text = "";
     //uses name list to inject table rows
-    for(i = 0; i < names.length; i++)
+    for(i = 0; i < d.length; i++)
     {
         text +="<tr>\
                     <td class = 'serverEntry'>\
-                        <a href = 'profile_page.html' onclick = 'setViewInfo(\""+names[i]+"\")'>\
+                        <a href = 'profile_page.html' onclick = 'setViewInfo(\""+d[i].UserName+"\")'>\
                         <span style='display: block; padding: 15px;'>\
-                        " + names[i] + "\
+                        <img class=\"avatar\" src='"+d[i].Avatar+"'></img>\
+                        " + d[i].UserName + "\
                         </span>\
                         </a>\
                     </td>\
