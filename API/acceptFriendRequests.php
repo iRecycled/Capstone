@@ -21,11 +21,15 @@
             $stmt->bind_result($requesters);
             $stmt->fetch();
 
-            
+            if($requesters==0){
+                echo json_encode("Completed");
+            }
+            else{
             $query = "INSERT INTO Friend VALUES ($requesters,$userId)";
             $stmt = simpleQuery($db, $query);
             $query = "DELETE FROM FriendRequest WHERE FromID=$requesters and ToID=$userId";
             $stmt = simpleQuery($db, $query);
+            echo json_encode($requesters);
+            }
         mysql_close($db);
-        echo json_encode($requesters);
 ?>
