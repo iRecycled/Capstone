@@ -1,5 +1,4 @@
 <?php
-/*SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = "Nick"*/
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
@@ -8,7 +7,7 @@
             }
             $serverID = $_POST['serverID'];
             $username = $_POST['username'];
-            $query = "SELECT UserID FROM WebUser WHERE username = '$friendname';";
+            $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
             $stmt = simpleQuery($db, $query);
     
             $stmt->bind_result($userID);
