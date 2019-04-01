@@ -27,19 +27,16 @@ header("index.php");
         $query = "SELECT * FROM FriendRequest WHERE FromID = '$userIDFrom' AND ToID =  '$userIDTo';";
         
         $result = $db->query($query);
-        $response = array();
         $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
         }
-        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDFTo' AND Friend2ID =  '$userIDFrom');";
+        $query = "SELECT * FROM Friend WHERE (Friend1ID = '$userIDFrom' AND Friend2ID =  '$userIDTo') OR (Friend1ID = '$userIDTo' AND Friend2ID =  '$userIDFrom');";
         
         $result = $db->query($query);
-        $response = array();
         $alreadyFriends = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyFriends = true;
-                echo($row);
         }
 
         if($alreadyFriends == true) {
