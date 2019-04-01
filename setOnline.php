@@ -16,17 +16,19 @@
 
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
             $result = $db->query($query);
-            //$response = array();
+            echo("Hello");
+            return;
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $alreadyExists = true;
             }
-            echo("Hello");
-            return;
+            
+            //if the user is not already seen as online, set value to 1 to set online
             if($alreadyExists == false){
                 $query = "INSERT INTO Online VALUES ($UserID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
             }
+            //if user IS online update the database for user to 1
             else{
                 $query = "UPDATE Online SET isOnline = 1 WHERE UserID = $userID AND ServerID = $serverID;";
                 $stmt = simpleQuery($db,$query);
