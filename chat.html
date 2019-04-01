@@ -146,7 +146,8 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                document.getElementById("onlineList") +=  obj.UserName[0].username;
+                console.log(obj.UserName);
+                //document.getElementById("onlineList") =  obj.UserName " ";
                
                 
 
