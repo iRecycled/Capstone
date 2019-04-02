@@ -152,10 +152,13 @@
                     //var userName = obj[0].UserName;
                     //var list = document.getElementById("onlineUserList");
                     var arr = [];
+                    var node = document.createElement("LI");
                     //$("onlineUserList").append("<ul></ul>");
                     for(var i = 0; i < obj.length;i++){
-                        arr.push(obj[i].UserName);
-                        document.getElementById("onlineUserList").appendChild(arr[i]);
+                        //arr.push(obj[i].UserName);
+                        var textnode = document.createTextNode(obj[i].UserName);
+                        node.appendChild(textnode);
+                        document.getElementById("onlineUserList").appendChild(node);
                         //var output = obj[i].UserName;
                     }
                 //list.append(arr);
