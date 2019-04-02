@@ -150,13 +150,13 @@
                 console.log(obj);
                 if(obj.length >= 1){
                     //var userName = obj[0].UserName;
-                    var list = document.getElementById("onlineUserList");
+                    //var list = document.getElementById("onlineUserList");
                     var arr = [];
                     $("onlineUserList").append("<ul></ul>");
                     for(var i = 0; i < obj.length;i++){
                         var list = "<li>";
                         arr.push(obj[i].UserName);
-                        $("ul").append(li.concat(arr[i]));
+                        $("onlineUserList").append(list.concat(arr[i]));
                         //var output = obj[i].UserName;
                     }
                 //list.append(arr);
