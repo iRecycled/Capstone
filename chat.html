@@ -151,10 +151,13 @@
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
                     var arr = [];
+                    const unique = (value, index, self) => {
+                        return self.indexOf(value) === index;
+                    }
                     for(var i = 0; i < obj.length;i++){
                         arr.push(obj[i].UserName);
-                        const distinctUser =[new Set(arr.map(x => x.UserName))];
-                        list.innerHTML += '<li>' + distinctUser[i] + '</li>';
+                        const uniqueVal = arr.filter(unique);
+                        list.innerHTML += '<li>' + uniqueVal + '</li>';
                     }
                 }
                 
