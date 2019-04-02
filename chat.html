@@ -149,21 +149,14 @@
                 var obj = JSON.parse(data);
                 console.log(obj);
                 if(obj.length >= 1){
-                    //var userName = obj[0].UserName;
-                    //var list = document.getElementById("onlineUserList");
+                    var list = document.getElementById("onlineUserList");
                     var arr = [];
-                    var node = document.createElement("LI");
-                    var textnode = document.createTextNode(obj[0].UserName);
-                        node.appendChild(textnode);
-                        document.getElementById("onlineList").appendChild(node);
-                        var textnode = document.createTextNode(obj[1].UserName);
-                        node.appendChild(textnode);
-                        document.getElementById("onlineList").appendChild(node);
+                    
 
                     //$("onlineUserList").append("<ul></ul>");
                     for(var i = 0; i < obj.length;i++){
-                        //arr.push(obj[i].UserName);
-                        
+                        arr.push(obj[i].UserName);
+                        list.innerHTML += '<li>' + arr[i] + '</li>';
                         //var output = obj[i].UserName;
                     }
                 //list.append(arr);
