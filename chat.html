@@ -151,17 +151,11 @@
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
                     var arr = [];
-                    
-
-                    //$("onlineUserList").append("<ul></ul>");
                     for(var i = 0; i < obj.length;i++){
                         arr.push(obj[i].UserName);
                         list.innerHTML += '<li>' + arr[i] + '</li>';
-                        //var output = obj[i].UserName;
                     }
-                //list.append(arr);
                 }
-                //document.getElementById("onlineList").append(userName);
                 
             },
             error: function(data) {
