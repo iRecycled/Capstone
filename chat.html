@@ -158,10 +158,8 @@
                         arr.push(obj[i].UserName);
                     }
                     const uniqueVal = arr.filter(unique);
-                    //list.innerHTML += '<li>' + uniqueVal + '</li>';
-                    for(var i = 0; i < uniqueVal.length;i++){
-                        list.innerHtml += '<li>' + uniqueVal[i] + '</li>';
-                    }
+                    list.innerHTML += '<li>' + uniqueVal + '</li>';
+                    
                 }
                 
             },
