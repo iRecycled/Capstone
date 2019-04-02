@@ -153,7 +153,7 @@
                     var arr = [];
                     for(var i = 0; i < obj.length;i++){
                         arr.push(obj[i].UserName);
-                        const distinctUser =[new Set(array.map(x => x.UserName))];
+                        const distinctUser =[new Set(arr.map(x => x.UserName))];
                         list.innerHTML += '<li>' + distinctUser[i] + '</li>';
                     }
                 }
