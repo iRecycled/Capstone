@@ -9,7 +9,7 @@ header("index.php");
         }
         $username = $_POST['user']; 
         $serverID = $_POST['serverID'];
-        echo($username);
+        echo("test");
         return;
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
