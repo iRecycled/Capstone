@@ -13,7 +13,7 @@
             $stmt->bind_result($userID);
             $stmt->fetch();
            
-            $query = "SELECT * FROM Online WHERE UserID = $userID AND serverID = $serverID;";
+            $query = "SELECT * FROM Online WHERE UserID = $userID AND ServerID = $serverID;";
             $result = $db->query($query);
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
