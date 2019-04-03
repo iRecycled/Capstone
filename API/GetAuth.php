@@ -10,7 +10,7 @@
   $.ajax({
       url: 'TokenGen.php',
       type: 'POST',
-      data: var JSON.stringify(myObj);,
+      data: JSON.stringify(myObj);,
       dataType: 'json',
       success: function( token) {
         document.getElementById("tok").innerHTML = token;
