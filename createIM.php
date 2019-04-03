@@ -23,18 +23,18 @@
         $stmt->bind_result($otherUserID);
         $stmt->fetch();
             //User1ID, User2ID, FileName
-        $mesageFileName = $username . "&" . $friendUsername;
-        $query = "INSERT INTO InstantMessage VALUES ('$fileID', '$firstUserID', '$otherUserID', '$mesageFileName')";
+        //$mesageFileName = $username . "&" . $friendUsername;
+        $query = "INSERT INTO InstantMessage VALUES ('$fileID', '$firstUserID', '$otherUserID')";
 
         
         // TODO create file and store file in database
         //Create chatroom text file_exists\
-        $filename = "instantMessage/$mesageFileName.txt";
+        $filename = "instantMessage/$fileID.txt";
         //error_log($filename);
         // fopen("chat.txt","w");
         // fclose("chat.txt");
         $openfile = fopen($filename,"w") or die("can't open file");
         //fwrite($openfile,"");
         fclose($openfile);
-        echo ?> "file": <?=json_encode($mesageFileName)
+        echo json_encode($fileID);
 ?>
