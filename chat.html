@@ -143,11 +143,9 @@
         });
     }
 
-    //on page load
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
+    //set online
+    function setOnline(){
+    $.ajax({
             type: "post",
             url: "setOnline.php",
             data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
@@ -159,7 +157,13 @@
                 console.log("failed to be online");
                 console.log(data);
             }
-        })
+        });
+    }
+
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        setOnline();
         
         setInterval('chat.update(targetfile)',1000);
         setInterval('loadOnline()',5000);
