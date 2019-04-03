@@ -98,6 +98,7 @@
                     // send
                     if (length <= maxLength + 1) {
                         console.log("right size");
+                        setOnline(); //refresh the online user time interval
                         chat.send(text, name, targetfile);
                         $('#sendie').val("");
 
@@ -108,13 +109,17 @@
                     }
 
              });
-            //getOnline
-            $.ajax({
+    });
+    
+    //getOnline
+    function loadOnline() {
+    $.ajax({
             type: "post",
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 var obj = JSON.parse(data);
+                document.getElementById("onlineUserList").innerHTML = "";
                 console.log(obj);
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
@@ -135,15 +140,13 @@
             },
             error: function(data) {
                 console.log("fail here");
-            }
+            }    
         });
-    });
-    
-    //on page load
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
+    }
+
+    //set online
+    function setOnline(){
+    $.ajax({
             type: "post",
             url: "setOnline.php",
             data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
@@ -155,9 +158,16 @@
                 console.log("failed to be online");
                 console.log(data);
             }
-        })
+        });
+    }
+
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        setOnline();
         
         setInterval('chat.update(targetfile)',1000);
+        setInterval('loadOnline()',5000);
         
       }
       window.onload = load;
@@ -432,9 +442,9 @@ function isAllowedToInvite(){
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><u>Chatrooms</u></h4>
+            <h4>Chatrooms</h4>
         </div>
-        <br>
+        
         <ul class="list-unstyled components">
             <li>
                 <div id="Invite"></div>
@@ -520,7 +530,7 @@ function isAllowedToInvite(){
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tab">
-                    <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
+                    <li class='active' style="margin-right: 15px;"><a class = 'dropdownEle' data-toggle="tab" href="#image">Image </a></li>
                     <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
                 </ul>
                 <div class="tab-content">

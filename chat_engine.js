@@ -20,9 +20,10 @@ function generateEmoteList(e)
         e.innerHTML+= "<a class='dropdown-item' onclick='addEmote(this)'><img class='emote' src = 'emotes/" + eList[i] + ".png'/> :" +  eList[i] + "</a>"
     }
 }
-
+//generates a valid img message and injects into chat
 function InsertImage(e)
 {
+    //sterilizes url
     var url = e.value.trim();
     if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
     {
@@ -32,14 +33,18 @@ function InsertImage(e)
     {
         url = url.substring(7)
     }
+    //check if url is valid
     if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+        //create and inject img message into chat
         chatInputArea.value += ':img="'+ url + '"'
     }
 }
-
+//generates a valid ytb message and injects into chat
 function InsertVid()
 {
+    //get youtube url
     var url = document.getElementById("vidURL").value;
+    //sterilize url
     if(url.substring(0,8).toLowerCase().indexOf("https")>-1)
     {
         url = url.substring(8)
@@ -48,8 +53,11 @@ function InsertVid()
     {
         url = url.substring(7)
     }
-    id = YouTubeGetID(url)    
+    //generate id
+    id = YouTubeGetID(url)
+    //ensure id is valid  
     if(id.length == 11){
+        //inject valid ytb message
         chatInputArea.value += ':ytb="youtu.be/' +  id + '"'
     }
 
@@ -137,7 +145,7 @@ function updateChat(serverID){
 		 setTimeout(updateChat, 1500);
      }
 }
-
+//changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
 }
@@ -197,7 +205,7 @@ var emoteWL = [
     "tiger",
     "triforce"
 ]
-
+//inputs a url and returns youtube id
 function YouTubeGetID(url){
     var ID = '';
     url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
@@ -229,23 +237,34 @@ function msgParse(){
                 phrase = words[i].substring(1).trim()
                 //check if phrase is valid
                 var imgExists = this.imgExists(phrase.toLowerCase())
+                //check if phrase is img tag
                 if (phrase.substring(0,3).valueOf()=="img")
                 {
+                    //remove tag
                     imgUrl = phrase.substring(4)
+                    //remove quotes
                     imgUrl = imgUrl.replace(/&quot;/g, '')
+                    //check if img is valid
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
+                        //inject image object with source
                         parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
                     }
                 }
+                //check if phrase is ytb tag
                 else if (phrase.substring(0,3) == "ytb")
                 {
+                    //remove tag
                     imgUrl = phrase.substring(4)
+                    //remove quotes
                     imgUrl = imgUrl.replace(/&quot;/g, '')
+                    //get youtube id
                     id = YouTubeGetID(imgUrl)
+                    //if id is valid
                     if(id.length == 11)
                     {
+                        //inject youtube embed
                         parse += '<iframe class="msgImg" width="560" height="350" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                     }
                 }
@@ -288,19 +307,23 @@ function msgParse(){
         }
     }
 }
-
+//change youtube preview window
 function UpdatePreview(){
     url = ""
     url += document.getElementById("vidURL").value;
+    //get id from url
     id = YouTubeGetID(url)
+    //if id is valid
     if(id.length==11)
     {
+        //add embed
         document.getElementById("videoPreview").innerHTML = ""
         document.getElementById("videoPreview").innerHTML += "ID: " + id ;
         document.getElementById("videoPreview").innerHTML += '<div><iframe width="300" height="200" src="https://www.youtube.com/embed/' + id + '"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe></div>';
     }
     else
     {
+        //do not add embed
         document.getElementById("videoPreview").innerHTML = ""
         document.getElementById("videoPreview").innerHTML += "ID: ";
     }

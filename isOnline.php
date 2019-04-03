@@ -1,5 +1,4 @@
 <?php
-/*SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = "Nick"*/
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
@@ -8,8 +7,7 @@
             }
             $serverID = $_POST['serverID'];
             //returns serverID of online users
-            //$query = "SELECT isOnline FROM Online JOIN WebUser ON Online.UserID = WebUser.UserID WHERE UserName = '$username';";
-            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID';";
+            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID' AND TIMESTAMPDIFF(MINUTE, timeStamp, NOW()) < 10;";
             //returns array of users that are on that server and are online
             $result = $db->query($query);
             //output query result to json array

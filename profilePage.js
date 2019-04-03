@@ -176,10 +176,13 @@ $(document).ready(function(){
         }
     })
 })
-
+//changes users avatar in database
 function InsertAvatar(e){
+    //sterilize url
     url = e.value.trim()
+    //check if url is valid image
     if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+        //run database change query
         $.ajax({
             type: "post",
             url: "changeUserAvatar.php",
@@ -252,7 +255,7 @@ function createImFile() {
         success: function(result) {
             // TODO change to match new file name
             //If successful, go to the instant_messages page
-            localStorage.setItem('imName', result.file);
+            localStorage.setItem('imName', result);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {
