@@ -118,6 +118,7 @@
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 var obj = JSON.parse(data);
+                document.getElementById("onlineUserList") = "";
                 console.log(obj);
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
