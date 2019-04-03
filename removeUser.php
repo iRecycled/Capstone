@@ -9,8 +9,6 @@ header("index.php");
         }
         $username = $_POST['username']; 
         $serverID = $_POST['serverID'];
-        echo($username);
-        return;
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
