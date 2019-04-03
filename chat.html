@@ -512,55 +512,54 @@ function isAllowedToInvite(){
 </div>
 
 <div id="insertContent" class="modal fade" role="dialog">
-        <div class="modal-dialog" id="insertContentDialog">
-      
-          <!-- Modal content-->
-          <div class="modal-content">
+    <div class="modal-dialog" id="insertContentDialog">
+        <!-- Modal content-->
+        <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Insert Content</h4>
             </div>
             <div class="modal-body">
-                    <ul class="nav nav-tab">
-                            <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
-                            <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
-                    </ul>
-                    <div class="tab-content">
-                            <div id="image" class="tab-pane fade show active">
-                                <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Image URL:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
-                                        </div>
-                                <div>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
+                <ul class="nav nav-tab">
+                    <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
+                    <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="image" class="tab-pane fade show active">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Image URL:</span>
                             </div>
-                            <div id="video" class="tab-pane fade">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Video URL:</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="vidURL" oninput="UpdatePreview()">
-                                </div>
-                                <div>
-                                    <span id="videoPreview"></span>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid()">Insert</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
+                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="video" class="tab-pane fade">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Video URL:</span>
                             </div>
+                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="vidURL" oninput="UpdatePreview()">
+                        </div>
+                        <div>
+                            <span id="videoPreview"></span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid()">Insert</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-      
         </div>
-      </div>
+    </div>
+</div>
 
 <!--Delete an existing private Server Modal-->
-<div class="modal fade" id="deleteServerModal" role="dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="deleteServerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold" id="deletePrivateServerModal">Are you sure you want to delete this server?</h4>
