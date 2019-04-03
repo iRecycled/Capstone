@@ -186,6 +186,8 @@ function InsertAvatar(e){
             data: {username: localStorage.getItem('username'), url: url},
             success: function(data) {
                 console.log("success");
+                alert("Avatar Changed Successfully!")
+                location.reload(true)
             },
             error: function(data) {
                 console.log("fail");
