@@ -99,6 +99,34 @@ $(document).ready(function(){
         }
     })
     })  
+    $("#unblockUser").click(function(e){
+        e.preventDefault();
+        $.ajax({
+        type: "post",
+        url: "unblockUser.php",
+        data: {user: document.getElementById("unblockUserTxt"), serverID = localStorage.getItem("serverID")},
+        success: function(result) {
+            console.log("success");
+        },
+        error: function(result) {
+            console.log("fail");
+        }
+    })
+    })  
+    $("#blockUser").click(function(e){
+        e.preventDefault();
+        $.ajax({
+        type: "post",
+        url: "blockUser.php",
+        data: {user: document.getElementById("blockUserTxt"), serverID = localStorage.getItem("serverID")},
+        success: function(result) {
+            console.log("success");
+        },
+        error: function(result) {
+            console.log("fail");
+        }
+    })
+    })  
 });
 
 function createUL(obj, id) {
