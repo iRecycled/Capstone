@@ -91,7 +91,7 @@ $(document).ready(function(){
         url: "removeUser.php",
         data: {serverID: localStorage.getItem("serverID"), username: document.getElementById("userToRemove").value},
         success: function(data) {
-            console.log(data);
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
         },
         error: function(data) {
             console.log(data);
