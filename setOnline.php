@@ -14,6 +14,10 @@
             $stmt->fetch();
            
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
+            $alreadyExists = false;
+            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                    $alreadyExists = true;
+            }
             if(mysql_num_rows($query) != 0){
                 //user already online
                 $query = "UPDATE Online SET isOnline = 1 WHERE UserID = $userID AND ServerID = $serverID;";
@@ -25,5 +29,4 @@
                 $stmt = simpleQuery($db,$query);
             }
             //$result = $db->query($query);
-            
 ?>
