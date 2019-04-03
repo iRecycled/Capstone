@@ -7,7 +7,7 @@
             }
             $serverID = $_POST['serverID'];
             //returns serverID of online users
-            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID' AND TIMESTAMPDIFF(MINUTE, timeStamp, NOW()) < 10;";
+            $query = "SELECT UserName FROM WebUser JOIN Online ON Online.UserID = WebUser.UserID WHERE isOnline = true AND ServerID = '$serverID' AND TIMESTAMPDIFF(MINUTE, timeStamp, NOW()) < 3;";
             //returns array of users that are on that server and are online
             $result = $db->query($query);
             //output query result to json array
