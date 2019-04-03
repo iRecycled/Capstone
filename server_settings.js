@@ -91,10 +91,10 @@ $(document).ready(function(){
         url: "removeUser.php",
         data: {serverID: localStorage.getItem("serverID"), username: document.getElementById("userToRemove").value},
         success: function(result) {
-            console.log(result);
+            console.log("result");
         },
         error: function(result) {
-            console.log(result);
+            console.log("result");
         }
     })
     })  
