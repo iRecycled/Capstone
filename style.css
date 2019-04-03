@@ -262,6 +262,7 @@ a:hover{
   
 .profileContainer{
     width:200;
+    margin:0px, 0px, 0px, 50px;
 }
 
   .profileContainer:hover .profileOverlay {
