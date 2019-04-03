@@ -165,7 +165,7 @@
       function load(){
         targetfile = localStorage.getItem('serverID');
         setOnline();
-        
+        loadOnline();        
         setInterval('chat.update(targetfile)',1000);
         setInterval('loadOnline()',5000);
         
