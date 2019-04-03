@@ -92,11 +92,11 @@ $(document).ready(function(){
         data: {serverID: localStorage.getItem("serverID"), username: document.getElementById("userToRemove").value},
         success: function(data) {
             obj = JSON.parse(data);
-            console.log(obj)
+            alert(obj);
         },
         error: function(data) {
             obj = JSON.parse(data);
-            console.log(obj)
+            alert(obj)
         }
     })
     })  
