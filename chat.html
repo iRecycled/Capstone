@@ -148,13 +148,22 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
-                var userName = obj[0].UserName;
-                var list = document.getElementById("onlineUserList");
-                for(var i in obj){
-                    var output = obj[i].UserName;
+                if(obj.length >= 1){
+                    var list = document.getElementById("onlineUserList");
+                    var arr = [];
+                    const unique = (value, index, self) => {
+                        return self.indexOf(value) === index;
+                    }
+                    for(var i = 0; i < obj.length;i++){
+                        arr.push(obj[i].UserName);
+                    }
+                    const uniqueVal = arr.filter(unique);
+
+                    for(var i = 0;i < uniqueVal.length; i++){
+                        list.innerHTML +=  '<li>' + uniqueVal[i] + '</li>';
+                    }
+                    
                 }
-                list.append(output);
-                //document.getElementById("onlineList").append(userName);
                 
             },
             error: function(data) {
@@ -438,12 +447,12 @@ function isAllowedToInvite(){
             <h4><u>Chatrooms</u></h4>
         </div>
         <br>
-        <ul class="list-unstyled components" style="padding: 10px;">
+        <ul class="list-unstyled components">
             <li>
-                <div id="Invite" style="padding-left:12px;"></div>
+                <div id="Invite"></div>
             </li>
             <li>
-                <div id="Delete" style="padding-left:12px;"></div>
+                <div id="Delete"></div>
             </li>
             <li></li>
 
@@ -454,15 +463,8 @@ function isAllowedToInvite(){
                         <tr>
                         <td>
                         <ul id="onlineList"> 
-                            <style>
-                            li {
-                                list-style-type: none;
-                                color: white;
-
-                            }
-                            
-                            </style>
-                            <li id="onlineUserList"><h4>Online Users</h4></li>
+                                <h4 style="color: white">Online Users</h4>
+                            <li id="onlineUserList" style="list-style-type: none; color:white;"></li>
                         </ul>  
                         </td>                          
                         </tr>
