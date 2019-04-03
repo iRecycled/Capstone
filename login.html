@@ -38,9 +38,13 @@
             type: "post",
             url: "forgotPassword.php",
             data:{username: localStorage.getItem('username'), email: document.getElementById("getEmail").value},
-            success: function(result) { 
+            success: function(result) {
+              if(result == 1) {
                 window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/login.html';
-                    alert("You received an email with your new password!");
+                alert("You received an email with your new password!");
+              } else {
+                alert("You entered an invalid email address. Password Reset failed.")
+              }
             },
             error: function(result) {
                 window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/index.html';
