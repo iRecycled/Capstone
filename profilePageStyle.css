@@ -49,3 +49,7 @@
     color: gray;
     cursor: pointer;
 }
+#profileHeader{
+    display:flex;
+    align-items: center;
+}

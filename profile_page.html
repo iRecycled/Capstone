@@ -178,11 +178,9 @@
             <h5><script>localStorage.getItem("username");</script></h5>
           </div>
           
-          <div class="col-lg-8">
-            <p id="intro">Welcome to your profile page! Here you can see information about your profile and make some changes.
-              You can also use the sidebar to travel throughout TerryChat into private and public chatrooms as well as instant messaging 
-              specific users. The sidebar also includes features for adding and deleting private servers.
-            </p>
+          <div class="col-lg-8" id = 'profileHeader'>
+            <h1><script>document.write(localStorage.getItem("viewInfo"))</script>'s Profile Page
+            </h1>
           </div>
         </div>
         
@@ -327,7 +325,18 @@
         <h4 class="modal-title">Change Avatar: </h4>
       </div>
       <div class="modal-body">
-
+        <div id="image" class="tab-pane fade show active">
+          <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Image URL:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                  </div>
+          <div>
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertAvatar(inputURL)">Insert</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+      </div>
     </div>
 
   </div>

@@ -238,8 +238,8 @@ a:hover{
 }
 
 .profilePicture{
-    border-radius: 50px;
-    border: 8px solid white;
+    border-radius: 100px;
+    border: 8px solid gray;
     background-color: white;
     padding: 0px; 
     width: 200px;
@@ -247,7 +247,7 @@ a:hover{
 }
 
 .profileOverlay {
-    border-radius: 50px;
+    border-radius: 100px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -262,6 +262,7 @@ a:hover{
   
 .profileContainer{
     width:200;
+    margin:0px, 0px, 0px, 50px;
 }
 
   .profileContainer:hover .profileOverlay {
