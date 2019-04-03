@@ -176,6 +176,24 @@ $(document).ready(function(){
         }
     })
 })
+
+function InsertAvatar(e){
+    url = e.value.trim()
+    if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+        $.ajax({
+            type: "post",
+            url: "changeUserAvatar.php",
+            data: {username: localStorage.getItem('username'), url: url},
+            success: function(data) {
+                console.log("success");
+            },
+            error: function(data) {
+                console.log("fail");
+            }
+        })
+    }
+}
+
 //adds friend request if valid user
 var isNotFriend = false;
 function AddFriendButton(e){
