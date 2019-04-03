@@ -109,6 +109,7 @@
 
              });
             //getOnline
+            function refreshUsers(){
             $.ajax({
             type: "post",
             url: "isOnline.php",
@@ -136,7 +137,9 @@
             error: function(data) {
                 console.log("fail here");
             }
-        });
+        
+            });
+        }
     });
     
     //on page load
@@ -158,6 +161,7 @@
         })
         
         setInterval('chat.update(targetfile)',1000);
+        setInterval('chat.refreshUsers()',5000);
         
       }
       window.onload = load;
