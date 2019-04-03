@@ -248,6 +248,7 @@ a:hover{
 
 .profileOverlay {
     border-radius: 100px;
+    margin:0px 0px 0px 50px;
     position: absolute;
     top: 0;
     bottom: 0;
