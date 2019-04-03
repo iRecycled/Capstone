@@ -21,15 +21,12 @@
                 // return;
                 $alreadyExists = true;
             }
-            if(mysql_num_rows($query) != 0){
-                //user already online
+            if($alreadyExists == true){
                 $query = "UPDATE Online SET isOnline = 1 WHERE UserID = $userID AND ServerID = $serverID;";
                 $stmt = simpleQuery($db,$query);
             }
             else {
-                //user is NOT online
                 $query = "INSERT INTO Online VALUES ($userID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
             }
-            //$result = $db->query($query);
 ?>
