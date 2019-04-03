@@ -119,7 +119,7 @@
             success: function(data) {
                 var obj = JSON.parse(data);
                 document.getElementById("onlineUserList").innerHTML = "";
-                //console.log(obj);
+                console.log(obj);
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
                     var arr = [];
@@ -143,11 +143,9 @@
         });
     }
 
-    //on page load
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
+    //set online
+    function setOnline(){
+    $.ajax({
             type: "post",
             url: "setOnline.php",
             data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
@@ -159,7 +157,13 @@
                 console.log("failed to be online");
                 console.log(data);
             }
-        })
+        });
+    }
+
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        setOnline();
         
         setInterval('chat.update(targetfile)',1000);
         setInterval('loadOnline()',5000);
