@@ -169,7 +169,7 @@
               <script>
                 if(localStorage.getItem("username")==localStorage.getItem("viewInfo")){
                   document.getElementById("profContain").innerHTML+='\
-                  <div class="profileOverlay">\
+                  <div class="profileOverlay" data-toggle="modal" data-target="#changeAvatar">\
                     <div class="profileText">Change</div>\
                   </div>'
                 }
@@ -315,6 +315,23 @@
       </div>
     </div>
   </form>
+
+
+  
+<div id="changeAvatar" class="modal fade" role="dialog">
+  <div class="modal-dialog" id="changeAvatarDialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Change Avatar: </h4>
+      </div>
+      <div class="modal-body">
+
+    </div>
+
+  </div>
+</div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
