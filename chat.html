@@ -18,21 +18,7 @@
     <script src="checkIfUsername.js"></script>
     <script src = 'chat_engine.js'></script>
     <script type="text/javascript">
-        /*
-        // ask user for name with popup prompt
-        var name = prompt("Enter your chat name:", "Guest");
-
-        // default name is 'Guest'
-    	if (!name || name === ' ') {
-    	   name = "Guest";
-    	}
-
-    	// strip tags
-    	name = name.replace(/(<([^>]+)>)/ig,"");
-
-    	// display name on page
-    	//$("#name-area").html("You are: <span>" + name + "</span>");
-        */
+       
         name = localStorage.getItem('username');
     	// kick off chat
         var chat =  new Chat();
@@ -122,25 +108,7 @@
                     }
 
              });
-        });
-        
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
-            type: "post",
-            url: "setOnline.php",
-            data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
-            success: function(data) {
-                console.log("UserOnline");
-                console.log(data);
-            },
-            error: function(data) {
-                console.log("failed to be online");
-                console.log(data);
-            }
-        })
-        //getOnline
+            //getOnline
             $.ajax({
             type: "post",
             url: "isOnline.php",
@@ -164,17 +132,37 @@
                     }
                     
                 }
-                
             },
             error: function(data) {
                 console.log("fail here");
             }
-})
+        });
+    });
+    
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        //set online
+        $.ajax({
+            type: "post",
+            url: "setOnline.php",
+            data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
+            success: function(data) {
+                console.log("UserOnline");
+                console.log(data);
+            },
+            error: function(data) {
+                console.log("failed to be online");
+                console.log(data);
+            }
+        })
+        
         setInterval('chat.update(targetfile)',1000);
+        
       }
       window.onload = load;
 
-      //when the user leaves the page
+    //   when the user leaves the page
     //   $(window).bind('beforeunload', function(){
     //    
     //   });
@@ -463,8 +451,8 @@ function isAllowedToInvite(){
                         <tr>
                         <td>
                         <ul id="onlineList"> 
-                                <h4 class='sidebar-header'>Online Users</h4>
-                            <li id="onlineUserList"></li>
+                                <h4 style="color: white">Online Users</h4>
+                            <li id="onlineUserList" style="list-style-type: none; color:white;"></li>
                         </ul>  
                         </td>                          
                         </tr>

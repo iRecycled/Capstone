@@ -8,7 +8,7 @@ header("index.php");
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
         $username = $_POST['username']; 
-        //sql query code where username belongs to server
+        //sql query code where username belongs to user
         $query = "SELECT Avatar FROM WebUser WHERE username = '$username';";     //runs the query
         $result = $db->query($query);
         //output query result to json array

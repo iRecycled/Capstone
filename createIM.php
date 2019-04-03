@@ -4,10 +4,14 @@
         if ($db->connect_error) {
                 http_response_code(500);
                 die('{ "errMessage": "Failed to Connect to DB." }');
-            }
+        }
         $username = $_POST['username'];
         $friendUsername = $_POST['friendName'];
-
+        // Selects the max ID + 1
+        $query = "SELECT * FROM (SELECT COALESCE(MAX(FileID)+1,0) FROM InstantMessage) as tmptable";
+        $stmt = simpleQuery($db, $query);
+        $stmt->bind_result($fileID);
+        $stmt->fetch();
         // Selects the ID of user logged in
         $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
         $stmt = simpleQuery($db, $query);
@@ -20,7 +24,7 @@
         $stmt->fetch();
             //User1ID, User2ID, FileName
         $mesageFileName = $username . "&" . $friendUsername;
-        $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID', '$mesageFileName')";
+        $query = "INSERT INTO InstantMessage VALUES ('$fileID', '$firstUserID', '$otherUserID', '$mesageFileName')";
 
         
         // TODO create file and store file in database
