@@ -14,11 +14,12 @@
             $stmt->fetch();
            
             $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
+            $result = $db->query($query);
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 echo("Hello");
                 return;
-                    $alreadyExists = true;
+                $alreadyExists = true;
             }
             if(mysql_num_rows($query) != 0){
                 //user already online
