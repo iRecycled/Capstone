@@ -99,6 +99,7 @@
                     if (length <= maxLength + 1) {
                         console.log("right size");
                         setOnline(); //refresh the online user time interval
+                        loadOnline() //refresh the user list
                         chat.send(text, name, targetfile);
                         $('#sendie').val("");
 
