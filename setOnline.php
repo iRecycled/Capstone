@@ -13,17 +13,20 @@
             $stmt->bind_result($userID);
             $stmt->fetch();
            
-            $query = "SELECT * FROM Online JOIN WebUser ON WebUser.UserID = Online.UserID WHERE username = $username AND serverID = $serverID;";
-            if(mysql_num_rows($query) != 0){
-                //user already online
+            $query = "SELECT * FROM Online WHERE UserID = $userID AND ServerID = $serverID;";
+            $result = $db->query($query);
+            $alreadyExists = false;
+            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                // echo("Hello");
+                // return;
+                $alreadyExists = true;
+            }
+            if($alreadyExists == true){
                 $query = "UPDATE Online SET isOnline = 1 WHERE UserID = $userID AND ServerID = $serverID;";
                 $stmt = simpleQuery($db,$query);
             }
             else {
-                //user is NOT online
                 $query = "INSERT INTO Online VALUES ($userID, $serverID, 1);";
                 $stmt = simpleQuery($db,$query);
             }
-            //$result = $db->query($query);
-            
 ?>

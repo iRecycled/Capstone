@@ -16,8 +16,13 @@ hr {
 
 .sidebar-header{
     color:white;
-    padding-right: 20px;
-    padding-left: 20px;
+    /* padding-right: 20px;
+    padding-left: 20px; */
+    align-content: center;
+}
+
+#onlineUserList {
+    color: white;
 }
 
 #sidebar.active {
