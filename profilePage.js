@@ -122,7 +122,7 @@ $(document).ready(function(){
         success: function(data) {
             obj = JSON.parse(data);
             console.log(obj);
-            
+            let username = localStorage.getItem('username');
             for( var x in obj) {
                 let friendsList = document.getElementById("sidebarFriends");
                 let listItem = document.createElement("li");
@@ -131,11 +131,7 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(obj[x].UserName)) {
-                    link.onclick = function() {
-                        let fileName = localStorage.getItem('username') + "&" + obj[x].UserName;
-                        localStorage.setItem("imName", fileName); // won't work correctly yet
-                    };
+                if( checkImExists(username, obj[x].UserName)) {
                     link.href = "instant_messages.html"; 
                 }
                 else {
@@ -233,9 +229,10 @@ function SendFriendRequest()
 //add Instant Message if no message created
 let isImCreated = false;
 function addIM(e) {
-    friendName = localStorage.getItem('viewInfo')
+    let username = localStorage.getItem('username')
+    let friendName = localStorage.getItem('viewInfo')
     $.when(CheckFriend(friendName)).done(function(a1){
-        isImCreated = checkImExists(friendName)
+        isImCreated = checkImExists(username, friendName)
         console.log(isImCreated)
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
@@ -251,6 +248,7 @@ function createImFile() {
         url: "createIM.php",
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
+            // TODO change to match new file name
             //If successful, go to the instant_messages page
             localStorage.setItem('imName', result.file);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
@@ -261,10 +259,23 @@ function createImFile() {
         }
     })
 }
-function checkImExists(name) {
-    // TODO ajax call to query database and see if file exists
-    // TODO set flag to correct value
-    return false;
+function checkImExists(name1, name2) {
+    $.ajax({
+        type: "post",
+        url: "checkIM.php",
+        data: {username: name1, friendName: name2},
+        success: function(result) {
+            if(result !== -1) {
+                localStorage.setItem('imName', result);
+                return true
+            } else {
+                return false;
+            }
+        },
+        error: function(result) {
+            return false;
+        }
+    })
 }
 function CheckFriend(name){
     //get list of user's friends
