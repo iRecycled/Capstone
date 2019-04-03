@@ -108,29 +108,8 @@
                     }
 
              });
-        });
-    
-    //on page load
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
-            type: "post",
-            url: "setOnline.php",
-            data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
-            success: function(data) {
-                console.log("UserOnline");
-                console.log(data);
-            },
-            error: function(data) {
-                console.log("failed to be online");
-                console.log(data);
-            }
-        })
-        
-        setInterval('chat.update(targetfile)',1000);
-        //getOnline
-        $.ajax({
+            //getOnline
+            $.ajax({
             type: "post",
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
@@ -153,12 +132,33 @@
                     }
                     
                 }
-                
             },
             error: function(data) {
                 console.log("fail here");
             }
-})
+        });
+        });
+    
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        //set online
+        $.ajax({
+            type: "post",
+            url: "setOnline.php",
+            data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
+            success: function(data) {
+                console.log("UserOnline");
+                console.log(data);
+            },
+            error: function(data) {
+                console.log("failed to be online");
+                console.log(data);
+            }
+        })
+        
+        setInterval('chat.update(targetfile)',1000);
+        
       }
       window.onload = load;
 
