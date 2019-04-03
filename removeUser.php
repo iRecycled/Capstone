@@ -7,9 +7,9 @@ header("index.php");
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-        $username = $_POST['user']; 
+        $username = $_POST['username']; 
         $serverID = $_POST['serverID'];
-        echo("test");
+        echo($username);
         return;
         // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
