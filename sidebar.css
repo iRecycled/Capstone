@@ -4,6 +4,7 @@
     max-width: 300px;
     overflow-y: scroll;
     min-height: 100vh;
+    color:white;
 }
 
 hr {
@@ -35,7 +36,7 @@ hr {
 }
 
 #sidebar ul li {
-    padding-top: 20px;
+    padding: 10px;
 }
 
 
