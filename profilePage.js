@@ -232,7 +232,7 @@ function createImFile() {
         success: function(result) {
             // TODO change to match new file name
             //If successful, go to the instant_messages page
-            localStorage.setItem('imName', result.file);
+            localStorage.setItem('imName', result);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
         error: function(result) {
