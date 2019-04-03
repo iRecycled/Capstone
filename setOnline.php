@@ -17,8 +17,8 @@
             $result = $db->query($query);
             $alreadyExists = false;
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                echo("Hello");
-                return;
+                // echo("Hello");
+                // return;
                 $alreadyExists = true;
             }
             if(mysql_num_rows($query) != 0){
