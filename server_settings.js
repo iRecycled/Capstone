@@ -91,11 +91,10 @@ $(document).ready(function(){
         url: "removeUser.php",
         data: {serverID: localStorage.getItem("serverID"), username: document.getElementById("userToRemove").value},
         success: function(result) {
-            console.log("Success");
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
+            console.log(result);
         },
         error: function(result) {
-            console.log("Failure");
+            console.log(result);
         }
     })
     })  
