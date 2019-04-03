@@ -108,8 +108,11 @@
                     }
 
              });
-            //getOnline
-            $.ajax({
+    });
+    
+    //getOnline
+    function loadOnline() {
+    $.ajax({
             type: "post",
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
@@ -135,10 +138,10 @@
             },
             error: function(data) {
                 console.log("fail here");
-            }
+            }    
         });
-    });
-    
+    }
+
     //on page load
       function load(){
         targetfile = localStorage.getItem('serverID');
@@ -158,6 +161,7 @@
         })
         
         setInterval('chat.update(targetfile)',1000);
+        setInterval('loadOnline()',5000);
         
       }
       window.onload = load;
