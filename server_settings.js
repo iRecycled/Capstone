@@ -105,7 +105,7 @@ $(document).ready(function(){
         $.ajax({
         type: "post",
         url: "unblockUser.php",
-        data: {user: document.getElementById("unblockUserTxt"), serverID = localStorage.getItem("serverID")},
+        data: {user: document.getElementById("unblockUserTxt"), serverID: localStorage.getItem("serverID")},
         success: function(result) {
             console.log("success");
         },
@@ -119,7 +119,7 @@ $(document).ready(function(){
         $.ajax({
         type: "post",
         url: "blockUser.php",
-        data: {user: document.getElementById("blockUserTxt"), serverID = localStorage.getItem("serverID")},
+        data: {user: document.getElementById("blockUserTxt"), serverID: localStorage.getItem("serverID")},
         success: function(result) {
             console.log("success");
         },
