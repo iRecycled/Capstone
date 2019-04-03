@@ -178,7 +178,7 @@ $(document).ready(function(){
 })
 
 function InsertAvatar(e){
-    url = e.trim()
+    url = e.value.trim()
     if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
         $.ajax({
             type: "post",
