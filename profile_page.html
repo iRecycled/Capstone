@@ -327,7 +327,18 @@
         <h4 class="modal-title">Change Avatar: </h4>
       </div>
       <div class="modal-body">
-
+        <div id="image" class="tab-pane fade show active">
+          <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Image URL:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                  </div>
+          <div>
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertAvatar(inputURL)">Insert</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+      </div>
     </div>
 
   </div>
