@@ -108,14 +108,17 @@
                     }
 
              });
-            //getOnline
-            function refreshUsers(){
-            $.ajax({
+    });
+    
+    //getOnline
+    function loadOnline() {
+    $.ajax({
             type: "post",
             url: "isOnline.php",
             data: {serverID: localStorage.getItem('serverID')},
             success: function(data) {
                 var obj = JSON.parse(data);
+                document.getElementById("onlineUserList") = "";
                 console.log(obj);
                 if(obj.length >= 1){
                     var list = document.getElementById("onlineUserList");
@@ -136,12 +139,10 @@
             },
             error: function(data) {
                 console.log("fail here");
-            }
-        
-            });
-        }
-    });
-    
+            }    
+        });
+    }
+
     //on page load
       function load(){
         targetfile = localStorage.getItem('serverID');
@@ -161,7 +162,7 @@
         })
         
         setInterval('chat.update(targetfile)',1000);
-        setInterval('chat.refreshUsers()',5000);
+        setInterval('loadOnline()',5000);
         
       }
       window.onload = load;
@@ -524,7 +525,7 @@ function isAllowedToInvite(){
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tab">
-                    <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image</a></li>
+                    <li class='active'><a class = 'dropdownEle' data-toggle="tab" href="#image">Image </a></li>
                     <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
                 </ul>
                 <div class="tab-content">
