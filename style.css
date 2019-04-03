@@ -238,7 +238,7 @@ a:hover{
 }
 
 .profilePicture{
-    border-radius: 50px;
+    border-radius: 100px;
     border: 8px solid white;
     background-color: white;
     padding: 0px; 
