@@ -8,7 +8,7 @@
         $username = $_POST['username'];
         $servername = $_POST['servername'];
         if($servername == NULL){
-            include 'register.html';
+            include 'profile_page.html';
         } else {
             //gets the highest server ID + 1
             $query = "SELECT * FROM (SELECT COALESCE(MAX(ServerID)+1,0) FROM Server) as tmptable";
