@@ -28,6 +28,8 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp)
       $stmt->fetch();
+      http_response_code(200);
+      echo json_encode($tmp);
     if($tmp != NULL)
     {
       $continue = true;
