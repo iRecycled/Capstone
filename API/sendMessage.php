@@ -10,7 +10,7 @@ include "database.php";
   $data = json_decode(file_get_contents("php://input"));
 
   $auth = $data->auth;
-  $query = "SELECT UserId, UserName FROM WebUser WHERE UserName = '$auth';";
+  $query = "SELECT UserID, UserName FROM WebUser WHERE UserName = '$auth';";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
