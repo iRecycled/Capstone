@@ -8,9 +8,19 @@ include "database.php";
         }
   //$username = $_POST['username']; 
   $data = json_decode(file_get_contents("php://input"));
+
+  $auth = $data->auth;
+  $query = "SELECT UserId, UserName FROM WebUser WHERE UserName = '$auth'";
+            $stmt = simpleQuery($db, $query);
+            $stmt->bind_result($userId,$nickname);
+            $stmt->fetch();
+  if($userId==NULL){
+    http_response_code(500);
+    die('{ "errMessage": "Bad Auth Token" }');
+  }
+  else{
   $serverName = $data->servername;
   $message = $data->message;
-  $nickname = $data->username;
   $time = $data->time;
   $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
   //runs query
@@ -21,7 +31,6 @@ include "database.php";
     
     $privateserver = "../chat/private/".$server.".txt";
 
-
 	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 	     if (($message) != "\n") {
 	       if (preg_match($reg_exUrl, $message, $url)) {
@@ -31,4 +40,5 @@ include "database.php";
 	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
 	     }
 
+    }
 ?>
