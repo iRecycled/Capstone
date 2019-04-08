@@ -1,29 +1,30 @@
 <?php
-        //Connect to the database
+header("index.php");
+        // 1. Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-        $username = $_POST['username']; 
-       
-        //Gets the id for the current user
+        $username = $_POST['user']; 
+        $serverID = $_POST['serverID'];
+        // 2. Run the Query
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
-   
+  
         $stmt->bind_result($userID);
         $stmt->fetch();
-
-        //retrieves server names of all current invitations
-        $query = "SELECT s.ServerName FROM Server s JOIN ServerInvite si on s.ServerID = si.ServerID where si.UserID = '$userID';";
         
+
+        $query = "SELECT * FROM blockedUser WHERE userID = '$userID' AND serverID = $serverID;";
         $result = $db->query($query);
-        $response = array();
-        
+        $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $response[] = $row;
+            $alreadyExists = true;
         }
-
-        echo json_encode($response);
+        if($alreadyExists == false) {
+            $query = "INSERT INTO BlockedUser VALUES('$userID', '$serverID');";
+            $stmt = simpleQuery($db, $query);
+        }
 ?>

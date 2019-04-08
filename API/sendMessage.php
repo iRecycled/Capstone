@@ -21,7 +21,6 @@ include "database.php";
     
     $privateserver = "../chat/private/".$server.".txt";
 
-
 	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 	     if (($message) != "\n") {
 	       if (preg_match($reg_exUrl, $message, $url)) {

@@ -7,7 +7,7 @@
     }
     $username = $_POST['username'];
     $friendUsername = $_POST['friendName'];
-    // TODO find IM file that matches 2 users given and return the fileId
+
     // Selects the ID of user logged in
     $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
     $stmt = simpleQuery($db, $query);
@@ -19,8 +19,18 @@
     $stmt->bind_result($secondUserID);
     $stmt->fetch();
 
-    $query = "SELECT FileId, User1ID, User2ID FROM InstantMessage";
+    $query = "SELECT * FROM InstantMessage";
     $stmt = simpleQuery($db, $query);
-    //TODO loop through to see if any match both userID's
-    // return -1 if it doesn't exist
+    $stmt->bind_result($user1, $user2, $fileName)
+
+    while($stmt->fetch()) {
+        if(($firstUserID == $user1 || $firstUserID == $user2) && ($secondUserID == $user1 || $secondUserID == $user2)) {
+            $status = $fileName;
+            break;
+        }
+        else {
+            $status = -1;
+        }
+    }
+    echo json_encode($status);
 ?>

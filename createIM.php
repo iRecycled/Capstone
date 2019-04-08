@@ -8,7 +8,7 @@
         $username = $_POST['username'];
         $friendUsername = $_POST['friendName'];
         // Selects the max ID + 1
-        $query = "SELECT * FROM (SELECT COALESCE(MAX(FileID)+1,0) FROM InstantMessage) as tmptable";
+        $query = "SELECT * FROM (SELECT COALESCE(MAX(FileName)+1,0) FROM InstantMessage) as tmptable";
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($fileID);
         $stmt->fetch();
@@ -22,12 +22,9 @@
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($otherUserID);
         $stmt->fetch();
-            //User1ID, User2ID, FileName
-        //$mesageFileName = $username . "&" . $friendUsername;
-        $query = "INSERT INTO InstantMessage VALUES ('$fileID', '$firstUserID', '$otherUserID')";
+        //User1ID, User2ID, FileName(ID)
+        $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID','$fileID')";
 
-        
-        // TODO create file and store file in database
         //Create chatroom text file_exists\
         $filename = "instantMessage/$fileID.txt";
         //error_log($filename);

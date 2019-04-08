@@ -14,11 +14,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="checkIfUsername.js"></script>
     <script src = 'chat_engine.js'></script>
+     <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">    
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <script type="text/javascript">
-       
+
         name = localStorage.getItem('username');
     	// kick off chat
         var chat =  new Chat();
@@ -98,6 +108,8 @@
                     // send
                     if (length <= maxLength + 1) {
                         console.log("right size");
+                        setOnline(); //refresh the online user time interval
+                        loadOnline() //refresh the user list
                         chat.send(text, name, targetfile);
                         $('#sendie').val("");
 
@@ -111,6 +123,8 @@
     });
     
     //getOnline
+    //returns a json array of users who are online in the past 3 minutes
+    //the array is unique and shows no duplicates
     function loadOnline() {
     $.ajax({
             type: "post",
@@ -129,7 +143,7 @@
                     for(var i = 0; i < obj.length;i++){
                         arr.push(obj[i].UserName);
                     }
-                    const uniqueVal = arr.filter(unique);
+                    const uniqueVal = arr.filter(unique); //adds unique value of the array to variable
 
                     for(var i = 0;i < uniqueVal.length; i++){
                         list.innerHTML +=  '<li>' + uniqueVal[i] + '</li>';
@@ -143,11 +157,10 @@
         });
     }
 
-    //on page load
-      function load(){
-        targetfile = localStorage.getItem('serverID');
-        //set online
-        $.ajax({
+    //set online
+    //sets the user who loads the page as online in the database
+    function setOnline(){
+    $.ajax({
             type: "post",
             url: "setOnline.php",
             data: {serverID: localStorage.getItem('serverID'), username: localStorage.getItem('username')},
@@ -159,36 +172,20 @@
                 console.log("failed to be online");
                 console.log(data);
             }
-        })
-        
+        });
+    }
+
+    //on page load
+      function load(){
+        targetfile = localStorage.getItem('serverID');
+        setOnline(); // refreshes database time for logged in
+        loadOnline();// refreshes the array of online users 
         setInterval('chat.update(targetfile)',1000);
-        setInterval('loadOnline()',5000);
+        setInterval('loadOnline()',5000); //refreshes the online user array every 5 seconds
         
       }
       window.onload = load;
 
-    //   when the user leaves the page
-    //   $(window).bind('beforeunload', function(){
-    //    
-    //   });
-
-    </script>
-
-
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="sidebar.css">
-    <!-- Scrollbar Custom CSS -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <script>
         //returns session ID of current user name in local storage
         //also checks the username to be compatible with sessionID
         //if username != sessionID then it is sent to loginPage
@@ -437,9 +434,9 @@ function isAllowedToInvite(){
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4><u>Chatrooms</u></h4>
+            <h4>Chatrooms</h4>
         </div>
-        <br>
+        
         <ul class="list-unstyled components">
             <li>
                 <div id="Invite"></div>
@@ -576,6 +573,5 @@ function isAllowedToInvite(){
         </div>
     </div>
 </div>
-
 </body>
 </html>
