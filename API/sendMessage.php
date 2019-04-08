@@ -6,7 +6,7 @@ include "database.php";
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  //$username = $_POST['username']; 
+  //$username = $_POST['username'];
   $data = json_decode(file_get_contents("php://input"));
 
   $auth = $data->auth;
@@ -19,26 +19,43 @@ include "database.php";
     die('{ "errMessage": "Bad Auth Token" }');
   }
   else{
-  $serverName = $data->servername;
-  $message = $data->message;
-  $time = $data->time;
-  $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
-  //runs query
-        $stmt = simpleQuery($db, $query);
-  //binds results of query to the database
-    $stmt->bind_result($server);
-    $stmt->fetch();
-    
-    $privateserver = "../chat/private/".$server.".txt";
+    $query = "SELECT ServerID FROM ServerMember WHERE UserID = '$userId'"
+      $stmt = simpleQuery($db, $query);
+      $stmt->bind_result($ServerID);
+      $stmt->fetch();
+    $continue = false;
+    for($i =0; $i<sizeof($ServerID); $i++){
+      $query = "SELECT ServerName FROM ServerID ='$ServerID[$i]'";
+      $stmt->bind_result($tmp)
+      $stmt->fetch();
+      if($tmp == $data->servername)
+      {
+        $continue = true;
+        break;
+      }
+    }
+    if($continue){
+      $serverName = $data->servername;
+      $message = $data->message;
+      $time = $data->time;
+      $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
+      //runs query
+            $stmt = simpleQuery($db, $query);
+      //binds results of query to the database
+        $stmt->bind_result($server);
+        $stmt->fetch();
 
-	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-	     if (($message) != "\n") {
-	       if (preg_match($reg_exUrl, $message, $url)) {
-	         // $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-             }
-                  //fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
-	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
-	     }
+        $privateserver = "../chat/private/".$server.".txt";
 
+    	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+    	     if (($message) != "\n") {
+    	       if (preg_match($reg_exUrl, $message, $url)) {
+    	         // $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
+                 }
+                      //fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
+    	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
+    	     }
+
+        }
     }
 ?>
