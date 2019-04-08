@@ -9,8 +9,8 @@ include "database.php";
   $data = json_decode("php://input");
   $user = $data->$username;
   $TOK = password_hash(microtime(),PASSWORD_DEFAULT);
-  $query = "UPDATE WebUser SET Token='$TOK' WHERE UserName = '$user'";
+  $query = "UPDATE WebUser SET Token='$TOK' WHERE UserName = '$user';";
   $stmt = simpleQuery($db, $query);
   //Update Token FROM WebUser where UserName == $user
-  echo json_encode( $TOK );
+  echo json_encode( $user );
  ?>
