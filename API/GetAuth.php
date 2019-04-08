@@ -5,13 +5,11 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  var TMP = localStorage.getItem('username');
-  myObj = { username: TMP}
   $.ajax({
       url: 'TokenGen.php',
-      type: 'POST',
-      data: JSON.stringify(myObj),
+      method: 'POST',
       dataType: 'json',
+      data: {username: localStorage.getItem('username')},
       success: function( token) {
         document.getElementById("tok").innerHTML = token;
 
