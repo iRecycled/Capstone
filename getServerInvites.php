@@ -1,6 +1,5 @@
 <?php
-header("index.php");
-        // 1. Connect to the database
+        //Connect to the database
         include "database.php";
         $db = connectToDatabase(DBDeets::DB_NAME);
         if ($db->connect_error) {
@@ -8,13 +7,15 @@ header("index.php");
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
         $username = $_POST['username']; 
-        // 2. Run the Query
+       
+        //Gets the id for the current user
         $query = "SELECT UserID FROM WebUser WHERE username = '$username';";
         $stmt = simpleQuery($db, $query);
-  
+   
         $stmt->bind_result($userID);
         $stmt->fetch();
 
+        //retrieves server names of all current invitations
         $query = "SELECT s.ServerName FROM Server s JOIN ServerInvite si on s.ServerID = si.ServerID where si.UserID = '$userID';";
         
         $result = $db->query($query);
