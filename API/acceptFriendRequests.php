@@ -7,14 +7,18 @@
             }
 
             $data = json_decode(file_get_contents("php://input"));
-            $username = $data->username;
+            $data = json_decode(file_get_contents("php://input"));
 
-            //Fetches the userId for the user that's logged in
-            $query = "SELECT UserId FROM WebUser WHERE UserName = '$username'";
-           
+  $auth = $data->auth;
+  $query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
             $stmt = simpleQuery($db, $query);
-            $stmt->bind_result($userId);
+            $stmt->bind_result($userId,$username);
             $stmt->fetch();
+            if($userId==NULL){
+              http_response_code(500);
+              die('{ "errMessage": "Bad Auth Token" }');
+            }
+else{
 
             $query = "SELECT FromID FROM FriendRequest WHERE ToID = $userId";
             $stmt = simpleQuery($db, $query);
@@ -31,5 +35,6 @@
             $stmt = simpleQuery($db, $query);
             echo $requesters;
             }
+        }
         mysql_close($db);
 ?>
