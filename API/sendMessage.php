@@ -8,7 +8,7 @@ include "database.php";
         }
   //$username = $_POST['username'];
   $data = json_decode(file_get_contents("php://input"));
-
+  $ServerName=$data->servername;
   $auth = $data->auth;
   $query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
             $stmt = simpleQuery($db, $query);
@@ -20,7 +20,6 @@ include "database.php";
     die('{ "errMessage": "Bad Auth Token" }');
   }
   else{
-    $ServerName=$data->servername
     $query = "SELECT ServerID FROM Server WHERE ServerName = '$ServerName';"
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
