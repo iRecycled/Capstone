@@ -30,7 +30,6 @@ include "database.php";
     if($tmp != NULL)
     {
       $continue = true;
-      break;
     }
     if($continue){
       $serverName = $data->servername;
