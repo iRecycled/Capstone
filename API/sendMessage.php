@@ -14,7 +14,7 @@ include "database.php";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
-  echo json_encode($auth);
+  echo json_encode($userId);
   /*
   if($userId==NULL){
     http_response_code(500);
@@ -35,8 +35,6 @@ include "database.php";
     if($tmp != NULL)
     {
       $continue = true;
-      http_response_code(200);
-      echo json_encode($tmp);
     }
     if($continue){
       $serverName = $data->servername;
