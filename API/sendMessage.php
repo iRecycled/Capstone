@@ -31,6 +31,8 @@ include "database.php";
     if($tmp != NULL)
     {
       $continue = true;
+      http_response_code(200);
+      echo json_encode($tmp);
     }
     if($continue){
       $serverName = $data->servername;
