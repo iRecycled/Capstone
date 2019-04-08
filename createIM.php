@@ -22,9 +22,9 @@
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($otherUserID);
         $stmt->fetch();
-            //User1ID, User2ID, FileName
+            //User1ID, User2ID, FileName(ID)
         //$mesageFileName = $username . "&" . $friendUsername;
-        $query = "INSERT INTO InstantMessage VALUES ('$fileID', '$firstUserID', '$otherUserID')";
+        $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID','$fileID')";
 
         
         // TODO create file and store file in database

@@ -12,6 +12,7 @@
             $result = $db->query($query);
             //output query result to json array
             $response = array();
+            //pulls all info from database of online users and returns it as a json array (echo)
             while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 $response[] = $row;
             }

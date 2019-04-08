@@ -6,6 +6,7 @@
           http_response_code(500);
           die('{ "errMessage": "Failed to Connect to DB." }');
     }
+    // grabs data from user
     $username = $_POST['username']; 
     $status = 0;
     //randomly set password for the user to change
@@ -13,24 +14,26 @@
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $password = '';
+    // randomly selects 8 characters for the new password
     for ($i = 0; $i < $length; $i++) {
         $password .= $characters[rand(0, $charactersLength - 1)];
     }
 
     //checks to see if user is logged in
     if($username == "") {
-        // if not logged in must check to see if email input macthes an account in the DB
+        // grabs data from user input
         $emailInput = $_POST['email'];
-
+        // grabs all usernames and corresponding emails
         $query = "SELECT UserName, email FROM WebUser;";
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($usernameList, $email);
-
+        // if not logged in must check to see if email input macthes an account in the DB
         while($stmt->fetch()) {
             if($emailInput == $email) {
                 $username = $usernameList;
                 //query that updates the password
-                $query = "UPDATE WebUser SET Password='$password' WHERE UserName = '$username';";
+                $passwordHash=password_hash($password, PASSWORD_DEFAULT);
+                $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
                 $stmt = simpleQuery($db, $query);
 
                 $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 

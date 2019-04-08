@@ -12,9 +12,8 @@
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($userID, $username, $email, $avatar);
     $stmt->fetch();
-    //SELECT ServerName FROM Server s JOIN ServerMember sm ON s.ServerId = sm.ServerId JOIN WebUser wu ON wu.UserId = sm.UserId WHERE wu.UserName = '$username';";
     
-    //Finds the number of public servers that the user belongs to
+    //Finds the total number of servers that the user belongs to
     $query = "SELECT COUNT(*) FROM ServerMember sm JOIN WebUser wu ON wu.UserId = sm.UserId WHERE UserName = '$name';";
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($chatCount);
@@ -31,7 +30,7 @@
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($friendCount);
     $stmt->fetch();
-
+    // create and return info in a JSON object
     echo "{";
     ?>
         "name": <?=json_encode($username)?>,
