@@ -269,13 +269,13 @@ function checkImExists(name1, name2) {
         success: function(result) {
             if(result !== -1) {
                 localStorage.setItem('imName', result);
-                return true
+                isImCreated = true;
             } else {
-                return false;
+                isImCreated = false;
             }
         },
         error: function(result) {
-            return false;
+            isImCreated = false;
         }
     })
 }
