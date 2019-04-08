@@ -80,7 +80,9 @@ function Chat () {
     this.send = sendChat;
 	this.getState = getStateOfChat;
 }
-/*if(document.URL.contains('_messages.html')) {
+let url = window.location.href.toString();
+
+if(url.contains('_messages.html')) {
     //gets the state of the chat
     function getStateOfChat(fileID){
         if(!instanse){
@@ -167,7 +169,7 @@ function Chat () {
             },
             });
     }
-} else {*/
+} else {
     //gets the state of the chat
     function getStateOfChat(serverID){
         if(!instanse){
@@ -254,7 +256,7 @@ function Chat () {
             },
             });
     }
-//}
+}
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
