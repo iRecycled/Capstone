@@ -82,7 +82,7 @@ function Chat () {
 }
 let url = window.location.href.toString();
 
-if(url.contains('_messages.html')) {
+/*if(url.contains('_messages.html')) {
     //gets the state of the chat
     function getStateOfChat(fileID){
         if(!instanse){
@@ -169,7 +169,7 @@ if(url.contains('_messages.html')) {
             },
             });
     }
-} else {
+} else {*/
     //gets the state of the chat
     function getStateOfChat(serverID){
         if(!instanse){
@@ -256,7 +256,7 @@ if(url.contains('_messages.html')) {
             },
             });
     }
-}
+//}
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
