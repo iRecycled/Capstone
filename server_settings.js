@@ -104,10 +104,10 @@ $(document).ready(function(){
         type: "post",
         url: "unblockUser.php",
         data: {user: document.getElementById("unblockUserTxt").value, serverID: localStorage.getItem("serverID")},
-        success: function(result) {
+        success: function(data) {
             console.log("success");
         },
-        error: function(result) {
+        error: function(data) {
             console.log("fail");
         }
     })
