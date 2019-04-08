@@ -15,6 +15,7 @@ include "database.php";
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
   echo json_encode($auth);
+  /*
   if($userId==NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad Auth Token" }');
@@ -65,5 +66,5 @@ include "database.php";
           die('{ "errMessage": "Permission not found" }');
         }
     }
-
+*/
 ?>
