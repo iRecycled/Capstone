@@ -14,8 +14,7 @@ include "database.php";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
-  echo json_encode($userId);
-  /*
+  
   if($userId==NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad Auth Token" }');
@@ -25,13 +24,15 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
       $stmt->fetch();
+      echo json_encode($ServerID);
+
+      /*
     $continue = false;
     $query = "SELECT Permission FROM ServerMember WHERE ServerID =".$ServerID." AND UserID =".$userId.";";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp)
       $stmt->fetch();
-      http_response_code(200);
-      echo json_encode($tmp);
+      
     if($tmp != NULL)
     {
       $continue = true;
@@ -63,6 +64,9 @@ include "database.php";
           http_response_code(500);
           die('{ "errMessage": "Permission not found" }');
         }
+
+        */
     }
-*/
+
+
 ?>
