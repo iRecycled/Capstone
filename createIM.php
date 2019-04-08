@@ -22,12 +22,9 @@
         $stmt = simpleQuery($db, $query);
         $stmt->bind_result($otherUserID);
         $stmt->fetch();
-            //User1ID, User2ID, FileName(ID)
-        //$mesageFileName = $username . "&" . $friendUsername;
+        //User1ID, User2ID, FileName(ID)
         $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID','$fileID')";
 
-        
-        // TODO create file and store file in database
         //Create chatroom text file_exists\
         $filename = "instantMessage/$fileID.txt";
         //error_log($filename);
