@@ -55,5 +55,10 @@ include "database.php";
     	     }
 
         }
+        else{
+          http_response_code(500);
+          die('{ "errMessage": "Permission not found" }');
+        }
     }
+
 ?>
