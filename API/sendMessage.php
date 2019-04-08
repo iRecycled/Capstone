@@ -24,13 +24,17 @@ include "database.php";
       $stmt->bind_result($ServerID);
       $stmt->fetch();
     $continue = false;
-    $query = "SELECT Permission FROM ServerMember WHERE ServerID =$ServerID AND UserID =$userId;";
+    $query = "SELECT Permission FROM ServerMember WHERE ServerID =".$ServerID." AND UserID =".$userId.";";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp)
       $stmt->fetch();
+      http_response_code(200);
+      echo json_encode($tmp);
     if($tmp != NULL)
     {
       $continue = true;
+      http_response_code(200);
+      echo json_encode($tmp);
     }
     if($continue){
       $serverName = $data->servername;
@@ -55,5 +59,10 @@ include "database.php";
     	     }
 
         }
+        else{
+          http_response_code(500);
+          die('{ "errMessage": "Permission not found" }');
+        }
     }
+
 ?>
