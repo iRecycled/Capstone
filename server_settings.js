@@ -83,7 +83,7 @@ $(document).ready(function(){
         error: function(data) {
             console.log("fail");
         }
-    })
+    }) 
     $("#removeUser").click(function(e){
         e.preventDefault();
         $.ajax({
@@ -112,7 +112,8 @@ $(document).ready(function(){
         }
     })
     })  
-    $("#blockUser").click(function(e){
+    $("#blockUserBtn").click(function(e){
+        console.log("TEST");
         e.preventDefault();
         $.ajax({
         type: "post",
