@@ -19,12 +19,13 @@ include "database.php";
     die('{ "errMessage": "Bad Auth Token" }');
   }
   else{
-    $query = "SELECT ServerID FROM Server WHERE ServerName = '$data->servername'"
+    $query = "SELECT ServerID FROM Server WHERE ServerName = '$data->servername';"
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
       $stmt->fetch();
     $continue = false;
-    $query = "SELECT Permission FROM ServerMember WHERE ServerID =$ServerID AND UserID =$userId";
+    $query = "SELECT Permission FROM ServerMember WHERE ServerID =$ServerID AND UserID =$userId;";
+      $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp)
       $stmt->fetch();
     if($tmp != NULL)
