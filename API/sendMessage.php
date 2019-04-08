@@ -10,6 +10,7 @@ include "database.php";
   $data = json_decode(file_get_contents("php://input"));
   $ServerName=$data->servername;
   echo json_encode($ServerName);
+  /*
   $auth = $data->auth;
   $query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
             $stmt = simpleQuery($db, $query);
@@ -68,6 +69,6 @@ include "database.php";
 
         
     }
-
+*/
 
 ?>
