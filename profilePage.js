@@ -19,73 +19,69 @@ $(document).ready(function(){
     $("#createServerBtn").click(function(e){
         e.preventDefault();
         $.ajax({
-        type: "post",
-        url: "server.php",
-        data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
-        success: function(result) {
-            //If successful, go to the home page
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
-        },
-        error: function(result) {
-            //If not successful, return to the profile page
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
-        }
+            type: "post",
+            url: "server.php",
+            data: {username: localStorage.getItem('username'), servername: document.getElementById("newServerName").value},
+            success: function(result) {
+                //If successful, go to the home page
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
+            },
+            error: function(result) {
+                //If not successful, return to the profile page
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
+            }
+        })
     })
-    })  
-})
-//Allows the user to change their password if they know their current password
-$(document).ready(function(){
+    //Allows the user to change their password if they know their current password
     $("#changePasswordBtn").click(function(e){
         e.preventDefault();
         $.ajax({
-        type: "post",
-        url: "changePassword.php",
-        data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
-        success: function(result) {
-            //If successful, go to the home page
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
-            if(result == 0){
+            type: "post",
+            url: "changePassword.php",
+            data: {username: localStorage.getItem('username'), password: document.getElementById("oldPass").value, newPassword: document.getElementById("newPass").value, confirmNewPassword: document.getElementById("confirmNewPass").value},
+            success: function(result) {
+                //If successful, go to the home page
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
+                if(result == 0){
+                    alert("Password failed to change.");
+                }
+                else{
+                    alert("Password changed successfully!");
+                }
+            },
+            error: function(result) {
+                //If not successful, return to the profile page
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
                 alert("Password failed to change.");
             }
-            else{
-                alert("Password changed successfully!");
-            }
-        },
-        error: function(result) {
-            //If not successful, return to the profile page
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
-            alert("Password failed to change.");
-        }
-    })
+        })
     })
     //Allows the user to change their password if forgotten by sending them an email
     $("#forgotPasswordBtn").click(function(e){
         e.preventDefault();
         $.ajax({
-        type: "post",
-        url: "forgotPassword.php",
-        data: {username: localStorage.getItem('username')},
-        success: function(result) {
-            if(result == 1) {
-                //logs out the user
-                localStorage.setItem("username", "logout");
-                alert("You received an email with your new password!");
+            type: "post",
+            url: "forgotPassword.php",
+            data: {username: localStorage.getItem('username')},
+            success: function(result) {
+                if(result == 1) {
+                    //logs out the user
+                    localStorage.setItem("username", "logout");
+                    alert("You received an email with your new password!");
+                }
+                else{
+                    alert("Email does not match an account in the Database.");
+                }
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/index.html';
+            },
+            error: function(result) {
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
+                alert("Failed to reset your password.");
             }
-            else{
-                alert("Email does not match an account in the Database.");
-            }
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/index.html';
-        },
-        error: function(result) {
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
-            alert("Failed to reset your password.");
-        }
+        })
     })
-    })
-})
-//gets a list of servers that the user belongs to
-//redirects the user to chat.html with localstorage Key serverID set to the server ID
-$(document).ready(function(){
+    //gets a list of servers that the user belongs to
+    //redirects the user to chat.html with localstorage Key serverID set to the server ID
     $.ajax({
         type: "post",
         url: "getServerList.php",
@@ -135,7 +131,7 @@ $(document).ready(function(){
                     link.href = "instant_messages.html"; 
                 }
                 else {
-                    // if instant message file does not exist
+                    // if instant message file does not exist view that friends profile page
                     link.onclick = function() {
                         localStorage.setItem("viewInfo", this.id);
                     };
@@ -150,7 +146,7 @@ $(document).ready(function(){
             console.log("fail");
         }
     })
-    //gets information related to the user
+    //gets information related to the user and displays in table on profile page
     $.ajax({
         type: "post",
         url: "userInfo.php",
@@ -231,7 +227,7 @@ function SendFriendRequest()
         }
     })
 }
-//add Instant Message if no message created
+//add Instant Message button if no message created
 let isImCreated = false;
 function addIM(e) {
     let username = localStorage.getItem('username')
@@ -247,6 +243,7 @@ function addIM(e) {
         }
     });
 }
+// creates the text file for the instant message between the 2 users
 function createImFile() {
     $.ajax({
         type: "post",
@@ -264,6 +261,7 @@ function createImFile() {
         }
     })
 }
+// checks to see if an IM text file already exists for the 2 users
 function checkImExists(name1, name2) {
     $.ajax({
         type: "post",
