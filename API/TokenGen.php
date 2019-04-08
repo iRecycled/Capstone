@@ -6,7 +6,7 @@ include "database.php";
             http_response_code(500);
             die('{ "errMessage": "Failed to Connect to DB." }');
         }
-  $data = json_decode(file_get_contents("php://input"));
+  $data = json_decode("php://input");
   $user = $data->$username;
   $TOK = password_hash(microtime(),PASSWORD_DEFAULT);
   $query = "UPDATE WebUser SET Token='$TOK' WHERE UserName = '$user'";
