@@ -103,7 +103,7 @@ $(document).ready(function(){
         $.ajax({
         type: "post",
         url: "unblockUser.php",
-        data: {user: document.getElementById("unblockUserTxt"), serverID: localStorage.getItem("serverID")},
+        data: {user: document.getElementById("unblockUserTxt").value, serverID: localStorage.getItem("serverID")},
         success: function(result) {
             console.log("success");
         },
