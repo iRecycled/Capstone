@@ -25,7 +25,7 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
       $stmt->fetch();
-      echo json_encode($ServerID);
+      echo json_encode($ServerName);
 
       /*
     $continue = false;
