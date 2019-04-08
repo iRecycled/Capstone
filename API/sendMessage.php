@@ -20,7 +20,8 @@ include "database.php";
     die('{ "errMessage": "Bad Auth Token" }');
   }
   else{
-    $query = "SELECT ServerID FROM Server WHERE ServerName = '$data->servername';"
+    $ServerName=$data->servername
+    $query = "SELECT ServerID FROM Server WHERE ServerName = '$ServerName';"
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
       $stmt->fetch();
