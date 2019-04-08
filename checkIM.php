@@ -19,7 +19,7 @@
     $stmt->bind_result($secondUserID);
     $stmt->fetch();
 
-    $query = "SELECT User1ID, User2ID, FileName FROM InstantMessage";
+    $query = "SELECT * FROM InstantMessage";
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($user1, $user2, $fileName)
 
