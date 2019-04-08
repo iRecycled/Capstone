@@ -14,6 +14,7 @@ include "database.php";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
+  echo json_encode($auth);
   if($userId==NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad Auth Token" }');
