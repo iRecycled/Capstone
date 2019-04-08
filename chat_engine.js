@@ -80,71 +80,181 @@ function Chat () {
     this.send = sendChat;
 	this.getState = getStateOfChat;
 }
+/*if(document.URL.contains('_messages.html')) {
+    //gets the state of the chat
+    function getStateOfChat(fileID){
+        if(!instanse){
+            instanse = true;
+            $.ajax({
+                type: "POST",
+                url: "loadIM.php",
+                data: {
+                            'function': 'getState',
+                            'file': fileID
+                            },
+                dataType: "json",
 
-//gets the state of the chat
-function getStateOfChat(serverID){
-	if(!instanse){
-		 instanse = true;
-		 $.ajax({
-			   type: "POST",
-			   url: "process.php",
-			   data: {
-			   			'function': 'getState',
-						  'file': serverID
-						},
-			   dataType: "json",
+                success: function(data){
+                    state = data.state;
+                    instanse = false;
+                },
+                });
+        }
+    }
 
-			   success: function(data){
-				   state = data.state;
-				   instanse = false;
-			   },
-			});
-	}
-}
+    //Updates the chat
+    function updateChat(fileID){
+        if(!instanse){
+            instanse = true;
+            //console.log("start update");
+            $.ajax({
+                type: "POST",
+                url: "loadIM.php",
+                data: {
+                        'function': 'update',
+                            'state': state,
+                            'file': fileID
+                            },
+                dataType: "json",
+                success: function(data){
+                    if(data.text){
+                            for (var i = 0; i < data.text.length; i++) {
+                                //data.text[i] = msgParse(data.text[i]);
+                                var parse = new msgParse();
+                                var str = data.text[i].split("<");
+                                console.log("original string:"+data.text[i]);
+                                data.text[i] = parse.parse(str[2]);
+                                console.log(data.text[i]);
+                                //console.log(generateMsg(data.text[i],"",""));
+                                console.log(str[1]);
+                                data.text[i] = generateMsg(data.text[i], str[0], str[1]);
+                                console.log(data.text[i]);
+                                $('#chatBox').append($(data.text[i]));
+                                document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
+                            }
+                    }
 
+                    instanse = false;
+                    state = data.state;
+                },
+                });
+        }
+        else {
+            setTimeout(updateChat, 1500);
+        }
+    }
+    //send the message
+    function sendChat(message, nickname, fileID)
+    {
+        updateChat(fileID);
+        console.log("sent successfully");
+        var today = new Date();
+        var tmp = today.getMonth()+1;
+        var time = tmp + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
+        $.ajax({
+            type: "POST",
+            url: "loadIM.php",
+            data: {
+                    'function': 'send',
+                        'message': message,
+                        'nickname': nickname,
+            'time': time,
+                        'file': fileID
+                    },
+            dataType: "json",
+            success: function(data){
+                updateChat(fileID);
+            },
+            });
+    }
+} else {*/
+    //gets the state of the chat
+    function getStateOfChat(serverID){
+        if(!instanse){
+            instanse = true;
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: {
+                            'function': 'getState',
+                            'file': serverID
+                            },
+                dataType: "json",
 
+                success: function(data){
+                    state = data.state;
+                    instanse = false;
+                },
+                });
+        }
+    }
 
-//Updates the chat
-function updateChat(serverID){
-	 if(!instanse){
-		 instanse = true;
-		 //console.log("start update");
-	     $.ajax({
-			   type: "POST",
-			   url: "process.php",
-			   data: {
-			   		'function': 'update',
-						'state': state,
-						'file': serverID
-						},
-			   dataType: "json",
-			   success: function(data){
-				   if(data.text){
-						for (var i = 0; i < data.text.length; i++) {
-                            //data.text[i] = msgParse(data.text[i]);
-                            var parse = new msgParse();
-                            var str = data.text[i].split("<");
-                            console.log("original string:"+data.text[i]);
-                            data.text[i] = parse.parse(str[2]);
-                            console.log(data.text[i]);
-                            //console.log(generateMsg(data.text[i],"",""));
-                            console.log(str[1]);
-                            data.text[i] = generateMsg(data.text[i], str[0], str[1]);
-                            console.log(data.text[i]);
-                            $('#chatBox').append($(data.text[i]));
-                            document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
-                        }
-				   }
+    //Updates the chat
+    function updateChat(serverID){
+        if(!instanse){
+            instanse = true;
+            //console.log("start update");
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: {
+                        'function': 'update',
+                            'state': state,
+                            'file': serverID
+                            },
+                dataType: "json",
+                success: function(data){
+                    if(data.text){
+                            for (var i = 0; i < data.text.length; i++) {
+                                //data.text[i] = msgParse(data.text[i]);
+                                var parse = new msgParse();
+                                var str = data.text[i].split("<");
+                                console.log("original string:"+data.text[i]);
+                                data.text[i] = parse.parse(str[2]);
+                                console.log(data.text[i]);
+                                //console.log(generateMsg(data.text[i],"",""));
+                                console.log(str[1]);
+                                data.text[i] = generateMsg(data.text[i], str[0], str[1]);
+                                console.log(data.text[i]);
+                                $('#chatBox').append($(data.text[i]));
+                                document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
+                            }
+                    }
 
-				   instanse = false;
-				   state = data.state;
-			   },
-			});
-	 }
-	 else {
-		 setTimeout(updateChat, 1500);
-     }
-}
+                    instanse = false;
+                    state = data.state;
+                },
+                });
+        }
+        else {
+            setTimeout(updateChat, 1500);
+        }
+    }
+    //send the message
+    function sendChat(message, nickname, serverID)
+    {
+        updateChat(serverID);
+        console.log("sent successfully");
+        var today = new Date();
+        var tmp = today.getMonth()+1;
+        var time = tmp + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
+        $.ajax({
+            type: "POST",
+            url: "process.php",
+            data: {
+                    'function': 'send',
+                        'message': message,
+                        'nickname': nickname,
+            'time': time,
+                        'file': serverID
+                    },
+            dataType: "json",
+            success: function(data){
+                updateChat(serverID);
+            },
+            });
+    }
+//}
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
@@ -329,27 +439,4 @@ function UpdatePreview(){
     }
 }
 
-//send the message
-function sendChat(message, nickname, serverID)
-{
-    updateChat(serverID);
-    console.log("sent successfully");
-    var today = new Date();
-    var tmp = today.getMonth()+1;
-    var time = tmp + '-' +  today.getDate() + '-' + today.getFullYear() + ' ' + today.getHours() + ':' + ('0'+today.getMinutes()).slice(-2);
-     $.ajax({
-		   type: "POST",
-		   url: "process.php",
-		   data: {
-		   		'function': 'send',
-					'message': message,
-					'nickname': nickname,
-          'time': time,
-					'file': serverID
-				 },
-		   dataType: "json",
-		   success: function(data){
-			   updateChat(serverID);
-		   },
-		});
-}
+
