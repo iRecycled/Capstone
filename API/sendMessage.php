@@ -24,7 +24,7 @@ include "database.php";
       $stmt->bind_result($ServerID);
       $stmt->fetch();
     $continue = false;
-    $query = "SELECT Permission FROM ServerMember WHERE ServerID ='$ServerID'";
+    $query = "SELECT Permission FROM ServerMember WHERE ServerID ='$ServerID' AND UserID ='$userId'";
       $stmt->bind_result($tmp)
       $stmt->fetch();
     if($tmp != NULL)
