@@ -113,6 +113,7 @@ $(document).ready(function(){
     })
     })  
     $("#blockUserBtn").click(function(e){
+        console.log("TEST");
         e.preventDefault();
         $.ajax({
         type: "post",
