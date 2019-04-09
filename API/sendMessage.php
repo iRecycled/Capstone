@@ -9,8 +9,7 @@ include "database.php";
   //$username = $_POST['username'];
   $data = json_decode(file_get_contents("php://input"));
   $ServerName=$data->servername;
-  echo json_encode($ServerName);
-  /*
+  
   $auth = $data->auth;
   $query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
             $stmt = simpleQuery($db, $query);
@@ -28,7 +27,7 @@ include "database.php";
       $stmt->fetch();
       echo json_encode($ServerName);
 
-      
+      /*
     $continue = false;
     $query = "SELECT Permission FROM ServerMember WHERE ServerID =".$ServerID." AND UserID =".$userId.";";
       $stmt = simpleQuery($db, $query);
@@ -67,8 +66,8 @@ include "database.php";
           die('{ "errMessage": "Permission not found" }');
         }
 
-        
+      */  
     }
-*/
+
 
 ?>
