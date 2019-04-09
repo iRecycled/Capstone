@@ -31,9 +31,31 @@ else{
     $stmt->bind_result($userID);
     $stmt->fetch();
 
+    $query = "SELECT * FROM FriendRequest WHERE FromID = '$userId' AND ToID =  '$userID';";
+        
+    $result = $db->query($query);
+    $alreadyExists = false;
+    while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $alreadyExists = true;
+    }
+    $query = "SELECT Friend1ID FROM Friend WHERE Friend1ID = '$userId' and Friend2ID = '$userID';";
+  //runs query
+        $stmt = simpleQuery($db, $query);
+
+    if($alreadyExists==true || $stmt!=NULL){
+        echo json_encode("Friend Request Not Sent");
+    }
+    else{
     $query = "INSERT INTO FriendRequest VALUES ('$userId', '$userID');";
   //runs query
         $stmt = simpleQuery($db, $query);
+        if($stmt!=NULL){
+            echo json_encode("Friend Request Sent");
+        }
+        else{
+            echo json_encode("Friend Request Not Sent");
+        }
+    }
   //binds results of query to the database
     //sends the information from the database back as a json object to the ajax call
 //echo json_encode($username);
