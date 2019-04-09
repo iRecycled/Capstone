@@ -25,15 +25,15 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($ServerID);
       $stmt->fetch();
-      echo json_encode($ServerName);
 
-      /*
+      
     $continue = false;
     $query = "SELECT Permission FROM ServerMember WHERE ServerID =".$ServerID." AND UserID =".$userId.";";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp)
       $stmt->fetch();
-      
+      echo json_encode($tmp);
+      /*
     if($tmp != NULL)
     {
       $continue = true;
@@ -66,7 +66,7 @@ include "database.php";
           die('{ "errMessage": "Permission not found" }');
         }
 
-      */  
+      */
     }
 
 
