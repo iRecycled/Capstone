@@ -34,7 +34,7 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       echo json_encode($tmp);
-      /*
+      
     if($tmp != NULL)
     {
       $continue = true;
@@ -67,7 +67,7 @@ include "database.php";
           die('{ "errMessage": "Permission not found" }');
         }
 
-      */
+      
     }
 
 
