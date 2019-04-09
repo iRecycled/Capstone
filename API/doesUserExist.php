@@ -33,10 +33,10 @@ else{
     //sends the information from the database back as a json object to the ajax call
 //echo json_encode($username);
 if($userID==NULL){
-    echo json_encode("Exists");
+    echo json_encode("Does Not Exist");
 }
 else{
-    echo json_encode("Does Not Exist"); 
+    echo json_encode("Exists"); 
 }
 }
 mysql_close($db);
