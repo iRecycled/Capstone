@@ -44,7 +44,7 @@ else{
         $stmt->bind_result($tmp);
         $stmt->fetch();
 
-    if($alreadyExists==true || $tmp>=0){
+    if($alreadyExists==true || $tmp>0){
         echo json_encode($tmp);
     }
     else{
