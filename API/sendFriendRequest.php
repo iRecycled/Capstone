@@ -45,7 +45,7 @@ else{
         $stmt->fetch();
 
     if($alreadyExists==true || $tmp>=0){
-        echo json_encode($alreadyExists);
+        echo json_encode($tmp);
     }
     else{
     $query = "INSERT INTO FriendRequest VALUES ('$userId', '$userID');";
