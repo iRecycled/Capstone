@@ -11,6 +11,18 @@
   $username = $data->username;
 
 
+  $auth = $data->auth;
+$query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
+    $stmt = simpleQuery($db, $query);
+    $stmt->bind_result($userId,$nickname);
+    $stmt->fetch();
+
+if($userId==NULL){
+http_response_code(500);
+die('{ "errMessage": "Bad Auth Token" }');
+}
+else{
+
 
   $query = "SELECT UserID FROM WebUser WHERE UserName = '$username';";
   //runs query
@@ -20,11 +32,12 @@
     $stmt->fetch();
     //sends the information from the database back as a json object to the ajax call
 //echo json_encode($username);
-mysql_close($db);
 if($userID==NULL){
     echo json_encode("Exists");
 }
 else{
     echo json_encode("Does Not Exist"); 
 }
+}
+mysql_close($db);
 ?>
