@@ -47,5 +47,6 @@ die('{ "errMessage": "Bad Auth Token" }');
             //fwrite($openfile,"");
             fclose($openfile);
         }
+        echo json_encode("Server Created"); 
         mysql_close($db);
 ?>
