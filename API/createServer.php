@@ -7,8 +7,16 @@
             }
 
             $data = json_decode(file_get_contents("php://input"));
-            $username = $data->username;
-            //$username = "darkpiggy73";
+            $auth = $data->auth;
+$query = "SELECT UserID, UserName FROM WebUser WHERE Token = '$auth';";
+    $stmt = simpleQuery($db, $query);
+    $stmt->bind_result($userId,$username);
+    $stmt->fetch();
+
+if($userId==NULL){
+http_response_code(500);
+die('{ "errMessage": "Bad Auth Token" }');
+}
             $servername = $data->servername;
         if($servername == NULL){
             
