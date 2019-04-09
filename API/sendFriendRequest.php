@@ -41,20 +41,18 @@ else{
     $query = "SELECT Friend1ID FROM Friend WHERE Friend1ID = '$userId' and Friend2ID = '$userID';";
   //runs query
         $stmt = simpleQuery($db, $query);
+        $stmt->bind_result($tmp);
+        $stmt->fetch();
 
-    if($alreadyExists==true || $stmt!=NULL){
+    if($alreadyExists==true || $tmp>=0){
         echo json_encode("Friend Request Not Sent");
     }
     else{
     $query = "INSERT INTO FriendRequest VALUES ('$userId', '$userID');";
   //runs query
         $stmt = simpleQuery($db, $query);
-        if($stmt!=NULL){
             echo json_encode("Friend Request Sent");
-        }
-        else{
-            echo json_encode("Friend Request Not Sent");
-        }
+        
     }
   //binds results of query to the database
     //sends the information from the database back as a json object to the ajax call
