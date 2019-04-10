@@ -21,7 +21,7 @@
 
     $query = "SELECT * FROM InstantMessage";
     $stmt = simpleQuery($db, $query);
-    $stmt->bind_result($user1, $user2, $fileName)
+    $stmt->bind_result($user1, $user2, $fileName);
 
     while($stmt->fetch()) {
         if(($firstUserID == $user1 || $firstUserID == $user2) && ($secondUserID == $user1 || $secondUserID == $user2)) {
