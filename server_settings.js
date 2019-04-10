@@ -152,6 +152,20 @@ $("#blockUserBtn").click(function(e){
         console.log("fail");
     }
 })
+}) 
+$("#promoteUserBtn").click(function(e){
+    e.preventDefault();
+    $.ajax({
+    type: "post",
+    url: "promoteUser.php",
+    data: {user: document.getElementById("promoteUserTxt").value, serverID: localStorage.getItem("serverID")},
+    success: function(result) {
+        console.log("success");
+    },
+    error: function(result) {
+        console.log("fail");
+    }
+})
 })  
 
 });
