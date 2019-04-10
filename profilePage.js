@@ -129,7 +129,7 @@ $(document).ready(function(){
                 // if instant message file exists direct user to im file
                 checkImExists(username, obj[x].UserName)
                 if(isImCreated) {
-                    link.href = "Instant_messages.html"; 
+                    link.href = "http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html"; 
                 }
                 else {
                     // if instant message file does not exist view that friends profile page
