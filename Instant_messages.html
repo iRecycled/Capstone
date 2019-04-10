@@ -31,8 +31,8 @@
         let name = localStorage.getItem('username');
 
         var chat =  new Chat();
-        var targetfile = localStorage.getItem('imName');
-        targetfile = 'im_' + targetfile;
+        var targetfile /*= localStorage.getItem('imName');
+        targetfile = 'im_' + targetfile;*/
         console.log(targetfile);
     	$(function() {
     		 chat.getState(targetfile);
