@@ -177,11 +177,9 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var image = new Image();
-    image.src = url
-    console.log(image.complete)
+    var iExists = imgExists(url)
     //check if url is valid image
-    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if(iExists && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
         $.ajax({
             type: "post",
@@ -197,6 +195,18 @@ function InsertAvatar(e){
             }
         })
     }
+}
+
+var imgExists = function(img)
+{
+    //ensure whitespace/newlines arent present
+    imgTrim = img.toString().trim()
+
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    console.log('true');
+    return http.status!=404;
 }
 
 //adds friend request if valid user
