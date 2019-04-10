@@ -18,7 +18,7 @@
         	$state = $_POST['state'];
             $instantMessage = htmlentities(strip_tags($_POST['file']));
             $instantMessage = "instantMessage/".$instantMessage.".txt";
-            $myfile = fopen("instantMessage/willDelete.txt", "w") or die("Unable to open file!");
+            $myfile = fopen("instantMessage/GrabbedChatServer.txt", "w") or die("Unable to open file!");
             fwrite($myfile, $instantMessage);
             fclose($myfile);
         	if(file_exists($instantMessage)){
