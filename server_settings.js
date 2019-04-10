@@ -111,34 +111,49 @@ $(document).ready(function(){
         }
     })
 })
-    $("#unblockUserBtn").click(function(e){
-        e.preventDefault();
-        $.ajax({
-        type: "post",
-        url: "unblockUser.php",
-        data: {user: document.getElementById("unblockUserTxt").value, serverID: localStorage.getItem("serverID")},
-        success: function(data) {
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
-        },
-        error: function(data) {
-            console.log("fail");
-        }
-    })
+$("#unblockUserBtn").click(function(e){
+    e.preventDefault();
+    $.ajax({
+    type: "post",
+    url: "unblockUser.php",
+    data: {user: document.getElementById("unblockUserTxt").value, serverID: localStorage.getItem("serverID")},
+    success: function(data) {
+        window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
+    },
+    error: function(data) {
+        console.log("fail");
+    }
 })
-    $("#blockUserBtn").click(function(e){
-        e.preventDefault();
-        $.ajax({
-        type: "post",
-        url: "blockUser.php",
-        data: {user: document.getElementById("blockUserTxt").value, serverID: localStorage.getItem("serverID")},
-        success: function(result) {
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
-        },
-        error: function(result) {
-            console.log("fail");
-        }
-    })
-    })  
+})
+$("#deleteServerBtn").click(function(e){
+    e.preventDefault();
+    $.ajax({
+    type: "post",
+    url: "deleteServer.php",
+    data: {serverID: localStorage.getItem("serverID")},
+    success: function(data) {
+        window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/home.html';
+    },
+    error: function(data) {
+        console.log("fail");
+    }
+})
+})
+$("#blockUserBtn").click(function(e){
+    e.preventDefault();
+    $.ajax({
+    type: "post",
+    url: "blockUser.php",
+    data: {user: document.getElementById("blockUserTxt").value, serverID: localStorage.getItem("serverID")},
+    success: function(result) {
+        window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
+    },
+    error: function(result) {
+        console.log("fail");
+    }
+})
+})  
+
 });
 
 function createUL(obj, id) {
