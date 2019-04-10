@@ -127,7 +127,8 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(username, obj[x].UserName)) {
+                checkImExists(username, obj[x].UserName)
+                if(isImCreated) {
                     link.href = "instant_messages.html"; 
                 }
                 else {
