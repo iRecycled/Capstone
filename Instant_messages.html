@@ -107,7 +107,7 @@
              });
     	});
       function load(){
-        targetfile = localStorage.getItem('imName');
+        targetfile = 'im_' + localStorage.getItem('imName');
         setInterval('chat.update(targetfile)',1000);
       }
       window.onload = load;
