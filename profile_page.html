@@ -44,7 +44,7 @@
     </ul>
     
     <ul class="navbar-nav right">
-      <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" href="#" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
       <script>
         function selfProfilePage(){
@@ -81,13 +81,24 @@
         <span class="sr-only">(current)</span></a>
       </ul>
     </nav>
+    <!-- Get Token Modal -->
+    <div class="modal fade" id="TokenModal" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <input id="APItoken" type="text" value="">
+          </div>
+        </div>
+    </div>
 
     <div class="wrapper">
       <!-- Sidebar -->
       <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div id="friendZone" class="sidebar-header"></div>
         <div class="sidebar-header"><a href='API/GetAuth.php'>Get Token</a></div>
-        <div id="imTag" class="sidebar-header" style="padding-top: 25px"></div>
+        <div class="sidebar-header"></div><a href="#" data-toggle="modal" data-target="#TokenModal">Get Token<span class="sr-only">(current)</span></a>
+
+        <!--<div id="imTag" class="sidebar-header" style="padding-top: 25px"></div> 
+          Removed but I'm not sure if this is different than the instant messages button -->
         
         <div class="sidebar-header">
           <h4 style="padding-top: 28px">My Chatrooms</h4>
