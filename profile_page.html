@@ -85,9 +85,9 @@
     <div class="modal fade" id="TokenModal" tabindex="-1" role="dialog"  aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <p>Test Text</p>
-            <h1 id="APItoken"></h1>
-            <p>Test Text</p>
+            <div class="modal-header text-center">
+            <p id="APItoken"></p>
+          </div>
           </div>
         </div>
     </div>
@@ -99,9 +99,8 @@
       dataType: 'json',
       data: {username: localStorage.getItem('username')},
       success: function(token) {
-        //document.getElementById("tok").innerHTML = token;
-        console.log(token);
-        document.getElementById("APItoken").value = token;
+        //console.log(token);
+        document.getElementById("APItoken").innerHTML = token;
       }
   });
 }
