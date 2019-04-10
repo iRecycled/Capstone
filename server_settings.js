@@ -154,6 +154,7 @@ $("#blockUserBtn").click(function(e){
 })
 }) 
 $("#promoteUserBtn").click(function(e){
+    console.log("TEST");
     e.preventDefault();
     $.ajax({
     type: "post",
