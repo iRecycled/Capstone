@@ -21,11 +21,9 @@ header("index.php");
 
         $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            return;
             $alreadyExists = true;
         }
-
-        echo("TEST");
-        return;
 
         if($alreadyExists == false) {
             $query = "INSERT INTO blockedUser VALUES('$userID', '$serverID');";
