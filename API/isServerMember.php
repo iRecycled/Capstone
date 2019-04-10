@@ -36,35 +36,11 @@ include "database.php";
       
     if($tmp == 1)
     {
-      $continue = true;
+        echo json_encode("Is Member"); 
     }
-    if($continue){
-      $serverName = $data->servername;
-      $message = $data->message;
-      $time = $data->time;
-      $query = "SELECT ServerID FROM Server WHERE ServerName = '$serverName';";
-      //runs query
-            $stmt = simpleQuery($db, $query);
-      //binds results of query to the database
-        $stmt->bind_result($server);
-        $stmt->fetch();
-
-        $privateserver = "../chat/private/".$server.".txt";
-
-    	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-    	     if (($message) != "\n") {
-    	       if (preg_match($reg_exUrl, $message, $url)) {
-    	         // $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-                 }
-                      //fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
-    	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
-    	     }
-
-        }
-        else{
-          http_response_code(500);
-          die('{ "errMessage": "Permission not found" }');
-        }
+    else{
+        echo json_encode("Is not Member"); 
+    }
 
       
     }
