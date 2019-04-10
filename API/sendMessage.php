@@ -35,7 +35,7 @@ include "database.php";
       $stmt->fetch();
       
       
-    if(!$tmp === NULL)
+    if(!($tmp === NULL))
     {
       $continue = true;
     }
