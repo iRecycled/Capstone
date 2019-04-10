@@ -241,7 +241,7 @@ function addIM(e) {
     let username = localStorage.getItem('username')
     let friendName = localStorage.getItem('viewInfo')
     $.when(CheckFriend(friendName)).done(function(a1){
-        checkImExists(username, friendName);
+        $.when(checkImExists(username, friendName)).done(function(a2){
         console.log(isImCreated)
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
@@ -249,6 +249,7 @@ function addIM(e) {
             document.getElementById(e).innerHTML += "<a href='#'>Instant Message</a>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
+        });
     });
 }
 // creates the text file for the instant message between the 2 users
