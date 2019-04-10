@@ -177,8 +177,10 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
+    var image = new Image();
+    image.src = url
     //check if url is valid image
-    if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
         $.ajax({
             type: "post",
@@ -196,6 +198,13 @@ function InsertAvatar(e){
     }
 }
 
+function imageExists(url, callback) {
+    var img = new Image();
+    img.onload = function() { callback(true); };
+    img.onerror = function() { callback(false); };
+    img.src = url;
+  }
+
 //adds friend request if valid user
 var isNotFriend = false;
 function AddFriendButton(e){
@@ -205,7 +214,7 @@ function AddFriendButton(e){
         if((localStorage.getItem('username') != friendName) && isNotFriend)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u class='btn btn-primary'>Add Friend</u></a></h4>";
+            document.getElementById(e).innerHTML += "<h4><u class='btn btn-primary' style='text-decoration: none'>Add Friend</u></h4>";
             document.getElementById(e).onclick = function(){ SendFriendRequest()};
         }
     });
