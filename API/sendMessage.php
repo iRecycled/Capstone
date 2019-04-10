@@ -15,7 +15,7 @@ include "database.php";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
-  
+
   if($userId==NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad Auth Token" }');
@@ -34,6 +34,8 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
+      echo json_encode($tmp);
+/*
     if($tmp != NULL)
     {
       $continue = true;
@@ -65,7 +67,7 @@ include "database.php";
           http_response_code(500);
           die('{ "errMessage": "Permission not found" }');
         }
-
+*/
       
     }
 

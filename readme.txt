@@ -1,8 +1,14 @@
 autoLogin.js
 	Redirects a logged in user to chat.html when trying to login in
 
+blockUser.php
+	Adds blocked user to database and kicks from server
+
 changePassword.php
 	Sql queries to handle change password procedure
+
+changeUserAvatar.php
+	Changes a user's avatar parameter
 	
 chat.html
 	Styled page for loading and sending chat messages from dynamic document on server.
@@ -22,6 +28,9 @@ checkID.php
 checkIfUsername.js
 	Check if username matches session id
 
+checkIM.php
+	Check if IM file already exists
+
 database.php
 	Constructs Database, constructs queries, etc. Berrier code.
 
@@ -37,6 +46,9 @@ getAllInfo.php
 getAllServerList.php
 	Returns list of servers user does not belong to.
 
+getBlockedUsers.php
+	Returns list of blocked users
+
 getFriendRequests.php
 	Returns list of friend requests
 
@@ -51,6 +63,12 @@ getServerInfo.php
 
 getServerList.php
 	Returns list of servers user belongs to.
+
+getServerMembers.php
+	Returns list of server members
+
+getServerList.php
+	Returns list of servers
 
 getServerPermissions.php
 	Returns current server permissions
@@ -106,16 +124,22 @@ profilePageStyle.css
 profilePage.js
 	Backend for loading profile_page.html data
 
+promoteUser.php
+	Allow for user promotion to ownership
+
 register.html
 	Page to allow users to register an account
 
 register.php
 	Database queries to register a user
 
+removeUser.php
+	Removes user from server
+
 respondFriendRequest.php
 	Updates database to add/reject friend to user
 
-respondFriendRequest.php
+respondServerInvite.php
 	Updates database to add/reject invite to server
 
 script.js
@@ -139,11 +163,17 @@ server_settings.css
 server.php
 	Creates new private servers
 
+setOnline.php
+	Sets the user to be online
+
 style.css
 	General unified styling attributes
 
 userInfo.php
 	Pulls user info from database
+
+unblockUser.php
+	Unblocks the current user
 
 Design:
 
