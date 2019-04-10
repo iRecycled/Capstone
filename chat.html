@@ -312,7 +312,8 @@ function InviteToServer(inv, del) {
     $.when(isAllowedToInvite()).done(function(a){
         if(allowedToInvite) {
             document.getElementById(inv).innerHTML += "<a href='#pageSubmenu' data-toggle='collapse' aria-expanded='true' class='dropdown-toggle'>Invite</a><ul class='collapse list-unstyled' id='pageSubmenu' name='invite'></ul>";
-            document.getElementById(del).innerHTML += "<a href='#' id='deleteServer' data-toggle='modal' data-target='#deleteServerModal'>Delete Server</a>";
+            //DELETING SERVER MOVED TO SERVER SETTINGS
+            //document.getElementById(del).innerHTML += "<a href='#' id='deleteServer' data-toggle='modal' data-target='#deleteServerModal'>Delete Server</a>";
             $.ajax({
                 type: "post",
                 url: "getFriendsList.php",

@@ -177,11 +177,13 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var iExists = imgExists(url)
+    var img = new Image();
+
     //check if url is valid image
-    if(iExists && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if((url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
-        $.ajax({
+        img.onload = function() { 
+            $.ajax({
             type: "post",
             url: "changeUserAvatar.php",
             data: {username: localStorage.getItem('username'), url: url},
@@ -193,20 +195,12 @@ function InsertAvatar(e){
             error: function(data) {
                 console.log("fail");
             }
-        })
+        })};
+        img.onerror = function() { console.log("ahhhh") };
+        img.src = url;
+
+        
     }
-}
-
-var imgExists = function(img)
-{
-    //ensure whitespace/newlines arent present
-    imgTrim = img.toString().trim()
-
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    console.log('true');
-    return http.status!=404;
 }
 
 //adds friend request if valid user
@@ -252,7 +246,7 @@ function addIM(e) {
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
+            document.getElementById(e).innerHTML += "<a style='padding-top: 28px'>Instant Message</a>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
     });
@@ -268,7 +262,7 @@ function createImFile() {
             console.log("is im created:" + isImCreated)
             console.log(result)
             localStorage.setItem('imName', result);
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/Instant_messages.html';
         },
         error: function(result) {
             //If not successful, return to the profile page
