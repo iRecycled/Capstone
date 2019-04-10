@@ -76,14 +76,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function Chat () {
-    this.update = updateChat;
-    this.send = sendChat;
-	this.getState = getStateOfChat;
+    if(window.location.href.indexOf('_messages.html') > 0) {
+        this.update = updateChatIm;
+        this.send = sendChatIm;
+        this.getState = getStateOfChatIm;
+    } else {
+        this.update = updateChat;
+        this.send = sendChat;
+        this.getState = getStateOfChat;
+    }
 }
 
 if(window.location.href.indexOf('_messages.html') > 0) {
     //gets the state of the chat
-    function getStateOfChat(fileID){
+    function getStateOfChatIm(fileID){
         if(!instanse){
             instanse = true;
             $.ajax({
@@ -104,7 +110,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
     }
 
     //Updates the chat
-    function updateChat(fileID){
+    function updateChatIm(fileID){
         if(!instanse){
             instanse = true;
             //console.log("start update");
@@ -145,7 +151,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
         }
     }
     //send the message
-    function sendChat(message, nickname, fileID)
+    function sendChatIm(message, nickname, fileID)
     {
         updateChat(fileID);
         console.log("sent successfully");
