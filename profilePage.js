@@ -177,11 +177,13 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var iExists = imgExists(url)
+    var img = new Image();
+
     //check if url is valid image
-    if(iExists && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if((url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
-        $.ajax({
+        img.onload = function() { 
+            $.ajax({
             type: "post",
             url: "changeUserAvatar.php",
             data: {username: localStorage.getItem('username'), url: url},
@@ -193,20 +195,12 @@ function InsertAvatar(e){
             error: function(data) {
                 console.log("fail");
             }
-        })
+        })};
+        img.onerror = function() { console.log("ahhhh") };
+        img.src = url;
+
+        
     }
-}
-
-var imgExists = function(img)
-{
-    //ensure whitespace/newlines arent present
-    imgTrim = img.toString().trim()
-
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    console.log('true');
-    return http.status!=404;
 }
 
 //adds friend request if valid user
