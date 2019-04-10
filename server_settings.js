@@ -98,7 +98,7 @@ $(document).ready(function(){
         }
     })
 })
-    $("#unblockUser").click(function(e){
+    $("#unblockUserBtn").click(function(e){
         e.preventDefault();
         $.ajax({
         type: "post",
