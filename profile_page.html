@@ -91,6 +91,15 @@
               </div>
               <div class="modal-body">
                   <input type="text" id="APItoken" style="width: 80%">
+                  <button onclick="copy()">Copy</button>
+                  <script>
+                    function copy(){
+                        var copyText = document.getElementById("APItoken");
+                        copyText.select();
+                        document.execCommand("copy");
+                        alert("Copied to clipboard");
+                    }
+                  </script>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
