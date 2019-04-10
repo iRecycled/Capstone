@@ -105,7 +105,7 @@ $(document).ready(function(){
         url: "unblockUser.php",
         data: {user: document.getElementById("unblockUserTxt").value, serverID: localStorage.getItem("serverID")},
         success: function(data) {
-            console.log("success");
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/server_settings.html';
         },
         error: function(data) {
             console.log("fail");
