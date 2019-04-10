@@ -104,7 +104,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                 success: function(data){
                     state = data.state;
                     instanse = false;
-                }
+                },
             });
         }
     }
