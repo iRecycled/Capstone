@@ -97,7 +97,6 @@
                         var copyText = document.getElementById("APItoken");
                         copyText.select();
                         document.execCommand("copy");
-                        alert("Copied to clipboard");
                     }
                   </script>
               </div>
@@ -116,8 +115,6 @@
       dataType: 'json',
       data: {username: localStorage.getItem('username')},
       success: function(token) {
-        //console.log(token);
-        //document.getElementById("APItoken").innerHTML = token;
         document.getElementById("APItoken").value = token;
 
       }
