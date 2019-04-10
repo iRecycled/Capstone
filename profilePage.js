@@ -252,7 +252,7 @@ function addIM(e) {
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
+            document.getElementById(e).innerHTML += "<h4><a style='padding-top: 28px'>Instant Message</a></h4>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
     });
@@ -268,7 +268,7 @@ function createImFile() {
             console.log("is im created:" + isImCreated)
             console.log(result)
             localStorage.setItem('imName', result);
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/Instant_messages.html';
         },
         error: function(result) {
             //If not successful, return to the profile page
