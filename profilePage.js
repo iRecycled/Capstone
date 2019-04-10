@@ -177,13 +177,13 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var image = new Image();
-    image.src = url
-    console.log(image.complete)
+    var img = new Image();
+
     //check if url is valid image
-    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if((url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
-        $.ajax({
+        img.onload = function() { 
+            $.ajax({
             type: "post",
             url: "changeUserAvatar.php",
             data: {username: localStorage.getItem('username'), url: url},
@@ -195,7 +195,11 @@ function InsertAvatar(e){
             error: function(data) {
                 console.log("fail");
             }
-        })
+        })};
+        img.onerror = function() { console.log("ahhhh") };
+        img.src = url;
+
+        
     }
 }
 
