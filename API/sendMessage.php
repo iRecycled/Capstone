@@ -34,7 +34,7 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
-    if($tmp == 1)
+    if($tmp != NULL)
     {
       $continue = true;
     }
