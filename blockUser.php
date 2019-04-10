@@ -15,9 +15,6 @@ header("index.php");
   
         $stmt->bind_result($userID);
         $stmt->fetch();
-        
-        echo("TEST");
-        return;
 
         $query = "SELECT * FROM blockedUser WHERE userID = '$userID' AND serverID = $serverID;";
         $result = $db->query($query);
