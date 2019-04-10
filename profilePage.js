@@ -272,7 +272,7 @@ function createImFile() {
 }
 // checks to see if an IM text file already exists for the 2 users
 function checkImExists(name1, name2) {
-    return $.ajax({
+    $.ajax({
         type: "post",
         url: "checkIM.php",
         data: {username: name1, friendName: name2},
