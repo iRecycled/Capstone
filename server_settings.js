@@ -166,6 +166,20 @@ $("#promoteUserBtn").click(function(e){
         console.log("fail");
     }
 })
+})
+$("#demoteUserBtn").click(function(e){
+    e.preventDefault();
+    $.ajax({
+    type: "post",
+    url: "demoteUser.php",
+    data: {user: document.getElementById("demoteUserTxt").value, serverID: localStorage.getItem("serverID")},
+    success: function(result) {
+        console.log("success");
+    },
+    error: function(result) {
+        console.log("fail");
+    }
+})
 })  
 
 });
