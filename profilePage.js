@@ -246,7 +246,7 @@ function addIM(e) {
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<a style='padding-top: 28px'>Instant Message</a>";
+            document.getElementById(e).innerHTML += "<a href='#'>Instant Message</a>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
     });

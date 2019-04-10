@@ -33,15 +33,16 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp);
       $stmt->fetch();
+      echo json_encode($tmp); 
+
       
-    if(!($tmp === ""))
+    if(gettype($tmp)!="integer")
     {
         echo json_encode("Is Member"); 
     }
     else{
         echo json_encode("Is not Member"); 
     }
-
       
     }
 
