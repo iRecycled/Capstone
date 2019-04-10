@@ -16,17 +16,16 @@ header("index.php");
         $stmt->bind_result($userID);
         $stmt->fetch();
 
-        $query = "SELECT * FROM blockedUser WHERE userID = '$userID' AND serverID = $serverID;";
+        $query = "SELECT * FROM BlockedUser WHERE userID = '$userID' AND serverID = $serverID;";
         $result = $db->query($query);
 
         $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            return;
             $alreadyExists = true;
         }
 
         if($alreadyExists == false) {
-            $query = "INSERT INTO blockedUser VALUES('$userID', '$serverID');";
+            $query = "INSERT INTO BlockedUser VALUES('$userID', '$serverID');";
             $stmt = simpleQuery($db, $query);
         }
 ?>
