@@ -179,6 +179,7 @@ function InsertAvatar(e){
     url = e.value.trim()
     var image = new Image();
     image.src = url
+    console.log(image.complete)
     //check if url is valid image
     if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
@@ -197,13 +198,6 @@ function InsertAvatar(e){
         })
     }
 }
-
-function imageExists(url, callback) {
-    var img = new Image();
-    img.onload = function() { callback(true); };
-    img.onerror = function() { callback(false); };
-    img.src = url;
-  }
 
 //adds friend request if valid user
 var isNotFriend = false;
