@@ -127,21 +127,22 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                checkImExists(username, obj[x].UserName)
-                console.log('ran checkIm in Friendslist' + isImCreated);
-                if(isImCreated) {
-                    link.href = 'instant_messages.html'; 
-                }
-                else {
-                    // if instant message file does not exist view that friends profile page
-                    link.onclick = function() {
-                        localStorage.setItem("viewInfo", this.id);
-                    };
-                    link.href = "profile_page.html";
-                }
-                link.appendChild(text);
-                listItem.appendChild(link);
-                friendsList.appendChild(listItem);
+                $.when( checkImExists(username, obj[x].UserName)).done(function(a1) {
+                    console.log('ran checkIm in Friendslist' + isImCreated);
+                    if(isImCreated) {
+                        link.href = 'instant_messages.html'; 
+                    }
+                    else {
+                        // if instant message file does not exist view that friends profile page
+                        link.onclick = function() {
+                            localStorage.setItem("viewInfo", this.id);
+                        };
+                        link.href = "profile_page.html";
+                    }
+                    link.appendChild(text);
+                    listItem.appendChild(link);
+                    friendsList.appendChild(listItem);
+                })
             }
         },
         error: function(data) {
