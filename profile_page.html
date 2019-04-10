@@ -91,7 +91,7 @@
               </div>
               <div class="modal-body">
                   <p id="APItoken"></p>
-                  <input type="text" id="APItoken">
+                  <input type="text" id="APtoken">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,6 +110,8 @@
       success: function(token) {
         //console.log(token);
         document.getElementById("APItoken").innerHTML = token;
+        document.getElementById("APtoken").innerHTML = token;
+
       }
   });
 }
