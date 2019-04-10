@@ -153,7 +153,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
     //send the message
     function sendChatIm(message, nickname, fileID)
     {
-        updateChat(fileID);
+        updateChatIm(fileID);
         console.log("sent successfully");
         var today = new Date();
         var tmp = today.getMonth()+1;
@@ -170,7 +170,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                     },
             dataType: "json",
             success: function(data){
-                updateChat(fileID);
+                updateChatIm(fileID);
             },
             });
     }
