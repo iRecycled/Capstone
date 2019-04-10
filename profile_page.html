@@ -86,7 +86,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <p>Test Text</p>
-            <h1 id="APItoken"></h1>
+            <input id="APItoken"></input>
             <p>Test Text</p>
           </div>
         </div>
@@ -99,8 +99,7 @@
       dataType: 'json',
       data: {username: localStorage.getItem('username')},
       success: function(token) {
-        //document.getElementById("tok").innerHTML = token;
-        console.log(token);
+        //console.log(token);
         document.getElementById("APItoken").innerHTML = token;
       }
   });
