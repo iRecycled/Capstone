@@ -19,13 +19,14 @@ header("index.php");
         $query = "SELECT * FROM blockedUser WHERE userID = '$userID' AND serverID = $serverID;";
         $result = $db->query($query);
 
-        echo("TEST");
-        return;
-
         $alreadyExists = false;
         while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $alreadyExists = true;
         }
+
+        echo("TEST");
+        return;
+
         if($alreadyExists == false) {
             $query = "INSERT INTO BlockedUser VALUES('$userID', '$serverID');";
             $stmt = simpleQuery($db, $query);
