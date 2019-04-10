@@ -138,7 +138,6 @@ $(document).ready(function(){
                     };
                     link.href = "profile_page.html";
                 }
-                isImCreated = false;
                 link.appendChild(text);
                 listItem.appendChild(link);
                 friendsList.appendChild(listItem);
