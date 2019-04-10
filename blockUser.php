@@ -25,6 +25,8 @@ header("index.php");
         }
 
         if($alreadyExists == false) {
+            $query = "DELETE FROM ServerMember WHERE serverID = '$serverID' AND UserID = '$userID';";
+            $stmt = simpleQuery($db, $query);
             $query = "INSERT INTO BlockedUser VALUES('$serverID', '$userID');";
             $stmt = simpleQuery($db, $query);
         }
