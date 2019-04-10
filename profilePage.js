@@ -205,7 +205,7 @@ function AddFriendButton(e){
         if((localStorage.getItem('username') != friendName) && isNotFriend)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><u class='btn btn-primary'>Add Friend</u></h4>";
+            document.getElementById(e).innerHTML += "<h4><u class='btn btn-primary' style='text-decoration: none'>Add Friend</u></h4>";
             document.getElementById(e).onclick = function(){ SendFriendRequest()};
         }
     });
