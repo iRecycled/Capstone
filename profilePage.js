@@ -129,7 +129,7 @@ $(document).ready(function(){
                 // if instant message file exists direct user to im file
                 checkImExists(username, obj[x].UserName)
                 if(isImCreated) {
-                    link.href = "http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html"; 
+                    link.href = 'instant_messages.html'; 
                 }
                 else {
                     // if instant message file does not exist view that friends profile page
@@ -177,11 +177,9 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var image = new Image();
-    image.src = url
-    console.log(image.complete)
+    var iExists = imgExists(url)
     //check if url is valid image
-    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if(iExists && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
         $.ajax({
             type: "post",
@@ -197,6 +195,18 @@ function InsertAvatar(e){
             }
         })
     }
+}
+
+var imgExists = function(img)
+{
+    //ensure whitespace/newlines arent present
+    imgTrim = img.toString().trim()
+
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    console.log('true');
+    return http.status!=404;
 }
 
 //adds friend request if valid user
@@ -262,6 +272,7 @@ function createImFile() {
         },
         error: function(result) {
             //If not successful, return to the profile page
+            console.log(result)
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
