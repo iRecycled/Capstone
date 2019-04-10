@@ -1,6 +1,19 @@
 $(document).ready(function(){
     $.ajax({
         type: "post",
+        url: "getServerPermissions.php",
+        data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
+        success: function(data) {
+            if (data != 0) {
+                window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/chat.html';
+            }
+        },
+        error: function(data) {
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/chat.html';
+        }
+    })
+    $.ajax({
+        type: "post",
         url: "getServerInfo.php", 
         data: { serverID: localStorage.getItem('serverID')
         },
