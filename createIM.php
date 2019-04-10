@@ -33,5 +33,5 @@
         $openfile = fopen($filename,"w") or die("can't open file");
         //fwrite($openfile,"");
         fclose($openfile);
-        echo json_encode($fileID);
+        echo $fileID;
 ?>
