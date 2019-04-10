@@ -15,7 +15,7 @@ include "database.php";
             $stmt = simpleQuery($db, $query);
             $stmt->bind_result($userId,$nickname);
             $stmt->fetch();
-  
+
   if($userId==NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad Auth Token" }');
@@ -34,7 +34,8 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
-    if($tmp == 1)
+      
+    if(!($tmp === NULL))
     {
       $continue = true;
     }

@@ -127,8 +127,9 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(username, obj[x].UserName)) {
-                    link.href = "instant_messages.html"; 
+                checkImExists(username, obj[x].UserName)
+                if(isImCreated) {
+                    link.href = 'Instant_messages.html'; 
                 }
                 else {
                     // if instant message file does not exist view that friends profile page
@@ -176,8 +177,11 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
+    var image = new Image();
+    image.src = url
+    console.log(image.complete)
     //check if url is valid image
-    if(url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif'){
+    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
         $.ajax({
             type: "post",
@@ -204,7 +208,7 @@ function AddFriendButton(e){
         if((localStorage.getItem('username') != friendName) && isNotFriend)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+            document.getElementById(e).innerHTML += "<h4><u class='btn btn-primary' style='text-decoration: none'>Add Friend</u></h4>";
             document.getElementById(e).onclick = function(){ SendFriendRequest()};
         }
     });
@@ -233,15 +237,14 @@ function addIM(e) {
     let username = localStorage.getItem('username')
     let friendName = localStorage.getItem('viewInfo')
     $.when(CheckFriend(friendName)).done(function(a1){
-        $.when(checkImExists(username, friendName)).done(function(a1){
-            console.log(isImCreated)
+        checkImExists(username, friendName);
+        console.log(isImCreated)
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
             document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
-        });
     });
 }
 // creates the text file for the instant message between the 2 users
@@ -252,6 +255,8 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
+            console.log("is im created:" + isImCreated)
+            console.log(result)
             localStorage.setItem('imName', result);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
