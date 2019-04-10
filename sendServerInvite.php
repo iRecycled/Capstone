@@ -39,6 +39,19 @@ header("index.php");
                 return;
         }
 
+        $query = "SELECT * FROM BlockedUser WHERE userID = '$userID' AND serverID = $serverID;";
+        $result = $db->query($query);
+
+        $isBanned = false;
+        while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $isBanned = true;
+        }
+
+        if($isBanned) {
+                echo("This user is banned from this server.");
+                return;
+        }
+
         if ($alreadyExists == false) {
                 $query = "INSERT INTO ServerInvite VALUES ('$serverID', '$userID');";
                 $stmt = simpleQuery($db, $query);
