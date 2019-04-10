@@ -34,7 +34,7 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
-    if(!($tmp === ""))
+    if(gettype($tmp)!="integer")
     {
         echo json_encode("Is Member"); 
     }
