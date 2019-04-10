@@ -246,7 +246,7 @@ function addIM(e) {
         if((localStorage.getItem('username') != friendName) && !isNotFriend && !isImCreated)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u>Instant Message</u></a></h4>";
+            document.getElementById(e).innerHTML += "<a href='#'>Instant Message</a>";
             document.getElementById(e).onclick = function(){ createImFile()};
         }
     });
@@ -259,7 +259,6 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
-            console.log("is im created:" + isImCreated)
             console.log(result)
             localStorage.setItem('imName', result);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/Instant_messages.html';
