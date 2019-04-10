@@ -34,7 +34,7 @@ include "database.php";
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
-      echo json_encode($tmp)
+      echo json_encode($tmp);
 /*
     if($tmp != NULL)
     {
