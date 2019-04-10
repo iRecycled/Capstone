@@ -279,9 +279,11 @@ function checkImExists(name1, name2) {
         data: {username: name1, friendName: name2},
         success: function(result) {
             if(result !== -1) {
+                console.log('inImExists:' + result);
                 localStorage.setItem('imName', result);
                 isImCreated = true;
             } else {
+                console.log('inImExists:' + result);
                 isImCreated = false;
             }
         },
