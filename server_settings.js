@@ -119,7 +119,7 @@ $(document).ready(function(){
         url: "blockUser.php",
         data: {user: document.getElementById("blockUserTxt").value, serverID: localStorage.getItem("serverID")},
         success: function(result) {
-            console.log("success");
+            console.log(result);
         },
         error: function(result) {
             console.log("fail");

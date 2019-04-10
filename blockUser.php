@@ -25,7 +25,7 @@ header("index.php");
         }
 
         if($alreadyExists == false) {
-            $query = "INSERT INTO BlockedUser VALUES('$userID', '$serverID');";
+            $query = "INSERT INTO BlockedUser VALUES('$serverID', '$userID');";
             $stmt = simpleQuery($db, $query);
         }
 ?>
