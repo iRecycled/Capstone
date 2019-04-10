@@ -255,6 +255,8 @@ function createImFile() {
         data: {username: localStorage.getItem('username'), friendName: localStorage.getItem('viewInfo')},
         success: function(result) {
             //If successful, go to the instant_messages page
+            console.log("is im created:" + isImCreated)
+            console.log(result)
             localStorage.setItem('imName', result);
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
         },
