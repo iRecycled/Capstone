@@ -29,14 +29,14 @@ include "database.php";
       
     $continue = false;
     //$query = "SELECT Permission FROM WebUser wu JOIN ServerMember sm ON wu.UserID = sm.UserID JOIN Server s ON s.ServerID = sm.ServerID WHERE wu.UserName = '$nickname' AND s.serverID = '$ServerID';";
-    $query = "SELECT Permission FROM ServerMember WHERE ServerID=$ServerID AND UserID=$userId;";
+    $query = "SELECT ServerID FROM ServerMember WHERE ServerID=$ServerID AND UserID=$userId;";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp);
       $stmt->fetch();
       echo json_encode($tmp); 
 
       
-    if(gettype($tmp)!="integer")
+    if($tmp != NULL)
     {
         echo json_encode("Is Member"); 
     }
