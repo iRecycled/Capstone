@@ -96,9 +96,9 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                 type: "POST",
                 url: "loadIM.php",
                 data: {
-                            'function': 'getState',
-                            'file': fileID
-                            },
+                    'function': 'getState',
+                    'file': fileID
+                },
                 dataType: "json",
 
                 success: function(data){
