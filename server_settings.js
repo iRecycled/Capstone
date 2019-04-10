@@ -4,7 +4,7 @@ $(document).ready(function(){
         url: "getServerPermissions.php",
         data: {username: localStorage.getItem('username'), serverID: localStorage.getItem('serverID')},
         success: function(data) {
-            if (data != 0) {
+            if (data != 3) {
                 window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/chat.html';
             }
         },
