@@ -12,7 +12,7 @@
       data: {username: localStorage.getItem('username')},
       success: function(token) {
         document.getElementById("tok").innerHTML = token;
-        document.getElementById("APItoken").innerHTML = token;
+        document.getElementById("APItoken").value = token;
       }
   });
 </script>
