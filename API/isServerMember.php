@@ -33,7 +33,6 @@ include "database.php";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp);
       $stmt->fetch();
-      echo json_encode($tmp); 
 
       
     if($tmp != NULL)
