@@ -127,7 +127,8 @@ $(document).ready(function(){
                 listItem.style.color = "white";
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
-                if( checkImExists(username, obj[x].UserName)) {
+                checkImExists(username, obj[x].UserName)
+                if(isImCreated) {
                     link.href = "instant_messages.html"; 
                 }
                 else {
@@ -213,7 +214,7 @@ function AddFriendButton(e){
         if((localStorage.getItem('username') != friendName) && isNotFriend)
         {
             console.log("Calls");
-            document.getElementById(e).innerHTML += "<h4><a><u>Add Friend</u></a></h4>";
+            document.getElementById(e).innerHTML += "<h4><u class='btn btn-primary' style='text-decoration: none'>Add Friend</u></h4>";
             document.getElementById(e).onclick = function(){ SendFriendRequest()};
         }
     });
