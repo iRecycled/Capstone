@@ -129,7 +129,7 @@ $(document).ready(function(){
                 // if instant message file exists direct user to im file
                 checkImExists(username, obj[x].UserName)
                 if(isImCreated) {
-                    link.href = 'Instant_messages.html'; 
+                    link.href = 'instant_messages.html'; 
                 }
                 else {
                     // if instant message file does not exist view that friends profile page
@@ -177,13 +177,13 @@ $(document).ready(function(){
 function InsertAvatar(e){
     //sterilize url
     url = e.value.trim()
-    var image = new Image();
-    image.src = url
-    console.log(image.complete)
+    var img = new Image();
+
     //check if url is valid image
-    if(image.complete && (url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
+    if((url.substring(url.length-4).valueOf() == '.jpg' || url.substring(url.length-4).valueOf() == '.png' || url.substring(url.length-4).valueOf() == '.gif')){
         //run database change query
-        $.ajax({
+        img.onload = function() { 
+            $.ajax({
             type: "post",
             url: "changeUserAvatar.php",
             data: {username: localStorage.getItem('username'), url: url},
@@ -195,7 +195,11 @@ function InsertAvatar(e){
             error: function(data) {
                 console.log("fail");
             }
-        })
+        })};
+        img.onerror = function() { console.log("ahhhh") };
+        img.src = url;
+
+        
     }
 }
 
@@ -258,10 +262,11 @@ function createImFile() {
             console.log("is im created:" + isImCreated)
             console.log(result)
             localStorage.setItem('imName', result);
-            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/instant_messages.html';
+            window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/Instant_messages.html';
         },
         error: function(result) {
             //If not successful, return to the profile page
+            console.log(result)
             window.location.href = 'http://144.13.22.48/CS458SP19/Team1/Capstone/profile_page.html';
         }
     })
