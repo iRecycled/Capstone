@@ -128,7 +128,7 @@ $(document).ready(function(){
                 link.id = obj[x].UserName;
                 // if instant message file exists direct user to im file
                 $.when( checkImExists(username, obj[x].UserName)).done(function(a1) {
-                    console.log('ran checkIm in Friendslist' + isImCreated);
+                    console.log('ran checkIm in Friendslist ' + isImCreated);
                     if(isImCreated) {
                         link.href = 'instant_messages.html'; 
                     }

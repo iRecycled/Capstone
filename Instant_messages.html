@@ -111,8 +111,6 @@
       }
       window.onload = load;
 
-    </script> 
-    <script>
         //returns session ID of current user name in local storage
         //also checks the username to be compatible with sessionID
         //if username != sessionID then it is sent to loginPage
@@ -271,25 +269,16 @@
         <div id="chatBoxInput">
             <div id="inputContainer" class='input-group'>
                 <!--Chat Text Input-->
-                <textarea id='sendie' maxlength='1000' class='form-control'></textarea>
+                <textarea id ='sendie' maxlength='1000' class='form-control'></textarea>
+                <div>
+                    <button class="btn dropdown-toggle" type="button" id="insertImageButton" data-toggle="modal" data-target="#insertContent">
+                    </button>                
+                </div>
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <button class="btn dropdown-toggle" type="button" id="chatEmoteButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a class="dropdownEle" data-toggle="tab" href="#emoteDropdown">Emotes</a></li>
-                            <li><a class="dropdownEle" data-toggle="tab" href="#imgUpload">Images</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="emoteDropdown" class="tab-pane fade in active">
-
-                            </div>
-                            <div id="imgUpload" class="tab-pane fade">
-
-                            </div>
-                        </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "emoteDropdown">
+                    
                     </div>
                 </div>
 
@@ -297,14 +286,57 @@
                 <div class="input-group-append">
                     <button id='chatTextSubmit' maxlength='100' class='btn btn-dark'>SEND</button>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 </div>
 
-
+<div id="insertContent" class="modal fade" role="dialog">
+    <div class="modal-dialog" id="insertContentDialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Insert Content</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tab">
+                    <li class='active' style="margin-right: 15px;"><a class = 'dropdownEle' data-toggle="tab" href="#image">Image </a></li>
+                    <li><a class = 'dropdownEle' data-toggle="tab" href="#video">Video</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="image" class="tab-pane fade show active">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Image URL:</span>
+                            </div>
+                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="inputURL">
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertImage(inputURL)">Insert</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="video" class="tab-pane fade">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Video URL:</span>
+                            </div>
+                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="vidURL" oninput="UpdatePreview()">
+                        </div>
+                        <div>
+                            <span id="videoPreview"></span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="InsertVid()">Insert</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
