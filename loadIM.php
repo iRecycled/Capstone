@@ -17,7 +17,7 @@
     	 case('update'):
         	$state = $_POST['state'];
             $instantMessage = htmlentities(strip_tags($_POST['file']));
-            $instantMessage = "private/chat/".$instantMessage.".txt";
+            $instantMessage = "chat/private/".$instantMessage.".txt";
             $myfile = fopen("chat/GrabbedChatServer.txt", "w") or die("Unable to open file!");
             fwrite($myfile, $instantMessage);
             fclose($myfile);
