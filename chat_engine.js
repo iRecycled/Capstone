@@ -87,7 +87,6 @@ function Chat () {
     }
 }
 
-if(window.location.href.indexOf('_messages.html') > 0) {
     //gets the state of the chat
     function getStateOfChatIm(fileID){
         if(!instanse){
@@ -174,7 +173,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
             },
             });
     }
-} else {
+
     //gets the state of the chat
     function getStateOfChat(serverID){
         if(!instanse){
@@ -261,7 +260,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
             },
             });
     }
-}
+
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
