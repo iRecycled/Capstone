@@ -132,7 +132,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                                 console.log("original string:"+data.text[i]);
                                 data.text[i] = parse.parse(str[2]);
                                 console.log(data.text[i]);
-                                //console.log(generateMsg(data.text[i],"",""));
+                                console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
                                 console.log(data.text[i]);
