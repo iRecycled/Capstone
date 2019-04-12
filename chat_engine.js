@@ -134,7 +134,7 @@ function Chat () {
                                 // console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
-                                console.log(data.text[i]);
+                                // console.log(data.text[i]);
                                 $('#chatBox').append($(data.text[i]));
                                 document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                             }
