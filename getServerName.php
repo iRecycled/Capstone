@@ -11,7 +11,7 @@
         $query = "SELECT serverName FROM Server WHERE ServerID = '$serverID';";
         //runs the query
         $result = $db->query($query);
-        //output query result to json array
-        echo json_encode($response);
+        //output query result to json array .. json_encode
+        echo ($response);
         
 ?>
