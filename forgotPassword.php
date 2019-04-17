@@ -37,7 +37,9 @@
                 $stmt = simpleQuery($db, $query);
 
                 $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
-                $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . $url . "\n\nChange your password to something that you will remember.";
+                $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
+                    "\n\nPlease login and change your password to something you will remember immediately.";
+                //$msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . $url . "\n\nChange your password to something that you will remember.";
                 $subject = "TerryChat Password Reset";
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
@@ -66,7 +68,7 @@
         $stmt = simpleQuery($db, $query);
 
         $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
-        $msg = "Hi " . $username . ",\n\n Follow this link to reset your password." . $url . "\n\nChange your password to something that you will remember.";
+        $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . $url . "\n\nChange your password to something that you will remember.";
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
