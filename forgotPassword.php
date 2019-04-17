@@ -14,6 +14,7 @@
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $password = '';
+    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
     // randomly selects 8 characters for the new password
     for ($i = 0; $i < $length; $i++) {
         $password .= $characters[rand(0, $charactersLength - 1)];
@@ -35,7 +36,7 @@
                 $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
                 $stmt = simpleQuery($db, $query);
                 $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-                    "\n\nPlease login and change your password to something you will remember immediately.";
+                    "\n\nPlease login and change your password to something you will remember immediately.\n" . $url;
                 $subject = "TerryChat Password Reset";
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
@@ -61,7 +62,7 @@
         $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
         $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-            "\n\nPlease login and change your password to something you will remember immediately.";
+            "\n\nPlease login and change your password to something you will remember immediately.\n" . $url;
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
