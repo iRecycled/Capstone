@@ -10,9 +10,9 @@
         //sql query code where username belongs to server
         $query = "SELECT ServerName FROM Server WHERE ServerID = '$serverID';";
         //runs the query
-        $result = $db->query($query);
-        $stmt->bind_result($serverID);
+        $stmt = simpleQuery($db, $query);
+        $stmt->bind_result($serverName);
         $stmt->fetch();
         //output query result to json array
-        echo json_encode($response);
+        echo json_encode($serverName);
 ?>
