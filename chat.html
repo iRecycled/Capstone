@@ -394,19 +394,20 @@ function isAllowedToInvite(){
     </ul>
     <ul class="navbar-nav right">
         <script>
+            function setServerName(){
                 $.ajax({
                         type: "post",
                         url: "getServerName.php",
                         data: {username: localStorage.getItem('serverID')},
                         success: function(data) {
-                            obj = data;
+                            obj = JSON.parse(data);
                             localStorage.setItem("servername",obj);
                         },
                         error: function(data) {
                             console.log("fail");
                         }
                     })
-
+            }
             function setServerName(){
                 localStorage.setItem("servername", ServerName);
             }
