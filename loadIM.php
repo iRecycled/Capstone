@@ -7,7 +7,7 @@
         // counts the lines in the file
     	 case('getState'):
             $instantMessage = htmlentities(strip_tags($_POST['file']));
-            $instantMessage = "private/chat/".$instantMessage.".txt";
+            $instantMessage = "chat/private/".$instantMessage.".txt";
         	if(file_exists($instantMessage)){
                $lines = file($instantMessage);
         	}
@@ -17,8 +17,8 @@
     	 case('update'):
         	$state = $_POST['state'];
             $instantMessage = htmlentities(strip_tags($_POST['file']));
-            $instantMessage = "private/chat/".$instantMessage.".txt";
-            $myfile = fopen("private/GrabbedChatServer.txt", "w") or die("Unable to open file!");
+            $instantMessage = "chat/private/".$instantMessage.".txt";
+            $myfile = fopen("chat/GrabbedChatServer.txt", "w") or die("Unable to open file!");
             fwrite($myfile, $instantMessage);
             fclose($myfile);
         	if(file_exists($instantMessage)){
@@ -48,7 +48,7 @@
 	        $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 	        $message = htmlentities(strip_tags($_POST['message']));
             $instantMessage = htmlentities(strip_tags($_POST['file']));
-            $instantMessage = "private/chat/".$instantMessage.".txt";
+            $instantMessage = "chat/private/".$instantMessage.".txt";
 	        if (($message) != "\n") {
 	            if (preg_match($reg_exUrl, $message, $url)) {
 	                $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);

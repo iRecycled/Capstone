@@ -87,7 +87,6 @@ function Chat () {
     }
 }
 
-if(window.location.href.indexOf('_messages.html') > 0) {
     //gets the state of the chat
     function getStateOfChatIm(fileID){
         if(!instanse){
@@ -129,13 +128,13 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                                 //data.text[i] = msgParse(data.text[i]);
                                 var parse = new msgParse();
                                 var str = data.text[i].split("<");
-                                console.log("original string:"+data.text[i]);
+                               // console.log("original string:"+data.text[i]);
                                 data.text[i] = parse.parse(str[2]);
                                 console.log(data.text[i]);
-                                //console.log(generateMsg(data.text[i],"",""));
+                                // console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
-                                console.log(data.text[i]);
+                                // console.log(data.text[i]);
                                 $('#chatBox').append($(data.text[i]));
                                 document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                             }
@@ -174,7 +173,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
             },
             });
     }
-} else {
+
     //gets the state of the chat
     function getStateOfChat(serverID){
         if(!instanse){
@@ -216,9 +215,9 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                                 //data.text[i] = msgParse(data.text[i]);
                                 var parse = new msgParse();
                                 var str = data.text[i].split("<");
-                                console.log("original string:"+data.text[i]);
+                                //console.log("original string:"+data.text[i]);
                                 data.text[i] = parse.parse(str[2]);
-                                console.log(data.text[i]);
+                                //console.log(data.text[i]);
                                 //console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
@@ -261,7 +260,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
             },
             });
     }
-}
+
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
