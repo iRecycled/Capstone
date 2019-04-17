@@ -36,11 +36,12 @@
                 $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
                 $stmt = simpleQuery($db, $query);
 
-                $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-                    "\n\nPlease login and change your password to something you will remember immediately.";
+                $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
+                $msg = "Hi " . $username . ",\n\n Follow this link to reset your password." . $url . "\n\nChange your password to something that you will remember.";
                 $subject = "TerryChat Password Reset";
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
+                
                 // sends back 1 if email sent
                 $status = 1;
                 break;
@@ -64,12 +65,15 @@
         $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
 
-        $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-            "\n\nPlease login and change your password to something you will remember immediately.";
+        $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
+        $msg = "Hi " . $username . ",\n\n Follow this link to reset your password." . $url . "\n\nChange your password to something that you will remember.";
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);
+
         $status = 1;
     }
+    /*$msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
+            "\n\nPlease login and change your password to something you will remember immediately.";*/
     echo json_encode($status);
 ?>
