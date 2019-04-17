@@ -399,7 +399,7 @@ function isAllowedToInvite(){
                         url: "getServerName.php",
                         data: {username: localStorage.getItem('serverID')},
                         success: function(data) {
-                            obj = JSON.parse(data);
+                            obj = JSON.stringify(data);
                             console.log(obj);
                             localStorage.setItem("servername",obj);
                         },
