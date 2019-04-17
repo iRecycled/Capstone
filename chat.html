@@ -402,6 +402,7 @@ function isAllowedToInvite(){
                             obj = JSON.parse(data);
                             console.log(obj);
                             localStorage.setItem("servername",obj);
+                            document.getElementById("serverNameH4").innerHTML = localStorage.ServerName;
                         },
                         error: function(data) {
                             console.log("fail");
@@ -447,7 +448,7 @@ function isAllowedToInvite(){
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div class="sidebar-header">
-            <h4>Chatrooms</h4>
+            <h4 id="serverNameH4">Chatrooms</h4>
         </div>
         
         <ul class="list-unstyled components">
