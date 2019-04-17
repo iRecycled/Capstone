@@ -8,10 +8,11 @@
             //connects to database
         $serverID = $_POST['serverID']; 
         //sql query code where username belongs to server
-        $query = "SELECT * FROM Server WHERE ServerID = '$serverID';";
+        $query = "SELECT ServerName FROM Server WHERE ServerID = '$serverID';";
         //runs the query
-        $result = $db->query($query);
+        $stmt = simpleQuery($db, $query);
+        $stmt->bind_result($serverName);
+        $stmt->fetch();
         //output query result to json array
-        echo json_encode($response);
-        
+        echo json_encode($serverName);
 ?>
