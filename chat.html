@@ -402,7 +402,7 @@ function isAllowedToInvite(){
                             obj = JSON.parse(data);
                             console.log(obj);
                             localStorage.setItem("servername",obj);
-                            document.getElementById("serverNameH4").innerHTML = localStorage.ServerName;
+                            document.getElementById("serverNameH4").innerHTML = localStorage.getItem("servername");
                         },
                         error: function(data) {
                             console.log("fail");
