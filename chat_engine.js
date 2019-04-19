@@ -364,8 +364,14 @@ function msgParse(){
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
+                        if(imgUrl.substring(0, 3) == "in&")
+                        {
+                            parse += ("<img src='" + imgUrl.substring(7) + "' alt='userimg' class='msgImg'/>")
+                        }
                         //inject image object with source
-                        parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                        else{
+                            parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                        }
                     }
                 }
                 //check if phrase is ytb tag
