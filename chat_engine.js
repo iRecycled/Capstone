@@ -366,7 +366,7 @@ function msgParse(){
                     {
                         if(imgUrl.substring(0, 3) == "in&")
                         {
-                            parse += ("<img src='" + imgUrl.substring(4) + "' alt='userimg' class='msgImg'/>")
+                            parse += ("<img src='" + imgUrl.substring(7) + "' alt='userimg' class='msgImg'/>")
                         }
                         //inject image object with source
                         else{
