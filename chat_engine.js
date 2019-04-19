@@ -364,7 +364,7 @@ function msgParse(){
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
-                        if(imgUrl.substring(0, 3) == "in&")
+                        if(imgUrl.substring(3) == "in&")
                         {
                             parse += ("<img src='" + imgUrl.substring(0,3) + "' alt='userimg' class='msgImg'/>")
                         }
