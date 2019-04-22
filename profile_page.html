@@ -44,7 +44,7 @@
     </ul>
     
     <ul class="navbar-nav right">
-      <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">ChangePassword <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" href="#" onclick="Logout()">Logout <span class="sr-only">(current)</span></a>
       <script>
         function selfProfilePage(){
@@ -81,13 +81,53 @@
         <span class="sr-only">(current)</span></a>
       </ul>
     </nav>
+    <!-- Get Token Modal -->
+    </style>
+    <div class="modal fade" id="TokenModal" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="width:900px">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title text-center">Server Token</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" id="APItoken" style="width: 80%">
+                  <button onclick="copy()">Copy</button>
+                  <script>
+                    function copy(){
+                        var copyText = document.getElementById("APItoken");
+                        copyText.select();
+                        document.execCommand("copy");
+                    }
+                  </script>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+          </div>
+        </div>
+    </div>
+<script>
+  function clicker(){
+    $.ajax({
+      url: 'API/TokenGen.php',
+      method: 'POST',
+      dataType: 'json',
+      data: {username: localStorage.getItem('username')},
+      success: function(token) {
+        document.getElementById("APItoken").value = token;
 
+      }
+  });
+}
+</script>
     <div class="wrapper">
       <!-- Sidebar -->
       <nav id="sidebar" class="bg-dark navbar-text text-center">
         <div id="friendZone" class="sidebar-header"></div>
-        <div class="sidebar-header"><a href='API/GetAuth.php'>Get Token</a></div>
-        <!--<div id="imTag" class="sidebar-header" style="padding-top: 25px"></div>-->
+        <div class="sidebar-header"></div><a href="#" data-toggle="modal" data-target="#TokenModal" onclick="clicker()">Get Token<span class="sr-only">(current)</span></a>
+
+        <div id="imTag" class="sidebar-header" style="padding-top: 25px"></div>
         
         <div class="sidebar-header">
           <h4 style="padding-top: 28px">My Chatrooms</h4>
@@ -128,9 +168,6 @@
         <ul class="list-unstyled components">
           <li>
             <button type="button" class="btn btn-primary" id="newServerLink" data-toggle="modal" data-target="#newPrivateServerModal">Add new server</button>
-          </li>
-          <li>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePrivateServerModal">Delete Server</button>
           </li>
           <!-- <li>
             <button type="button" class="btn btn-success" href="#">Invite to server</button>
@@ -263,41 +300,7 @@
             </div>
           </div>
         </div>
-      </div>    
-      
-      <!--Delete an existing private Server Modal-->
-      <div class="modal fade" id="deletePrivateServerModal" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold" id="deletePrivateServerModal">Delete an existing Server</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            
-            <div class="modal-body mx-3">
-              <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="defaultForm-email">Name of Server to delete</label>
-                <input type="text" id="existingServerName" class="form-control validate">
-              </div>
-            </div>
-          </div>
-          
-          <div class="modal-body mx-3">
-            <div class="form-group">
-              <label for="form_name">Server Name</label>>
-              <input id="form_name" type="text" name="servername" class="form-control" placeholder="Please enter the name of your server" required="required" data-error="server name is required.">
-              <div class="help-block with-errors"></div>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <input type="submit" value="Create Server" name="submit">
-            <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
+      </div>          
   </form>
 
 

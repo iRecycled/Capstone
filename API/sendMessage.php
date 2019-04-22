@@ -29,13 +29,13 @@ include "database.php";
       
     $continue = false;
     //$query = "SELECT Permission FROM WebUser wu JOIN ServerMember sm ON wu.UserID = sm.UserID JOIN Server s ON s.ServerID = sm.ServerID WHERE wu.UserName = '$nickname' AND s.serverID = '$ServerID';";
-    $query = "SELECT Permission FROM ServerMember WHERE ServerID=$ServerID AND UserID=$userId;";
+    $query = "SELECT ServerID FROM ServerMember WHERE ServerID=$ServerID AND UserID=$userId;";
       $stmt = simpleQuery($db, $query);
       $stmt->bind_result($tmp);
       $stmt->fetch();
       
       
-    if(!($tmp === NULL))
+    if($tmp != NULL)
     {
       $continue = true;
     }
@@ -52,14 +52,14 @@ include "database.php";
 
         $privateserver = "../chat/private/".$server.".txt";
 
-    	     $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-    	     if (($message) != "\n") {
-    	       if (preg_match($reg_exUrl, $message, $url)) {
+    	  //   $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+    	  //   if (($message) != "\n") {
+    	  //     if (preg_match($reg_exUrl, $message, $url)) {
     	         // $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
-                 }
+        //         }
                       //fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message = str_replace("\n", " ", $message) . "\n");
     	          fwrite(fopen($privateserver, 'a'), $nickname."<".$time."<".$message. "\n");
-    	     }
+    	  //   }
 
         }
         else{

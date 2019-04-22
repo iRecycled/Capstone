@@ -76,35 +76,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function Chat () {
-    this.update = updateChat;
-    this.send = sendChat;
-	this.getState = getStateOfChat;
+    if(window.location.href.indexOf('_messages.html') > 0) {
+        this.update = updateChatIm;
+        this.send = sendChatIm;
+        this.getState = getStateOfChatIm;
+    } else {
+        this.update = updateChat;
+        this.send = sendChat;
+        this.getState = getStateOfChat;
+    }
 }
 
-if(window.location.href.indexOf('_messages.html') > 0) {
     //gets the state of the chat
-    function getStateOfChat(fileID){
+    function getStateOfChatIm(fileID){
         if(!instanse){
             instanse = true;
             $.ajax({
                 type: "POST",
                 url: "loadIM.php",
                 data: {
-                            'function': 'getState',
-                            'file': fileID
-                            },
+                    'function': 'getState',
+                    'file': fileID
+                },
                 dataType: "json",
 
                 success: function(data){
                     state = data.state;
                     instanse = false;
-                }
+                },
             });
         }
     }
 
     //Updates the chat
-    function updateChat(fileID){
+    function updateChatIm(fileID){
         if(!instanse){
             instanse = true;
             //console.log("start update");
@@ -123,13 +128,13 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                                 //data.text[i] = msgParse(data.text[i]);
                                 var parse = new msgParse();
                                 var str = data.text[i].split("<");
-                                console.log("original string:"+data.text[i]);
+                               // console.log("original string:"+data.text[i]);
                                 data.text[i] = parse.parse(str[2]);
                                 console.log(data.text[i]);
-                                //console.log(generateMsg(data.text[i],"",""));
+                                // console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
-                                console.log(data.text[i]);
+                                // console.log(data.text[i]);
                                 $('#chatBox').append($(data.text[i]));
                                 document.getElementById('chatOutput').scrollTop = document.getElementById('chatOutput').scrollHeight;
                             }
@@ -145,9 +150,9 @@ if(window.location.href.indexOf('_messages.html') > 0) {
         }
     }
     //send the message
-    function sendChat(message, nickname, fileID)
+    function sendChatIm(message, nickname, fileID)
     {
-        updateChat(fileID);
+        updateChatIm(fileID);
         console.log("sent successfully");
         var today = new Date();
         var tmp = today.getMonth()+1;
@@ -164,11 +169,11 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                     },
             dataType: "json",
             success: function(data){
-                updateChat(fileID);
+                updateChatIm(fileID);
             },
             });
     }
-} else {
+
     //gets the state of the chat
     function getStateOfChat(serverID){
         if(!instanse){
@@ -210,9 +215,9 @@ if(window.location.href.indexOf('_messages.html') > 0) {
                                 //data.text[i] = msgParse(data.text[i]);
                                 var parse = new msgParse();
                                 var str = data.text[i].split("<");
-                                console.log("original string:"+data.text[i]);
+                                //console.log("original string:"+data.text[i]);
                                 data.text[i] = parse.parse(str[2]);
-                                console.log(data.text[i]);
+                                //console.log(data.text[i]);
                                 //console.log(generateMsg(data.text[i],"",""));
                                 console.log(str[1]);
                                 data.text[i] = generateMsg(data.text[i], str[0], str[1]);
@@ -255,7 +260,7 @@ if(window.location.href.indexOf('_messages.html') > 0) {
             },
             });
     }
-}
+
 //changes local storage value for viewname
 function setViewName(name){
     localStorage.setItem("viewInfo", name);
@@ -359,8 +364,14 @@ function msgParse(){
                     endTag = imgUrl.substring(imgUrl.length-4)
                     if(endTag.valueOf() == '.jpg' || endTag.valueOf() == '.png' || endTag.valueOf() == '.gif')
                     {
+                        if(imgUrl.substring(0, 3) == "in&")
+                        {
+                            parse += ("<img src='" + imgUrl.substring(7) + "' alt='userimg' class='msgImg'/>")
+                        }
                         //inject image object with source
-                        parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                        else{
+                            parse += ("<img src='https://" + imgUrl + "' alt='userimg' class='msgImg'/>")
+                        }
                     }
                 }
                 //check if phrase is ytb tag

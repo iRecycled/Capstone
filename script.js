@@ -13,9 +13,4 @@ $(document).ready(function () {
         // in our CSS
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-
-});
-
-$.get("navbar_template.html", function(data){
-    $("#nav-template").replaceWith(data);
 });

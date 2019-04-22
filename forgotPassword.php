@@ -9,18 +9,11 @@
     // grabs data from user
     $username = $_POST['username']; 
     $status = 0;
-    //randomly set password for the user to change
-    $length = 8;
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $password = '';
-    // randomly selects 8 characters for the new password
-    for ($i = 0; $i < $length; $i++) {
-        $password .= $characters[rand(0, $charactersLength - 1)];
-    }
 
+    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
+ 
     //checks to see if user is logged in
-    if($username == "") {
+    if($username === "") {
         // grabs data from user input
         $emailInput = $_POST['email'];
         // grabs all usernames and corresponding emails
@@ -31,13 +24,9 @@
         while($stmt->fetch()) {
             if($emailInput == $email) {
                 $username = $usernameList;
-                //query that updates the password
-                $passwordHash=password_hash($password, PASSWORD_DEFAULT);
-                $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
-                $stmt = simpleQuery($db, $query);
 
-                $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-                    "\n\nPlease login and change your password to something you will remember immediately.";
+                $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" .
+                    $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
                 $subject = "TerryChat Password Reset";
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
@@ -55,17 +44,12 @@
         //query to grab the email
         $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
         $stmt = simpleQuery($db, $query);
-
         $stmt->bind_result($email);
         $stmt->fetch();
         
-        //query that updates the password
-        $passwordHash=password_hash($password, PASSWORD_DEFAULT);
-        $query = "UPDATE WebUser SET Password='$passwordHash' WHERE UserName = '$username';";
-        $stmt = simpleQuery($db, $query);
+        $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . 
+            $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
 
-        $msg = "Hi " . $username . ",\n\n Here is your new password:\n\n" . $password . 
-            "\n\nPlease login and change your password to something you will remember immediately.";
         $subject = "TerryChat Password Reset";
         //send email to the user with the new password
         mail($email,$subject,$msg);

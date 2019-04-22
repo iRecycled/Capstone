@@ -25,8 +25,9 @@
         //User1ID, User2ID, FileName(ID)
         $query = "INSERT INTO InstantMessage VALUES ('$firstUserID', '$otherUserID','$fileID')";
         $stmt = simpleQuery($db, $query);
+        
         //Create chatroom text file_exists\
-        $filename = "instantMessage/$fileID.txt";
+        $filename = "chat/private/im_$fileID.txt";
         //error_log($filename);
         // fopen("chat.txt","w");
         // fclose("chat.txt");

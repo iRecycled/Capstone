@@ -10,9 +10,10 @@
       method: 'POST',
       dataType: 'json',
       data: {username: localStorage.getItem('username')},
-      success: function( token) {
+      success: function(token) {
         document.getElementById("tok").innerHTML = token;
-
+        console.log(token);
+        document.getElementById("APItoken").value = token;
       }
   });
 </script>
