@@ -13,7 +13,7 @@
     $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
  
     //checks to see if user is logged in
-    if($username == "") {
+    if($username === "") {
         // grabs data from user input
         $emailInput = $_POST['email'];
         // grabs all usernames and corresponding emails
