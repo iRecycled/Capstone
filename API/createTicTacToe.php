@@ -25,7 +25,7 @@
                 while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                         die('{ "errMessage": "Aleady playing a game with this user" }')
                 }
-
+echo json_encode($user1Id + " " + $user2Id);
 if($user1Id==NULL || $user2Id == NULL){
     http_response_code(500);
     die('{ "errMessage": "Bad User Name" }');
