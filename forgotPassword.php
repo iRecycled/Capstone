@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     include "database.php";
     $db = connectToDatabase(DBDeets::DB_NAME);
     //connects to the database
@@ -28,6 +30,7 @@
                 $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" .
                     $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
                 $subject = "TerryChat Password Reset";
+                $_SESSION['email'] = $email;
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
                 // sends back 1 if email sent
