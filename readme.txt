@@ -31,11 +31,17 @@ checkIfUsername.js
 checkIM.php
 	Check if IM file already exists
 
+createIM.php
+	Creates IM instance in database
+
 database.php
 	Constructs Database, constructs queries, etc. Berrier code.
 
 deleteServer.php
 	Deletes server from database
+
+demoteUser.php
+	Changes a user's permissions in a specified server.
 
 forgotPassword.php
 	Sends new password via email
@@ -70,6 +76,9 @@ getServerMembers.php
 getServerList.php
 	Returns list of servers
 
+getServerName.php
+	Returns name of specified server
+
 getServerPermissions.php
 	Returns current server permissions
 
@@ -94,6 +103,12 @@ instant_messages.css
 instant_messages.html
 	Handles direct messages
 
+isOnline.php
+	Returns what users are currently online
+
+loadIM.php
+	Returns instant messages between two users
+
 login.html
 	User login page
 
@@ -104,7 +119,7 @@ loginStyle.css
 	Styling for login.html
 
 msgParse.js
-	Helper functions for chat backend
+	Helper functions for chat backend DEPRECIATED
 
 navbar_template.html
 	Template code for navbar on pages
@@ -151,6 +166,9 @@ searchForUser.php
 sendFriendRequest.php
 	Adds friend request to server
 
+sendPasswordEmail.php
+	Sends reset password email
+
 sendServerInvite.php
 	Adds server invite to server
 
@@ -159,6 +177,9 @@ server_settings.html
 
 server_settings.css
 	Styling for server_settings.html
+
+server_settings.js
+	Scripts for handling server_settings.html
 
 server.php
 	Creates new private servers
