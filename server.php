@@ -24,7 +24,7 @@
             $stmt->bind_result($userId);
             $stmt->fetch();
             //Assigns the user to the leader of the server
-            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId', 0)";
+            $query = "INSERT INTO ServerMember VALUES ('$serverId', '$userId', 3)";
             $stmt = simpleQuery($db, $query);
 
             //Create chatroom text file_exists\
