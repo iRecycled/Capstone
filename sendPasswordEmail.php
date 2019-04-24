@@ -32,5 +32,5 @@
         "\n\nUse this code as your old password to finish your password reset.";
     //send email to the user with the new password
     mail($email,$subject,$msg);
-    echo $email;
+    echo $username;
 ?>
