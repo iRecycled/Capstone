@@ -17,7 +17,7 @@
     }
 
     // grabs data from url
-    $username = $_GET["name"];
+    $username = $_GET['name'];
 
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
