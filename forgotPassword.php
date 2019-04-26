@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     include "database.php";
     $db = connectToDatabase(DBDeets::DB_NAME);
     //connects to the database
@@ -12,7 +10,7 @@
     $username = $_POST['username']; 
     $status = 0;
 
-    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html";
+    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html?name=";
  
     //checks to see if user is logged in
     if($username === "") {
@@ -26,11 +24,11 @@
         while($stmt->fetch()) {
             if($emailInput == $email) {
                 $username = $usernameList;
+                $url .= $username;
 
                 $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" .
                     $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
                 $subject = "TerryChat Password Reset";
-                $_SESSION['email'] = $email;
                 //send email to the user with the new password
                 mail($email,$subject,$msg);
                 // sends back 1 if email sent
@@ -50,6 +48,8 @@
         $stmt->bind_result($email);
         $stmt->fetch();
         
+        $url.= $username;
+
         $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . 
             $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
 

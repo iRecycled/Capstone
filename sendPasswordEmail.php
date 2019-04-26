@@ -1,6 +1,11 @@
 <?php
-    session_start();
-
+    include "database.php";
+    $db = connectToDatabase(DBDeets::DB_NAME);
+    //connects to the database
+    if ($db->connect_error) {
+        http_response_code(500);
+        die('{ "errMessage": "Failed to Connect to DB." }');
+    }
     //randomly set password for the user to change
     $length = 8;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -11,12 +16,12 @@
         $password .= $characters[rand(0, $charactersLength - 1)];
     }
 
-    // grabs data from session
-    $email = $_SESSION['email'];
+    // grabs data from url
+    $username = htmlspecialchars($_GET['name']);
 
-    $query = "SELECT UserName FROM WebUser WHERE email = '$email';";
+    $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
-    $stmt->bind_result($username);
+    $stmt->bind_result($email);
     $stmt->fetch();
 
     //query that updates the password
@@ -27,5 +32,5 @@
         "\n\nUse this code as your old password to finish your password reset.";
     //send email to the user with the new password
     mail($email,$subject,$msg);
-    session_abort();
+    echo $username;
 ?>
