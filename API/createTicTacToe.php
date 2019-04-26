@@ -21,7 +21,7 @@
             $query = "SELECT * FROM TicTacToe WHERE (User1ID = '$user1Id' AND User2ID = '$user2Id') OR (User1ID = '$user2Id' AND User2ID = '$user1Id')";
                 $result = $db->query($query);
                 while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                        die('{ "errMessage": "Aleady playing a game with this user" }')
+                        die('{ "errMessage": "Aleady playing a game with this user" }');
                 }
 if($user1Id == NULL || $user2Id == NULL){
     http_response_code(500);
