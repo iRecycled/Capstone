@@ -18,10 +18,8 @@
                 $stmt->bind_result($user2Id);
                 $stmt->fetch();
 
-            $query = "SELECT * FROM TicTacToe WHERE (User1ID = '$user1Id' AND User2ID = '$user2Id') OR (User1ID = '$user2Id' AND User2ID = '$user1Id')"
+            $query = "SELECT * FROM TicTacToe WHERE (User1ID = '$user1Id' AND User2ID = '$user2Id') OR (User1ID = '$user2Id' AND User2ID = '$user1Id')";
                 $result = $db->query($query);
-                $response = array();
-                $alreadyExists = false;
                 while($row = $result->fetch_array(MYSQLI_ASSOC)) {
                         die('{ "errMessage": "Aleady playing a game with this user" }')
                 }
