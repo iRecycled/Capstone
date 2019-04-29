@@ -10,7 +10,7 @@
     $username = $_POST['username']; 
     $status = 0;
 
-    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html/?name=";
+    $url = "http://144.13.22.48/CS458SP19/Team1/Capstone/passwordReset.html?name=";
  
     //checks to see if user is logged in
     if($username === "") {
