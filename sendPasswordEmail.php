@@ -20,7 +20,8 @@
     if(isset($_GET["name"])){
         $username = $_GET["name"];
     } else {
-        $username = "fail";
+        //$username = "fail";
+        $username = $_REQUEST["name"];
     }
 
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
