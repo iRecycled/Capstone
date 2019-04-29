@@ -17,12 +17,11 @@
     }
 
     // grabs data from url
-    // if(isset($_GET["name"])){
-    //     $username = $_GET["name"];
-    // } else {
-    //     $username = "fail";
-    // }
-    $username = $_SERVER['REQUEST_URI'];
+    if(isset($_GET["name"])){
+        $username = $_GET["name"];
+    } else {
+        $username = "fail";
+    }
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
     $stmt->bind_result($email);
