@@ -17,7 +17,7 @@
     }
 
     // grabs data from url
-    $username = htmlspecialchars($_GET['name']);
+    $username = $_GET['name'];
 
     $query = "SELECT email FROM WebUser WHERE UserName = '$username';";
     $stmt = simpleQuery($db, $query);
@@ -32,5 +32,5 @@
         "\n\nUse this code as your old password to finish your password reset.";
     //send email to the user with the new password
     mail($email,$subject,$msg);
-    echo $username;
+    echo $_GET['name'];
 ?>
