@@ -17,8 +17,8 @@
     }
 
     // grabs data from url
-    if(isset($_GET['name'])){
-        $username = $_GET['name'];
+    if(isset($_GET["name"])){
+        $username = $_GET["name"];
     } else {
         $username = "fail";
     }
