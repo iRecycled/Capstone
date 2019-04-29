@@ -24,7 +24,7 @@
         while($stmt->fetch()) {
             if($emailInput == $email) {
                 $username = $usernameList;
-                $url .= $username;
+                $url .= urlencode($username);
 
                 $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" .
                     $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
@@ -48,7 +48,7 @@
         $stmt->bind_result($email);
         $stmt->fetch();
         
-        $url.= $username;
+        $url.= urlencode($username);
 
         $msg = "Hi " . $username . ",\n\n Follow this link to reset your password.\n\n" . 
             $url . "\n\nIf you did not request a password reset ignore this email and DO NOT follow the link.";
