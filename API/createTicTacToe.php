@@ -28,7 +28,7 @@ if($user1Id == NULL || $user2Id == NULL){
     die('{ "errMessage": "Bad User Name" }');
 }
             //Creates the game in the database
-            $query = "INSERT INTO TicTacToe VALUES ('$user1Id', '$user2Id','_________')";
+            $query = "INSERT INTO TicTacToe VALUES ('$user1Id', '$user2Id','EEEEEEEEE')";
             $stmt = simpleQuery($db, $query);
             
         echo json_encode("Server Created"); 
